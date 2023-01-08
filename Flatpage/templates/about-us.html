@@ -1,0 +1,263 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+
+<!-- Ec breadcrumb start -->
+<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ec_breadcrumb_inner">
+                    
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ec-breadcrumb-list start -->
+                        <ul class="ec-breadcrumb-list textalignright">
+                            <li class="ec-breadcrumb-item"><a href="{% url 'index' %}">خانه</a></li>
+                            <li class="ec-breadcrumb-item active">ارتباط با ما</li>
+                        </ul>
+                        <!-- ec-breadcrumb-list end -->
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ec-breadcrumb-title textalignleft">ارتباط با ما</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ec breadcrumb end -->
+
+<!-- Ec About Us page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title">
+                    <h2 class="ec-bg-title">درباره ما</h2>
+                    <h2 class="ec-title">درباره ما</h2>
+                    <p class="sub-title mb-3">درباره شرکت کسب و کار ما</p>
+                </div>
+            </div>
+            <div class="ec-common-wrapper">
+                <div class="row">
+                    <div class="col-md-6 ec-cms-block ec-abcms-block text-center">
+                        <div class="ec-cms-block-inner">
+                            <img class="a-img" src="{% static 'images/newimg/wp10636130.jpg' %}" alt="about">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ec-cms-block ec-abcms-block text-center">
+                        <div class="ec-cms-block-inner">
+                            <h3 class="ec-cms-block-title">تاریخچه فروشگاه </h3>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
+                                گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و
+                                برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                                می باشد<br> کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
+                                متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
+                                الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید
+                                داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان
+                                مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
+                                طراحی اساسا مورد استفاده قرار گیرد.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr style="width: 70%; margin-right: 15%;margin-bottom: 5%;" />
+<div>
+    <div class="row">
+        <div class="container modirDi2">
+            <div class="mb-4 modirDiv" >
+                <div class="modir">
+                    <img src="{% static 'images/user/2.jpg' %}" style="border-radius: 30px;" alt="admin" />
+
+                    <div class="semat">
+                        <p>اقای رضایی</p>
+                        <p>سمت ایشان</p>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="modirDiv">
+
+                <div class="modir">
+                    <div></div>
+                    <div class="semat">
+                        <p>اقای خواست</p>
+                        <p>سمت ایشان</p>
+                    </div>
+
+                    <img src="{% static 'images/user/3.jpg' %}" style="border-radius: 30px;" alt="admin" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Ec testmonial Start -->
+<section class="section ec-test-section section-space-ptb-100 section-space-m">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title mb-0">
+                    <h2 class="ec-bg-title">رزومه ها</h2>
+                    <h2 class="ec-title">رزومه پرسنل</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ec-test-outer">
+                <ul id="ec-testimonial-slider">
+                    <li class="ec-test-item">
+                        <img src="{% static 'images/testimonial/top-quotes.svg' %}" class="svg_img test_svg top" alt="">
+                        <div class="ec-test-inner">
+                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                    src="{% static 'images/user/1.jpg' %}"></div>
+                            <div class="ec-test-content">
+                                <div class="ec-test-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                    سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع
+                                    با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال
+                                    و آینده، شناخت فراوان جامعه و متخصصان را می طلبد</div>
+                                <div class="ec-test-name">جان داو</div>
+                                <div class="ec-test-designation">مدیر کل</div>
+                                <div class="ec-test-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{% static 'images/testimonial/bottom-quotes.svg' %}" class="svg_img test_svg bottom"
+                            alt="">
+                    </li>
+                    <li class="ec-test-item">
+                        <img src="{% static 'images/testimonial/top-quotes.svg' %}" class="svg_img test_svg top" alt="">
+                        <div class="ec-test-inner">
+                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                    src="{% static 'images/user/2.jpg' %}"></div>
+                            <div class="ec-test-content">
+                                <div class="ec-test-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                    سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع
+                                    با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال
+                                    و آینده، شناخت فراوان جامعه و متخصصان را می طلبد</div>
+                                <div class="ec-test-name">جان داو</div>
+                                <div class="ec-test-designation">مدیر کل</div>
+                                <div class="ec-test-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{% static 'images/testimonial/bottom-quotes.svg' %}" class="svg_img test_svg bottom"
+                            alt="">
+                    </li>
+                    <li class="ec-test-item">
+                        <img src="{% static 'images/testimonial/top-quotes.svg' %}" class="svg_img test_svg top" alt="">
+                        <div class="ec-test-inner">
+                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                    src="{% static 'images/user/3.jpg' %}"></div>
+                            <div class="ec-test-content">
+                                <div class="ec-test-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+                                    و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                    سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع
+                                    با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال
+                                    و آینده، شناخت فراوان جامعه و متخصصان را می طلبد</div>
+                                <div class="ec-test-name">جان داو</div>
+                                <div class="ec-test-designation">مدیر کل</div>
+                                <div class="ec-test-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{% static 'images/testimonial/bottom-quotes.svg' %}" class="svg_img test_svg bottom"
+                            alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ec testmonial end -->
+
+<!-- Services Section Start -->
+<section class="section ec-services-section section-space-p">
+    <h2 class="d-none">خدمات</h2>
+    <div class="container">
+        <div class="row">
+            <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-6 col-lg-3">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_1.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2> ارسال رایگان </h2>
+                        <p> ارسال رایگان برای سفارشات بالای 200 هزارتومان</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-6 col-lg-3">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_2.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2>24X7 پشتیبانی </h2>
+                        <p>با ما 24 ساعته در هفت روز هفته در تماس باشید </p>
+                    </div>
+                </div>
+            </div>
+            <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-6 col-lg-3">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_3.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2> روزه 30 بازگشت </h2>
+                        <p> برگشت آسان 30 روزه برای تعویض </p>
+                    </div>
+                </div>
+            </div>
+            <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-6 col-lg-3">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_4.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2>پرداخت امن</h2>
+                        <p>با ما 24 ساعته در هفت روز هفته در تماس باشید </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section End -->
+
+<!-- Cart Floating Button -->
+<div class="ec-cart-float">
+    <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+        <div class="header-icon"><img src="{% static 'images/icons/cart.svg' %}" class="svg_img header.svg' %}" alt="cart">
+        </div>
+        <span class="ec-cart-count cart-count-lable">3</span>
+    </a>
+</div>
+<!-- Cart Floating Button end -->
+
+{% endblock %}
