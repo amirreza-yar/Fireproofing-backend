@@ -19,12 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from Blog import views
 from Flatpage import urls as flatPateUrls
+from CustomUser import urls as UserUrls
 
 urlpatterns = [
     # path('', views.index, name='home'),
     # path('pages/', include('django.contrib.flatpages.urls')),
     path('admin/', admin.site.urls),
     path('', include(flatPateUrls)),
+    path('', include(UserUrls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'Flatpage.views.error404Handler'

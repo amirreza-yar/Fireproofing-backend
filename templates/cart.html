@@ -1,0 +1,158 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+
+<!-- Ec cart page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-cart-leftside col-lg-8 col-md-12 ">
+                <!-- cart content Start -->
+                <div class="ec-cart-content">
+                    <div class="ec-cart-inner">
+                        <div class="row">
+                            <form action="#">
+                                <div class="table-content cart-table-content">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>محصول</th>
+                                                <th>قیمت</th>
+                                                <th style="text-align: center;">تعداد</th>
+                                                <th>کل</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td data-label="Product" class="ec-cart-pro-name"><a href="  "><img class="ec-cart-pro-img mr-4" src="assets/images/product-image/1.jpg" alt="">کفش بچگانه</a></td>
+                                                <td data-label="Price" class="ec-cart-pro-price"><span class="amount">5600 تومان</span></td>
+                                                <td data-label="Quantity" class="ec-cart-pro-qty" style="text-align: center;">
+                                                    <div class="cart-qty-plus-minus">
+                                                        <input class="cart-plus-minus" type="text" name="cartqtybutton" value="1">
+                                                    </div>
+                                                </td>
+                                                <td data-label="Total" class="ec-cart-pro-subtotal">5600 تومان</td>
+                                                <td data-label="Remove" class="ec-cart-pro-remove">
+                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td data-label="Product" class="ec-cart-pro-name"><a href="  "><img class="ec-cart-pro-img mr-4" src="assets/images/product-image/2.jpg" alt="">هودی تک رنگ</a></td>
+                                                <td data-label="Price" class="ec-cart-pro-price"><span class="amount">7500 تومان</span></td>
+                                                <td data-label="Quantity" class="ec-cart-pro-qty" style="text-align: center;">
+                                                    <div class="cart-qty-plus-minus">
+                                                        <input class="cart-plus-minus" type="text" name="cartqtybutton" value="1">
+                                                    </div>
+                                                </td>
+                                                <td data-label="Total" class="ec-cart-pro-subtotal">7500 تومان</td>
+                                                <td data-label="Remove" class="ec-cart-pro-remove">
+                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td data-label="Product" class="ec-cart-pro-name"><a href="  "><img class="ec-cart-pro-img mr-4" src="assets/images/product-image/3.jpg" alt="">تی شرت زنانه</a></td>
+                                                <td data-label="Price" class="ec-cart-pro-price"><span class="amount">4800 تومان</span></td>
+                                                <td data-label="Quantity" class="ec-cart-pro-qty" style="text-align: center;">
+                                                    <div class="cart-qty-plus-minus">
+                                                        <input class="cart-plus-minus" type="text" name="cartqtybutton" value="1">
+                                                    </div>
+                                                </td>
+                                                <td data-label="Total" class="ec-cart-pro-subtotal">4800 تومان</td>
+                                                <td data-label="Remove" class="ec-cart-pro-remove">
+                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td data-label="Product" class="ec-cart-pro-name"><a href="  "><img class="ec-cart-pro-img mr-4" src="assets/images/product-image/4.jpg" alt="">کلاه اوول مردانه</a></td>
+                                                <td data-label="Price" class="ec-cart-pro-price"><span class="amount">9500 تومان</span></td>
+                                                <td data-label="Quantity" class="ec-cart-pro-qty" style="text-align: center;">
+                                                    <div class="cart-qty-plus-minus">
+                                                        <input class="cart-plus-minus" type="text" name="cartqtybutton" value="1">
+                                                    </div>
+                                                </td>
+                                                <td data-label="Total" class="ec-cart-pro-subtotal">9500 تومان</td>
+                                                <td data-label="Remove" class="ec-cart-pro-remove">
+                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ec-cart-update-bottom">
+                                            <button class="btn btn-primary">پرداخت</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--cart content End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="ec-cart-rightside col-lg-4 col-md-12">
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Summary Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-sb-title">
+                            <h3 class="ec-sidebar-title">خلاصه</h3>
+                        </div>
+                        <div class="ec-sb-block-content">
+                            <h4 class="ec-ship-title">هزینه ارسال</h4>
+                            <div class="ec-cart-form">
+                                <p> مقصد خود را وارد کنید تا برآورد حمل و نقل را دریافت کنید </p>
+                                <form action="#" method="post">
+                                    <span class="ec-cart-wrap">
+                                        <label> آدرس  </label>
+                                        <textarea style="background-color: transparent;" rows="5" ></textarea>
+                                    </span>
+                                    <span class="ec-cart-wrap">
+                                        <label> کد پستی  </label>
+                                        <input type="text" name="postalcode" placeholder=" کد پستی ">
+                                    </span>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="ec-sb-block-content">
+                            <div class="ec-cart-summary-bottom">
+                                <div class="ec-cart-summary">
+                                    <div>
+                                        <span class="text-left">ریزهزینه</span>
+                                        <span class="text-right">8000 تومان</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-left">هزینه ارسال</span>
+                                        <span class="text-right">8000 تومان</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-left">کد تخفیف</span>
+                                        <span class="text-right"><a class="ec-cart-coupan">اعمال کد تخفیف</a></span>
+                                    </div>
+                                    <div class="ec-cart-coupan-content">
+                                        <form class="ec-cart-coupan-form" name="ec-cart-coupan-form" method="post" action="#">
+                                            <input class="ec-coupan" type="text" required="" placeholder="کد تخفیف  خود را وارد کنید" name="ec-coupan" value="">
+                                            <button class="ec-coupan-btn button btn-primary" type="submit" name="subscribe" value="">اعمال</button>
+                                        </form>
+                                    </div>
+                                    <div class="ec-cart-summary-total">
+                                        <span class="text-left">هزینه کل</span>
+                                        <span class="text-right">8000 تومان</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sidebar Summary Block -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,26 +1,27 @@
 from django.shortcuts import render
 
 def contactUs(request):
-    return render(request, "contact-us.html", {"title": "ارتباط با ما"})
+    return render(request, "contact-us.html", {"title": "ارتباط با ما", "is_index_page": False})
 
 def aboutUs(request):
-    return render(request, "about-us.html", {"title": "درباره ما"})
+    return render(request, "about-us.html", {"title": "درباره ما", "is_index_page": False})
 
 def faq(request):
-    return render(request, "faq.html", {"title": "سوالات متداول"})
+    return render(request, "faq.html", {"title": "سوالات متداول", "is_index_page": False})
 
 def hamkari(request):
-    return render(request, "hamkari.html", {"title": "همکاری"})
+    return render(request, "hamkari.html", {"title": "همکاری", "is_index_page": False})
 
 def namaiandegi(request):
-    return render(request, "namaiandegi.html", {"title": "نمایندگی ها"})
+    return render(request, "namaiandegi.html", {"title": "نمایندگی ها", "is_index_page": False})
 
 def rules(request):
-    return render(request, "rules.html", {"title": "قوانین"})
+    return render(request, "rules.html", {"title": "قوانین", "is_index_page": False})
 
 def index(request):
-    return render(request, "index.html", {"title": "فروشگاه قلان"})
+    # print(request.user)
+    return render(request, "index.html", {"title": "فروشگاه قلان", "is_index_page": True})
 
 def error404Handler(request, exception):
     # print("I'm running!")
-    return render(request, "404error.html", {"title": "ارور ۴۰۴"})
+    return render(request, "404error.html", {"title": "ارور ۴۰۴", "is_index_page": False})

@@ -1,0 +1,81 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+
+<!-- User history section -->
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Area Start -->
+            <div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Category Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-vendor-block">
+                            <div class="ec-vendor-block-items">
+                                <ul>
+                                    <li><a href="{% url 'userProfile' %}">پروفایل کاربر</a></li>
+                                    <li><a href="{% url 'userHistory' %}">تاریخچه</a></li>
+                                    <li><a href="{% url 'cart' %}">سبد خرید</a></li>
+                                    <li><a href="{% url 'logout' %}">خروح از حساب کاربری</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-shop-rightside col-lg-9 col-md-12">
+                <div class="ec-vendor-dashboard-card">
+                    <div class="ec-vendor-card-header">
+                        <h5>تاریخچه خرید</h5>
+                    </div>
+                    <div class="ec-vendor-card-body">
+                        <div class="ec-vendor-card-table">
+                            <table class="table ec-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">شناسه</th>
+                                        <th scope="col">تصویر</th>
+                                        <th scope="col">نام</th>
+                                        <th scope="col">تاریخ</th>
+                                        <th scope="col">قیمت</th>
+                                        <th scope="col">وضعیت</th>
+                                        <th scope="col">فعالیت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><span>225</span></th>
+                                        <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
+                                                alt="product image"></td>
+                                        <td><span>خرید دوم</span></td>
+                                        <td><span>16 دی 1400</span></td>
+                                        <td><span>64000 تومان</span></td>
+                                        <td><span>تحویل داده شده</span></td>
+                                        <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
+                                                    href="userInvoice.html">فاکتور</a></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>548</span></th>
+                                        <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
+                                                alt="product image"></td>
+                                        <td><span>خرید اول</span></td>
+                                        <td><span>13 دی 1398</span></td>
+                                        <td><span>68210 تومان</span></td>
+                                        <td><span>تحویل داده شده</span></td>
+                                        <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
+                                                    href="userInvoice.html">فاکتور</a></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End User history section -->
+
+{% endblock %}
