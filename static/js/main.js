@@ -62,7 +62,7 @@ function ecCheckCookie() {
         e("#ec-overlay").fadeOut("slow"), setTimeout(function() {
             switch (window.location.protocol) {
                 case "file:":
-                    e("body").append('<div id="ec-direct-run" class="ec-direct-run"><div class="ec-direct-body"><h4>قالب به صورت مستقیم لود شده است</h4><p>متوجه شدیم شما قالب را بدون استفاده از لوکال سرور بالا آورده اید. در این حالت به برخی ویژگی ها دسترسی ندارید. لطفا از لوکال سرور یا لایو سرور استفاده نمایید </p></div></div>')
+                    // e("body").append('<div id="ec-direct-run" class="ec-direct-run"><div class="ec-direct-body"><h4>قالب به صورت مستقیم لود شده است</h4><p>متوجه شدیم شما قالب را بدون استفاده از لوکال سرور بالا آورده اید. در این حالت به برخی ویژگی ها دسترسی ندارید. لطفا از لوکال سرور یا لایو سرور استفاده نمایید </p></div></div>')
             }
         }, 3e3)
     }), e(".ec-search-bar").focus(function() {

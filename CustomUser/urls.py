@@ -8,4 +8,5 @@ urlpatterns = [
     path('editProfile', views.editProfile, name="editProfile"),
     path('userHistory', views.userHistory, name="userHistory"),
     path('logout', views.logout, name="logout"),
+    path('userInvoice/<int:pk>', views.userInvoice, name="userInvoice"),
 ]

@@ -45,7 +45,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+
+                                    {% for invoice in invoices %}
+                                        <tr>
+                                            <th scope="row"><span>225</span></th>
+                                            <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
+                                                    alt="product image"></td>
+                                            <td><span>{{ invoice.customer.name }}</span></td>
+                                            <td><span>{{ invoice.ordered_date }}</span></td>
+                                            <td><span>{{ invoice.finished_price }} تومان</span></td>
+                                            <td><span>{{ invoice.get_status }}</span></td>
+                                            <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
+                                                        href="{% url 'userInvoice' pk=invoice.pk %}">فاکتور</a></span></td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    <!-- <tr>
                                         <th scope="row"><span>225</span></th>
                                         <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
                                                 alt="product image"></td>
@@ -66,7 +82,7 @@
                                         <td><span>تحویل داده شده</span></td>
                                         <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
                                                     href="userInvoice.html">فاکتور</a></span></td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

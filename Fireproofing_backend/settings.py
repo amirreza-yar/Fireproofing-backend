@@ -37,15 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # 'django.contrib.flatpages',
+
     'Flatpage',
     'Blog',
     'CustomUser',
-    'django.contrib.sites',
-    'django.contrib.flatpages',
+    'Product',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'ckeditor'
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
 ]
 
 AUTH_USER_MODEL = 'CustomUser.UserProfile'
@@ -93,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Product.custom_context_processors.cart_context'
             ],
         },
     },

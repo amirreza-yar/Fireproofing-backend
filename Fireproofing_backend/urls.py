@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Blog import views
+
+# from Blog import views
 from Flatpage import urls as flatPateUrls
 from CustomUser import urls as UserUrls
+from Product import urls as ProductUrls
 
 urlpatterns = [
     # path('', views.index, name='home'),
@@ -27,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(flatPateUrls)),
     path('', include(UserUrls)),
+    path('', include(ProductUrls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'Flatpage.views.error404Handler'

@@ -1,12 +1,10 @@
-from django.contrib.auth.models import AbstractBaseUser
-from django.contrib.auth.models import PermissionsMixin
-from django.contrib.auth.models import BaseUserManager
-# from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager, User
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.conf import settings
 from django.contrib.auth.hashers import make_password
-
 
 class UserProfileManager(BaseUserManager):
     """
@@ -83,6 +81,22 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     def get_name(self):
         return self.name
+
+    @property
+    def is_anonymous(self):
+        """
+        Always return False. This is a way of comparing User objects to
+        anonymous users.
+        """
+        return False
+
+    @property
+    def is_authenticated(self):
+        """
+        Always return True. This is a way to tell if the user has been
+        authenticated in templates.
+        """
+        return True
 
     # def email_user(self, subject, message, from_email=None, **kwargs):
     #     """Send an email to this user."""

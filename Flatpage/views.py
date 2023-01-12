@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from CustomUser.models import UserProfile as userProfileModel
 
 def contactUs(request):
     return render(request, "contact-us.html", {"title": "ارتباط با ما", "is_index_page": False})

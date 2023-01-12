@@ -7,7 +7,8 @@ urlpatterns = [
     path('faq', views.faq, name="faq"),
     path('hamkari', views.hamkari, name="hamkari"),
     path('namaiandegi', views.namaiandegi, name="namaiandegi"),
-    path('rules', views.rules, name="rules"),
+    path('rules', views.rules, name="faq"),
+    # path('', views.index, name='index'),
 
     ## Temporary urls, will moved to their app next...
     path('', views.index, name="index"),
@@ -16,6 +17,5 @@ urlpatterns = [
     path('', views.index, name="blogs"),
     path('', views.index, name="login"),
     path('', views.index, name="cart"),
-    path('', views.index, name="user-profile"),
 ]
 

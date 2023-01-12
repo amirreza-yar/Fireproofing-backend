@@ -17,41 +17,53 @@
             <div class="ec-register-wrapper">
                 <div class="ec-register-container">
                     <div class="ec-register-form">
-                        <form action="#" method="post">
+                        <form action="{% url 'editProfile' %}" method="POST">
+                            {% csrf_token %}
                             <span class="ec-register-wrap">
-                                <label>نام و نام خانوادگی*</label>
-                                <input type="text" name="firstname" placeholder="نام خود را وارد کنید" required="">
+                                <label for="{{ register_form.name.id_for_label }}">نام و نام خانوادگی *</label>
+                                <input type="text" name="name" placeholder="نام خود را وارد کنید" required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label>ایمیل*</label>
-                                <input type="email" name="email" placeholder="وارد کردن ایمیل " required="">
+                                <label for="{{ register_form.email.id_for_label }}">ایمیل*</label>
+                                <input type="email" for="email" name="email" placeholder="وارد کردن ایمیل " required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label>شماره تماس*</label>
-                                <input type="text" name="phonenumber" placeholder="شماره تماس خود را وارد کنید" required="">
+                                <label for="{{ register_form.phone_number.id_for_label }}">شماره تماس*</label>
+                                <input type="text" name="phone_number" placeholder="شماره تماس خود را وارد کنید" required="">
                             </span>
                             <span class="ec-register-wrap">
-                                <label>آدرس</label>
+                                <label for="{{ register_form.address.id_for_label }}">آدرس</label>
                                 <input type="text" name="address" placeholder="آدرس خط اول">
                             </span>
                             
                             <span class="ec-register-wrap ec-register-half">
-                                <label>کد پستی</label>
-                                <input type="text" name="postalcode" placeholder="کدپستی">
+                                <label for="{{ register_form.postal_code.id_for_label }}">کد پستی</label>
+                                <input type="text" name="postal_code" placeholder="کدپستی">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label>شهر</label>
+                                <label for="{{ register_form.city.id_for_label }}">شهر</label>
                                 <input type="text" name="postalcode" placeholder="شهر">
                             </span>
+
                             
-                            <span class="ec-register-wrap ec-recaptcha">
+                            <!-- <span class="ec-register-wrap ec-recaptcha">
                                 <span class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></span>
                                 <input class="form-control d-none" data-recaptcha="true" required="" data-error="Please complete the Captcha">
                                 <span class="help-block with-errors"></span>
-                            </span>
-                            <span class="ec-register-wrap ec-register-btn">
+                            </span> -->
+                            <!-- <span class="ec-register-wrap ec-register-btn">
                                 <button class="btn btn-primary" type="submit">ویرایش اطلاعات</button>
+                            </span> -->
+                            {% for field in update_form %}
+                                {% for error in field.errors %}
+                                <div id="">{{ field.html_name }} --> {{ error }}</div>
+                                <!-- </br> -->
+                                {% endfor %}
+                            {% endfor %}
+                            <span class="ec-register-wrap ec-register-btn">
+                                <input class="btn btn-primary" type="submit">
                             </span>
+
                         </form>
                     </div>
                 </div>

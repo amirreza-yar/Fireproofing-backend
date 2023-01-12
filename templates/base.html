@@ -23,6 +23,8 @@
     <!-- css Icon Font -->
     <link rel="stylesheet" href="{% static 'css/vendor/ecicons.min.css' %}">
 
+    {% block custom_css %}
+    
     <!-- css All Plugins Files -->
     <link rel="stylesheet" href="{% static 'css/plugins/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/plugins/swiper-bundle.min.css' %}">
@@ -37,8 +39,11 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
 
+
     <!-- Background css -->
     <link rel="stylesheet" id="bg-switcher-css" href="{% static 'css/backgrounds/bg-4.css' %}">
+
+    {% endblock %}
 </head>
 
 <body class="contact_us_page">
@@ -118,6 +123,7 @@
                                                 class="svg_img header_svg" alt=""></a>
                                     </div>
                                 </li>
+                                {% if user.pk %}
                                 <li>
                                     <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
                                         <div class="header-icon"><img src="{% static 'images/icons/cart.svg' %}"
@@ -126,6 +132,7 @@
 
                                     </a>
                                 </li>
+                                {% endif %}
 
                             </ul>
                             <!--  -->
@@ -222,7 +229,7 @@
     </header>
     <!-- Header End  -->
 
-
+{% if user.pk %}
     <!-- ekka Cart Start -->
     <div class="ec-side-cart-overlay"></div>
     <div id="ec-side-cart" class="ec-side-cart">
@@ -233,33 +240,19 @@
                     <button class="ec-close">×</button>
                 </div>
                 <ul class="eccart-pro-items">
-                    <li>
-                        <a href="  " class="sidekka_pro_img"><img src="{% static 'images/product-image/6_1.jpg' %}"
-                                alt="product"></a>
-                        <div class="ec-pro-content">
-                            <a href="  " class="cart_pro_title">تی شرت برای زنان</a>
-                            <span class="cart-price"><span>7600 تومان</span> x 1</span>
-                            
-                        </div>
-                    </li>
-                    <li>
-                        <a href="  " class="sidekka_pro_img"><img src="{% static 'images/product-image/12_1.jpg' %}"
-                                alt="product"></a>
-                        <div class="ec-pro-content">
-                            <a href="  " class="cart_pro_title">کفش چرمی زنانه</a>
-                            <span class="cart-price"><span>6400 تومان</span> x 1</span>
-                            
-                        </div>
-                    </li>
-                    <li>
-                        <a href="  " class="sidekka_pro_img"><img src="{% static 'images/product-image/3_1.jpg' %}"
-                                alt="product"></a>
-                        <div class="ec-pro-content">
-                            <a href="  " class="cart_pro_title">کیف دخترانه نیلون</a>
-                            <span class="cart-price"><span>5900 تومان</span> x 1</span>
-                            
-                        </div>
-                    </li>
+                    
+                    {% for item in cart_items %}
+                        <li>
+                            <a href="  " class="sidekka_pro_img"><img src="{% static 'images/product-image/6_1.jpg' %}"
+                                    alt="product"></a>
+                            <div class="ec-pro-content">
+                                <a href="  " class="cart_pro_title">{{ item.product.name }}</a>
+                                <span class="cart-price"><span>{{ item.product.price }} تومان</span> x {{ item.quantity }}</span>
+                                
+                            </div>
+                        </li>
+                    {% endfor %}
+                    
                 </ul>
             </div>
             <div class="ec-cart-bottom">
@@ -274,10 +267,17 @@
                                 <td class="text-left">مالیات (20%) :</td>
                                 <td class="text-right">6000 تومان</td>
                             </tr>
-                            <tr>
-                                <td class="text-left">جمع کل:</td>
-                                <td class="text-right primary-color">3600 تومان</td>
-                            </tr>
+                            {% if cart %}
+                                <tr>
+                                    <td class="text-left">جمع کل:</td>
+                                    <td class="text-right primary-color">{{ cart.finished_price }} تومان</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td class="text-left">جمع کل:</td>
+                                    <td class="text-right primary-color">0 تومان</td>
+                                </tr>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>
@@ -288,6 +288,7 @@
         </div>
     </div>
     <!-- ekka Cart End -->
+{% endif %}
 
     {% if not is_index_page %}
 
@@ -307,7 +308,13 @@
                             <!-- ec-breadcrumb-list end -->
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="ec-breadcrumb-title textalignleft">ورود</h2>
+                            <h2 class="ec-breadcrumb-title textalignleft">
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'userProfile' %}">{{ user.name }}</a>
+                                {% else %}
+                                    <a href="{% url 'login' %}">ورود</a>
+                                {% endif %}
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -372,7 +379,7 @@
                                 <h4 class="ec-footer-heading">مجوز ها</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
-                                        <li class="ec-footer-link"><a href="{% url 'user-profile' %}"> Enamad </a></li>
+                                        <li class="ec-footer-link"><a href="{% url 'userProfile' %}"> Enamad </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -409,11 +416,13 @@
                     <a href="#ec-mobile-menu" class="navbar-toggler-btn ec-header-btn ec-side-toggle"><img
                             src="{% static 'images/icons/menu.svg' %}" class="svg_img header_svg" alt=""></a>
                 </div>
+                {% if user.pk %}
                 <div class="ec-nav-panel-icons">
                     <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
                             src="{% static 'images/icons/cart.svg' %}" class="svg_img header_svg" alt=""><span
                             class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
                 </div>
+                {% endif %}
                 <div class="ec-nav-panel-icons">
                     <a href="{% url 'index' %}" class="ec-header-btn"><img src="{% static 'images/icons/home.svg' %}"
                             class="svg_img header_svg" alt="icon"></a>
@@ -428,12 +437,7 @@
         </div>
     </div>
     <!-- Footer navigation panel for responsive display end -->
-
-    {% block custom_js %}
-
-    {% endblock %}
-
-    <!-- Vendor JS -->
+    
     <script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'js/vendor/popper.min.js' %}"></script>
@@ -442,7 +446,6 @@
     <script src="{% static 'js/vendor/modernizr-3.11.2.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery.notify.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery.bundle.notify.min.js' %}"></script>
-    <!--Plugins JS-->
     <script src="{% static 'js/plugins/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'js/plugins/countdownTimer.min.js' %}"></script>
     <script src="{% static 'js/plugins/scrollup.js' %}"></script>
@@ -451,11 +454,16 @@
     <script src="{% static 'js/plugins/infiniteslidev2.js' %}"></script>
     <script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'js/plugins/jquery.sticky-sidebar.js' %}"></script>
-
+    
     <!-- Main Js -->
     <script src="{% static 'js/vendor/index.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-
+    {% block custom_js %}
+    
+    <!--Plugins JS-->
+    <!-- Vendor JS -->
+    
+    {% endblock %}
 </body>
 
 </html>
