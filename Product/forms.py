@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order, ProductComment, CartItem
+from .models import Order, ProductComment, CartItem, DiscountCode
 
 class GetDestinationDetails(forms.ModelForm):
 
@@ -18,3 +18,9 @@ class AddToCart(forms.ModelForm):
     class Meta:
         model = CartItem
         fields = ('quantity',)
+
+class DiscountCodeForm(forms.ModelForm):
+
+    class Meta:
+        model = DiscountCode
+        fields = ('code',)

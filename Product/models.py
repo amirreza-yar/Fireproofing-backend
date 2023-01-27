@@ -22,6 +22,17 @@ class Product(models.Model):
     price = models.IntegerField(blank=False, validators=[MinValueValidator(0)])
     comments = models.ManyToManyField("ProductComment", related_name='+', blank=True)
     quantity_purchased = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    date_added = models.DateTimeField(auto_now=True)
+    is_recommended = models.BooleanField(default=True)
+    discount_percentage = models.IntegerField(default=0, validators=[MinValueValidator(0.0), MaxValueValidator(100)])
+    is_service = models.BooleanField(default=False)
+    
+    categories = models.ManyToManyField("Category", related_name='+', blank=True)
+    
+    @property
+    def new_price(self):
+        new_price = self.price - self.discount_percentage * self.price / 100
+        return int(new_price)
 
     # @property
     def add_to_quantity_purchased(self, value):
@@ -64,21 +75,59 @@ class ProductComment(models.Model):
     def rate_unfilled_star_counter(self):
         return [i for i in range(5 - int(self.user_rate))]
 
+class Category(models.Model):
+    # product = models.ForeignKey("Product", on_delete=models.CASCADE)
+
+    class CategoryChoices(models.TextChoices):
+        HAVIKAF = 'KF', _('حاوی کف')
+        MOBTANIBARAAB = 'AB', _('مبتنی بر آب')
+        HAVIPOODRKHOSHK = 'PD', _('حاوی پودر خشک')
+        
+    category = models.CharField(
+        max_length=2,
+        choices=CategoryChoices.choices,
+    )
+
+    @property
+    def category_display(self):
+        return self.get_category_display()
+
+    def __str__(self):
+        return self.category_display
+
 class Cart(models.Model):
     customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     items = models.ManyToManyField("CartItem", related_name='+')
+    discount = models.ForeignKey("DiscountCode", on_delete=models.SET_NULL, null=True, blank=True)
     # ordered = models.BooleanField(default=False)
     # ordered_date = models.DateTimeField(null=True)
 
     shipping_price = models.IntegerField(default=200, validators=[MinValueValidator(0)])
 
     @property
+    def item_quantity(self):
+        return len(self.items.all())
+
+    @property
     def items_price(self):
         return sum([item.total_price for item in self.items.all()])
+
+    @property
+    def discount_price(self):
+
+        if self.discount == None:
+            return 0
+
+        discount = self.discount.discount_price
+
+        if discount[0]:
+            return self.items_price * discount[1]
+        else:
+            return discount[1]
     
     @property
     def finished_price(self):
-        return self.items_price + self.shipping_price
+        return self.items_price + self.shipping_price - self.discount_price
     
     def __str__(self):
         return f"{self.customer}'s cart"
@@ -91,7 +140,7 @@ class CartItem(models.Model):
 
     @property
     def total_price(self):
-        return self.quantity * self.product.price
+        return self.quantity * self.product.new_price
 
     def __str__(self):
         return f"Cart item {self.product}"
@@ -135,17 +184,22 @@ class Order(models.Model):
     #     return self.items_price + self.shipping_price - self.discount_amount
 
 class DiscountCode(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    code = models.CharField(max_length=6, unique=True, blank=False)
+    
     # Add a default value for expire date, two weeks from now
     expire_date_default = dt.datetime.now() + dt.timedelta(weeks=2)
     expire_date = models.DateField(default=expire_date_default)
 
-    # discount_code = 
+    is_a_percentage = models.BooleanField(default=True)
+    discount_percentage = models.FloatField(default=0, validators=[MinValueValidator(0.0), MaxValueValidator(1.0)])
+    discount_amount = models.IntegerField(default=0)
 
-    def generate_random_code(self):
-        # Create a 6-length code
-        discount_code = str()
-        for char in random_choices("0123456789QWERTYUIOPASDFGHJKLZXCVBNM", k=6):
-            discount_code += char
-        return discount_code
+    @property
+    def discount_price(self):
+        if self.is_a_percentage:
+            # Return True to indicate a percentage discount
+            return (True, self.discount_percentage)
+        else:
+            # Return False to indicate a amount discount
+            return (False, self.discount_amount)

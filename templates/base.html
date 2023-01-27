@@ -7,9 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>
-        {{ title }}
-    </title>
+    <title>{{ title }}</title>
     <meta name="keywords"
         content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops">
     <meta name="description" content="Best ecommerce html template for single and multi vendor store.">
@@ -24,7 +22,6 @@
     <link rel="stylesheet" href="{% static 'css/vendor/ecicons.min.css' %}">
 
     {% block custom_css %}
-    
     <!-- css All Plugins Files -->
     <link rel="stylesheet" href="{% static 'css/plugins/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/plugins/swiper-bundle.min.css' %}">
@@ -39,17 +36,16 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
 
-
     <!-- Background css -->
     <link rel="stylesheet" id="bg-switcher-css" href="{% static 'css/backgrounds/bg-4.css' %}">
-
     {% endblock %}
+    
 </head>
 
-<body class="contact_us_page">
+<body>
     <div id="ec-overlay"><span class="loader_img"></span></div>
-     <!-- Header start  -->
-     <header class="ec-header">
+    <!-- Header start  -->
+    <header class="ec-header">
         <!-- Ec Header Bottom  Start -->
 
         <!-- Ec Header Button End -->
@@ -83,13 +79,13 @@
         </div>
         <!-- Header responsive Bottom  End -->
         <!-- EC Main Menu Start -->
-        <div id="ec-main-menu-desk" class="d-none d-lg-block sticky-nav">
+        <div id="ec-main-menu-desk" class="d-none d-lg-block sticky-nav menu_fixed">
             <div class="position-relative">
                 <div>
                     <div class="col-md-12">
 
                         <div class="ec-main-menu"
-                            style="width: 100vw; padding-top: 10px !important;padding-bottom: 10px;">
+                            style="width: 100vw; padding-top: 20px !important;padding-bottom: 20px;">
 
                             <ul>
                                 <li>
@@ -99,21 +95,21 @@
                                                 alt="لوگو سایت" style="margin-top: 10px"></a>
                                     </div>
                                 </li>
-                                <li><a href="{% url 'index' %}">خانه</a></li>
-                                <li><a href="{% url 'products' %}">محصولات و فروشگاه آنلاین</a></li>
-                                <li><a href="{% url 'index' %}">خدمات و تعرفه ها</a></li>
+                                <li><a href="{% url 'index' %}">صفحه اصلی</a></li>
+                                <li><a href="{% url 'products' %}">فروشگاه آنلاین</a></li>
+                                <li><a href="{% url 'khadamat' %}">خدمات و تعرفه ها</a></li>
                                 <li><a href="{% url 'projects' %}">پروژه ها</a></li>
-
                                 <li><a href="{% url 'blogs' %}">وبلاگ</a></li>
                                 <li><a href="{% url 'namaiandegi' %}">نمایندگی ها </a></li>
                                 <li><a href="{% url 'about-us' %}">درباره ما </a></li>
                                 <li><a href="{% url 'contact-us' %}">تماس با ما </a></li>
                                 <li><a href="{% url 'hamkari' %}">همکاری با ما </a></li>
+
                                 <li>
                                     <div class="ec-header-user">
-                                        <a onclick="document.getElementById('id01').style.display='block'"> <img
-                                                src="{% static 'images/icons/search.svg' %}" class="svg_img header_svg"
-                                                style="zoom: 0.8;" alt="icon">
+                                        <a> <a> <img onclick="search()" src="{% static 'images/icons/search.svg' %}"
+                                                    class="svg_img header_svg" style="zoom: 0.8;" alt="icon">
+                                            </a>
                                         </a>
                                     </div>
                                 </li>
@@ -123,12 +119,17 @@
                                                 class="svg_img header_svg" alt=""></a>
                                     </div>
                                 </li>
-                                {% if user.pk %}
+                                {% if user.is_authenticated %}
                                 <li>
                                     <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
                                         <div class="header-icon"><img src="{% static 'images/icons/cart.svg' %}"
-                                                class="svg_img header_svg" alt=""><span class="mycount"><span
-                                                    class="countervalue">3</span></span></div>
+                                                class="svg_img header_svg" alt=""><span class="mycount">
+                                                    {% if not cart %}
+                                                        <span class="countervalue">0</span>
+                                                    {% else %}
+                                                        <span class="countervalue">{{ cart.item_quantity }}</span>
+                                                    {% endif %}
+                                        </span></div>
 
                                     </a>
                                 </li>
@@ -148,12 +149,13 @@
         <div id="id01" style="display: none;">
             <div class="modal-content">
                 <div class="">
-                    <span onclick="document.getElementById('id01').style.display='none'" style="font-size: 15px;" class="">&times;</span>
+                    <span onclick="document.getElementById('id01').style.display='none'" style="font-size: 15px;"
+                        class="">&times;</span>
                     <div>
                         <div class="header-search">
                             <form class="ec-btn-group-form" action="#">
-                                <input class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text">
-                                <button class="submit" type="submit"><img src="{% static 'images/icons/search.svg' %}"
+                                <input class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text" style="z-index: 90 !important;">
+                                <button class="submit" type="submit" style="z-index: 99 !important;"><img src="{% static 'images/icons/search.svg' %}"
                                         class="svg_img header_svg" alt="icon"></button>
                             </form>
                         </div>
@@ -172,9 +174,9 @@
             <div class="ec-menu-inner">
                 <div class="ec-menu-content">
                     <ul>
-                        <li><a href="{% url 'index' %}">خانه</a></li>
-                        <li><a href="{% url 'products' %}">محصولات و فروشگاه آنلاین</a></li>
-                        <li><a href="{% url 'index' %}">خدمات و تعرفه ها</a></li>
+                        <li><a href="{% url 'index' %}">صفحه اصلی</a></li>
+                        <li><a href="{% url 'products' %}">فروشگاه آنلاین</a></li>
+                        <li><a href="{% url 'khadamat' %}">خدمات و تعرفه ها</a></li>
                         <li><a href="{% url 'projects' %}">پروژه ها</a></li>
                         <li><a href="{% url 'blogs' %}">وبلاگ</a></li>
                         <li><a href="{% url 'namaiandegi' %}">نمایندگی ها </a></li>
@@ -229,7 +231,7 @@
     </header>
     <!-- Header End  -->
 
-{% if user.pk %}
+{% if user.is_authenticated %}
     <!-- ekka Cart Start -->
     <div class="ec-side-cart-overlay"></div>
     <div id="ec-side-cart" class="ec-side-cart">
@@ -240,49 +242,55 @@
                     <button class="ec-close">×</button>
                 </div>
                 <ul class="eccart-pro-items">
-                    
                     {% for item in cart_items %}
                         <li>
                             <a href="  " class="sidekka_pro_img"><img src="{% static 'images/product-image/6_1.jpg' %}"
                                     alt="product"></a>
                             <div class="ec-pro-content">
                                 <a href="  " class="cart_pro_title">{{ item.product.name }}</a>
-                                <span class="cart-price"><span>{{ item.product.price }} تومان</span> x {{ item.quantity }}</span>
+                                <span class="cart-price"><span>{{ item.product.new_price }} تومان</span> x {{ item.quantity }}</span>
                                 
                             </div>
                         </li>
                     {% endfor %}
-                    
                 </ul>
             </div>
             <div class="ec-cart-bottom">
                 <div class="cart-ریزهزینه">
                     <table class="table cart-table">
                         <tbody>
+                            {% if cart %}
                             <tr>
                                 <td class="text-left">ریز هزینه:</td>
-                                <td class="text-right">3000 تومان</td>
+                                <td class="text-right">{{ cart.shipping_price }} تومان</td>
                             </tr>
                             <tr>
                                 <td class="text-left">مالیات (20%) :</td>
-                                <td class="text-right">6000 تومان</td>
+                                <td class="text-right">0 تومان</td>
                             </tr>
-                            {% if cart %}
-                                <tr>
-                                    <td class="text-left">جمع کل:</td>
-                                    <td class="text-right primary-color">{{ cart.finished_price }} تومان</td>
-                                </tr>
-                            {% else %}
-                                <tr>
-                                    <td class="text-left">جمع کل:</td>
-                                    <td class="text-right primary-color">0 تومان</td>
-                                </tr>
-                            {% endif %}
+                            <tr>
+                                <td class="text-left">جمع کل:</td>
+                                <td class="text-right primary-color">{{ cart.finished_price }} تومان</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td class="text-left">ریز هزینه:</td>
+                                <td class="text-right">{{ cart.shipping_price }} تومان</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">مالیات (20%) :</td>
+                                <td class="text-right">0 تومان</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">جمع کل:</td>
+                                <td class="text-right primary-color">0 تومان</td>
+                            </tr>
+                        {% endif %}
                         </tbody>
                     </table>
                 </div>
                 <div class="cart_btn">
-                    <a href="{% url 'cart' %}" class="btn btn-primary">ویرایش سبد خرید</a>
+                    <a href="{% url 'cart' %}" class="btn btn-primary" style="font-size:12px !important">ویرایش سبد خرید</a>
                 </div>
             </div>
         </div>
@@ -291,7 +299,6 @@
 {% endif %}
 
     {% if not is_index_page %}
-
     <!-- Ec breadcrumb start -->
     <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
         <div class="container">
@@ -302,19 +309,13 @@
                         <div class="col-md-6 col-sm-12">
                             <!-- ec-breadcrumb-list start -->
                             <ul class="ec-breadcrumb-list textalignright">
-                                <li class="ec-breadcrumb-item"><a href="{% url 'index' %}">خانه</a></li>
-                                <li class="ec-breadcrumb-item active">{{ title }}</li>
+                                <li class="ec-breadcrumb-item"><a href="index' %}">صفحه اصلی</a></li>
+                                <li class="ec-breadcrumb-item active">درباره ما</li>
                             </ul>
                             <!-- ec-breadcrumb-list end -->
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="ec-breadcrumb-title textalignleft">
-                                {% if user.is_authenticated %}
-                                    <a href="{% url 'userProfile' %}">{{ user.name }}</a>
-                                {% else %}
-                                    <a href="{% url 'login' %}">ورود</a>
-                                {% endif %}
-                            </h2>
+                            <h2 class="ec-breadcrumb-title textalignleft">درباره ما</h2>
                         </div>
                     </div>
                 </div>
@@ -322,14 +323,15 @@
         </div>
     </div>
     <!-- Ec breadcrumb end -->
-
     {% endif %}
 
     {% block section %}
 
     {% endblock %}
-    
+
     <!-- Footer Start -->
+
+        <!-- Footer Start -->
     <footer class="ec-footer section-space-mt">
         <div class="footer-container">
 
@@ -338,10 +340,10 @@
                     <div class="row" style="display: flex;
                     flex-direction: row;
                     justify-content: space-evenly;">
-                        <div class="col-sm-12 col-lg-3 ec-footer-contact">
+                        <div class="col-sm-3 col-lg-3 ec-footer-contact">
                             <div class="ec-footer-widget">
                                 <div class="ec-footer-logo">
-                                    <a href="#"><img src="{% static 'images/logo/logo.png' %}" alt=""><img
+                                    <a href="#"><img src="{% static 'images\logo\logo.png' %}" alt=""><img
                                             class="dark-footer-logo" src="{% static 'images/logo/dark-logo.png' %}"
                                             alt="لوگو سایت" style="display: none;"></a>
                                 </div>
@@ -350,10 +352,9 @@
                                     <ul class="align-items-center">
                                         <li class="ec-footer-link">یک آدرس فرضی در این مکان قرار گرفته است. غرب تهران
                                         </li>
-                                        <li class="ec-footer-link"><span>تماس با ما:</span><a
-                                                href="tel:+440123456789">+98 000000000</a></li>
-                                        <li class="ec-footer-link"><span>فکس:</span><a href="tel:+440123456789">+98
-                                                000000000</a></li>
+                                        <li class="ec-footer-link"><span>تماس با ما:</span><a dir="ltr"
+                                                 >09126451234</a></li>
+                                        <li class="ec-footer-link"><span>فکس:</span><a dir="ltr"  >09126451234</a></li>
                                         <li class="ec-footer-link"><span>ایمیل:</span><a
                                                 href="/cdn-cgi/l/email-protection#eb8e938a869b878eab8e88c68e868a8287c5888486"><span
                                                     class="__cf_email__"
@@ -363,23 +364,37 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-lg-2 ec-footer-info">
+                        <div class="col-sm-3 col-lg-3 ec-footer-account">
                             <div class="ec-footer-widget">
-                                <h4 class="ec-footer-heading">تحویل و اکسپرس</h4>
+             <br />                  <h4 class="ec-footer-heading">تلفن ها</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
-                                        <li class="ec-footer-link"><a href="{% url 'about-us' %}">ارسال به سراسر کشور</a></li>
-                                        <li class="ec-footer-link"><a href="{% url 'about-us' %}">پشتیبانی 24/7</a></li>
+                                        <li class="ec-footer-link"><span>تماس با ما:</span><a
+                                                 >09126451234</a></li>
+                                        <li class="ec-footer-link"><span>فکس:</span><a  >09126451234</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-lg-2 ec-footer-account">
+                        <div class="col-sm-3 col-lg-3 ec-footer-info">
                             <div class="ec-footer-widget">
-                                <h4 class="ec-footer-heading">مجوز ها</h4>
+            <br />                    <h4 class="ec-footer-heading">تحویل و اکسپرس</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
-                                        <li class="ec-footer-link"><a href="{% url 'userProfile' %}"> Enamad </a></li>
+                                        <li class="ec-footer-link"><p style="color: white;">ارسال به سراسر کشور</p></li>
+                                        <li class="ec-footer-link"><p style="color: white;">پشتیبانی سریع</p></li>
+                                    
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-lg-3 ec-footer-account">
+                            <div class="ec-footer-widget">
+                 <br />               <h4 class="ec-footer-heading">مجوز ها</h4>
+                                <div class="ec-footer-links">
+                                    <ul class="align-items-center">
+                                        <li class="ec-footer-link"><a href="user-profile' %}"> Enamad </a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -408,36 +423,61 @@
     </footer>
     <!-- Footer Area End -->
 
+
     <!-- Footer navigation panel for responsive display -->
     <div class="ec-nav-toolbar">
         <div class="container">
             <div class="ec-nav-panel">
                 <div class="ec-nav-panel-icons">
                     <a href="#ec-mobile-menu" class="navbar-toggler-btn ec-header-btn ec-side-toggle"><img
-                            src="{% static 'images/icons/menu.svg' %}" class="svg_img header_svg" alt=""></a>
+                            src="{% static 'images/icons/menu.svg' %}" class="svg_img header_svg" alt="icon"></a>
                 </div>
-                {% if user.pk %}
-                <div class="ec-nav-panel-icons">
-                    <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
-                            src="{% static 'images/icons/cart.svg' %}" class="svg_img header_svg" alt=""><span
-                            class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
-                </div>
-                {% endif %}
+
                 <div class="ec-nav-panel-icons">
                     <a href="{% url 'index' %}" class="ec-header-btn"><img src="{% static 'images/icons/home.svg' %}"
+                        class="svg_img header_svg" alt="icon"></a>
+                    </div>
+                    
+                    <div class="ec-nav-panel-icons">
+                        <a href="{% url 'userProfile' %}" class="ec-header-btn"><img src="{% static 'images/icons/user.svg' %}"
                             class="svg_img header_svg" alt="icon"></a>
-                </div>
+                    </div>
+                    {% if user.is_authenticated and cart %}
+                    <div class="ec-nav-panel-icons">
+                        <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
+                                src="{% static 'images/icons/cart.svg' %}" class="svg_img header_svg" alt=""><span
+                                class="ec-cart-noti ec-header-count cart-count-lable">{{ cart.item_quantity }}</span></a>
+                    </div>
+                    {% elif user.is_authenticated %}
+                    <div class="ec-nav-panel-icons">
+                        <a href="#ec-side-cart" class="toggle-cart ec-header-btn ec-side-toggle"><img
+                                src="{% static 'images/icons/cart.svg' %}" class="svg_img header_svg" alt=""><span
+                                class="ec-cart-noti ec-header-count cart-count-lable">0</span></a>
+                    </div>
+                    {% endif %}
 
-                <div class="ec-nav-panel-icons">
-                    <a href="{% url 'login' %}" class="ec-header-btn"><img src="{% static 'images/icons/user.svg' %}"
-                            class="svg_img header_svg" alt="icon"></a>
                 </div>
-
-            </div>
         </div>
     </div>
     <!-- Footer navigation panel for responsive display end -->
-    
+
+
+    <!-- Cart Floating Button -->
+    <div class="ec-cart-float">
+        <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+            <div class="header-icon"><img src="{% static 'images/icons/cart.svg' %}" class="svg_img header_svg" alt="cart">
+            </div>
+            <span class="ec-cart-count cart-count-lable">3</span>
+        </a>
+    </div>
+    <!-- Cart Floating Button end -->
+
+    <!-- Whatsapp end -->
+
+
+    {% block custom_js %}
+
+    <!-- Vendor JS -->
     <script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'js/vendor/popper.min.js' %}"></script>
@@ -446,6 +486,7 @@
     <script src="{% static 'js/vendor/modernizr-3.11.2.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery.notify.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery.bundle.notify.min.js' %}"></script>
+    <!--Plugins JS-->
     <script src="{% static 'js/plugins/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'js/plugins/countdownTimer.min.js' %}"></script>
     <script src="{% static 'js/plugins/scrollup.js' %}"></script>
@@ -454,16 +495,14 @@
     <script src="{% static 'js/plugins/infiniteslidev2.js' %}"></script>
     <script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'js/plugins/jquery.sticky-sidebar.js' %}"></script>
-    
+
     <!-- Main Js -->
     <script src="{% static 'js/vendor/index.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    {% block custom_js %}
-    
-    <!--Plugins JS-->
-    <!-- Vendor JS -->
-    
+
+
     {% endblock %}
+
 </body>
 
 </html>

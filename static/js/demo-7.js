@@ -159,7 +159,7 @@ function ecCheckCookie() {
         s.preventDefault(), e(".ec-side-cart-overlay").fadeOut(), t.removeClass("ec-open"), i.find("a").removeClass("close")
     }), e("body").on("click", ".ec-pro-content .remove", function () {
         var s = e(".eccart-pro-items li").length;
-        e(this).closest("li").remove(), 1 == s && e(".eccart-pro-items").html('<li><p class="emp-cart-msg">Your cart is empty!</p></li>');
+        e(this).closest("li").remove(), 1 == s && e(".eccart-pro-items").html('<li><p style="text-align:justify !important;" class="emp-cart-msg">Your cart is empty!</p></li>');
         var o = e(".ec-cart-count").html();
         o--, e(".ec-cart-count").html(o), s--
     }), (n = e(".ec-menu-content, .overlay-menu")).find(".sub-menu").parent().prepend('<span class="menu-toggle"></span>'), n.on("click", "li a, .menu-toggle", function (s) {

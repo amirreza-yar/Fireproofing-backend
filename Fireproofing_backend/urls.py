@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 from Flatpage import urls as flatPateUrls
 from CustomUser import urls as UserUrls
 from Product import urls as ProductUrls
+from Blog import urls as BlogUrls
+from Project import urls as ProjectUrls
 
 urlpatterns = [
     # path('', views.index, name='home'),
@@ -30,6 +32,8 @@ urlpatterns = [
     path('', include(flatPateUrls)),
     path('', include(UserUrls)),
     path('', include(ProductUrls)),
+    path('', include(BlogUrls)),
+    path('', include(ProjectUrls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = 'Flatpage.views.error404Handler'

@@ -12,24 +12,24 @@
                     <div class="section-title">
                         <h2 class="ec-bg-title">ورود</h2>
                         <h2 class="ec-title">ورود</h2>
-                        <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات دیجیتال</p>
+                        <!-- <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات دیجیتال</p> -->
                     </div>
                 </div>
                 <div class="ec-login-wrapper">
                     <div class="ec-login-container">
                         <div class="ec-login-form">
                             <form action="login" method="POST">
-															{% csrf_token %}
+                                {% csrf_token %}
                                 <span class="ec-login-wrap">
-                                    <label for="id_email">ایمیل*</label>
-                                    <input type="email" for="email" name="email" placeholder="وارد کردن ایمیل " required="">
+                                    <label for="id_email">نام کاربری*</label>
+                                    <input type="text" for="name" name="name" placeholder="نام کاربری خود را وارد کنید" required="">
                                 </span>
                                 <span class="ec-login-wrap">
-                                    <label for="id_password1">رمزعبور *</label>
-                                    <input type="password" for="id_password1" name="password1" placeholder="رمزعبور" required="">
+                                    <label for="id_password1">کلمه عبور*</label>
+                                    <input type="password" for="id_password1" name="password1" placeholder="رمز عبور خود را وارد کنید" required="">
                                 </span>
                                 <span class="ec-login-wrap ec-login-fp">
-                                    <label><a href="#">فراموشی رمز عبور?</a></label>
+                                    <label><a href="#">فراموشی رمز عبور ؟</a></label>
                                 </span>
                                 {% if messages %}
                                     {% for message in messages %}

@@ -10,7 +10,7 @@
                 <div class="section-title">
                     <h2 class="ec-bg-title">ثبت نام</h2>
                     <h2 class="ec-title">ثبت نام</h2>
-                    <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات ضد حریق</p>
+                    <!-- <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات ضد حریق</p> -->
                 </div>
             </div>
             <div class="ec-register-wrapper">
@@ -27,25 +27,28 @@
                                 <input type="password" for="{{ register_form.password1.id_for_label }}" name="{{ register_form.password1.html_name }}" placeholder="رمزعبور" required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.email.id_for_label }}">ایمیل*</label>
-                                <input type="email" for="email" name="email" placeholder="وارد کردن ایمیل " required="">
+                                <label for="{{ register_form.email.id_for_label }}">ایمیل ( اختیاری )</label>
+                                <input type="email" for="email" name="email" placeholder="وارد کردن ایمیل">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.phone_number.id_for_label }}">شماره تماس*</label>
+                                <label for="{{ register_form.phone_number.id_for_label }}">شماره موبایل *</label>
                                 <input type="text" name="phone_number" placeholder="شماره تماس خود را وارد کنید" required="">
                             </span>
-                            <span class="ec-register-wrap">
-                                <label for="{{ register_form.address.id_for_label }}">آدرس</label>
+                            <span class="ec-register-wrap ec-register-half">
+                                <label for="{{ register_form.name.id_for_label }}">نام کاربری *</label>
+                                <input type="text" name="username" placeholder="نام کاربری" required="">
+                            </span>
+                            <span class="ec-register-wrap ec-register-half">
+                                <label for="{{ register_form.city.id_for_label }}">شهر *</label>
+                                <input type="text" name="city" placeholder="شهر">
+                            </span>
+                            <span class="ec-register-wrap ec-register-half">
+                                <label for="{{ register_form.address.id_for_label }}">آدرس *</label>
                                 <input type="text" name="address" placeholder="آدرس خط اول">
                             </span>
-                            
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.postal_code.id_for_label }}">کد پستی</label>
+                                <label for="{{ register_form.postal_code.id_for_label }}">کد پستی *</label>
                                 <input type="text" name="postal_code" placeholder="کدپستی">
-                            </span>
-                            <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.city.id_for_label }}">شهر</label>
-                                <input type="text" name="city" placeholder="شهر">
                             </span>
                             
                             {% for field in register_form %}
@@ -60,7 +63,7 @@
                                 <span class="help-block with-errors"></span>
                             </span> -->
                             <span class="ec-register-wrap ec-register-btn">
-                                <input class="btn btn-primary" type="submit">ثبت نام
+                                <button class="btn btn-primary" type="submit">ثبت نام</button>
                             </span>
                         </form>
                     </div>

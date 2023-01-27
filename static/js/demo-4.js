@@ -239,7 +239,7 @@ function ecCheckCookie()
             
             $(this).closest("li").remove();
             if (cart_product_count == 1) {
-                $('.eccart-pro-items').html('<li><p class="emp-cart-msg">Your cart is empty!</p></li>');
+                $('.eccart-pro-items').html('<li><p style="text-align:justify !important;" class="emp-cart-msg">Your cart is empty!</p></li>');
             }
 
             var count = $(".ec-cart-count").html();            

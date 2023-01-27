@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mxw3!il^k#c-r*sxr#+vy12=#di!qt-(g_(5ox4kbv=tn0l4aj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "172.20.2.222"]
 
 
 # Application definition
@@ -44,8 +44,9 @@ INSTALLED_APPS = [
     'Blog',
     'CustomUser',
     'Product',
+    'Project',
 
-    'ckeditor'
+    'ckeditor',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',

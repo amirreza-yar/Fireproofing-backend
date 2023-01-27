@@ -14,3 +14,15 @@
   background-color: #fff;
 }
 /*# sourceMappingURL=bg-4.css.map */
+
+.i1-background {
+  background-image: url(../../images/newimg/2.jpg);
+  width: 100%;
+  margin-top: 10vh;
+}
+
+.i2-background {
+  background-image: url(../../images/newimg/wp10676104.jpg);
+  width: 100%;
+  margin-top: 10vh;
+}

@@ -17,11 +17,12 @@ from .models import Order as OrderModel
 from .forms import MakeComment as MakeCommentForm
 from .forms import AddToCart as AddToCartForm
 from .forms import GetDestinationDetails as GetDestinationDetailsForm
-
+from .forms import DiscountCodeForm
+from .models import DiscountCode as DiscountCodeModel
 
 def products(request):
     
-    products = ProductModel.objects.all()
+    products = ProductModel.objects.all().filter(is_service=False)
 
     context = {
         "title": "محصولات",
@@ -29,32 +30,12 @@ def products(request):
         "products": products,
     }
 
-    for product in products:
-        print(product.name, sep="\n\n")
     return render(request, "products.html", context=context)
 
 def productDetail(request, pk):
 
-    product = get_object_or_404(ProductModel, pk=pk)
+    product = get_object_or_404(ProductModel, pk=pk, is_service=False)
     product_comments = ProductComment.objects.all().filter(product=product)
-    # product2 = ProductModel.objects.get(pk=pk).comments
-    # print(product.comments.all())
-    # print(product2)
-    # print(comments)
-    # product.comments.create(
-    #     user=request.user,
-    #     product=product,
-    #     user_rate=4,
-    #     commenter_name='امیررضا',
-    #     commenter_email='example@example.com',
-    #     comment='خیلی خوبه!',
-    # )
-    # product_comments = product.comments.all()
-    # product = ProductModel.objects.get_o(pk=pk)
-    # print(product.comments)
-    # comment = ProductComment.objects.all()[0]
-    # print(comment.product)
-    # print(product_comments)
 
     try:
         product_cart_item = CartItem.objects.get(product=product)
@@ -73,6 +54,7 @@ def productDetail(request, pk):
     }
     return render(request, "productDetail.html", context=context)
 
+@login_required(login_url='login')
 @require_POST
 def makeComment(request, pk):
     # print("I'm running!")
@@ -89,35 +71,23 @@ def makeComment(request, pk):
             comment=comment_form['comment'].value(),
         )
 
+
     # return HttpResponse('')
     return redirect('product', pk=pk)
 
+@login_required(login_url='login')
 def cart(request):
     
-    # try:
-    #     # print("I'm running!")
-    #     cart = request.user.cart
-    #     cart_items = cart.items.all()
-    #     cart_finished_price = cart.finished_price
-    #     print(cart_finished_price)
-    # except:
-    #     cart_items = None
-    #     cart_finished_price = None
-
-    # for item in cart_items:
-    #     print(item.product.name)
-    # data = serializers.serialize('json', cart_items)
-    # print(data)
-
-    # print(cart.items.all())
+    cart = CartModel.objects.get(customer=request.user)
+    if cart.discount == None:
+        print("SHIT>>>...")
     context = {
         "title": "سبد خرید",
         "is_index_page": False,
-        # "cart_items": cart_items,
-        # "cart_finished_price": cart_finished_price,
     }
     return render(request, "cart.html", context=context)
 
+@login_required(login_url='login')
 @require_POST
 def addToCart(request, pk):
 
@@ -137,6 +107,19 @@ def addToCart(request, pk):
     # cart_item = CartItemModel.objects.create(product=product, cart=cart)
 
     return redirect("product", pk=pk)
+
+@login_required(login_url='login')
+def deleteFromCart(request, pk):
+
+    try:
+        item_to_delete = CartItemModel.objects.filter(pk=pk).delete()
+        print(item_to_delete)
+        messages.success(request, "Item have been deleted!")
+    except:
+        messages.success(request, "Item haven't been deleted!")
+
+    return redirect("cart")
+
 
 @login_required(login_url='login')
 @require_POST
@@ -181,14 +164,72 @@ def makeOrder(request):
             # discount_amount=0,
         )
 
+        cart.delete()
+        
+        return redirect("pardakhtMovafaq")
+        
     else:
         # send some error messages
         messages.error(request, "Wrong input!")
+
+        # Some paying backend
+        return redirect("pardakhtNaMovafaq")
+
+def pardakhtMovafaq(request):
+    return render(request, "pardakhtmovafaq.html")
+
+def pardakhtNaMovafaq(request):
+    return render(request, "pardakhtnamovafaq.html")
+
+
+def khadamat(request):
+    services = ProductModel.objects.all().filter(is_service=True)
+
+    context = {
+    "title": "محصولات",
+    "is_index_page": False,
+    "services": services,
+    }
+
+    return render(request, "khadamat.html", context=context)
+
+def khedmatDetail(request, pk):
+    service = get_object_or_404(ProductModel, pk=pk, is_service=True)
+    service_comments = ProductComment.objects.all().filter(product=service)
+
+    context = {
+        "title": "محصولات",
+        "is_index_page": False,
+        "service": service,
+        "service_comments": service_comments,
+        "add_to_cart_form": AddToCartForm(None),
+        # "product_quantity": product_quantity,
+    }
+    return render(request, "khedmatDetail.html", context=context)
+
+def addServiceToCart(request, pk):
+    cart, created = CartModel.objects.get_or_create(customer=request.user)
+    service = get_object_or_404(ProductModel, pk=pk, is_service=True)
+    cart_item, created = CartItemModel.objects.get_or_create(product=service, cart=cart)
+
+    if cart.items.filter(pk=cart_item.pk).exists():
+        messages.error(request, "This item already exists!")
+    else:
+        cart.items.add(cart_item)
     
-    # print(json.loads(json_items))
-    # print(request.user.name)
+    return redirect("khedmatDetail", pk=pk)
 
-    # print(request.postal_code)
+@login_required(login_url="login")
+@require_POST
+def discountCode(request):
+    # discount = DiscountCodeForm(request.POST or None)
+    discount_code = request.POST['code']
+    
+    if DiscountCodeModel.objects.filter(code=discount_code).exists():
 
-
-    return HttpResponse(status=200)
+        messages.success(request, "Discount code is valid!")
+        return redirect('cart')
+    
+    else:
+        messages.success(request, "Discount code isn't valid!")
+        return redirect('cart')

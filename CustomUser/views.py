@@ -26,10 +26,10 @@ def register(request):
     if registerForm.is_valid ():
         # print("I't valid")
         # messages.success (request, "account created succesfully!")
-        registerForm.save ()
-        email = request.POST['email']
+        registerForm.save()
+        username = request.POST['username']
         password = request.POST['password1']
-        user = authenticate(username=email, password=password)
+        user = authenticate(username=username, password=password)
         auth_login(request, user)
         # request.session['email'] = email
         # request.session['name'] = name
@@ -49,7 +49,7 @@ def register(request):
 @login_required(login_url='login')
 def logout(request):
     auth_logout(request)
-    request.session.flush()
+    # request.session.flush()
 
     return redirect('index')
 
@@ -60,14 +60,14 @@ def login(request):
         return redirect('index')
 
     if request.POST:
-        email = request.POST['email']
+        name = request.POST['name']
         password = request.POST['password1']
-        user = authenticate(username=email, password=password)
+        user = authenticate(username=name, password=password)
         if user:
             auth_login(request, user)
             return redirect('index')
         else:
-            messages.error(request, "Wrong email or password")
+            messages.error(request, "نام کاربری یا رمز اشتباه است!")
         # request.session['email'] = email
         # request.session['name'] = name
         
@@ -76,17 +76,13 @@ def login(request):
 
 @login_required(login_url='login')
 def userProfile(request):
-    # print(request.session['email'])
-    # user = userProfileModel.objects.get(email__exact=request.session['email'])
-    # print(user.email)
-    print(request.user)
+
     context = {
         "title": "پروفایل",
         "is_index_page": False,
         # "userProfile": user,
     }
-    # print(request.GET['username'])
-    # print(userProfileModel.address)
+
     return render(request, "userProfile.html", context=context)
 
 @login_required(login_url='login')
@@ -108,18 +104,19 @@ def editProfile(request):
             print("I'ts valid!")
             print(updateForm)
             updateForm.save()
-            # messages.success(request, 'Your profile is updated successfully')
+            messages.success(request, 'Your profile is updated successfully')
             # return None
-            return redirect(to='userProfile')
+            return redirect('userProfile')
         else:
+
+            messages.error(request, "Wrong input data!")
             context = {
                 "title": "ویرایش پروفایل",
                 "is_index_page": False,
                 "update_form": updateForm,
             }
-
-
             return render(request, "editProfile.html", context=context)
+
 
     context = {
             "title": "ویرایش پروفایل",
@@ -138,7 +135,7 @@ def editProfile(request):
 def userHistory(request):
 
     invoices = OrderModel.objects.all()
-    print(invoices[0].get_status_display())
+    # print(invoices[0].get_status_display())
     context = {
         "title": "تاریخچه کاربر",
         "is_index_page": False,

@@ -1,0 +1,146 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+    <!-- Ec Blog page -->
+    <section class="ec-page-content section-space-p">
+        <div class="container">
+            <div class="row">
+                <div class="ec-blogs-rightside col-lg-12 col-md-12">
+
+                    <!-- Blog content Start -->
+                    <div class="ec-blogs-content">
+                        <div class="ec-blogs-inner">
+                            <div class="row">
+                                {% for project in projects %}
+                                    <div class="col-lg-4 col-md-6 col-sm-12 mb-6 ec-blog-block">
+                                        <div class="ec-blog-inner">
+                                            <div class="ec-blog-image">
+                                                <a href=" ">
+                                                    <img class="blog-image" src="{% static 'images/blog-image/1.jpg' %}" alt="Blog">
+                                                </a>
+                                            </div>
+                                            <div class="ec-blog-content">
+                                                <h5 class="ec-blog-title"><a href=" ">{{ project.title }}</a></h5>
+
+                                                <div class="ec-blog-date">توسط<span>ادمین</span>{{ project.released_date }}</div>
+                                                <div class="ec-blog-desc">{{ project.meta_description }}</div>
+
+                                                <div class="ec-blog-btn"><a href="{% url 'project' pk=project.pk %}" class="btn btn-primary">بیشتر بخوانید</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <!-- <div class="col-lg-4 col-md-6 mb-6 ec-blog-block">
+                                    <div class="ec-blog-inner">
+                                        <div class="ec-blog-image">
+                                            <a href=" ">
+                                                <img class="blog-image" src="assets/images/blog-image/2.jpg" alt="Blog">
+                                            </a>
+                                        </div>
+                                        <div class="ec-blog-content">
+                                            <h5 class="ec-blog-title"><a href=" ">لباس های ترند تابستان</a></h5>
+
+                                            <div class="ec-blog-date">تاریخ اتمام / 10 دی ، 1400-1401</div>
+                                            <div class="ec-blog-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+
+                                            <div class="ec-blog-btn"><a href="projectDetail.html" class="btn btn-primary">توضیحات بیشتر</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-6 ec-blog-block">
+                                    <div class="ec-blog-inner">
+                                        <div class="ec-blog-image">
+                                            <a href=" ">
+                                                <img class="blog-image" src="assets/images/blog-image/3.jpg" alt="Blog">
+                                            </a>
+                                        </div>
+                                        <div class="ec-blog-content">
+                                            <h5 class="ec-blog-title"><a href=" ">فروشگاه چه ژاکت هایی پیشنهاد میدهد</a></h5>
+
+                                            <div class="ec-blog-date">تاریخ اتمام / 10 دی ، 1400-1401</div>
+                                            <div class="ec-blog-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+
+                                            <div class="ec-blog-btn"><a href="projectDetail.html" class="btn btn-primary">توضیحات بیشتر</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-6 ec-blog-block">
+                                    <div class="ec-blog-inner">
+                                        <div class="ec-blog-image">
+                                            <a href=" ">
+                                                <img class="blog-image" src="assets/images/blog-image/4.jpg" alt="Blog">
+                                            </a>
+                                        </div>
+                                        <div class="ec-blog-content">
+                                            <h5 class="ec-blog-title"><a href=" ">محصولات ترند زمستان</a></h5>
+
+                                            <div class="ec-blog-date">تاریخ اتمام / 10 دی ، 1400-1401</div>
+                                            <div class="ec-blog-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+
+                                            <div class="ec-blog-btn"><a href="projectDetail.html" class="btn btn-primary">توضیحات بیشتر</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-6 ec-blog-block">
+                                    <div class="ec-blog-inner">
+                                        <div class="ec-blog-image">
+                                            <a href=" ">
+                                                <img class="blog-image" src="assets/images/blog-image/5.jpg" alt="Blog">
+                                            </a>
+                                        </div>
+                                        <div class="ec-blog-content">
+                                            <h5 class="ec-blog-title"><a href=" ">خرید مستقیم از ووگ</a></h5>
+
+                                            <div class="ec-blog-date">تاریخ اتمام / 10 دی ، 1400-1401</div>
+                                            <div class="ec-blog-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+
+                                            <div class="ec-blog-btn"><a href="projectDetail.html" class="btn btn-primary">توضیحات بیشتر</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-6 ec-blog-block">
+                                    <div class="ec-blog-inner">
+                                        <div class="ec-blog-image">
+                                            <a href=" ">
+                                                <img class="blog-image" src="assets/images/blog-image/6.jpg" alt="Blog">
+                                            </a>
+                                        </div>
+                                        <div class="ec-blog-content">
+                                            <h5 class="ec-blog-title"><a href=" ">بهترین اینفلوئنسرهای مد و زیبایی</a></h5>
+
+                                            <div class="ec-blog-date">تاریخ اتمام / 10 دی ، 1400-1401</div>
+                                            <div class="ec-blog-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</div>
+
+                                            <div class="ec-blog-btn"><a href="projectDetail.html" class="btn btn-primary">توضیحات بیشتر</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- Ec Pagination Start -->
+                        <div class="ec-pro-pagination">
+                            <span>نمایش 1-12 از 21 مورد</span>
+                            <ul class="ec-pro-pagination-inner">
+                                <li><a class="active" href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a class="next" href="#">بعدی<i class="ecicon eci-angle-left"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- Ec Pagination End -->
+                    </div>
+                    <!--Blog content End -->
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

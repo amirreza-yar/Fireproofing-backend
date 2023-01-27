@@ -228,8 +228,8 @@
                             '<img class="chat-user-img" src="assets/images/chatboat/'+(who === username?"customer":"helper")+'.png"/>'+
                         '</div>'+
                         '<div class="name">'+
-                            '<p class="user-name">'+who+'</p>'+
-                            '<p class="user-text">'+text+'</p>'+
+                            '<p style="text-align:justify !important;" class="user-name">'+who+'</p>'+
+                            '<p style="text-align:justify !important;" class="user-text">'+text+'</p>'+
                             '<span class="msg-time">'+curntTime+'</span>'+
                         '</div>'+
                     '</div>';
