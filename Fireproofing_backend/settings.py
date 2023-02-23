@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'CustomUser',
     'Product',
     'Project',
+    'AdminPanel',
 
     'ckeditor',
     # 'allauth',
