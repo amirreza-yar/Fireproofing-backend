@@ -7,9 +7,12 @@ from ckeditor.fields import RichTextField
 class Blog(models.Model):
     cover = models.ImageField(upload_to=f'blogImage/', blank=True)
     title = models.CharField(max_length=500, blank=False)
+    en_title = models.CharField(max_length=500, blank=False)
     released_date = models.DateTimeField(auto_now=True)
     body = RichTextField()
+    en_body = RichTextField()
     meta_description = models.CharField(max_length=100)
+    en_meta_description = models.CharField(max_length=100)
 
 class BlogComment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

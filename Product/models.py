@@ -12,13 +12,22 @@ from random import choices as random_choices
 
 class Product(models.Model):
     name = models.CharField(max_length=200, blank=False)
+    en_name = models.CharField(max_length=200, blank=False)
     meta_description = models.TextField(blank=True)
-    # full_description = models.TextField(blank=True)
-    full_description = RichTextField()
+    en_meta_description = models.TextField(blank=True)
+    full_description = models.TextField(blank=True)
+    en_full_description = models.TextField(blank=True)
+    # en_full_description = RichTextField()
     # product_unicode = models.IntegerField()
     is_instock = models.BooleanField(default=True, null=False)
     rate = models.FloatField(null=False, default=0, validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
-    image = models.ImageField(upload_to=f'productImage/', blank=True)
+    image0 = models.ImageField(upload_to=f'productImage/', blank=True,null=True)
+    image1 = models.ImageField(upload_to=f'productImage/', blank=True,null=True)
+    image2 = models.ImageField(upload_to=f'productImage/', blank=True,null=True)
+    image3 = models.ImageField(upload_to=f'productImage/', blank=True,null=True)
+    image4 = models.ImageField(upload_to=f'productImage/', blank=True,null=True)
+    image5 = models.ImageField(upload_to=f'productImage/', blank=True,null=True)
+    image6 = models.ImageField(upload_to=f'productImage/', blank=True,null=True)
     price = models.IntegerField(blank=False, validators=[MinValueValidator(0)])
     comments = models.ManyToManyField("ProductComment", related_name='+', blank=True)
     quantity_purchased = models.IntegerField(default=0, validators=[MinValueValidator(0)])
@@ -75,22 +84,14 @@ class ProductComment(models.Model):
     def rate_unfilled_star_counter(self):
         return [i for i in range(5 - int(self.user_rate))]
 
-class Category(models.Model):
-    # product = models.ForeignKey("Product", on_delete=models.CASCADE)
-
-    class CategoryChoices(models.TextChoices):
-        HAVIKAF = 'KF', _('حاوی کف')
-        MOBTANIBARAAB = 'AB', _('مبتنی بر آب')
-        HAVIPOODRKHOSHK = 'PD', _('حاوی پودر خشک')
-        
-    category = models.CharField(
-        max_length=2,
-        choices=CategoryChoices.choices,
-    )
+class Category(models.Model):  
+    name = models.CharField(max_length=33)
+    description = models.TextField()
+    status = models.BooleanField(default=True)
 
     @property
     def category_display(self):
-        return self.get_category_display()
+        return self.get_name_display()
 
     def __str__(self):
         return self.category_display
@@ -157,6 +158,7 @@ class Order(models.Model):
         PREPARING = 'PR', _('در حال آماده سازی')
         SENDING = 'SN', _('در حال ارسال')
         RECIEVED = 'RC', _('تحویل داده شده')
+        CANCELD = 'CD', _('لغو شده')
         
     status = models.CharField(
         max_length=2,

@@ -1,8 +1,9 @@
+import json
 from django.shortcuts import render,get_object_or_404, redirect
 from django.core.paginator import Paginator
 from Blog.models import Blog
 from CustomUser.models import UserProfile
-from Product.models import Category, Order
+from Product.models import Category, Order, Product
 from .forms import PersonelForm
 def dashboard(request):
     context = {} #TODO: ask project manager for date needs to be use in panel
@@ -41,7 +42,6 @@ def update_info_personel(request, personel):
     return render(request,'addkarmand.html',context,status=status)
 def delete_personel(request, personel):
     personel_obj:UserProfile = UserProfile.objects.get(id=personel)
-    #! NEED TO ADD `is_deleted` FIELD IN MODEL
     personel_obj.delete()
 
 #* USERMANAGEMENT BLOCK
@@ -61,9 +61,6 @@ def user_list(request,page=None,per_page=6):
 
 #* CATEGORY BLOCK
 def category_dashboard(request):
-    # ! DATABASE AND FRONTEND ARE NOT SYNC
-    # create category with select choices or with desceiption
-    # desceiption is recommende
     context = {}
     categories = Category.objects.all()
     status = 0
@@ -115,8 +112,15 @@ def weblog_edit(request,pk):
     context = {}
     status = 0
     if request.method == 'POST':
+        data = json.loads(request.POST)
         blog = Blog.objects.get(id=pk)
-        #! DB NOT SYNC WITH FRONTEND
+        blog.cover = data['cover']
+        blog.title = data['title']
+        blog.en_title = data['en_title']
+        blog.body = data['body']
+        blog.en_body = data['en_body']
+        blog.meta_description = data['meta_description']
+        blog.en_meta_description = data['en_meta_description']
         blog.save()
         return redirect('blogList')
     else:
@@ -129,12 +133,14 @@ def weblog_add(request,pk):
     context = {}
     status = 0
     if request.method == 'POST':
-        blog = Blog(**request.POST) #! DB NOT SYNC WITH FRONTEND
+        data = json.loads(request.POST)
+        del data['csrf_token']
+        blog = Blog(**data)
         blog.save()
         return redirect('blogList')
     else:
         status = 200
-    return render(request, 'editblog.html', context, status=status)
+    return render(request, 'addblog.html', context, status=status)
 def weblog_delete(request,pk):
     try:
         blog = Blog.objects.get(id=pk)
@@ -144,9 +150,63 @@ def weblog_delete(request,pk):
         return redirect('404')
 
 #* PRODUCT BLOCK
-#! DATABASE NOT SYNC WITH ANYTHING :(
-# any product needs one image or more?
+def product_list(request):
+    per_page = request.GET.get('per_page',1)
+    page = request.GET.get('page',1)
+    products = Product.objects.all()
+    paginator = Paginator(products, per_page=per_page)
+    product_page = paginator.get_page(page)
+    context = {
+        'products' : product_page, #TODO: processe in template tags
+        'per_page' : per_page,
+        'count_obj' : paginator.count,
+        'count_pages' : paginator.num_pages,
+        'this_page' : page,
+        'elided_pages' : paginator.get_elided_page_range(page,on_each_side=2)
+    }
+    return render(request, 'addproduct.html', context)
 
+def product_add(request):
+    context = {}
+    status = 0
+    if request.method == 'POST':
+        data = json.loads(request.POST)
+        del data['csrf_token']
+        product = Product(**data)
+        product.save()
+        return redirect('blogList')
+    else:
+        status = 200
+    return render(request, 'addproduct.html', context, status=status)
+
+def product_edit(request, pk):
+    if request.method == 'POST':
+        data = json.loads(request.POST)
+        product = Product.objects.get(id=pk)
+        product.name = data['name']
+        product.en_name = data['en_name']
+        product.meta_description = data['meta_description']
+        product.en_meta_description = data['en_meta_description']
+        product.full_description = data['full_description']
+        product.en_full_description = data['en_full_description']
+        product.price = data['price']
+        product.quantity_purchased = data['quantity_purchased']
+        product.categories = data['categories']
+        product.image0 = data['image0']
+        product.image1 = data['image1']
+        product.image2 = data['image2']
+        product.image3 = data['image3']
+        product.image4 = data['image4']
+        product.image5 = data['image5']
+        product.image6 = data['image6']
+        product.save()
+        return redirect('productList')
+    else:
+        context = {
+            'product': Product.objects.get(id=pk),
+        }
+        status = 200
+    return render(request, 'editproduct.html', context, status=status)
 #* ORDER BLOCK
 def order_list(request):
     orders = Order.objects.all()
@@ -158,7 +218,8 @@ def order_detail(request, pk):
     order = Order.objects.get(id=pk)
     return render(request,'orderdetail.html',order)
 def order_cancel(request, pk):
-    pass #! DB NOT SYNC :(
+    order = Order.objects.get(id=pk)
+    order.status = 'CD'
 
 #* AGENTS BLOCK
 #! CAN'T FIND MODEL !! :|
