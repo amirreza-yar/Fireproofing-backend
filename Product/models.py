@@ -35,6 +35,7 @@ class Product(models.Model):
     is_recommended = models.BooleanField(default=True)
     discount_percentage = models.IntegerField(default=0, validators=[MinValueValidator(0.0), MaxValueValidator(100)])
     is_service = models.BooleanField(default=False)
+    inventory = models.IntegerField()
     
     categories = models.ManyToManyField("Category", related_name='+', blank=True)
     
@@ -152,7 +153,8 @@ class Order(models.Model):
     postal_code = models.IntegerField(default=132, blank=True)
     additional_note = models.CharField(max_length=1000, blank=True)
     items = models.JSONField(blank=False)
-
+    # items = models.ManyToManyField(Product,related_name='+')
+    is_payed = models.BooleanField(default=False)
     class StatusChoises(models.TextChoices):
         PENDING = 'PN', _('در انتظار تایید')
         PREPARING = 'PR', _('در حال آماده سازی')
