@@ -1,7 +1,8 @@
 import json
-from django.shortcuts import render,get_object_or_404, redirect
+from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.urls import reverse
 from Blog.models import Blog
 from CustomUser.models import UserProfile
 from Product.models import Category, Order, Product
@@ -32,7 +33,7 @@ def personel_add(request):
 
     if personel_form.is_valid():
         personel_form.save()
-        return redirect() #TODO: redirect to personal list
+        return reverse('adminP:personel_list') 
     return render(request, 'admin/addkarmand.html', {'personel_form': personel_form})
 def update_info_personel(request, personel):
     updated_info = PersonelForm(request.POST, instance=UserProfile.objects.get(id=personel))
@@ -56,6 +57,7 @@ def update_info_personel(request, personel):
 def delete_personel(request, personel):
     personel_obj:UserProfile = UserProfile.objects.get(id=personel)
     personel_obj.delete()
+    return reverse('adminP:personel_list')
 
 #* USERMANAGEMENT BLOCK
 def user_list(request,page=None,per_page=6):
@@ -135,7 +137,7 @@ def weblog_edit(request,pk):
         blog.meta_description = data['meta_description']
         blog.en_meta_description = data['en_meta_description']
         blog.save()
-        return redirect('blogList')
+        return reverse('adminP:weblog_list')
     else:
         context = {
             'blog': Blog.objects.get(id=pk),
@@ -150,7 +152,7 @@ def weblog_add(request,pk):
         del data['csrf_token']
         blog = Blog(**data)
         blog.save()
-        return redirect('blogList')
+        return reverse('adminP:weblog_list')
     else:
         status = 200
     return render(request, 'admin/addblog.html', context, status=status)
@@ -158,9 +160,9 @@ def weblog_delete(request,pk):
     try:
         blog = Blog.objects.get(id=pk)
         blog.delete()
-        return redirect('blogList')
+        return reverse('adminP:weblog_list')
     except Blog.DoesNotExist:
-        return redirect('404')
+        return reverse('404')
 
 #* PRODUCT BLOCK
 def product_list(request):
@@ -187,7 +189,7 @@ def product_add(request):
         del data['csrf_token']
         product = Product(**data)
         product.save()
-        return redirect('blogList')
+        return reverse('adminP:product_list')
     else:
         status = 200
         context = {'category':Category.objects.all()}
@@ -213,7 +215,7 @@ def product_edit(request, pk):
         product.image5 = data['image5']
         product.image6 = data['image6']
         product.save()
-        return redirect('productList')
+        return reverse('adminP:product_list')
     else:
         context = {
             'product': Product.objects.get(id=pk),
