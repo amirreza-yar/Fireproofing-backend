@@ -1,12 +1,24 @@
 import json
 from django.shortcuts import render,get_object_or_404, redirect
 from django.core.paginator import Paginator
+from django.db.models import Count
 from Blog.models import Blog
 from CustomUser.models import UserProfile
 from Product.models import Category, Order, Product
 from .forms import PersonelForm
 def dashboard(request):
-    context = {} #TODO: ask project manager for date needs to be use in panel
+    context = {}
+    sell_report = {
+        'daily' : Order.objects.all().extra({'ordered_date':"date(ordered_date)"}).values('ordered_date').annotate(ordered_date_count=Count('id')),
+        # 'monthly' : 
+    }
+    order_report = {
+        'canceled' : Order.objects.filter(status='CD').count,
+        'completed' : Order.objects.filter(status='RC').count
+    }
+    context['sell_report'] = sell_report
+    context['order_report'] = order_report
+    context['last_order'] = Order.objects.all()[:4]
     return render(request, 'index.html', context)
 
 #* PERSONEL BLOCK
@@ -14,13 +26,14 @@ def personel_list(request):
     context = {
         'personels' : UserProfile.objects.filter(is_active=True,is_staff=True).order_by('date_joined'),
     }
-    return render(request, 'listkarmand.html', context)
+    return render(request, 'admin/listkarmand.html', context)
 def personel_add(request):
     personel_form = PersonelForm(request.POST or None)
 
     if personel_form.is_valid():
         personel_form.save()
         return redirect() #TODO: redirect to personal list
+    return render(request, 'admin/addkarmand.html', {'personel_form': personel_form})
 def update_info_personel(request, personel):
     updated_info = PersonelForm(request.POST, instance=UserProfile.objects.get(id=personel))
     context = {}
@@ -39,7 +52,7 @@ def update_info_personel(request, personel):
             status = 418
     else:
         context['title'] = 'ویرایش پروفایل'
-    return render(request,'addkarmand.html',context,status=status)
+    return render(request,'admin/addkarmand.html',context,status=status)
 def delete_personel(request, personel):
     personel_obj:UserProfile = UserProfile.objects.get(id=personel)
     personel_obj.delete()
@@ -57,7 +70,7 @@ def user_list(request,page=None,per_page=6):
         'this_page' : page,
         'elided_pages' : paginator.get_elided_page_range(page,on_each_side=2)
     }
-    return render(request, 'userlist.html', context)
+    return render(request, 'admin/userlist.html', context)
 
 #* CATEGORY BLOCK
 def category_dashboard(request):
@@ -90,13 +103,13 @@ def category_dashboard(request):
                 context = {
                             'step' : 'create-cat',
                             'msg' : 'error-all fields are required',
-                            'list-cat' : categories,
+                            'listcat' : categories,
                         }
                 status = 400
     else:
         context = {
                     'step' : 'dashboard',
-                    'list-cat' : categories,
+                    'listcat' : categories,
                 }
         status = 400
     return render(request, 'category.html', context, status)
@@ -107,7 +120,7 @@ def weblog_list(request):
     context = {
         'blogs' : Blog.objects.all().order_by('released_date')
     }
-    return render(request, 'bloglist.html', context, 200)
+    return render(request, 'admin/bloglist.html', context, 200)
 def weblog_edit(request,pk):
     context = {}
     status = 0
@@ -128,7 +141,7 @@ def weblog_edit(request,pk):
             'blog': Blog.objects.get(id=pk),
         }
         status = 200
-    return render(request, 'editblog.html', context, status=status)
+    return render(request, 'admin/editblog.html', context, status=status)
 def weblog_add(request,pk):
     context = {}
     status = 0
@@ -140,7 +153,7 @@ def weblog_add(request,pk):
         return redirect('blogList')
     else:
         status = 200
-    return render(request, 'addblog.html', context, status=status)
+    return render(request, 'admin/addblog.html', context, status=status)
 def weblog_delete(request,pk):
     try:
         blog = Blog.objects.get(id=pk)
@@ -164,7 +177,7 @@ def product_list(request):
         'this_page' : page,
         'elided_pages' : paginator.get_elided_page_range(page,on_each_side=2)
     }
-    return render(request, 'addproduct.html', context)
+    return render(request, 'admin/productlist.html', context)
 
 def product_add(request):
     context = {}
@@ -177,6 +190,7 @@ def product_add(request):
         return redirect('blogList')
     else:
         status = 200
+        context = {'category':Category.objects.all()}
     return render(request, 'addproduct.html', context, status=status)
 
 def product_edit(request, pk):
@@ -190,7 +204,6 @@ def product_edit(request, pk):
         product.full_description = data['full_description']
         product.en_full_description = data['en_full_description']
         product.price = data['price']
-        product.quantity_purchased = data['quantity_purchased']
         product.categories = data['categories']
         product.image0 = data['image0']
         product.image1 = data['image1']
@@ -213,13 +226,19 @@ def order_list(request):
     context = {
         'orders' : orders,
     }
-    return render(request,'orderlist.html',context)
+    return render(request,'admin/orderlist.html',context)
 def order_detail(request, pk):
     order = Order.objects.get(id=pk)
-    return render(request,'orderdetail.html',order)
+    context = {'order': order, 'items': order.loaded_json_items()}
+    return render(request,'admin/orderdetail.html',context)
 def order_cancel(request, pk):
     order = Order.objects.get(id=pk)
     order.status = 'CD'
-
+    order.save()
+    orders = Order.objects.all()
+    context = {
+        'orders' : orders,
+    }
+    return render(request,'admin/orderlist.html',context)
 #* AGENTS BLOCK
 #! CAN'T FIND MODEL !! :|
