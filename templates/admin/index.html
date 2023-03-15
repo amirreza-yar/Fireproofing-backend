@@ -128,7 +128,7 @@
                                         <td class="d-none d-lg-table-cell">{{order.loaded_json_items.count}}</td>
                                         <td class="d-none d-lg-table-cell">{{order.ordred_date}}</td>
                                         <td class="d-none d-lg-table-cell"> {{order.price}} تومان</td>
-                                        <td><span class="badge badge-success">{% if order.status=='CD' %}لغو شده {% else %}تکمیل شده{% endif %}</span></td>
+                                        <td><span class="badge badge-success">{% if order.status == 'CD' %}لغو شده {% else %}تکمیل شده{% endif %}</span></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
