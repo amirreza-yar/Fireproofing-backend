@@ -1,0 +1,114 @@
+{% load static %}
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="ec-content-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="ec-content-wrapper">
+                <div class="content">
+                    <div class="breadcrumb-wrapper d-flex align-items-start" style="flex-direction: column;">
+                        <h1>دسته‌بندی‌</h1>
+                        <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                                    class="mdi mdi-chevron-left"></i></span>دسته‌بندی‌</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-12">
+                            <div class="ec-cat-list card card-default mb-24px">
+                                <div class="card-body">
+                                    <div class="ec-cat-form">
+                                        <h4>اضافه کردن دسته جدید</h4>
+                                        <form method="GET">
+                                            <div class="form-group row"><label for="text"
+                                                    class="col-12 col-form-label">نام</label>
+                                                <div class="col-12"><input id="text" name="text"
+                                                        class="form-control here slug-title"></div>
+                                            </div>
+                                            
+                                            <div class="form-group row"><label
+                                                    class="col-12 col-form-label"> شرح کامل </label>
+                                                <div class="col-12"><textarea id="fulldescription"
+                                                        name="fulldescription" cols="40" rows="4"
+                                                        class="form-control"></textarea></div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-12"><button name="submit" type="submit"
+                                                        class="btn btn-primary">ثبت دسته بندی</button></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-12">
+                            <div class="ec-cat-list card card-default">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="responsive-data-table" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>نام</th>
+                                                    <th>محصولات</th>
+                                                    <th>وضعیت</th>
+                                                    <th>فعالیت</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for listcat in cat %}
+                                                <tr>
+                                                    <td>{{cat.name}}/td>
+
+                                                    <td>{{cat.description|truncatewords:7}}</td>
+                                                    <td>{% if cat.status %}فعال {% else %}غیر فعال{% endif %}</td>
+                                                    <td>
+                                                        <div class="btn-group"><button type="button"
+                                                                class="btn btn-success"></button>
+                                                            <button type="button"
+                                                                class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false"
+                                                                data-display="static"><span
+                                                                    class="sr-only">اطلاعات</span></button>
+                                                            <div class="dropdown-menu"><a
+                                                                    class="dropdown-item" href="#">حذف</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                <tr>
+                                                    <td>دسته بندی 2</td>
+
+                                                    <td>28</td>
+                                                    <td>فعال</td>
+                                                    <td>
+                                                        <div class="btn-group"><button type="button"
+                                                                class="btn btn-success"></button>
+                                                            <button type="button"
+                                                                class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                                data-bs-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false"
+                                                                data-display="static"><span
+                                                                    class="sr-only">اطلاعات</span></button>
+                                                            <div class="dropdown-menu"><a
+                                                                    class="dropdown-item"
+                                                                    href="editcategory.html">ویرایش</a> <a
+                                                                    class="dropdown-item" href="#">حذف</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

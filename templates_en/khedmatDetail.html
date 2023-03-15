@@ -1,0 +1,231 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+<!-- Sart Single product -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-pro-rightside ec-common-rightside col-lg-12 col-md-12">
+
+                <!-- Single product content Start -->
+                <div class="single-pro-block">
+                    <div class="single-pro-inner">
+                        <div class="row">
+                            <div class="single-pro-img single-pro-img-no-sidebar">
+                                <div class="single-product-scroll">
+                                    <div class="single-product-cover">
+                                        <div class="single-slide zoom-image-hover">
+                                            <img class="img-responsive" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                alt="">
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="single-pro-desc single-pro-desc-no-sidebar">
+                                <div class="single-pro-content">
+                                    <h5 class="ec-single-title">شارژ کپسول آتش نشانی</h5>
+                                    <div class="ec-single-rating-wrap">
+                                        <div class="ec-single-rating">
+                                            {% for _ in service.rate_filled_star_counter %}
+                                                <i class="ecicon eci-star fill"></i>
+                                            {% endfor %}
+
+                                            {% for _ in service.rate_unfilled_star_counter %}
+                                                <i class="ecicon eci-star-o"></i>
+                                            {% endfor %}
+                                        </div>
+                                        <span class="ec-read-review">{{ service.rate }} / 5</span>
+                                    </div>
+                                    <div class="ec-single-desc">{{ service.meta_description }}</div>
+
+
+                                    <div class="ec-single-price-stoke">
+                                        <div class="ec-single-price">
+                                            <span class="ec-single-ps-title"> قیمت</span>
+                                            <span class="new-price">{{ service.price }} تومان</span>
+                                        </div>
+                                        <div class="ec-single-stoke">
+                                            <span class="ec-single-ps-title">تعداد</span>
+                                            <span class="ec-single-sku">1 بار</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="ec-single-qty">
+                                
+                                        <div class="ec-single-cart ">
+                                            <button class="btn btn-primary" type="submit" style="margin-top: 1vh;">
+                                                <a href="{% url 'addServiceToCart' pk=service.pk %}">افزودن به سبد خرید</a>
+                                            </button>
+                                        </div>
+                                                    
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Single product content End -->
+                <!-- Single product tab start -->
+                <div class="ec-single-pro-tab">
+                    <div class="ec-single-pro-tab-wrapper">
+                        <div class="ec-single-pro-tab-nav">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab"
+                                        data-bs-target="#ec-spt-nav-details" role="tablist">توضیحات</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#ec-spt-nav-review"
+                                        role="tablist">نظرات</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content  ec-single-pro-tab-content">
+                            <div id="ec-spt-nav-details" class="tab-pane fade show active">
+                                <div class="ec-single-pro-tab-desc">
+                                    <p>{{ service.full_description|safe }}</p>
+                                </div>
+                            </div>
+
+
+                            <div id="ec-spt-nav-review" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="ec-t-review-wrapper">
+                                        {% for comment in service_comments %}
+                                        <div class="ec-t-review-item">
+                                            <!-- <div class="ec-t-review-avtar">
+                                                <img src="{% static 'images/review-image/1.jpg' %}" alt="">
+                                            </div> -->
+                                            <div class="ec-t-review-content">
+                                                <div class="ec-t-review-top">
+                                                    <div class="ec-t-review-name">{{ comment.commenter_name }}</div>
+                                                    <div class="ec-t-review-rating">
+
+                                                        {% for _ in comment.rate_filled_star_counter %}
+                                                            <i class="ecicon eci-star fill"></i>
+                                                        {% endfor %}
+                                                        {% for _ in comment.rate_unfilled_star_counter %}
+                                                            <i class="ecicon eci-star-o"></i>
+                                                        {% endfor %}
+
+                                                        <!-- <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i> -->
+                                                    </div>
+                                                </div>
+                                                <div class="ec-t-review-bottom">
+                                                    <p>{{ comment.comment }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+
+                                        <!-- <div class="ec-t-review-item">
+                                            <div class="ec-t-review-avtar">
+                                                <img src="{% static 'images/review-image/1.jpg' %}" alt="">
+                                            </div>
+                                            <div class="ec-t-review-content">
+                                                <div class="ec-t-review-top">
+                                                    <div class="ec-t-review-name">جانان دارا</div>
+                                                    <div class="ec-t-review-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-t-review-bottom">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                        با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                                        و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                                                        تکنولوژی مورد نیاز
+                                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت
+                                                        فراوان جامعه و متخصصان را می طلبد</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ec-t-review-item">
+                                            <div class="ec-t-review-avtar">
+                                                <img src="{% static 'images/review-image/2.jpg' %}" alt="">
+                                            </div>
+                                            <div class="ec-t-review-content">
+                                                <div class="ec-t-review-top">
+                                                    <div class="ec-t-review-name">لیندا کیانی</div>
+                                                    <div class="ec-t-review-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-t-review-bottom">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                        با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                                        و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                                                        تکنولوژی مورد نیاز
+                                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت
+                                                        فراوان جامعه و متخصصان را می طلبد</p>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+                                    <div class="ec-ratting-content">
+                                        <h3>افزودن نظر</h3>
+                                        <div class="ec-ratting-form">
+                                            <form action="{% url 'makeComment' pk=service.pk %}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="ec-ratting-star">
+                                                    <span>امتیاز شما:</span>
+                                                    <div class="ec-t-review-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-ratting-input">
+                                                    <input name="commenter_name" placeholder="نام" type="text">
+                                                </div>
+                                                <div class="ec-ratting-input">
+                                                    <input name="commenter_email" placeholder="ایمیل" type="email"
+                                                        required="">
+                                                </div>
+                                                <div class="ec-ratting-input form-submit">
+                                                    <textarea name="comment" placeholder="نظر شما"></textarea>
+                                                    <button class="btn btn-primary" type="submit"
+                                                        value="Submit">ارسال</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+
+                <!-- product details description area end -->
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Single product -->
+{% endblock %}

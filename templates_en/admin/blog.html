@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="پنل ادمین فروشگاه">
+    <title> داشبورد مدیریت</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;family=Roboto:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet">
+    <link href="assets/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="assets/plugins/simplebar/simplebar.css" rel="stylesheet">
+    <link id="ekka-css" href="assets/css/ekka.css" rel="stylesheet">
+    <link href="assets/img/favicon.png" rel="shortcut icon">
+</head>
+
+<body class="ec-header-fixed ec-sidebar-fixed ec-sidebar-light ec-header-light" id="body">
+    <div class="wrapper">
+        <div class="ec-left-sidebar ec-bg-sidebar">
+            <div id="sidebar" class="sidebar ec-sidebar-footer">
+                <div class="ec-brand"><a href="index.html" title="Dashboard">نام فروشگاه <span
+                            class="ec-brand-name text-truncate">
+                        </span></a></div>
+                <div class="ec-navigation" data-simplebar>
+                    <ul class="nav sidebar-inner" id="sidebar-menu">
+                        <li class="active"><a class="sidenav-item-link" href="index.html"><i
+                                    class="mdi mdi-view-dashboard-outline"></i> <span class="nav-text">
+                                    داشبورد</span></a>
+                            <hr>
+                        </li>
+                        <li class="has-sub"><a class="sidenav-item-link" href="javascript:void(0)"><i
+                                    class="mdi mdi-account-group-outline"></i> <span class="nav-text">پرسنل</span>
+                                <b class="caret"></b></a>
+                            <div class="collapse">
+                                <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
+                                    <li><a class="sidenav-item-link" href="listkarmand.html"><span class="nav-text">لیست
+                                                پرسنل </span></a></li>
+                                    <li><a class="sidenav-item-link" href="addkarmand.html"><span class="nav-text">اضافه
+                                                کردن پرسنل جدید </span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="has-sub"><a class="sidenav-item-link" href="javascript:void(0)"><i
+                                    class="mdi mdi-account-group"></i> <span class="nav-text">کاربران</span> <b
+                                    class="caret"></b></a>
+                            <div class="collapse">
+                                <ul class="sub-menu" id="users" data-parent="#sidebar-menu">
+                                    <li><a class="sidenav-item-link" href="userlist.html"><span class="nav-text">لیست
+                                                کاربران</span></a></li>
+                                </ul>
+                            </div>
+                            <hr>
+                        </li>
+                        <li class="has-sub"><a class="sidenav-item-link" href="javascript:void(0)"><i
+                                    class="mdi mdi-dns-outline"></i> <span class="nav-text">دسته‌بندی‌ها</span> <b
+                                    class="caret"></b></a>
+                            <div class="collapse">
+                                <ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
+                                    <li><a class="sidenav-item-link" href="category.html"><span
+                                                class="nav-text">دسته‌بندی‌ اصلی</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="has-sub"><a class="sidenav-item-link" href="javascript:void(0)"><i
+                                    class="mdi mdi-palette-advanced"></i> <span class="nav-text">وبلاگ</span> <b
+                                    class="caret"></b></a>
+                            <div class="collapse">
+                                <ul class="sub-menu" id="products" data-parent="#sidebar-menu">
+                                    <li><a class="sidenav-item-link" href="bloglist.html"><span class="nav-text">لیست
+                                                بلاگ ها</span></a></li>
+                                    <li><a class="sidenav-item-link" href="addblog.html"><span class="nav-text">اضافه
+                                                کردن بلاگ</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="has-sub"><a class="sidenav-item-link" href="javascript:void(0)"><i
+                                    class="mdi mdi-palette-advanced"></i> <span class="nav-text">محصولات</span> <b
+                                    class="caret"></b></a>
+                            <div class="collapse">
+                                <ul class="sub-menu" id="products" data-parent="#sidebar-menu">
+                                    <li><a class="sidenav-item-link" href="addproduct.html"><span
+                                                class="nav-text">افزودن محصول</span></a></li>
+                                    <li><a class="sidenav-item-link" href="productlist.html"><span
+                                                class="nav-text">لیست محصولات</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="has-sub"><a class="sidenav-item-link" href="javascript:void(0)"><i
+                                    class="mdi mdi-cart"></i> <span class="nav-text">سفارشات</span> <b
+                                    class="caret"></b></a>
+                            <div class="collapse">
+                                <ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
+                                    <li><a class="sidenav-item-link" href="orderlist.html"><span
+                                                class="nav-text">لیست سفارشات </span></a></li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="has-sub"><a class="sidenav-item-link" href="javascript:void(0)"><i
+                                    class="mdi mdi-cart"></i> <span class="nav-text">نمایندگی ها</span> <b
+                                    class="caret"></b></a>
+                            <div class="collapse">
+                                <ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
+                                    <li><a class="sidenav-item-link" href="namaiandegi.html"><span class="nav-text">لیست
+                                                نمایندگی ها</span></a></li>
+                                    <li><a class="sidenav-item-link" href="addnamaiandegi.html"><span class="nav-text">ثبت
+                                                نمایندگی</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a class="sidenav-item-link" href="comments.html"><i class="mdi mdi-star-half"></i> <span
+                                    class="nav-text">نظرات</span></a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ec-page-wrapper">
+            <header class="ec-main-header" id="header">
+                <nav class="navbar navbar-static-top navbar-expand-lg"><button id="sidebar-toggler"
+                        class="sidebar-toggle"></button>
+
+                    <div class="navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown user-menu">
+                                <button class="dropdown-toggle nav-link ec-drop" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><img src="assets/img/user/user.png" class="user-image"
+                                        alt="User Image"></button>
+
+                                <ul class="dropdown-menu dropdown-menu-right ec-dropdown-menu">
+                                    <li class="dropdown-header"><img src="assets/img/user/user.png" class="img-circle"
+                                            alt="User Image">
+                                        <div class="d-inline-block"> ادمین وب سایت <small class="pt-1"><a
+                                                    class="__cf_email__"
+                                                    data-cfemail="4c262324226229342d213c20290c2b212d2520622f2321">john.example@gmail.com</a></small>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-footer"><a href="index.html"><i class="mdi mdi-logout"></i> خروج
+                                        </a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="ec-content-wrapper">
+                <div class="content">
+                    <div class="row">
+
+
+
+
+
+                        <div class="ec-content-wrapper">
+                            <div class="content">
+                                <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h1>جزئیات بلاگ</h1>
+                                        <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                                                    class="mdi mdi-chevron-left"></i></span>بلاگ ها</p>
+                                    </div>
+                                    <div><a href="editblog.html" class="btn btn-primary">ویرایش</a></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card card-default">
+                                            <div class="card-header card-header-border-bottom">
+                                                <h2>جزئیات بلاگ</h2>
+                                            </div>
+                                            <div class="card-body product-detail">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12">
+                                                        <div class="row">
+                                                            <div class="single-pro-img">
+                                                                <div class="single-product-scroll">
+                                                                    <img src="./assets/img/category/clothes.png"
+                                                                        style="border-radius: 10px;width: 100%;" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-12 col-lg-12 mt-4">
+                                                        <div class="row product-overview">
+                                                            <div class="col-12">
+                                                                <div
+                                                                    style="display: flex; justify-content: space-between; align-items: center;">
+                                                                    <h5 class="product-title">عنوان بلاگ</h5>
+                                                                    <h5 class="" style="font-size: 12px;">1401/11/11
+                                                                    </h5>
+                                                                </div>
+                                                                <p class="product-rate"><i
+                                                                        class="mdi mdi-star is-rated"></i> <i
+                                                                        class="mdi mdi-star is-rated"></i> <i
+                                                                        class="mdi mdi-star is-rated"></i> <i
+                                                                        class="mdi mdi-star is-rated"></i> <i
+                                                                        class="mdi mdi-star"></i></p>
+                                                                <p class="product-desc">لورم ایپسوم متن ساختگی با تولید
+                                                                    سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                                                    گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                                                    ستون و سطرآنچنان که لازم است برای شرایط فعلی
+                                                                    تکنولوژی مورد
+                                                                    نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                                                                    می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                                                                    آینده شناخت فراوان جامعه و متخصصان را می طلبد
+                                                                </p>
+
+                                                                <hr>
+                                                                <h5>متن بلاگ به انگلیسی</h5>
+                                                                <br>
+                                                                <h5 class="product-title">عنوان بلاگ</h5>
+                                                                <br>
+                                                                <p class="product-desc">لورم ایپسوم متن ساختگی با تولید
+                                                                    سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                                                    گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                                                    ستون و سطرآنچنان که لازم است برای شرایط فعلی
+                                                                    تکنولوژی مورد
+                                                                    نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                                                                    می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
+                                                                    آینده شناخت فراوان جامعه و متخصصان را می طلبد
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <footer class="footer mt-auto">
+                <div class="copyright bg-white">
+                    <p>&copy; کپی رایت <span>1401</span><a class="text-primary" href=" " target="_blank"> داشبورد
+                            مدیریتی
+                        </a>.
+                        همه حقوق محفوظ است.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script data-cfasync="false" src="assets/plugins/cloudflare-static/email-decode.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-3.5.1.min.js"></script>
+    <script src="assets/plugins/jquery/jquery.notify.min.js"></script>
+    <script src="assets/plugins/jquery/jquery.bundle.notify.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/simplebar/simplebar.min.js"></script>
+    <script src="assets/plugins/jquery-zoom/jquery.zoom.min.js"></script>
+    <script src="assets/plugins/slick/slick.min.js"></script>
+    <script src="assets/plugins/charts/Chart.min.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/plugins/charts/google-map-loader.js"></script>
+    <script src="assets/plugins/charts/google-map.js"></script>
+
+    <script src="assets/plugins/daterangepicker/moment.min.js"></script>
+
+    <script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src='assets/plugins/daterangepicker/moment-jalaali.js'></script>
+    <script src="assets/plugins/daterangepicker/fa.js"></script>
+    <script src="assets/js/date-range.js"></script>
+    <script src="assets/plugins/options-sidebar/optionswitcher.js"></script>
+    <script src="assets/js/ekka.js"></script>
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>

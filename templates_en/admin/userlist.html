@@ -1,0 +1,131 @@
+{% load static %}
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="ec-content-wrapper">
+    <div class="content">
+        <div class="breadcrumb-wrapper breadcrumb-contacts">
+            <div>
+                <h1>لیست کاربران</h1>
+                <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                            class="mdi mdi-chevron-left"></i></span>کاربر</p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="ec-vendor-list card card-default">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="responsive-data-table" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>پروفایل</th>
+                                        <th>نام</th>
+                                        <th>ایمیل:</th>
+                                        <th> تلفن </th>
+                                        <th> شهر </th>
+                                        <th>وضعیت</th>
+                                        <th> پیوستن به </th>
+                                        <th>فعالیت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                    <tr>
+                                        <td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg"
+                                                alt="user profile"></td>
+                                        <td>{{user.name}}</td>
+                                        <td><a class="__cf_email__"
+                                                data-cfemail="c4a9a5b6a8a1a1b6a1aaa584a3a9a5ada8eaa7aba9">{{user.email}}</a>
+                                        </td>
+                                        <td>{{user.phone_number}}</td>
+                                        <td>{{user.city}}</td>
+                                        <td>{% if user.is_active %}فعال {% else %}غیر فعال{% endif %}</td>
+                                        <td>{{user.date_joined}}</td>
+                                        <td>
+                                            <div class="btn-group mb-1"><button type="button"
+                                                    class="btn btn-success"> </button> <button type="button"
+                                                    class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                                    data-bs-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false" data-display="static"><span
+                                                        class="sr-only">اطلاعات</span></button>
+                                                <div class="dropdown-menu"><a class="dropdown-item"
+                                                        href="edituser.html">ویرایش</a> <a
+                                                        class="dropdown-item" href="#">حذف</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade modal-add-contact" id="addUser" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header px-4">
+                            <h5 class="modal-title" id="exampleModalCenterTitle"> اضافه کردن کاربر جدید
+                            </h5>
+                        </div>
+                        <div class="modal-body px-4">
+                            <div class="form-group row mb-6"><label for="coverImage"
+                                    class="col-sm-4 col-lg-2 col-form-label"> کاربر تصویر </label>
+                                <div class="col-sm-8 col-lg-10">
+                                    <div class="custom-file mb-1"><input type="file"
+                                            class="custom-file-input" id="coverImage" required><label
+                                            class="custom-file-label" for="coverImage"> انتخاب پرونده ...
+                                        </label>
+                                        <div class="invalid-feedback" مثال بازخورد پرونده سفارشی نامعتبر است
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-lg-6">
+                                        <div class="form-group"><label for="firstName">نام</label><input
+                                                class="form-control" id="firstName" value="جان"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group"><label for="lastName"> نام خانوادگی
+                                            </label><input class="form-control" id="lastName" value="دویی">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-4"><label for="userName">نام
+                                                کاربری</label><input class="form-control" id="userName"
+                                                value="johndoe"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-4"><label for="email">ایمیل:</label><input
+                                                type="email" class="form-control" id="email"
+                                                value="johnexample@gmail.com"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-4"><label for="Birthday"> تاریخ
+                                                تولد</label><input class="form-control" id="Birthday"
+                                                value="10-12-1401"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-4"><label for="event">آدرس </label><input
+                                                class="form-control" id="event" value="آدرس در اینجا"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer px-4"><button type="button"
+                                    class="btn btn-secondary btn-pill" data-bs-dismiss="modal">لغو</button>
+                                <button type="button" class="btn btn-primary btn-pill">ذخیره </button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

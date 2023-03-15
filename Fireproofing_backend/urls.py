@@ -35,6 +35,6 @@ urlpatterns = [
     path('', include(ProductUrls)),
     path('', include(BlogUrls)),
     path('', include(ProjectUrls)),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'Flatpage.views.error404Handler'

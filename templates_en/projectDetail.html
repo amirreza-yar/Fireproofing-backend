@@ -1,0 +1,106 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+<!-- Ec Blog page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-blogs-rightside col-lg-12 col-md-12">
+
+                <!-- Blog content Start -->
+                <div class="ec-blogs-content">
+                    <div class="ec-blogs-inner">
+                        <div class="ec-blog-main-img">
+                            <img class="blog-image" src="{% static 'images/blog-image/7.jpg' %}" alt="Blog">
+                        </div>
+                        <div class="ec-blog-date">
+                            <p class="date">{{ project.released_date }}</p><a href="javascript:void(0)">5 نظر</a>
+                        </div>
+                        <div class="ec-blog-detail">
+                            <h3 class="ec-project-title">{{ project.title }}</h3>
+                            {{ project.body|safe }}
+                        </div>
+                        <div class="ec-blog-tags">
+                            <a href="blog-left-sidebar.html">سبک زندگی,</a>
+                            <a href="blog-left-sidebar.html"> بیرونی ,</a>
+                            <a href="blog-left-sidebar.html"> خانگی ,</a>
+                            <a href="blog-left-sidebar.html"> ورزشی ,</a>
+                            <a href="blog-left-sidebar.html"> بلاگ ,</a>
+                            <a href="blog-left-sidebar.html">ایده</a>
+                        </div>
+                        <hr >
+                        <div class="ec-blog-comments">
+                            <div class="ec-blog-cmt-preview">
+                                <div class="ec-blog-comment-wrapper mt-55">
+                                    <h4 class="ec-blog-dec-title">نظرات : 05</h4>
+                                    {% for comment in project_comments %}
+                                    <div class="ec-single-comment-wrapper mt-35">
+                                        <!-- <div class="ec-blog-user-img">
+                                            <img src="assets/images/blog-image/9.jpg" alt="blog image">
+                                        </div> -->
+                                        <div class="ec-blog-comment-content">
+                                            <h5>{{ comment.commenter_name }}</h5>
+                                            <span>{{ comment.date }}</span>
+                                            <p>{{ comment.comment }}</p>
+                                            <!-- <div class="ec-blog-details-btn">
+                                                <a href=" ">بیشتر بخوانید</a>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <!-- <div class="ec-single-comment-wrapper mt-50 ml-150">
+                                        <div class="ec-blog-user-img">
+                                            <img src="assets/images/blog-image/10.jpg" alt="blog image">
+                                        </div>
+                                        <div class="ec-blog-comment-content">
+                                            <h5>ندا لیرا</h5>
+                                            <span>14 دی 1399</span>
+                                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+                                                استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+                                                ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
+                                                و کاربردهای
+                                                متنوع با هدف بهبود ابزارهای کاربردی می باشد </p>
+                                            <div class="ec-blog-details-btn">
+                                                <a href=" ">بیشتر بخوانید</a>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="ec-blog-cmt-form">
+                                <div class="ec-blog-reply-wrapper mt-50">
+                                    <h4 class="ec-blog-dec-title">نظر بگذارید </h4>
+
+                                    <form class="ec-blog-form" action="{% url 'makeProjectComment' pk=project.pk %}" method="POST">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="ec-leave-form">
+                                                    <input type="text" name="commenter_name" placeholder="نام کامل">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="ec-leave-form">
+                                                    <input type="email" name="commenter_email" placeholder="آدرس ایمیل ">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="ec-text-leave">
+                                                    <textarea placeholder="پیام" name="comment"></textarea>
+                                                    <button class="btn btn-primary" type="submit" value="Submit">ارسال</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog content End -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

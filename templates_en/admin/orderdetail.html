@@ -1,0 +1,99 @@
+{% load static %}
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="ec-content-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="ec-content-wrapper">
+                <div class="content">
+                    <div class="breadcrumb-wrapper breadcrumb-wrapper-2 d-flex" style="flex-direction: column;">
+                        <h1>جزییات سفارش </h1>
+                        <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                                    class="mdi mdi-chevron-left"></i></span>سفارشات</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="ec-odr-dtl card card-default">
+                                <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                                    <h2 class="ec-odr">جزییات سفارش <br><span class="small"> شناسه سفارش: #{{order.postal_code}}</span></h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xl-3 col-lg-6">
+                                            <address class="info-grid">
+                                                <div class="info-title"><strong> مشتری: </strong></div><br>
+                                                <div class="info-content">{{order.customer.name}}<br>{{order.customer.address}}
+                                                    <abbr title="Phone">شماره تماس:</abbr>
+                                                    {{order.customer.phone_number}}</div>
+                                            </address>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6">
+                                            <address class="info-grid">
+                                                <div class="info-title"><strong>فرستاده شده به:</strong>{{order.address}}</div><br>
+                                                <div class="info-content"><br><abbr title="Phone">شماره تماس:</abbr> {{order.phone_number}}</div>
+                                            </address>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6">
+                                            <address class="info-grid">
+                                                <div class="info-title"><strong>روش پرداخت:</strong></div><br>
+                                                <div class="info-content"><br><a
+                                                        class="__cf_email__"
+                                                        data-cfemail="31591f545d50585f5471565c50585d1f525e5c"></a><br>
+                                                </div>
+                                            </address>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-6">
+                                            <address class="info-grid">
+                                                <div class="info-title"><strong> تاریخ سفارش: </strong></div><br>
+                                                <div class="info-content">{{order.ordred_date}}</div>
+                                            </address>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3 class="tbl-title"> خلاصه محصول </h3>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped o-tbl">
+                                                    <thead>
+                                                        <tr class="line">
+                                                            <td><strong>#</strong></td>
+                                                            <td class="text-center"><strong>تصویر</strong></td>
+                                                            <td class="text-center"><strong>محصولات</strong></td>
+                                                            <td class="text-right"><strong>تعداد</strong></td>
+                                                            <td class="text-center"><strong>قیمت/واحد</strong></td>
+                                                            <td class="text-right"><strong>ریزهزینه</strong></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for item in items %}
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td><img class="product-img"
+                                                                    src="assets/img/products/p1.jpg" alt=""></td>
+                                                            <td><strong>{{item.name}}</strong></td>
+                                                            <td class="text-center">{{item.quantity}}</td>
+                                                            <td class="text-center">{{item.price}}</td>
+                                                            <td class="text-right">-</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-4 trk-order">
+                                <div class="p-4 text-center text-white text-lg bg-dark rounded-top"><span
+                                        class="text-uppercase">شماره پیگیری سفارش -</span> <span
+                                        class="text-medium">{{order.postal_code}}</span></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
