@@ -1,5 +1,5 @@
-{% load static %}
 {% extends 'admin/base.html' %}
+{% load static %}
 {% block content %}
             <div class="ec-content-wrapper">
                 <div class="content">
@@ -20,9 +20,10 @@
 
                                     {% for personel in personels %}
                                         <div class="col-lg-6 col-xl-4 col-xxl-3">
-                                            <div class="card card-default mt-24px"><a href="javascript:0"
+                                            <div class="card card-default mt-24px">
+                                                {% comment %} <a href="javascript:0"
                                                     data-bs-toggle="modal" data-bs-target="#modal-contact"
-                                                    class="view-detail"><i class="mdi mdi-eye-plus-outline"></i></a>
+                                                    class="view-detail"><i class="mdi mdi-eye-plus-outline"></i></a> {% endcomment %}
                                                 <div class="vendor-info card-body text-center p-4"><a
                                                         href="javascript:0" class="text-secondary d-inline-block mb-3">
                                                         <div class="image mb-3"><img src="{% static 'assets/img/vendor/u12.jpg' %}"
