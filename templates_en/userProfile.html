@@ -1,0 +1,120 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+
+<!-- User profile section -->
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Area Start -->
+            <div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Category Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-vendor-block">
+                            <!-- <div class="ec-vendor-block-bg"></div>
+                            <div class="ec-vendor-block-detail">
+                                <img class="v-img" src="assets/images/user/1.jpg" alt="vendor image">
+                                <h5>مارینا ازاد</h5>
+                            </div> -->
+                            <div class="ec-vendor-block-items">
+                                <ul>
+                                    <li><a href="{% url 'userProfile' %}">پروفایل کاربر</a></li>
+                                    <li><a href="{% url 'userHistory' %}">تاریخچه</a></li>
+                                    <li><a href="{% url 'cart' %}">سبد خرید</a></li>
+                                    <li><a href="{% url 'logout' %}">خروح از حساب کاربری</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-shop-rightside col-lg-9 col-md-12">
+                <div class="ec-vendor-dashboard-card ec-vendor-setting-card">
+                    <div class="ec-vendor-card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="ec-vendor-block-profile">
+                                    <div class="ec-vendor-block-img space-bottom-30">
+                                        <div class="ec-vendor-block-bg">
+                                            <a href="{% url 'editProfile' %}" class="btn btn-lg btn-primary">ویرایش</a>
+                                        </div>
+                                        <div class="ec-vendor-block-detail">
+                                            <img class="v-img" src="{% static 'images/user/1.jpg' %}" alt="vendor image">
+                                            <h5 class="name">{{ user.name }}</h5>
+                                            <p>( فروشنده )</p>
+                                        </div>
+                                        <p>سلام <span>{{ user.name }}!</span></p>
+                                        <p>از حساب کاربری شما امکان به راحتی سفارشات را مشاهده و ردیابی کنید. امکان
+                                            مدیریت و تغییر اطلاعات حساب کاربری خود را مانند آدرس، اطلاعات تماس و
+                                            تاریخ سفارشات را مدیریت کنید.</p>
+                                    </div>
+                                    <h5>اطلاعات حساب</h5>
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div
+                                                class="ec-vendor-detail-block ec-vendor-block-email space-bottom-30">
+                                                <h6>آدرس ایمیل <a href="javasript:void(0)"
+                                                        data-link-action="editmodal" title="ویرایش جزییات"
+                                                        data-bs-toggle="modal" data-bs-target="#edit_modal"><img
+                                                            src="assets/images/icons/edit.svg"
+                                                            class="svg_img pro_svg" alt="edit"></a></h6>
+                                                <ul>
+                                                    <li><strong>ایمیل 1 : </strong>
+                                                        {{ user.email }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div
+                                                class="ec-vendor-detail-block ec-vendor-block-contact space-bottom-30">
+                                                <h6>شماره تماس<a href="javasript:void(0)"
+                                                        data-link-action="editmodal" title="ویرایش جزییات"
+                                                        data-bs-toggle="modal" data-bs-target="#edit_modal"><img
+                                                            src="assets/images/icons/edit.svg"
+                                                            class="svg_img pro_svg" alt="edit"></a></h6>
+                                                <ul>
+                                                    <li><strong>شماره تماس 1 : </strong>{{ user.phone_number }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="ec-vendor-detail-block ec-vendor-block-address mar-b-30">
+                                                <h6>آدرس<a href="javasript:void(0)" data-link-action="editmodal"
+                                                        title="ویرایش جزییات" data-bs-toggle="modal"
+                                                        data-bs-target="#edit_modal"><img
+                                                            src="assets/images/icons/edit.svg"
+                                                            class="svg_img pro_svg" alt="edit"></a></h6>
+                                                <ul>
+                                                    <li><strong>خانه : </strong>{{ user.address }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="ec-vendor-detail-block ec-vendor-block-address">
+                                                <h6>آدرس ارسال<a href="javasript:void(0)"
+                                                        data-link-action="editmodal" title="ویرایش جزییات"
+                                                        data-bs-toggle="modal" data-bs-target="#edit_modal"><img
+                                                            src="assets/images/icons/edit.svg"
+                                                            class="svg_img pro_svg" alt="edit"></a></h6>
+                                                <ul>
+                                                    <li><strong>دفتر : </strong>{{ user.address }}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End User profile section -->
+
+{% endblock %}

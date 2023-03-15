@@ -1,0 +1,108 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block section %}
+<!-- User history section -->
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Area Start -->
+
+
+
+            <div class="dropdown">
+                <button class="dropbtn">خدمات و تعرفه ها</button>
+                <div class="dropdown-content">
+                    <a onclick="document.getElementById('taarefe').style.display = 'none',document.getElementById('khadamat').style.display = 'block'">خدمات</a>
+                    <a onclick="document.getElementById('taarefe').style.display = 'block',document.getElementById('khadamat').style.display = 'none'">تعرفه ها</a>
+                </div>
+            </div>
+
+            <div class="mt-5 col-lg-12 col-md-12" id="khadamat">
+                <div class="ec-vendor-dashboard-card">
+                    <div class="ec-vendor-card-header">
+                        <h5>لیست خدمات</h5>
+                    </div>
+                    <div class="ec-vendor-card-body">
+                        <div class="ec-vendor-card-table">
+                            <table class="table ec-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">شناسه</th>
+                                        <th scope="col">نام</th>
+                                        <th scope="col">قیمت</th>
+                                        <th scope="col">وضعیت</th>
+                                        <th scope="col">خدمت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for service in services %}
+                                        <tr>
+                                            <th scope="row"><span>1</span></th>
+                                            <td><span>خدمت {{ service.pk }}</span></td>
+                                            <td><span>{{ service.price }} تومان</span></td>
+                                            <td><span>فعال</span></td>
+                                            <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
+                                                        href="{% url 'khedmatDetail' pk=service.pk %}">خدمت</a></span></td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    <!-- <thead>
+                                    <tr>
+                                        <th scope="col">شناسه</th>
+                                        <th scope="col">نام</th>
+                                        <th scope="col">قیمت</th>
+                                        <th scope="col">وضعیت</th>
+                                        <th scope="col">خدمت</th>
+                                    </tr>
+                                </thead></tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 col-lg-12 col-md-12" id="taarefe" style="display: none;">
+                <div class="ec-vendor-dashboard-card">
+                    <div class="ec-vendor-card-header">
+                        <h5>لیست تعرفه ها</h5>
+                    </div>
+                    <div class="ec-vendor-card-body">
+                        <div class="ec-vendor-card-table">
+                            <table class="table ec-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">شناسه</th>
+                                        <th scope="col">نام</th>
+                                        <th scope="col">وزن</th>
+                                        <th scope="col">قیمت</th>
+                                        <th scope="col">وضعیت</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><span>1</span></th>
+                                        <td><span>شارژ کپسول آتش نشانی</span></td>
+                                        <td><span>1 کیلو گرم</span></td>
+                                        <td><span>64000 تومان</span></td>
+                                        <td><span>فعال</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>2</span></th>
+                                        <td><span>شارژ کپسول آتش نشانی</span></td>
+                                        <td><span>3 کیلو گرم</span></td>
+                                        <td><span>64000 تومان</span></td>
+                                        <td><span>فعال</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End User history section -->
+{% endblock %}

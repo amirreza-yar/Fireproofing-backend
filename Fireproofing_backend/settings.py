@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mxw3!il^k#c-r*sxr#+vy12=#di!qt-(g_(5ox4kbv=tn0l4aj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0", "172.20.2.222"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -164,6 +164,9 @@ STATIC_URL = 'static/'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

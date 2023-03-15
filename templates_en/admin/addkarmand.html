@@ -1,0 +1,125 @@
+{% load static %}
+{% extends 'admin/base.html' %}
+{% block content %}
+    <div class="ec-content-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="ec-content-wrapper">
+                    <div class="content">
+                        <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
+                            <div>
+                                <h1>افزودن پرسنل</h1>
+                                <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                                            class="mdi mdi-chevron-left"></i></span>اضافه کردن پرسنل</p>
+                            </div>
+                            <div><a href="listkarmand.html" class="btn btn-primary"> مشاهده همه </a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-default">
+                                    <div class="card-header card-header-border-bottom">
+                                        <h2>افزودن پرسنل</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row ec-vendor-uploads">
+                                            <div class="col-lg-4">
+                                                <div class="ec-vendor-img-upload">
+                                                    <div class="ec-vendor-main-img">
+                                                        <div class="avatar-upload">
+                                                            <div class="avatar-edit"><input type="file"
+                                                                    id="imageUpload" class="ec-image-upload"
+                                                                    accept=".png, .jpg, .jpeg"><label
+                                                                    for="imageUpload"><img
+                                                                        src="assets/img/icons/edit.svg"
+                                                                        class="svg_img header_svg"
+                                                                        alt="edit"></label></div>
+                                                            <div class="avatar-preview ec-preview">
+                                                                <div class="imagePreview ec-div-preview"><img
+                                                                        class="ec-image-preview"
+                                                                        src="assets/img/products/vender-upload-preview.jpg"
+                                                                        alt="edit"></div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="ec-vendor-upload-detail">
+                                                    <form class="row g-3" method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="col-md-12"><label for="inputEmail4"
+                                                                class="form-label">نام کارمند</label><input
+                                                                class="form-control slug-title"
+                                                                id="inputEmail4"></div>
+                                                        <div class="col-md-6"><label class="form-label">ایمیل
+                                                            </label><input type="number" class="form-control"
+                                                                id="price1"></div>
+                                                        <div class="col-md-6"><label class="form-label">شماره
+                                                                تلفن</label><input type="number"
+                                                                class="form-control" id="quantity1"></div>
+                                                        <div class="col-md-6"><label for="inputEmail4"
+                                                                class="form-label">تاریخ تولد</label><input
+                                                                class="form-control slug-title"
+                                                                id="inputEmail4"></div>
+                                                        <div class="col-md-6"><label class="form-label">سن
+                                                            </label><input type="number" class="form-control"
+                                                                id="price1"></div>
+                                                        <div class="col-md-6"><label class="form-label">سمت
+                                                            </label><input type="number" class="form-control"
+                                                                id="quantity1"></div>
+                                                        <div class="col-md-6"><label
+                                                                class="form-label">تحصیلات</label><input
+                                                                type="number" class="form-control"
+                                                                id="quantity1"></div>
+                                                        <div class="col-md-12"><label
+                                                                class="form-label">جزییات</label><textarea
+                                                                class="form-control" rows="4"></textarea></div>
+                                                        <hr />
+                                                        <h5>اطلاعات زیر را برای نسخه انگلیسی وارد کنید</h5>
+                                                        <br >
+                                                        <br >
+                                                        <div class="col-md-12"><label for="inputEmail4"
+                                                                class="form-label">نام کارمند</label><input
+                                                                class="form-control slug-title"
+                                                                id="inputEmail4"></div>
+                                                        <div class="col-md-6"><label class="form-label">ایمیل
+                                                            </label><input type="number" class="form-control"
+                                                                id="price1"></div>
+                                                        <div class="col-md-6"><label class="form-label">شماره
+                                                                تلفن</label><input type="number"
+                                                                class="form-control" id="quantity1"></div>
+                                                        <div class="col-md-6"><label for="inputEmail4"
+                                                                class="form-label">تاریخ تولد</label><input
+                                                                class="form-control slug-title"
+                                                                id="inputEmail4"></div>
+                                                        <div class="col-md-6"><label class="form-label">سن
+                                                            </label><input type="number" class="form-control"
+                                                                id="price1"></div>
+                                                        <div class="col-md-6"><label class="form-label">سمت
+                                                            </label><input type="number" class="form-control"
+                                                                id="quantity1"></div>
+                                                        <div class="col-md-6"><label
+                                                                class="form-label">تحصیلات</label><input
+                                                                type="number" class="form-control"
+                                                                id="quantity1"></div>
+                                                        <div class="col-md-12"><label
+                                                                class="form-label">جزییات</label><textarea
+                                                                class="form-control" rows="4"></textarea></div>
+                                                        <div class="col-md-12"><button type="submit"
+                                                                class="btn btn-primary">ثبت اطلاعات</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

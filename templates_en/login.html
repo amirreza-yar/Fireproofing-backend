@@ -1,0 +1,51 @@
+﻿{% extends "base.html" %}
+
+{% load static %}
+
+{% block section %}
+    
+    <!-- Ec login page -->
+    <section class="ec-page-content section-space-p">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="section-title">
+                        <h2 class="ec-bg-title">ورود</h2>
+                        <h2 class="ec-title">ورود</h2>
+                        <!-- <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات دیجیتال</p> -->
+                    </div>
+                </div>
+                <div class="ec-login-wrapper">
+                    <div class="ec-login-container">
+                        <div class="ec-login-form">
+                            <form action="login" method="POST">
+                                {% csrf_token %}
+                                <span class="ec-login-wrap">
+                                    <label for="id_email">نام کاربری*</label>
+                                    <input type="text" for="name" name="name" placeholder="نام کاربری خود را وارد کنید" required="">
+                                </span>
+                                <span class="ec-login-wrap">
+                                    <label for="id_password1">کلمه عبور*</label>
+                                    <input type="password" for="id_password1" name="password1" placeholder="رمز عبور خود را وارد کنید" required="">
+                                </span>
+                                <span class="ec-login-wrap ec-login-fp">
+                                    <label><a href="#">فراموشی رمز عبور ؟</a></label>
+                                </span>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <div id="field-error-message">\{{ message }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                                <span class="ec-login-wrap ec-login-btn">
+                                    <button class="btn btn-primary" type="submit">ورود</button>
+                                    <a href="{% url 'register' %}" class="btn btn-secondary">ثبت نام</a>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% load static %}
+{% extends 'admin/base.html' %}
+{% block content %}
+    <div class="ec-content-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="ec-content-wrapper">
+                    <div class="content">
+                        <div class="breadcrumb-wrapper breadcrumb-wrapper-2 d-flex" style="flex-direction: column;">
+                            <h1> تاریخچه سفارشات</h1>
+                            <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                                        class="mdi mdi-chevron-left"></i></span>تاریخچه</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card card-default">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="responsive-data-table" class="table" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>شناسه</th>
+                                                        <th>مشتری</th>
+                                                        <th>ایمیل</th>
+                                                        <th>مورد</th>
+                                                        <th>قیمت</th>
+                                                        <th>پرداخت</th>
+                                                        <th>وضعیت</th>
+                                                        <th>تاریخ</th>
+                                                        <th>فعالیت</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for order in orders %}
+                                                    <tr>
+                                                        <td>{{order.postal_code}}</td>
+                                                        <td>{{order.customer.name}}</td>
+                                                        <td><a class="__cf_email__"
+                                                                data-cfemail="315b5e595f48715449505c415d541f525e5c">{{order.customer.email}}</a>
+                                                        </td>
+                                                        <td>{{order.loaded_json_items|length}}</td>
+                                                        <td>{{order.finished_price}} تومان</td>
+                                                        <td>{% if order.is_payed %}پرداخت شده {% else %}پرداخت نشده{% endif %}</td>
+                                                        <td><span
+                                                                class="mb-2 mr-2 badge badge-secondary">
+                                                            {% if order.status == 'PN' %}
+                                                            در انتضار تایید
+                                                            {% elif order.status == 'PR' %}
+                                                            در حال آماده سازی
+                                                            {% elif order.status == 'SN' %}
+                                                            در حال ارسال
+                                                            {% elif order.status == 'RC' %}
+                                                            تحویل داده شده
+                                                            {% else %}
+                                                            لغو شده
+                                                            {% endif %}
+                                                            </span>
+                                                        </td>
+                                                        <td>{{order.ordered_date}}</td>
+                                                        <td>
+                                                            <div class="btn-group mb-1"><a href="orderdetail.html" type="button"
+                                                                    class="btn btn-outline-success">جزئیات</a>
+                                                                    <button type="button"
+                                                                    class="btn btn-outline-danger">لغو سفارش</button>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
