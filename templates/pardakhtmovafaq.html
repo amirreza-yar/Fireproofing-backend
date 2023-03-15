@@ -44,6 +44,7 @@
 
 <body>
 
+    {% if not lang %}
     <!-- Start main Section -->
     <section class="ec-404-error-page-02">
         <div class="container">
@@ -62,6 +63,29 @@
         </div>
     </section>
     <!-- End main Section -->
+    {% else %}
+
+        <!-- Start main Section -->
+        <section class="ec-404-error-page-02">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <img style="margin: 70px 0;" class="img-404" src="{% static 'images/newimg/true.png' %}" alt="" />
+
+                        <h1 class="main-title text-center">Payment was successful</h1>
+                        <h3 class="sub-title text-center">Tracking Code : 00000000</h3>
+
+                        <p class="desc-content text-center"></p>
+
+                        <a href="{% url 'index' %}">Go back</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End main Section -->
+
+    {% endif %}
+
 
     <!-- Vendor JS -->
     <script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>

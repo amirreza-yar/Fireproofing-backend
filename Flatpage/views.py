@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from CustomUser.models import UserProfile as userProfileModel
 
 def contactUs(request):
@@ -21,8 +21,23 @@ def rules(request):
 
 def index(request):
     # print(request.user)
+    print(request.session['lang'])
+    # print(request.session['lang'] == True)
+    # print(request.user.id)
     return render(request, "index.html", {"title": "فروشگاه قلان", "is_index_page": True})
 
 def error404Handler(request, exception):
     # print("I'm running!")
     return render(request, "404error.html", {"title": "ارور ۴۰۴", "is_index_page": False})
+
+def switchLang(request, pk):
+
+
+    if pk == 0:
+        request.session['lang'] = False
+    elif pk == 1:
+        request.session['lang'] = True
+
+    print("lang is:", request.session['lang'] == True)
+
+    return redirect('index')

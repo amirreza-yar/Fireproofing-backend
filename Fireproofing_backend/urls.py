@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 # from Blog import views
-from Flatpage import urls as flatPateUrls
+from Flatpage import urls as flatPageUrls
 from CustomUser import urls as UserUrls
 from Product import urls as ProductUrls
 from Blog import urls as BlogUrls
@@ -30,7 +30,7 @@ urlpatterns = [
     # path('', views.index, name='home'),
     # path('pages/', include('django.contrib.flatpages.urls')),
     path('admin/', include(AdminPanelUrls)),
-    path('', include(flatPateUrls)),
+    path('', include(flatPageUrls)),
     path('', include(UserUrls)),
     path('', include(ProductUrls)),
     path('', include(BlogUrls)),

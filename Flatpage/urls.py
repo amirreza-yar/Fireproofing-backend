@@ -12,10 +12,6 @@ urlpatterns = [
 
     ## Temporary urls, will moved to their app next...
     path('', views.index, name="index"),
-    path('', views.index, name="products"),
-    path('', views.index, name="projects"),
-    path('', views.index, name="blogs"),
-    path('', views.index, name="login"),
-    path('', views.index, name="cart"),
+    path('switch-lang/<int:pk>', views.switchLang, name="switch-lang")
 ]
 

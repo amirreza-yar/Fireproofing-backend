@@ -3,6 +3,8 @@
 
 {% block section %}
 
+
+{% if not lang %}
 <!-- Ec Shop page -->
 <section class="ec-page-content section-space-p">
     <div class="container">
@@ -178,4 +180,182 @@
 </section>
 <!-- End Shop page -->
 
+{% else %}
+
+<!-- Ec Shop page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-shop-rightside col-lg-9 col-md-12 order-lg-last order-md-first margin-b-30">
+                <!-- Shop Top Start -->
+                <div class="ec-pro-list-top d-flex">
+                    <div class="col-md-6 ec-grid-list">
+                        <div class="ec-gl-btn">
+
+                            <button class="btn btn-grid-50 active"><img src="{% static 'images/icons/grid.svg' %}"
+                                    class="svg_img gl_svg" alt="grid"></button>
+                            <button class="btn btn-list-50"><img src="{% static 'images/icons/list.svg' %}"
+                                    class="svg_img gl_svg" alt="list"></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ec-sort-select">
+
+                    </div>
+                </div>
+                <!-- Shop Top End -->
+
+                <!-- Shop content Start -->
+                <div class="shop-pro-content">
+                    <div class="shop-pro-inner">
+                        <div class="row">
+                            
+                        {% for product in products %}
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content d3 ad">
+                                <a href="{% url 'product' pk=product.pk %}">
+                                    <div class="ec-product-inner" style="cursor: pointer;" onclick="window.location.href = '/product/{{ product.pk }}'">
+                                        
+                                        
+                                        <div class="ec-pro-image-outer">
+                                            <div class="ec-pro-image">
+                                                <a href="{% url 'product' pk=product.pk %}" class="image"
+                                                    style="border-radius: 7px;">
+                                                    <img class="main-image"
+                                                        src="{{ product.image0.url }}" alt="Product">
+                                                    <img class="hover-image"
+                                                        src="{{ product.image1.url }}" alt="Product">
+                                                </a>
+                                                {% if not product.discount_percentage == 0 %}
+                                                    <span class="percentage">{{ product.discount_percentage }}%</span>
+                                                {% endif %}
+    
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="ec-pro-content">
+                                            
+                                            <h5 class="ec-pro-title"><a href="{% url 'product' pk=product.pk %}">{{ product.name }}</a> </h5>
+                                            <div class="ec-pro-rating">
+                                                {% for _ in product.rate_filled_star_counter %}
+                                                    <i class="ecicon eci-star fill"></i>
+                                                {% endfor %}
+
+                                                {% for _ in product.rate_unfilled_star_counter %}
+                                                    <i class="ecicon eci-star"></i>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="ec-pro-list-desc">{{ product.meta_description }}</div>
+                                            {% if product.price == product.new_price %}
+                                            <span class="ec-price">
+                                                <!-- <span class="old-price">2700 تومان</span> -->
+                                                <span class="new-price">{{ product.new_price }} Toman</span>
+                                            </span>
+                                            {% else %}
+                                            <span class="ec-price">
+                                                <span class="old-price">{{ product.price }} Toman</span>
+                                                <span class="new-price">{{ product.new_price }} Toman</span>
+                                            </span>
+                                            {% endif %}
+    
+                                            <div class="ec-pro-option">
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+
+
+                        </div>
+                    </div>
+                    <!-- Ec Pagination Start -->
+                    <div class="ec-pro-pagination">
+                        <span>Showing 1-12 of 21 items</span>
+                        <ul class="ec-pro-pagination-inner">
+                            <li><a class="active" href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a class="next" href="#">Next<i class="ecicon eci-angle-left"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- Ec Pagination End -->
+                </div>
+                <!--Shop content End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="ec-shop-leftside col-lg-3 col-md-12 order-lg-first order-md-last">
+                <div id="shop_sidebar" style="margin-right: 0vw !important;margin-left: 3vw;">
+                    <div class="ec-sidebar-heading">
+                        <h1>Filtered products</h1>
+                    </div>
+                    <div class="ec-sidebar-wrap">
+                        <!-- Sidebar Category Block -->
+                        <div class="ec-sidebar-block">
+                            <div class="ec-sb-title">
+                                <h3 class="ec-sidebar-title">Categories</h3>
+                            </div>
+                            <div class="ec-sb-block-content">
+                                <ul>
+                                    <li>
+                                        <div class="ec-sidebar-block-item">
+                                            <input class="check" type="checkbox" checked="" id="c1"> <a href="#">همه</a><span
+                                                class="checked"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ec-sidebar-block-item">
+                                            <input class="check" type="checkbox" id="c2"> <a href="#">Category 1</a><span
+                                                class="checked"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ec-sidebar-block-item">
+                                            <input class="check" type="checkbox" id="c3"> <a href="#">Category 2</a><span
+                                                class="checked"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ec-sidebar-block-item">
+                                            <input class="check" type="checkbox" id="c4"> <a href="#">Category 3</a><span
+                                                class="checked"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ec-sidebar-block-item">
+                                            <input class="check" type="checkbox" id="c5"> <a href="#">Category 4</a><span
+                                                class="checked"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ec-sidebar-block-item">
+                                            <input class="check" type="checkbox" id="c6"> <a href="#">Category 5</a><span
+                                                class="checked"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ec-sidebar-block-item">
+                                            <input class="check" type="checkbox" id="c7"> <a href="#">Category 6</a><span
+                                                class="checked"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <a style="background-color: white;color: black;padding: 4px 20px;border-radius: 20px;font-weight: bold;text-align: center;display: flex;justify-content: center;align-items: center;">Apply</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="filter-sidebar-overlay"></div>
+
+
+        </div>
+    </div>
+</section>
+<!-- End Shop page -->
+
+{% endif %}
 {% endblock %}

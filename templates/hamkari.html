@@ -2,6 +2,7 @@
 
 {% block section %}
 
+{% if not lang %}
 <!-- Ec Contact Us page -->
 <section class="ec-page-content section-space-p">
     <div class="container">
@@ -71,5 +72,81 @@
         </div>
     </div>
 </section>
+
+{% else %}
+
+
+<!-- Ec Contact Us page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-common-wrapper">
+                <div class="ec-contact-leftside">
+                    <div class="ec-contact-container">
+                        <div class="ec-contact-form">
+                            <form action="#" method="post">
+                                <span class="ec-contact-wrap">
+                                    <label>first name *</label>
+                                    <input type="text" name="firstname" placeholder="Enter your first name..."
+                                        required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>Last name *</label>
+                                    <input type="text" name="lastname" placeholder="Enter your last name..."
+                                        required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>Email*</label>
+                                    <input type="email" name="email" placeholder="Enter your email" required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>Phone number*</label>
+                                    <input type="text" name="phonenumber" placeholder="Enter your phone number"
+                                        required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>Description of cooperation*</label>
+                                    <textarea name="address" placeholder="more details.."></textarea>
+                                </span>
+                                <span class="ec-contact-wrap ec-recaptcha">
+                                    <span class="g-recaptcha"
+                                        data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
+                                        data-callback="verifyRecaptchaCallback"
+                                        data-expired-callback="expiredRecaptchaCallback"></span>
+                                    <input class="form-control d-none" data-recaptcha="true" required=""
+                                        data-error="Please complete the Captcha">
+                                    <span class="help-block with-errors"></span>
+                                </span>
+                                <span class="ec-contact-wrap ec-contact-btn">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-contact-rightside">
+                    
+                    <div class="ec_contact_info">
+                        <h1 class="ec_contact_info_head">Work with us</h1>
+                        <div>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
+                                گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و
+                                برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+                                می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و
+                                متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
+                                الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید
+                                داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان
+                                مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
+                                طراحی اساسا مورد استفاده قرار گیرد.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endif %}
 
 {% endblock %}

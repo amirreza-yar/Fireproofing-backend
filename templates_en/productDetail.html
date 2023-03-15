@@ -91,14 +91,14 @@
 
                                     <div class="ec-single-price-stoke">
                                         <div class="ec-single-price">
-                                            <span class="ec-single-ps-title">کف قیمت</span>
-                                            <span class="new-price">{{ product.new_price }} تومان</span>
+                                            <span class="ec-single-ps-title">price floor</span>
+                                            <span class="new-price">{{ product.new_price }} Toman</span>
                                         </div>
                                         <div class="ec-single-stoke">
                                             {% if product.is_instock %}
-                                                <span class="ec-single-ps-title">در انبار</span>
+                                                <span class="ec-single-ps-title">in stock</span>
                                             {% else %}
-                                                <span class="ec-single-ps-title">ناموجود</span>
+                                                <span class="ec-single-ps-title">unavailable</span>
                                             {% endif %}
                                             <span class="ec-single-sku">شناسه#: {{ product.pk }} </span>
                                         </div>
@@ -111,7 +111,7 @@
                                                 <input type="number" name="quantity" min="1" value="{{ product_quantity }}" style="width: 70px;border: 1px solid rgba(204, 204, 204, 0.445); border-radius: 20px;" />
                                             </div>
                                             <div class="ec-single-cart ">
-                                                <button class="btn btn-primary" type="submit" style="margin-top: 1vh;">افزودن به سبد خرید</button>
+                                                <button class="btn btn-primary" type="submit" style="margin-top: 1vh;">Add to cart</button>
                                             </div>
                                                 
                                         </div>
@@ -130,12 +130,12 @@
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-bs-toggle="tab"
-                                        data-bs-target="#ec-spt-nav-details" role="tablist">مشخصات</a>
+                                        data-bs-target="#ec-spt-nav-details" role="tablist">Details</a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle="tab" data-bs-target="#ec-spt-nav-review"
-                                        role="tablist">نظرات</a>
+                                        role="tablist">Comments</a>
                                 </li>
                             </ul>
                         </div>
@@ -243,12 +243,12 @@
 
                                     </div>
                                     <div class="ec-ratting-content">
-                                        <h3>افزودن نظر</h3>
+                                        <h3>Add comment</h3>
                                         <div class="ec-ratting-form">
-                                            <form action="{% url 'makeComment' pk=product.pk %}" method="POST">
+                                            <form action="{% url 'makeComment' pk=service.pk %}" method="POST">
                                                 {% csrf_token %}
                                                 <div class="ec-ratting-star">
-                                                    <span>امتیاز شما:</span>
+                                                    <span>Your rating:</span>
                                                     <div class="ec-t-review-rating">
                                                         <i class="ecicon eci-star fill"></i>
                                                         <i class="ecicon eci-star fill"></i>
@@ -258,16 +258,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="ec-ratting-input">
-                                                    <input name="commenter_name" placeholder="نام" type="text">
+                                                    <input name="commenter_name" placeholder="Name" type="text">
                                                 </div>
                                                 <div class="ec-ratting-input">
-                                                    <input name="commenter_email" placeholder="ایمیل" type="email"
+                                                    <input name="commenter_email" placeholder="Email" type="email"
                                                         required="">
                                                 </div>
                                                 <div class="ec-ratting-input form-submit">
-                                                    <textarea name="comment" placeholder="نظر شما"></textarea>
+                                                    <textarea name="comment" placeholder="Your comment"></textarea>
                                                     <button class="btn btn-primary" type="submit"
-                                                        value="Submit">ارسال</button>
+                                                        value="Submit">Submit</button>
                                                 </div>
                                             </form>
                                         </div>

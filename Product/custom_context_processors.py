@@ -13,3 +13,15 @@ def cart_context(request):
         'cart': cart,
         'cart_items': cart_items,
     }
+
+def lang_context(request):
+
+    # Lang == 0 means Persian and Lang == 1 means English
+    try:
+        lang = request.session["lang"]
+    except:
+        lang = None
+    
+    return {
+        'lang': lang,
+        }

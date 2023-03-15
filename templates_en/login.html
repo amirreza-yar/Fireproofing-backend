@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="section-title">
-                        <h2 class="ec-bg-title">ورود</h2>
-                        <h2 class="ec-title">ورود</h2>
+                        <h2 class="ec-bg-title">Login</h2>
+                        <h2 class="ec-title">Login</h2>
                         <!-- <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات دیجیتال</p> -->
                     </div>
                 </div>
@@ -21,15 +21,15 @@
                             <form action="login" method="POST">
                                 {% csrf_token %}
                                 <span class="ec-login-wrap">
-                                    <label for="id_email">نام کاربری*</label>
-                                    <input type="text" for="name" name="name" placeholder="نام کاربری خود را وارد کنید" required="">
+                                    <label for="id_email">Username*</label>
+                                    <input type="text" for="name" name="name" placeholder="Enter your username" required="">
                                 </span>
                                 <span class="ec-login-wrap">
-                                    <label for="id_password1">کلمه عبور*</label>
-                                    <input type="password" for="id_password1" name="password1" placeholder="رمز عبور خود را وارد کنید" required="">
+                                    <label for="id_password1">Password*</label>
+                                    <input type="password" for="id_password1" name="password1" placeholder="Enter your password" required="">
                                 </span>
                                 <span class="ec-login-wrap ec-login-fp">
-                                    <label><a href="#">فراموشی رمز عبور ؟</a></label>
+                                    <label><a href="#">Forgot your password?</a></label>
                                 </span>
                                 {% if messages %}
                                     {% for message in messages %}
@@ -37,8 +37,8 @@
                                     {% endfor %}
                                 {% endif %}
                                 <span class="ec-login-wrap ec-login-btn">
-                                    <button class="btn btn-primary" type="submit">ورود</button>
-                                    <a href="{% url 'register' %}" class="btn btn-secondary">ثبت نام</a>
+                                    <button class="btn btn-primary" type="submit">Login</button>
+                                    <a href="{% url 'register' %}" class="btn btn-secondary">Register</a>
                                 </span>
                             </form>
                         </div>

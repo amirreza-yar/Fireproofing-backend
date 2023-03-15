@@ -22,18 +22,18 @@
                             {{ blog.body|safe }}
                         </div>
                         <div class="ec-blog-tags">
-                            <a href="blog-left-sidebar.html">سبک زندگی,</a>
-                            <a href="blog-left-sidebar.html"> بیرونی ,</a>
-                            <a href="blog-left-sidebar.html"> خانگی ,</a>
-                            <a href="blog-left-sidebar.html"> ورزشی ,</a>
-                            <a href="blog-left-sidebar.html"> بلاگ ,</a>
-                            <a href="blog-left-sidebar.html">ایده</a>
+                            <a href="blog-left-sidebar.html">life style,</a>
+                            <a href="blog-left-sidebar.html">external,</a>
+                            <a href="blog-left-sidebar.html">Homemade ,</a>
+                            <a href="blog-left-sidebar.html">sports,</a>
+                            <a href="blog-left-sidebar.html">blog ,</a>
+                            <a href="blog-left-sidebar.html">Ideas</a>
                         </div>
                         <hr >
                         <div class="ec-blog-comments">
                             <div class="ec-blog-cmt-preview">
                                 <div class="ec-blog-comment-wrapper mt-55">
-                                    <h4 class="ec-blog-dec-title">نظرات : 05</h4>
+                                    <h4 class="ec-blog-dec-title">Comments : 05</h4>
                                     {% for comment in blog_comments %}
                                     <div class="ec-single-comment-wrapper mt-35">
                                         <!-- <div class="ec-blog-user-img">
@@ -70,25 +70,25 @@
                             </div>
                             <div class="ec-blog-cmt-form">
                                 <div class="ec-blog-reply-wrapper mt-50">
-                                    <h4 class="ec-blog-dec-title">نظر بگذارید </h4>
+                                    <h4 class="ec-blog-dec-title">Leave a comment</h4>
 
                                     <form class="ec-blog-form" action="{% url 'makeBlogComment' pk=blog.pk %}" method="POST">
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="ec-leave-form">
-                                                    <input type="text" name="commenter_name" placeholder="نام کامل">
+                                                    <input type="text" name="commenter_name" placeholder="Full name">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="ec-leave-form">
-                                                    <input type="email" name="commenter_email" placeholder="آدرس ایمیل ">
+                                                    <input type="email" name="commenter_email" placeholder="Email">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="ec-text-leave">
-                                                    <textarea placeholder="پیام" name="comment"></textarea>
-                                                    <button class="btn btn-primary" type="submit" value="Submit">ارسال</button>
+                                                    <textarea placeholder="Message" name="comment"></textarea>
+                                                    <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
                                                 </div>
                                             </div>
                                         </div>

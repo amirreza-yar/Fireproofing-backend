@@ -9,8 +9,8 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="section-title">
-                    <h2 class="ec-bg-title">ویرایش اطلاعات</h2>
-                    <h2 class="ec-title">ویرایش اطلاعات</h2>
+                    <h2 class="ec-bg-title">editing information</h2>
+                    <h2 class="ec-title">editing information</h2>
                     <!-- <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات ضد حریق</p> -->
                 </div>
             </div>
@@ -20,29 +20,29 @@
                         <form action="{% url 'editProfile' %}" method="POST">
                             {% csrf_token %}
                             <span class="ec-register-wrap">
-                                <label for="{{ register_form.name.id_for_label }}">نام و نام خانوادگی *</label>
-                                <input type="text" name="name" placeholder="نام خود را وارد کنید" required="">
+                                <label for="{{ register_form.name.id_for_label }}">Full name *</label>
+                                <input type="text" name="name" placeholder="Enter your name" required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.email.id_for_label }}">ایمیل*</label>
-                                <input type="email" for="email" name="email" placeholder="وارد کردن ایمیل " required="">
+                                <label for="{{ register_form.email.id_for_label }}">Email*</label>
+                                <input type="email" for="email" name="email" placeholder="Enter email " required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.phone_number.id_for_label }}">شماره تماس*</label>
-                                <input type="text" name="phone_number" placeholder="شماره تماس خود را وارد کنید" required="">
+                                <label for="{{ register_form.phone_number.id_for_label }}">Phone number*</label>
+                                <input type="text" name="phone_number" placeholder="Enter your phone number" required="">
                             </span>
                             <span class="ec-register-wrap">
-                                <label for="{{ register_form.address.id_for_label }}">آدرس</label>
-                                <input type="text" name="address" placeholder="آدرس خط اول">
+                                <label for="{{ register_form.address.id_for_label }}">Address</label>
+                                <input type="text" name="address" placeholder="First line address">
                             </span>
                             
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.postal_code.id_for_label }}">کد پستی</label>
-                                <input type="text" name="postal_code" placeholder="کدپستی">
+                                <label for="{{ register_form.postal_code.id_for_label }}">Postal code</label>
+                                <input type="text" name="postal_code" placeholder="Postal code">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.city.id_for_label }}">شهر</label>
-                                <input type="text" name="postalcode" placeholder="شهر">
+                                <label for="{{ register_form.city.id_for_label }}">City</label>
+                                <input type="text" name="postalcode" placeholder="City">
                             </span>
 
                             
@@ -61,7 +61,7 @@
                                 {% endfor %}
                             {% endfor %}
                             <span class="ec-register-wrap ec-register-btn">
-                                <button class="btn btn-primary" type="submit">ویرایش اطلاعات</button>
+                                <button class="btn btn-primary" type="submit">Editing information</button>
                                 <!-- <input class="btn btn-primary" type="submit" placeholder="ویرایش اطلاعات"> -->
                             </span>
 

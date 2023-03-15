@@ -1,868 +1,1206 @@
 ﻿{% extends "base.html" %}
 {% load static %}
+
 {% block section %}
 
-<!-- Main Slider Start -->
-<div class="sticky-header-next-sec ec-main-slider section section-space-pb">
-    <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
-        <!-- Main slider -->
-        <div class="swiper-wrapper">
-            <style>
-                /* #i1 {
-                    background-image: url(./{% static 'images/newimg/2.jpg);
-                    width: 100%;
-                }
+    {% if not lang %}
 
-                #i2 {
-                    background-image: url(./{% static 'images/newimg/wp10676104.jpg);
-                    width: 100%;
-                } */
-            </style>
-                <div class="ec-slide-item swiper-slide d-flex ec-slide-1 i1-background" id="i1">
-                    <div class="container align-self-center">
-                        <div class="">
-                            <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                                <div class="ec-slide-content slider-animation">
-                                    <h1 class="ec-slide-title "> مجموعه جدید فروش تابستان </h1>
-                                    <h2 class="ec-slide-stitle ">پیشنهاد خرید</h2>
-                                    <h2 class="ec-slide-sstitle">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ</h2>
+        <!-- Main Slider Start -->
+        <div class="sticky-header-next-sec ec-main-slider section section-space-pb">
+            <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
+                <!-- Main slider -->
+                <div class="swiper-wrapper">
+                        <div class="ec-slide-item swiper-slide d-flex ec-slide-1 i1-background" id="i1">
+                            <div class="container align-self-center">
+                                <div class="">
+                                    <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                        <div class="ec-slide-content slider-animation">
+                                            <h1 class="ec-slide-title "> مجموعه جدید فروش تابستان </h1>
+                                            <h2 class="ec-slide-stitle ">پیشنهاد خرید</h2>
+                                            <h2 class="ec-slide-sstitle">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                                چاپ</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-slide-item swiper-slide d-flex ec-slide-1 i2-background" id="i2">
+                            <div class="container align-self-center">
+                                <div class="">
+                                    <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                        <div class="ec-slide-content slider-animation">
+                                            <h1 class="ec-slide-title "> کپسول اتش نشانی </h1>
+                                            <h2 class="ec-slide-stitle ">پیشنهاد خرید</h2>
+                                            <h2 class="ec-slide-sstitle">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                                چاپ</h2>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="swiper-pagination swiper-pagination-white"></div>
+                    <div class="swiper-buttons">
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
                 </div>
-                <div class="ec-slide-item swiper-slide d-flex ec-slide-1 i2-background" id="i2">
-                    <div class="container align-self-center">
-                        <div class="">
-                            <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                                <div class="ec-slide-content slider-animation">
-                                    <h1 class="ec-slide-title "> کپسول اتش نشانی </h1>
-                                    <h2 class="ec-slide-stitle ">پیشنهاد خرید</h2>
-                                    <h2 class="ec-slide-sstitle">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                        چاپ</h2>
+            </div>
+            <!-- Main Slider End -->
+
+
+        <!-- Product tab Area Start -->
+        <!-- Product tab Area Start -->
+            <section class="section ec-product-tab section-space-p">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="section-title">
+                                <h2 class="ec-bg-title">دسته بندی محصولات</h2>
+                                <h2 class="ec-title">دسته بندی محصولات</h2>
+                                <!-- <p style="text-align:justify !important;" class="sub-title"> مرور مجموعه ای از محصولات برتر </p> -->
+                            </div>
+                        </div>
+
+                        <!-- Tab Start -->
+                        <div class="col-md-12 text-center">
+                            <ul class="ec-pro-tab-nav nav justify-content-center">
+                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab"
+                                        href="#tab-pro-for-all">همه</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-kaf">حاوی کف</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-water">مبتنی بر
+                                        آب</a></li>
+                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-pudr">حاوی پودر
+                                        خشک</a></li>
+                            </ul>
+                        </div>
+                        <!-- Tab End -->
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="tab-content">
+                                <!-- 1st Product tab start -->
+                                <div class="tab-pane fade show active" id="tab-pro-for-all">
+                                    <div class="row">
+                                        <!-- Product Content -->
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                            data-animation="fadeIn">
+                                            <div class="ec-product-inner" style="cursor: pointer;"
+                                                onclick="window.location.href = '/productDetail.html'">
+
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="  " class="image">
+                                                            <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                                alt="Product">
+                                                            <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                                alt="Product">
+                                                        </a>
+                                                        <span class="percentage">20%</span>
+
+                                                        <div class="ec-pro-actions">
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                        </a></h5>
+                                                    <div class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star"></i>
+                                                    </div>
+                                                    <span class="ec-price">
+                                                        <span class="old-price">2700 تومان</span>
+                                                        <span class="new-price">2200 تومان</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                            data-animation="fadeIn">
+                                            <div class="ec-product-inner" style="cursor: pointer;"
+                                                onclick="window.location.href = '/productDetail.html'">
+
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="  " class="image">
+                                                            <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                                alt="Product">
+                                                            <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                                alt="Product">
+                                                        </a>
+
+                                                        <div class="ec-pro-actions">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a href="  ">عنوان</a>
+                                                    </h5>
+                                                    <div class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star"></i>
+                                                    </div>
+                                                    <span class="ec-price">
+                                                        <span class="old-price">1200 تومان</span>
+                                                        <span class="new-price">1000 تومان</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
+                                <!-- ec 1st Product tab end -->
+                                <!-- ec 2nd Product tab start -->
+                                <div class="tab-pane fade" id="tab-pro-kaf">
+                                    <div class="row">
+                                        <!-- Product Content -->
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                            <div class="ec-product-inner" style="cursor: pointer;"
+                                                onclick="window.location.href = '/productDetail.html'">
+
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="  " class="image">
+                                                            <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                                alt="Product">
+                                                            <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                                alt="Product">
+                                                        </a>
+                                                        <span class="percentage">20%</span>
+
+                                                        <div class="ec-pro-actions">
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a href="  ">عنوان </a></h5>
+                                                    <div class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star"></i>
+                                                    </div>
+                                                    <span class="ec-price">
+                                                        <span class="old-price">3000 تومان</span>
+                                                        <span class="new-price">2500 تومان</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                            <div class="ec-product-inner" style="cursor: pointer;"
+                                                onclick="window.location.href = '/productDetail.html'">
+
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="  " class="image">
+                                                            <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                                alt="Product">
+                                                            <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                                alt="Product">
+                                                        </a>
+                                                        <span class="percentage">20%</span>
+                                                        <span class="flags">
+                                                            <span class="sale">پرفروش</span>
+                                                        </span>
+
+                                                        <div class="ec-pro-actions">
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
+                                                    <div class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star"></i>
+                                                    </div>
+                                                    <span class="ec-price">
+                                                        <span class="old-price">1200 تومان</span>
+                                                        <span class="new-price">1000 تومان</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- ec 2nd Product tab end -->
+                                <!-- ec 3rd Product tab start -->
+                                <div class="tab-pane fade" id="tab-pro-water">
+                                    <div class="row">
+                                        <!-- Product Content -->
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                            <div class="ec-product-inner" style="cursor: pointer;"
+                                                onclick="window.location.href = '/productDetail.html'">
+
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="  " class="image">
+                                                            <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                                alt="Product">
+                                                            <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                                alt="Product">
+                                                        </a>
+                                                        <span class="percentage">20%</span>
+                                                        <span class="flags">
+                                                            <span class="sale">پرفروش</span>
+                                                        </span>
+
+                                                        <div class="ec-pro-actions">
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a href="  ">عنوان</a>
+                                                    </h5>
+                                                    <div class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star"></i>
+                                                    </div>
+                                                    <span class="ec-price">
+                                                        <span class="old-price">3000 تومان</span>
+                                                        <span class="new-price">2500 تومان</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- ec 3rd Product tab end -->
+                                <!-- ec 4th Product tab start -->
+                                <div class="tab-pane fade" id="tab-pro-pudr">
+                                    <div class="row">
+                                        <!-- Product Content -->
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                            <div class="ec-product-inner">
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="  " class="image">
+                                                            <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                                alt="Product">
+                                                            <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                                alt="Product">
+                                                        </a>
+                                                        <span class="percentage">20%</span>
+                                                        <span class="flags">
+                                                            <span class="sale">پرفروش</span>
+                                                        </span>
+
+                                                        <div class="ec-pro-actions">
+
+                                                            <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                    src="{% static 'images/icons/cart.svg' %}" class="svg_img pro_svg"
+                                                                    alt=""> افزودن به کارت </button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
+                                                    <div class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star"></i>
+                                                    </div>
+                                                    <span class="ec-price">
+                                                        <span class="old-price">4000 تومان</span>
+                                                        <span class="new-price">3000 تومان</span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- ec 4th Product tab end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <!-- ec Product tab Area End -->
+
+        <!--  Feature & Special Section Start -->
+        <section class="section ec-fre-spe-section section-space-p">
+            <div class="container">
+                <div class="row">
+                    <div class="ec-fre-section col-lg-6 col-md-6 col-sm-6 margin-b-30" data-animation="slideInRight">
+                        <div class="col-md-12 text-left">
+                            <div class="section-title">
+                                <h2 class="ec-bg-title">محصولات تخفیف دار</h2>
+                                <h2 class="ec-title">محصولات تخفیف دار</h2>
+                            </div>
+                        </div>
+
+                        <div class="ec-fre-products">
+                            <div class="ec-fs-product">
+                                <div class="ec-fs-pro-inner">
+                                    <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                        <div class="ec-fs-pro-image">
+                                            <a href="  " class="image"><img class="main-image"
+                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                            <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                                data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                    src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                        <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                            </a>
+                                        </h5>
+                                        <div class="ec-fs-pro-rating">
+                                            <span class="ec-fs-rating-icon">
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star"></i>
+                                            </span>
+                                            <span class="ec-fs-rating-text">4 نظر</span>
+                                        </div>
+                                        <div class="ec-fs-price">
+                                            <span class="new-price">4800 تومان</span>
+                                        </div>
+
+                                        <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ و با استفاده از طراحان گرافیک است
+                                        </div>
+                                        <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                            <a href="#" class="btn btn-lg btn-primary">خرید</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ec-fs-product">
+                                <div class="ec-fs-pro-inner">
+                                    <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                        <div class="ec-fs-pro-image">
+                                            <a href="  " class="image"><img class="main-image"
+                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                            <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                                data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                    src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                        <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                            </a>
+                                        </h5>
+                                        <div class="ec-fs-pro-rating">
+                                            <span class="ec-fs-rating-icon">
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star"></i>
+                                            </span>
+                                            <span class="ec-fs-rating-text">4 نظر</span>
+                                        </div>
+                                        <div class="ec-fs-price">
+                                            <span class="new-price">4800 تومان</span>
+                                        </div>
+
+                                        <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ و با استفاده از طراحان گرافیک است
+                                        </div>
+                                        <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                            <a href="#" class="btn btn-lg btn-primary">خرید</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Special Section Start -->
+                    <div class="ec-spe-section col-lg-6 col-md-6 col-sm-6" data-animation="slideInLeft">
+                        <div class="col-md-12 text-left">
+                            <div class="section-title">
+                                <h2 class="ec-bg-title">محصولات اخیر</h2>
+                                <h2 class="ec-title">محصولات اخیر</h2>
+                            </div>
+                        </div>
+
+                        <div class="ec-spe-products">
+                            <div class="ec-fs-product">
+                                <div class="ec-fs-pro-inner">
+                                    <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                        <div class="ec-fs-pro-image">
+                                            <a href="  " class="image"><img class="main-image"
+                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                            <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                                data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                    src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                        <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                            </a>
+                                        </h5>
+                                        <div class="ec-fs-pro-rating">
+                                            <span class="ec-fs-rating-icon">
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star"></i>
+                                            </span>
+                                            <span class="ec-fs-rating-text">4 نظر</span>
+                                        </div>
+                                        <div class="ec-fs-price">
+                                            <span class="new-price">4800 تومان</span>
+                                        </div>
+
+                                        <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ و با استفاده از طراحان گرافیک است
+                                        </div>
+                                        <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                            <a href="#" class="btn btn-lg btn-primary">خرید</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ec-fs-product">
+                                <div class="ec-fs-pro-inner">
+                                    <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                        <div class="ec-fs-pro-image">
+                                            <a href="  " class="image"><img class="main-image"
+                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                            <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                                data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                    src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                        <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                            </a>
+                                        </h5>
+                                        <div class="ec-fs-pro-rating">
+                                            <span class="ec-fs-rating-icon">
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star fill"></i>
+                                                <i class="ecicon eci-star"></i>
+                                            </span>
+                                            <span class="ec-fs-rating-text">4 نظر</span>
+                                        </div>
+                                        <div class="ec-fs-price">
+                                            <span class="new-price">4800 تومان</span>
+                                        </div>
+
+                                        <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                            چاپ و با استفاده از طراحان گرافیک است
+                                        </div>
+                                        <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                            <a href="#" class="btn btn-lg btn-primary">خرید</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Special Section End -->
+
+                    <!--  Feature Section Start -->
+
+
+                    <!--  Feature Section End -->
+                </div>
+            </div>
+        </section>
+        <!-- Feature & Special Section End -->
+
+        <!--  services Section Start -->
+        <section class="section ec-services-section section-space-p">
+            <h2 class="d-none">خدمات</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="{% static 'images/icons/service_1.svg' %}" class="svg_img" alt="">
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2> ارسال رایگان </h2>
+                                <p> ارسال رایگان برای سفارشات بالای 200 هزارتومان</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="{% static 'images/icons/service_2.svg' %}" class="svg_img" alt="">
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2> پشتیبانی </h2>
+                                <p>دسترسی به پشتیبان در سریع ترین زمان ممکن</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="{% static 'images/icons/service_3.svg' %}" class="svg_img" alt="">
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2>ضمانت بازگشت</h2>
+                                <p>امکان مرجوع کرددن کالا در بازه زمانی حداکثر ۱۰ روزه </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="{% static 'images/icons/service_4.svg' %}" class="svg_img" alt="">
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2>پرداخت امن</h2>
+                                <p>با ما در تماس باشید </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination swiper-pagination-white"></div>
-            <div class="swiper-buttons">
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+        </section>
+
+    {% else %}
+
+    <!-- Main Slider Start -->
+    <div class="sticky-header-next-sec ec-main-slider section section-space-pb">
+        <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
+            <!-- Main slider -->
+            <div class="swiper-wrapper">
+                    <div class="ec-slide-item swiper-slide d-flex ec-slide-1 i1-background" id="i1">
+                        <div class="container align-self-center">
+                            <div class="">
+                                <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                    <div class="ec-slide-content slider-animation">
+                                        <h1 class="ec-slide-title ">New summer sale collection</h1>
+                                        <h2 class="ec-slide-stitle ">Purchase offer</h2>
+                                        <h2 class="ec-slide-sstitle">Lorem Ipsum is a fake text with an unintelligible simplicity of production of industry
+                                            چاپ</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec-slide-item swiper-slide d-flex ec-slide-1 i2-background" id="i2">
+                        <div class="container align-self-center">
+                            <div class="">
+                                <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                    <div class="ec-slide-content slider-animation">
+                                        <h1 class="ec-slide-title ">Fire extinguisher</h1>
+                                        <h2 class="ec-slide-stitle ">Purchase offer</h2>
+                                        <h2 class="ec-slide-sstitle">Lorem Ipsum is a fake text with an unintelligible simplicity of production of industry
+                                            چاپ</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Main Slider End -->
+        <!-- Main Slider End -->
 
 
-<!-- Product tab Area Start -->
-<!-- Product tab Area Start -->
-    <section class="section ec-product-tab section-space-p">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="section-title">
-                        <h2 class="ec-bg-title">دسته بندی محصولات</h2>
-                        <h2 class="ec-title">دسته بندی محصولات</h2>
-                        <!-- <p style="text-align:justify !important;" class="sub-title"> مرور مجموعه ای از محصولات برتر </p> -->
+    <!-- Product tab Area Start -->
+    <!-- Product tab Area Start -->
+        <section class="section ec-product-tab section-space-p">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="section-title">
+                            <h2 class="ec-bg-title">products categorization</h2>
+                            <h2 class="ec-title">products categorization</h2>
+                            <!-- <p style="text-align:justify !important;" class="sub-title"> مرور مجموعه ای از محصولات برتر </p> -->
+                        </div>
+                    </div>
+
+                    <!-- Tab Start -->
+                    <div class="col-md-12 text-center">
+                        <ul class="ec-pro-tab-nav nav justify-content-center">
+                            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab"
+                                    href="#tab-pro-for-all">All</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-kaf">Contains foam</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-water">Water based</a></li>
+                            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-pudr">Contains dry powder</a></li>
+                        </ul>
+                    </div>
+                    <!-- Tab End -->
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="tab-content">
+                            <!-- 1st Product tab start -->
+                            <div class="tab-pane fade show active" id="tab-pro-for-all">
+                                <div class="row">
+                                    <!-- Product Content -->
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn">
+                                        <div class="ec-product-inner" style="cursor: pointer;"
+                                            onclick="window.location.href = '/productDetail.html'">
+
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                            alt="Product">
+                                                        <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                            alt="Product">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 Toman</span>
+                                                    <span class="new-price">2200 Toman</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn">
+                                        <div class="ec-product-inner" style="cursor: pointer;"
+                                            onclick="window.location.href = '/productDetail.html'">
+
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                            alt="Product">
+                                                        <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                            alt="Product">
+                                                    </a>
+
+                                                    <div class="ec-pro-actions">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان</a>
+                                                </h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">1200 Toman</span>
+                                                    <span class="new-price">1000 Toman</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- ec 1st Product tab end -->
+                            <!-- ec 2nd Product tab start -->
+                            <div class="tab-pane fade" id="tab-pro-kaf">
+                                <div class="row">
+                                    <!-- Product Content -->
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                        <div class="ec-product-inner" style="cursor: pointer;"
+                                            onclick="window.location.href = '/productDetail.html'">
+
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                            alt="Product">
+                                                        <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                            alt="Product">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">3000 Toman</span>
+                                                    <span class="new-price">2500 Toman</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                        <div class="ec-product-inner" style="cursor: pointer;"
+                                            onclick="window.location.href = '/productDetail.html'">
+
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                            alt="Product">
+                                                        <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                            alt="Product">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+                                                    <span class="flags">
+                                                        <span class="sale">best seller</span>
+                                                    </span>
+
+                                                    <div class="ec-pro-actions">
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">1200 Toman</span>
+                                                    <span class="new-price">1000 Toman</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- ec 2nd Product tab end -->
+                            <!-- ec 3rd Product tab start -->
+                            <div class="tab-pane fade" id="tab-pro-water">
+                                <div class="row">
+                                    <!-- Product Content -->
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                        <div class="ec-product-inner" style="cursor: pointer;"
+                                            onclick="window.location.href = '/productDetail.html'">
+
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                            alt="Product">
+                                                        <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                            alt="Product">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+                                                    <span class="flags">
+                                                        <span class="sale">best seller</span>
+                                                    </span>
+
+                                                    <div class="ec-pro-actions">
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان</a>
+                                                </h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">3000 Toman</span>
+                                                    <span class="new-price">2500 Toman</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- ec 3rd Product tab end -->
+                            <!-- ec 4th Product tab start -->
+                            <div class="tab-pane fade" id="tab-pro-pudr">
+                                <div class="row">
+                                    <!-- Product Content -->
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
+                                                            alt="Product">
+                                                        <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
+                                                            alt="Product">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+                                                    <span class="flags">
+                                                        <span class="sale">best seller</span>
+                                                    </span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}" class="svg_img pro_svg"
+                                                                alt="">Add to cart</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">4000 Toman</span>
+                                                    <span class="new-price">3000 Toman</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- ec 4th Product tab end -->
+                        </div>
                     </div>
                 </div>
-
-                <!-- Tab Start -->
-                <div class="col-md-12 text-center">
-                    <ul class="ec-pro-tab-nav nav justify-content-center">
-                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab"
-                                href="#tab-pro-for-all">همه</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-kaf">حاوی کف</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-water">مبتنی بر
-                                آب</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-pudr">حاوی پودر
-                                خشک</a></li>
-                    </ul>
-                </div>
-                <!-- Tab End -->
             </div>
+        </section>
+    <!-- ec Product tab Area End -->
+
+    <!--  Feature & Special Section Start -->
+    <section class="section ec-fre-spe-section section-space-p">
+        <div class="container">
             <div class="row">
-                <div class="col">
-                    <div class="tab-content">
-                        <!-- 1st Product tab start -->
-                        <div class="tab-pane fade show active" id="tab-pro-for-all">
-                            <div class="row">
-                                <!-- Product Content -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                    data-animation="fadeIn">
-                                    <div class="ec-product-inner" style="cursor: pointer;"
-                                        onclick="window.location.href = '/productDetail.html'">
+                <div class="ec-fre-section col-lg-6 col-md-6 col-sm-6 margin-b-30" data-animation="slideInRight">
+                    <div class="col-md-12 text-left">
+                        <div class="section-title">
+                            <h2 class="ec-bg-title">Discounted products</h2>
+                            <h2 class="ec-title">Discounted products</h2>
+                        </div>
+                    </div>
 
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="  " class="image">
-                                                    <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
-                                                        alt="Product">
-                                                    <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
-                                                        alt="Product">
-                                                </a>
-                                                <span class="percentage">20%</span>
-
-                                                <div class="ec-pro-actions">
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                </a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">2700 تومان</span>
-                                                <span class="new-price">2200 تومان</span>
-                                            </span>
-
-                                        </div>
+                    <div class="ec-fre-products">
+                        <div class="ec-fs-product">
+                            <div class="ec-fs-pro-inner">
+                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                    <div class="ec-fs-pro-image">
+                                        <a href="  " class="image"><img class="main-image"
+                                                src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                        <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                            data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                alt=""></a>
                                     </div>
                                 </div>
+                                <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                    <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                        </a>
+                                    </h5>
+                                    <div class="ec-fs-pro-rating">
+                                        <span class="ec-fs-rating-icon">
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star"></i>
+                                        </span>
+                                        <span class="ec-fs-rating-text">4 Comments</span>
+                                    </div>
+                                    <div class="ec-fs-price">
+                                        <span class="new-price">4800 Toman</span>
+                                    </div>
 
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                    data-animation="fadeIn">
-                                    <div class="ec-product-inner" style="cursor: pointer;"
-                                        onclick="window.location.href = '/productDetail.html'">
-
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="  " class="image">
-                                                    <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
-                                                        alt="Product">
-                                                    <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
-                                                        alt="Product">
-                                                </a>
-
-                                                <div class="ec-pro-actions">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="  ">عنوان</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">1200 تومان</span>
-                                                <span class="new-price">1000 تومان</span>
-                                            </span>
-
-                                        </div>
+                                    <div class="ec-fs-pro-desc">Lorem Epsom is a mock text with an incomprehensible simplicity produced by the printing industry and used by graphic designers
+                                    </div>
+                                    <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                        <a href="#" class="btn btn-lg btn-primary">Buy</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        <!-- ec 1st Product tab end -->
-                        <!-- ec 2nd Product tab start -->
-                        <div class="tab-pane fade" id="tab-pro-kaf">
-                            <div class="row">
-                                <!-- Product Content -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                    <div class="ec-product-inner" style="cursor: pointer;"
-                                        onclick="window.location.href = '/productDetail.html'">
-
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="  " class="image">
-                                                    <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
-                                                        alt="Product">
-                                                    <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
-                                                        alt="Product">
-                                                </a>
-                                                <span class="percentage">20%</span>
-
-                                                <div class="ec-pro-actions">
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="  ">عنوان </a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">3000 تومان</span>
-                                                <span class="new-price">2500 تومان</span>
-                                            </span>
-
-                                        </div>
+                        <div class="ec-fs-product">
+                            <div class="ec-fs-pro-inner">
+                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                    <div class="ec-fs-pro-image">
+                                        <a href="  " class="image"><img class="main-image"
+                                                src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                        <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                            data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                alt=""></a>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                    <div class="ec-product-inner" style="cursor: pointer;"
-                                        onclick="window.location.href = '/productDetail.html'">
+                                <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                    <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                        </a>
+                                    </h5>
+                                    <div class="ec-fs-pro-rating">
+                                        <span class="ec-fs-rating-icon">
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star"></i>
+                                        </span>
+                                        <span class="ec-fs-rating-text">4 Comments</span>
+                                    </div>
+                                    <div class="ec-fs-price">
+                                        <span class="new-price">4800 Toman</span>
+                                    </div>
 
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="  " class="image">
-                                                    <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
-                                                        alt="Product">
-                                                    <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
-                                                        alt="Product">
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="sale">پرفروش</span>
-                                                </span>
-
-                                                <div class="ec-pro-actions">
-
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">1200 تومان</span>
-                                                <span class="new-price">1000 تومان</span>
-                                            </span>
-
-                                        </div>
+                                    <div class="ec-fs-pro-desc">Lorem Epsom is a mock text with an incomprehensible simplicity produced by the printing industry and used by graphic designers
+                                    </div>
+                                    <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                        <a href="#" class="btn btn-lg btn-primary">Buy</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        <!-- ec 2nd Product tab end -->
-                        <!-- ec 3rd Product tab start -->
-                        <div class="tab-pane fade" id="tab-pro-water">
-                            <div class="row">
-                                <!-- Product Content -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                    <div class="ec-product-inner" style="cursor: pointer;"
-                                        onclick="window.location.href = '/productDetail.html'">
+                    </div>
+                </div>
+                <!--  Special Section Start -->
+                <div class="ec-spe-section col-lg-6 col-md-6 col-sm-6" data-animation="slideInLeft">
+                    <div class="col-md-12 text-left">
+                        <div class="section-title">
+                            <h2 class="ec-bg-title">Recent products</h2>
+                            <h2 class="ec-title">Recent products</h2>
+                        </div>
+                    </div>
 
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="  " class="image">
-                                                    <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
-                                                        alt="Product">
-                                                    <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
-                                                        alt="Product">
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="sale">پرفروش</span>
-                                                </span>
-
-                                                <div class="ec-pro-actions">
-
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="  ">عنوان</a>
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">3000 تومان</span>
-                                                <span class="new-price">2500 تومان</span>
-                                            </span>
-
-                                        </div>
+                    <div class="ec-spe-products">
+                        <div class="ec-fs-product">
+                            <div class="ec-fs-pro-inner">
+                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                    <div class="ec-fs-pro-image">
+                                        <a href="  " class="image"><img class="main-image"
+                                                src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                        <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                            data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                alt=""></a>
                                     </div>
                                 </div>
+                                <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                    <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                        </a>
+                                    </h5>
+                                    <div class="ec-fs-pro-rating">
+                                        <span class="ec-fs-rating-icon">
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star"></i>
+                                        </span>
+                                        <span class="ec-fs-rating-text">4 Comments</span>
+                                    </div>
+                                    <div class="ec-fs-price">
+                                        <span class="new-price">4800 Toman</span>
+                                    </div>
 
-                            </div>
-                        </div>
-                        <!-- ec 3rd Product tab end -->
-                        <!-- ec 4th Product tab start -->
-                        <div class="tab-pane fade" id="tab-pro-pudr">
-                            <div class="row">
-                                <!-- Product Content -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="  " class="image">
-                                                    <img class="main-image" src="{% static 'images/product-image/1_1.jpg' %}"
-                                                        alt="Product">
-                                                    <img class="hover-image" src="{% static 'images/product-image/1_2.jpg' %}"
-                                                        alt="Product">
-                                                </a>
-                                                <span class="percentage">20%</span>
-                                                <span class="flags">
-                                                    <span class="sale">پرفروش</span>
-                                                </span>
-
-                                                <div class="ec-pro-actions">
-
-                                                    <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                            src="{% static 'images/icons/cart.svg' %}" class="svg_img pro_svg"
-                                                            alt=""> افزودن به کارت </button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">4000 تومان</span>
-                                                <span class="new-price">3000 تومان</span>
-                                            </span>
-
-                                        </div>
+                                    <div class="ec-fs-pro-desc">Lorem Epsom is a mock text with an incomprehensible simplicity produced by the printing industry and used by graphic designers
+                                    </div>
+                                    <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                        <a href="#" class="btn btn-lg btn-primary">Buy</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        <!-- ec 4th Product tab end -->
+                        <div class="ec-fs-product">
+                            <div class="ec-fs-pro-inner">
+                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                    <div class="ec-fs-pro-image">
+                                        <a href="  " class="image"><img class="main-image"
+                                                src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
+                                        <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
+                                            data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                                src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
+                                                alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                    <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
+                                        </a>
+                                    </h5>
+                                    <div class="ec-fs-pro-rating">
+                                        <span class="ec-fs-rating-icon">
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star"></i>
+                                        </span>
+                                        <span class="ec-fs-rating-text">4 Comments</span>
+                                    </div>
+                                    <div class="ec-fs-price">
+                                        <span class="new-price">4800 Toman</span>
+                                    </div>
+
+                                    <div class="ec-fs-pro-desc">Lorem Epsom is a mock text with an incomprehensible simplicity produced by the printing industry and used by graphic designers
+                                    </div>
+                                    <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                        <a href="#" class="btn btn-lg btn-primary">Buy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  Special Section End -->
+
+                <!--  Feature Section Start -->
+
+
+                <!--  Feature Section End -->
+            </div>
+        </div>
+    </section>
+    <!-- Feature & Special Section End -->
+
+    <!--  services Section Start -->
+    <section class="section ec-services-section section-space-p">
+        <h2 class="d-none">خدمات</h2>
+        <div class="container">
+            <div class="row">
+                <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="{% static 'images/icons/service_1.svg' %}" class="svg_img" alt="">
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>free delivery</h2>
+                            <p>Free shipping for orders over 200 thousand Toman</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="{% static 'images/icons/service_2.svg' %}" class="svg_img" alt="">
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>Support</h2>
+                            <p>Access to backup as soon as possible</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="{% static 'images/icons/service_3.svg' %}" class="svg_img" alt="">
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>Return guarantee</h2>
+                            <p>The possibility of returning the product within a maximum period of 10 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                    <div class="ec_ser_inner">
+                        <div class="ec-service-image">
+                            <img src="{% static 'images/icons/service_4.svg' %}" class="svg_img" alt="">
+                        </div>
+                        <div class="ec-service-desc">
+                            <h2>Secure payment</h2>
+                            <p>Get in touch with us</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-<!-- ec Product tab Area End -->
 
-<!-- ec Banner Section Start -->
-<!-- <section class="ec-banner section section-space-p">
-    <h2 class="d-none">بنر</h2>
-    <div class="container">
-        ec Banners Start -->
-<!--  Feature & Special Section Start -->
-<section class="section ec-fre-spe-section section-space-p">
-    <div class="container">
-        <div class="row">
-            <div class="ec-fre-section col-lg-6 col-md-6 col-sm-6 margin-b-30" data-animation="slideInRight">
-                <div class="col-md-12 text-left">
-                    <div class="section-title">
-                        <h2 class="ec-bg-title">محصولات تخفیف دار</h2>
-                        <h2 class="ec-title">محصولات تخفیف دار</h2>
-                    </div>
-                </div>
-
-                <div class="ec-fre-products">
-                    <div class="ec-fs-product">
-                        <div class="ec-fs-pro-inner">
-                            <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
-                                <div class="ec-fs-pro-image">
-                                    <a href="  " class="image"><img class="main-image"
-                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
-                                    <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
-                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
-                                            src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                            <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
-                                <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
-                                    </a>
-                                </h5>
-                                <div class="ec-fs-pro-rating">
-                                    <span class="ec-fs-rating-icon">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star"></i>
-                                    </span>
-                                    <span class="ec-fs-rating-text">4 نظر</span>
-                                </div>
-                                <div class="ec-fs-price">
-                                    <span class="new-price">4800 تومان</span>
-                                </div>
-
-                                <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                    چاپ و با استفاده از طراحان گرافیک است
-                                </div>
-                                <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
-                                    <a href="#" class="btn btn-lg btn-primary">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ec-fs-product">
-                        <div class="ec-fs-pro-inner">
-                            <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
-                                <div class="ec-fs-pro-image">
-                                    <a href="  " class="image"><img class="main-image"
-                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
-                                    <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
-                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
-                                            src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                            <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
-                                <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
-                                    </a>
-                                </h5>
-                                <div class="ec-fs-pro-rating">
-                                    <span class="ec-fs-rating-icon">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star"></i>
-                                    </span>
-                                    <span class="ec-fs-rating-text">4 نظر</span>
-                                </div>
-                                <div class="ec-fs-price">
-                                    <span class="new-price">4800 تومان</span>
-                                </div>
-
-                                <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                    چاپ و با استفاده از طراحان گرافیک است
-                                </div>
-                                <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
-                                    <a href="#" class="btn btn-lg btn-primary">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  Special Section Start -->
-            <div class="ec-spe-section col-lg-6 col-md-6 col-sm-6" data-animation="slideInLeft">
-                <div class="col-md-12 text-left">
-                    <div class="section-title">
-                        <h2 class="ec-bg-title">محصولات اخیر</h2>
-                        <h2 class="ec-title">محصولات اخیر</h2>
-                    </div>
-                </div>
-
-                <div class="ec-spe-products">
-                    <div class="ec-fs-product">
-                        <div class="ec-fs-pro-inner">
-                            <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
-                                <div class="ec-fs-pro-image">
-                                    <a href="  " class="image"><img class="main-image"
-                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
-                                    <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
-                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
-                                            src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                            <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
-                                <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
-                                    </a>
-                                </h5>
-                                <div class="ec-fs-pro-rating">
-                                    <span class="ec-fs-rating-icon">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star"></i>
-                                    </span>
-                                    <span class="ec-fs-rating-text">4 نظر</span>
-                                </div>
-                                <div class="ec-fs-price">
-                                    <span class="new-price">4800 تومان</span>
-                                </div>
-
-                                <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                    چاپ و با استفاده از طراحان گرافیک است
-                                </div>
-                                <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
-                                    <a href="#" class="btn btn-lg btn-primary">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ec-fs-product">
-                        <div class="ec-fs-pro-inner">
-                            <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
-                                <div class="ec-fs-pro-image">
-                                    <a href="  " class="image"><img class="main-image"
-                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"></a>
-                                    <a href="#" class="quickview" data-link-action="quickview" title="مشاهده"
-                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
-                                            src="{% static 'images/icons/quickview.svg' %}" class="svg_img pro_svg"
-                                            alt=""></a>
-                                </div>
-                            </div>
-                            <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
-                                <h5 class="ec-fs-pro-title"><a href="  ">عنوان محصول
-                                    </a>
-                                </h5>
-                                <div class="ec-fs-pro-rating">
-                                    <span class="ec-fs-rating-icon">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star"></i>
-                                    </span>
-                                    <span class="ec-fs-rating-text">4 نظر</span>
-                                </div>
-                                <div class="ec-fs-price">
-                                    <span class="new-price">4800 تومان</span>
-                                </div>
-
-                                <div class="ec-fs-pro-desc">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                                    چاپ و با استفاده از طراحان گرافیک است
-                                </div>
-                                <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
-                                    <a href="#" class="btn btn-lg btn-primary">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  Special Section End -->
-
-            <!--  Feature Section Start -->
-
-
-            <!--  Feature Section End -->
-        </div>
-    </div>
-</section>
-<!-- Feature & Special Section End -->
-
-<!--  services Section Start -->
-<section class="section ec-services-section section-space-p">
-    <h2 class="d-none">خدمات</h2>
-    <div class="container">
-        <div class="row">
-            <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
-                <div class="ec_ser_inner">
-                    <div class="ec-service-image">
-                        <img src="{% static 'images/icons/service_1.svg' %}" class="svg_img" alt="">
-                    </div>
-                    <div class="ec-service-desc">
-                        <h2> ارسال رایگان </h2>
-                        <p> ارسال رایگان برای سفارشات بالای 200 هزارتومان</p>
-                    </div>
-                </div>
-            </div>
-            <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
-                <div class="ec_ser_inner">
-                    <div class="ec-service-image">
-                        <img src="{% static 'images/icons/service_2.svg' %}" class="svg_img" alt="">
-                    </div>
-                    <div class="ec-service-desc">
-                        <h2> پشتیبانی </h2>
-                        <p>دسترسی به پشتیبان در سریع ترین زمان ممکن</p>
-                    </div>
-                </div>
-            </div>
-            <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
-                <div class="ec_ser_inner">
-                    <div class="ec-service-image">
-                        <img src="{% static 'images/icons/service_3.svg' %}" class="svg_img" alt="">
-                    </div>
-                    <div class="ec-service-desc">
-                        <h2>ضمانت بازگشت</h2>
-                        <p>امکان مرجوع کرددن کالا در بازه زمانی حداکثر ۱۰ روزه </p>
-                    </div>
-                </div>
-            </div>
-            <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
-                <div class="ec_ser_inner">
-                    <div class="ec-service-image">
-                        <img src="{% static 'images/icons/service_4.svg' %}" class="svg_img" alt="">
-                    </div>
-                    <div class="ec-service-desc">
-                        <h2>پرداخت امن</h2>
-                        <p>با ما در تماس باشید </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--services Section End -->
-    <!-- ec testmonial end -->
-
-
-    <!-- Newsletter Modal Start -->
-    <!-- <div id="ec-popnews-bg"></div> -->
-    <!-- <div id="ec-popnews-box">
-        <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
-        <div class="row">
-            <div class="col-md-6 disp-no-767">
-                <img src="{% static 'images/banner/newsletter.png' %}" alt="newsletter">
-            </div>
-            <div class="col-md-6">
-                <div id="ec-popnews-box-content">
-                    <h2>اشتراک خبرنامه</h2>
-                    <p>خبرنامه ما را برای دریافت خبرها و به روز رسانی آینده را دریافت کنید. </p>
-                    <form id="ec-popnews-form" action="#" method="post">
-                        <input type="email" name="newsemail" placeholder="آدرس ایمیل" required="">
-                        <button type="button" class="btn btn-primary" name="subscribe">اشتراک </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Newsletter Modal end -->
-
-    <!-- Recent Purchase Popup  -->
-    <!-- <div class="recent-purchase">
-        <img src="{% static 'images/product-image/1.jpg' %}" alt="payment image">
-        <div class="detail">
-            <p>یک خریدار جدید خرید کرد</p>
-            <h6>کفش بچگانه</h6>
-            <p>10 دقیقه قبل</p>
-        </div>
-        <a href="javascript:void(0)" class="icon-btn recent-close">×</a>
-    </div> -->
-    <!-- Recent Purchase Popup end -->
-
-    <!-- Cart Floating Button -->
-    <!-- <div class="ec-cart-float">
-        <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
-            <div class="header-icon"><img src="{% static 'images/icons/cart.svg' %}" class="svg_img header_svg" alt="cart">
-            </div>
-            <span class="ec-cart-count cart-count-lable">3</span>
-        </a>
-    </div> -->
-    <!-- Cart Floating Button end -->
-
-    <!-- Whatsapp -->
-    <!-- <div class="ec-style ec-right-bottom">
-         //Start Floating Panel Container 
-        <div class="ec-panel">
-            //Panel Header
-            <div class="ec-header">
-                <strong>کمک میخواهید؟</strong>
-                <p>چت با ما در واتساپ</p>
-            </div>
-            //Panel Content
-            <div class="ec-body">
-                <ul>
-                    //Start Single Contact List 
-                    <li>
-                        <a class="ec-list" data-number="918866774266" data-message="لطفا به من کمک کنید! محصول اشتباهی ثبت کرده ام- شماره سفارشم: #654321485">
-                            <div class="d-flex bd-highlight">
-                                 //Profile Picture 
-                                <div class="ec-img-cont">
-                                    <img src="{% static 'images/whatsapp/profile_01.jpg' %}" class="ec-user-img" alt="Profile image">
-                                    <span class="ec-status-icon"></span>
-                                </div>
-                                //Display Name & Last Seen
-                                <div class="ec-user-info">
-                                    <span>سحر دریا</span>
-                                    <p>سحر 7 دقیقه قبل رفت</p>
-                                </div>
-                                //Chat iCon 
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    //End Single Contact List
-                    //Start Single Contact List
-                    <li>
-                        <a class="ec-list" data-number="918866774266" data-message="لطفا به من کمک کنید! محصول اشتباهی ثبت کرده ام- شماره سفارشم: #654321485">
-                            <div class="d-flex bd-highlight">
-                                //Profile Picture
-                                <div class="ec-img-cont">
-                                    <img src="{% static 'images/whatsapp/profile_02.jpg' %}" class="ec-user-img" alt="Profile image">
-                                    <span class="ec-status-icon ec-online"></span>
-                                </div>
-                                //Display Name & Last Seen
-                                <div class="ec-user-info">
-                                    <span>یلدا رفیع</span>
-                                    <p>یلدا آنلاین است</p>
-                                </div>
-                                //Chat iCon
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    //End Single Contact List
-                    //Start Single Contact List 
-                    <li>
-                        <a class="ec-list" data-number="918866774266" data-message="لطفا به من کمک کنید! محصول اشتباهی ثبت کرده ام- شماره سفارشم: #654321485">
-                            <div class="d-flex bd-highlight">
-                                //Profile Picture 
-                                <div class="ec-img-cont">
-                                    <img src="{% static 'images/whatsapp/profile_03.jpg' %}" class="ec-user-img" alt="Profile image">
-                                    <span class="ec-status-icon ec-offline"></span>
-                                </div>
-                                //Display Name & Last Seen
-                                <div class="ec-user-info">
-                                    <span>نرگس هیوا</span>
-                                    <p>نرگس 30 دقیقه قبل رفت</p>
-                                </div>
-                                //Chat iCon
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    //End Single Contact List 
-                    //Start Single Contact List
-                    <li>
-                        <a class="ec-list" data-number="918866774266" data-message="لطفا به من کمک کنید! محصول اشتباهی ثبت کرده ام- شماره سفارشم: #654321485">
-                            <div class="d-flex bd-highlight">
-                                //Profile Picture 
-                                <div class="ec-img-cont">
-                                    <img src="{% static 'images/whatsapp/profile_04.jpg' %}" class="ec-user-img" alt="Profile image">
-                                    <span class="ec-status-icon ec-offline"></span>
-                                </div>
-                                //Display Name & Last Seen 
-                                <div class="ec-user-info">
-                                    <span>خدیجه مهر</span>
-                                    <p>خدیجه 50 دقیقه قبل رفت</p>
-                                </div>
-                                //Chat iCon
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                   //End Single Contact List
-                </ul>
-            </div>
-        </div>
-        //End Floating Panel Container 
-        //Start Right Floating Button
-        <div class="ec-right-bottom">
-            <div class="ec-box">
-                <div class="ec-button rotateBackward">
-                    <img class="whatsapp" src="{% static 'images/common/whatsapp.png' %}" alt="whatsapp icon">
-                </div>
-            </div>
-        </div>
-        //End Right Floating Button
-    </div> -->
-    <!-- Whatsapp end -->
-
-    <!-- Feature tools -->
-    <!-- <div class="ec-tools-sidebar-overlay"></div>
-    <div class="ec-tools-sidebar">
-        <div class="tool-title">
-            <h3>امکانات</h3>
-        </div>
-        <a href="#" class="ec-tools-sidebar-toggle in-out">
-            <img alt="icon" src="{% static 'images/common/settings.png' %}">
-        </a>
-        <div class="ec-tools-detail">
-            <div class="ec-tools-sidebar-content ec-change-color ec-color-desc">
-                <h3> تم رنگ </h3>
-                <ul class="bg-panel">
-                    <li class="active" data-color="01">
-                        <a href="#" class="colorcode1"></a>
-                    </li>
-                    <li data-color="02">
-                        <a href="#" class="colorcode2"></a>
-                    </li>
-                    <li data-color="03">
-                        <a href="#" class="colorcode3"></a>
-                    </li>
-                    <li data-color="04">
-                        <a href="#" class="colorcode4"></a>
-                    </li>
-                    <li data-color="05">
-                        <a href="#" class="colorcode5"></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="ec-tools-sidebar-content">
-                <h3> بکگراند </h3>
-                <ul class="bg-panel">
-                    <li class="bg"><a class="back-bg-1" id="bg-1">Background-1</a></li>
-                    <li class="bg"><a class="back-bg-2" id="bg-2">Background-2</a></li>
-                    <li class="bg"><a class="back-bg-3" id="bg-3">Background-3</a></li>
-                    <li class="bg"><a class="back-bg-4" id="bg-4">پیشفرض</a></li>
-                </ul>
-            </div>
-            <div class="ec-tools-sidebar-content">
-                <h3> حالت تمام عرض</h3>
-                <div class="ec-fullscreen-mode">
-                    <div class="ec-fullscreen-switch">
-                        <div class="ec-fullscreen-btn">حالت</div>
-                        <div class="ec-fullscreen-on">روشن</div>
-                        <div class="ec-fullscreen-off">خاموش</div>
-                    </div>
-                </div>
-            </div>
-            <div class="ec-tools-sidebar-content">
-                <h3>حالت تاریک</h3>
-                <div class="ec-change-mode">
-                    <div class="ec-mode-switch">
-                        <div class="ec-mode-btn">حالت</div>
-                        <div class="ec-mode-on">روشن</div>
-                        <div class="ec-mode-off">خاموش</div>
-                    </div>
-                </div>
-            </div>
-            <div class="ec-tools-sidebar-content">
-                <h3>حالت راست‌چین</h3>
-                <div class="ec-change-rtl active">
-                    <div class="ec-rtl-switch">
-                        <div class="ec-rtl-btn">راستچین</div>
-                        <div class="ec-rtl-on ">روشن</div>
-                        <div class="ec-rtl-off">خاموش</div>
-                    </div>
-                </div>
-            </div>
-            <div class="ec-tools-sidebar-content">
-                <h3>زبان</h3>
-                <div class="ec-change-lang">
-                    <span id="google_translate_element"></span>
-                </div>
-            </div>
-            <div class="ec-tools-sidebar-content">
-                <h3> پاک کردن ذخیره سازی محلی </h3>
-                <a class="clear-cach" href="javascript:void(0)"> پاک کردن کش </a>
-            </div>
-        </div>
-    </div> -->
-    <!-- Feature tools end -->
-
+{% endif %}
+    
 {% endblock %}
 
 </script>

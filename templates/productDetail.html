@@ -29,6 +29,8 @@
 {% endblock %}
 
 {% block section %}
+
+{% if not lang %}
 <!-- Sart Single product -->
 <section class="ec-page-content section-space-p">
     <div class="container">
@@ -762,6 +764,746 @@
     </div>
 </section>
 <!-- End Single product -->
+
+{% else %}
+
+<!-- Sart Single product -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-pro-rightside ec-common-rightside col-lg-12 col-md-12">
+
+                <!-- Single product content Start -->
+                <div class="single-pro-block">
+                    <div class="single-pro-inner">
+                        <div class="row">
+                            <div class="single-pro-img single-pro-img-no-sidebar">
+                                <div class="single-product-scroll">
+                                    <div class="single-product-cover">
+                                        <div class="single-slide zoom-image-hover">
+                                            <img class="img-responsive" src="{{ product.image0.url }}"
+                                                alt="">
+                                        </div>
+
+                                    </div>
+                                    <div class="single-nav-thumb">
+                                        <div class="single-slide">
+                                            <img class="img-responsive" src="{{ product.image1.url }}"
+                                                alt="" height="130" width="120">
+                                        </div>
+                                        <div class="single-slide">
+                                            <img class="img-responsive" src="{{ product.image2.url }}"
+                                                alt="" height="130" width="120">
+                                        </div>
+                                        <div class="single-slide">
+                                            <img class="img-responsive" src="{{ product.image3.url }}"
+                                                alt="" height="130" width="120">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-pro-desc single-pro-desc-no-sidebar">
+                                <div class="single-pro-content">
+                                    <h5 class="ec-single-title">{{ product.name }}</h5>
+                                    <div class="ec-single-rating-wrap">
+                                        <div class="ec-single-rating">
+                                            {% for _ in product.rate_filled_star_counter %}
+                                                <i class="ecicon eci-star fill"></i>
+                                            {% endfor %}
+
+                                            {% for _ in product.rate_unfilled_star_counter %}
+                                                <i class="ecicon eci-star-o"></i>
+                                            {% endfor %}
+
+
+                                            <!-- <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star-o"></i> -->
+                                        </div>
+                                        <span class="ec-read-review">{{ product.rate }} / 5</span>
+                                    </div>
+                                    <div class="ec-single-desc">{{ product.meta_description }}</div>
+
+
+                                    <div class="ec-single-price-stoke">
+                                        <div class="ec-single-price">
+                                            <span class="ec-single-ps-title">price floor</span>
+                                            <span class="new-price">{{ product.new_price }} Toman</span>
+                                        </div>
+                                        <div class="ec-single-stoke">
+                                            {% if product.is_instock %}
+                                                <span class="ec-single-ps-title">in stock</span>
+                                            {% else %}
+                                                <span class="ec-single-ps-title">unavailable</span>
+                                            {% endif %}
+                                            <span class="ec-single-sku">شناسه#: {{ product.pk }} </span>
+                                        </div>
+                                    </div>
+
+                                    <form action="{% url 'addToCart' pk=product.pk %}" method="POST">
+                                    {% csrf_token %}
+                                        <div class="ec-single-qty">
+                                            <div>
+                                                <input type="number" name="quantity" min="1" value="{{ product_quantity }}" style="width: 70px;border: 1px solid rgba(204, 204, 204, 0.445); border-radius: 20px;" />
+                                            </div>
+                                            <div class="ec-single-cart ">
+                                                <button class="btn btn-primary" type="submit" style="margin-top: 1vh;">Add to cart</button>
+                                            </div>
+                                                
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Single product content End -->
+                <!-- Single product tab start -->
+                <div class="ec-single-pro-tab">
+                    <div class="ec-single-pro-tab-wrapper">
+                        <div class="ec-single-pro-tab-nav">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab"
+                                        data-bs-target="#ec-spt-nav-details" role="tablist">Details</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#ec-spt-nav-review"
+                                        role="tablist">Comments</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content  ec-single-pro-tab-content">
+                            <div id="ec-spt-nav-details" class="tab-pane fade show active">
+                                <div class="ec-single-pro-tab-desc">
+                                    <p>{{ product.full_description|safe }}</p>
+                                    <!-- <ul>
+                                        <li> هر نوع محصول که می خواهید - ساده، قابل تنظیم </li>
+                                        <li> محصولات الکترونیکی و دیجیتال قابل دانلود</li>
+                                        <li> مدیریت موجودی با موارد نخصصی</li>
+                                        <li> موجود در تمامی شعبه ها</li>
+                                    </ul> -->
+                                </div>
+                            </div>
+
+
+                            <div id="ec-spt-nav-review" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="ec-t-review-wrapper">
+                                        {% for comment in product_comments %}
+                                        <div class="ec-t-review-item">
+                                            <!-- <div class="ec-t-review-avtar">
+                                                <img src="{% static 'images/review-image/1.jpg' %}" alt="">
+                                            </div> -->
+                                            <div class="ec-t-review-content">
+                                                <div class="ec-t-review-top">
+                                                    <div class="ec-t-review-name">{{ comment.commenter_name }}</div>
+                                                    <div class="ec-t-review-rating">
+
+                                                        {% for _ in comment.rate_filled_star_counter %}
+                                                            <i class="ecicon eci-star fill"></i>
+                                                        {% endfor %}
+                                                        {% for _ in comment.rate_unfilled_star_counter %}
+                                                            <i class="ecicon eci-star-o"></i>
+                                                        {% endfor %}
+
+                                                        <!-- <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i> -->
+                                                    </div>
+                                                </div>
+                                                <div class="ec-t-review-bottom">
+                                                    <p>{{ comment.comment }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+
+                                        <!-- <div class="ec-t-review-item">
+                                            <div class="ec-t-review-avtar">
+                                                <img src="{% static 'images/review-image/1.jpg' %}" alt="">
+                                            </div>
+                                            <div class="ec-t-review-content">
+                                                <div class="ec-t-review-top">
+                                                    <div class="ec-t-review-name">جانان دارا</div>
+                                                    <div class="ec-t-review-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-t-review-bottom">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                        با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                                        و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                                                        تکنولوژی مورد نیاز
+                                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت
+                                                        فراوان جامعه و متخصصان را می طلبد</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ec-t-review-item">
+                                            <div class="ec-t-review-avtar">
+                                                <img src="{% static 'images/review-image/2.jpg' %}" alt="">
+                                            </div>
+                                            <div class="ec-t-review-content">
+                                                <div class="ec-t-review-top">
+                                                    <div class="ec-t-review-name">لیندا کیانی</div>
+                                                    <div class="ec-t-review-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-t-review-bottom">
+                                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و
+                                                        با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+                                                        و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                                                        تکنولوژی مورد نیاز
+                                                        و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                                                        کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت
+                                                        فراوان جامعه و متخصصان را می طلبد</p>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+                                    <div class="ec-ratting-content">
+                                        <h3>Add comment</h3>
+                                        <div class="ec-ratting-form">
+                                            <form action="{% url 'makeComment' pk=service.pk %}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="ec-ratting-star">
+                                                    <span>Your rating:</span>
+                                                    <div class="ec-t-review-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-ratting-input">
+                                                    <input name="commenter_name" placeholder="Name" type="text">
+                                                </div>
+                                                <div class="ec-ratting-input">
+                                                    <input name="commenter_email" placeholder="Email" type="email"
+                                                        required="">
+                                                </div>
+                                                <div class="ec-ratting-input form-submit">
+                                                    <textarea name="comment" placeholder="Your comment"></textarea>
+                                                    <button class="btn btn-primary" type="submit"
+                                                        value="Submit">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h1 style="text-align: center;color: white;margin-top: 4vh;font-size: 17px !important;">محصولات
+                        پیشنهادی</h1>
+                    <section class="section ec-blog-section section-space-p">
+                        <div class="container">
+                            <div class="row">
+                                <div class="ec-blog-slider owl-carousel" data-animation="fadeIn">
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+
+                <div>
+                    <h1 style="text-align: center;color: white;margin-top: 4vh;font-size: 17px !important;">محصولات
+                        خریداری شده</h1>
+                    <section class="section ec-blog-section section-space-p">
+                        <div class="container">
+                            <div class="row">
+                                <div class="ec-blog-slider owl-carousel" data-animation="fadeIn">
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                        data-animation="fadeIn" style="width: 100% !important;">
+                                        <div class="ec-product-inner">
+                                            <div class="ec-pro-image-outer">
+                                                <div class="ec-pro-image">
+                                                    <a href="  " class="image">
+                                                        <img class="main-image"
+                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                        <img class="hover-image"
+                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
+                                                            style="border-radius: 15px;">
+                                                    </a>
+                                                    <span class="percentage">20%</span>
+
+                                                    <div class="ec-pro-actions">
+
+                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                src="{% static 'images/icons/cart.svg' %}"
+                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ec-pro-content">
+                                                <h5 class="ec-pro-title"><a href="  ">عنوان
+                                                    </a></h5>
+                                                <div class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star"></i>
+                                                </div>
+                                                <span class="ec-price">
+                                                    <span class="old-price">2700 تومان</span>
+                                                    <span class="new-price">2200 تومان</span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+
+                <!-- product details description area end -->
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Single product -->
+
+{% endif %}
+
+
 {% endblock %}
 
 <!-- Vendor JS -->

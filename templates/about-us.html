@@ -3,6 +3,7 @@
 
 {% block section %}
 
+{% if not lang %}
 <!-- Ec About Us page -->
 <section class="ec-page-content section-space-p">
     <div class="container">
@@ -232,5 +233,241 @@
     </a>
 </div>
 <!-- Cart Floating Button end -->
+{% else %}
+
+<!-- Ec About Us page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title">
+                    <h2 class="ec-bg-title">About us</h2>
+                    <h2 class="ec-title">About us</h2>
+                    <p class="sub-title mb-3">About our business company</p>
+                </div>
+            </div>
+            <div class="ec-common-wrapper">
+                <div class="row">
+                    <div class="col-md-6 ec-cms-block ec-abcms-block text-center">
+                        <div class="ec-cms-block-inner">
+                            <img class="a-img" src="{% static 'images/newimg/wp10636130.jpg' %}" alt="about">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ec-cms-block ec-abcms-block text-center">
+                        <div class="ec-cms-block-inner">
+                            <h3 class="ec-cms-block-title">Store history</h3>
+                            <p>Lorem Ipsum's mock text by producing incomprehensible simplicity from the printing industry, and using designers
+                                It is graphics, printers and texts, but also newspapers and magazines in columns and rows as necessary, and
+                                For the current conditions of the required technology, and diverse applications with the aim of improving practical tools
+                                There are many books in sixty-three percent of the past, present and future, a lot of knowledge of the society and
+                                It requires specialists, to know more about software for causal computer designers
+                                Especially creative designers, and creating a leading culture in the Persian language, in this case we can hope
+                                had to end all the difficulty in providing solutions, and difficult typing conditions and time
+                                The requirement includes the typification of the main achievements, and answers to the continuous questions of the people of the existing world
+                                The design is basically used.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr style="width: 70%; margin-right: 15%;margin-bottom: 5%;" />
+<div>
+    <div class="row">
+        <div class="container modirDi2">
+            <div class="mb-4 modirDiv" >
+                <div class="modir">
+                    <img src="{% static 'images/user/2.jpg' %}" style="border-radius: 30px;" alt="admin" />
+
+                    <div class="semat">
+                        <p>Mr. Rezaei</p>
+                        <p>His side</p>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="modirDiv">
+
+                <div class="modir">
+                    <div></div>
+                    <div class="semat">
+                        <p>Mr. wanted</p>
+                        <p>His side</p>
+                    </div>
+
+                    <img src="{% static 'images/user/3.jpg' %}" style="border-radius: 30px;" alt="admin" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Ec testmonial Start -->
+<section class="section ec-test-section section-space-ptb-100 section-space-m">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title mb-0">
+                    <h2 class="ec-bg-title">Resumes</h2>
+                    <h2 class="ec-title">Personnel resume</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ec-test-outer">
+                <ul id="ec-testimonial-slider">
+                    <li class="ec-test-item">
+                        <img src="{% static 'images/testimonial/top-quotes.svg' %}" class="svg_img test_svg top" alt="">
+                        <div class="ec-test-inner">
+                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                    src="{% static 'images/user/1.jpg' %}"></div>
+                            <div class="ec-test-content">
+                                <div class="ec-test-desc">Lorem Epsom fake text with incomprehensible simplicity produced by the printing industry.
+                                    And with the use of graphic designers, printers and texts but also newspapers and magazines in the column and
+                                    line as necessary, and for the current conditions of the required technology, and diverse applications
+                                    With the aim of improving practical tools, many books in sixty-three percent of the past and present
+                                    And the future requires a lot of knowledge from the community and experts</div>
+                                <div class="ec-test-name">Jon Duo</div>
+                                <div class="ec-test-designation">general manager</div>
+                                <div class="ec-test-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{% static 'images/testimonial/bottom-quotes.svg' %}" class="svg_img test_svg bottom"
+                            alt="">
+                    </li>
+                    <li class="ec-test-item">
+                        <img src="{% static 'images/testimonial/top-quotes.svg' %}" class="svg_img test_svg top" alt="">
+                        <div class="ec-test-inner">
+                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                    src="{% static 'images/user/2.jpg' %}"></div>
+                            <div class="ec-test-content">
+                                <div class="ec-test-desc">Lorem Epsom fake text with incomprehensible simplicity produced by the printing industry.
+                                    And with the use of graphic designers, printers and texts but also newspapers and magazines in the column and
+                                    line as necessary, and for the current conditions of the required technology, and diverse applications
+                                    With the aim of improving practical tools, many books in sixty-three percent of the past and present
+                                    And the future requires a lot of knowledge from the community and experts</div>
+                                    <div class="ec-test-name">Jon Duo</div>
+                                    <div class="ec-test-designation">general manager</div>
+                                <div class="ec-test-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="{% static 'images/testimonial/bottom-quotes.svg' %}" class="svg_img test_svg bottom"
+                            alt="">
+                    </li>
+                    <li class="ec-test-item">
+                        <img src="{% static 'images/testimonial/top-quotes.svg' %}" class="svg_img test_svg top" alt="">
+                        <div class="ec-test-inner">
+                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                    src="{% static 'images/user/3.jpg' %}"></div>
+                                    <div class="ec-test-content">
+                                        <div class="ec-test-desc">Lorem Epsom fake text with incomprehensible simplicity produced by the printing industry.
+                                            And with the use of graphic designers, printers and texts but also newspapers and magazines in the column and
+                                            line as necessary, and for the current conditions of the required technology, and diverse applications
+                                            With the aim of improving practical tools, many books in sixty-three percent of the past and present
+                                            And the future requires a lot of knowledge from the community and experts</div>
+                                            <div class="ec-test-name">Jon Duo</div>
+                                            <div class="ec-test-designation">general manager</div>
+                                        <div class="ec-test-rating">
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                        </div>
+                                    </div>
+                        </div>
+                        <img src="{% static 'images/testimonial/bottom-quotes.svg' %}" class="svg_img test_svg bottom"
+                            alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ec testmonial end -->
+
+<!--  services Section Start -->
+<section class="section ec-services-section section-space-p">
+    <h2 class="d-none">خدمات</h2>
+    <div class="container">
+        <div class="row">
+            <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_1.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2>free delivery</h2>
+                        <p>Free shipping for orders over 200 thousand Toman</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_2.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2>Support</h2>
+                        <p>Access to backup as soon as possible</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_3.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2>Return guarantee</h2>
+                        <p>The possibility of returning the product within a maximum period of 10 days</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
+                <div class="ec_ser_inner">
+                    <div class="ec-service-image">
+                        <img src="{% static 'images/icons/service_4.svg' %}" class="svg_img" alt="">
+                    </div>
+                    <div class="ec-service-desc">
+                        <h2>Secure payment</h2>
+                        <p>Get in touch with us</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section End -->
+
+<!-- Cart Floating Button -->
+<div class="ec-cart-float">
+    <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+        <div class="header-icon"><img src="{% static 'images/icons/cart.svg' %}" class="svg_img header.svg' %}" alt="cart">
+        </div>
+        <span class="ec-cart-count cart-count-lable">3</span>
+    </a>
+</div>
+<!-- Cart Floating Button end -->
+
+{% endif %}
+
 
 {% endblock %}

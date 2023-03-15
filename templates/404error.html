@@ -39,8 +39,23 @@
 
     <!-- Background css -->
     <link rel="stylesheet" id="bg-switcher-css" href="{% static 'css/backgrounds/bg-4.css' %}">
+
+    {% if lang %}
+    
+    <style>
+        html * {
+            direction: ltr !important;
+            font-family:'Times New Roman', Times, serif !important;
+        }
+    </style>
+
+    {% endif %}
+    
+    
 </head>
 
+
+{% if not lang %}
 <body>
 
     <!-- Start main Section -->
@@ -62,29 +77,54 @@
     </section>
     <!-- End main Section -->
 
-    <!-- Vendor JS -->
-    <script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
-    <script src="{% static 'js/vendor/jquery-3.5.1.min.js' %}"></script>
-    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
-    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/vendor/jquery-migrate-3.3.0.min.js' %}"></script>
-    <script src="{% static 'js/vendor/modernizr-3.11.2.min.js' %}"></script>
-    <script src="{% static 'js/vendor/jquery.notify.min.js' %}"></script>
-    <script src="{% static 'js/vendor/jquery.bundle.notify.min.js' %}"></script>
-    <!--Plugins JS-->
-    <script src="{% static 'js/plugins/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'js/plugins/countdownTimer.min.js' %}"></script>
-    <script src="{% static 'js/plugins/scrollup.js' %}"></script>
-    <script src="{% static 'js/plugins/jquery.zoom.min.js' %}"></script>
-    <script src="{% static 'js/plugins/slick.min.js' %}"></script>
-    <script src="{% static 'js/plugins/infiniteslidev2.js' %}"></script>
-    <script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'js/plugins/jquery.sticky-sidebar.js' %}"></script>
+    
+    
+{% else %}
+    
+<!-- Start main Section -->
+<section class="ec-404-error-page-02">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img class="" src="{% static 'images/common/404-error-page.gif' %}" alt="" />
 
-    <!-- Main Js -->
-    <script src="{% static 'js/vendor/index.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+                <h1 class="main-title text-center">404</h1>
+                <h3 class="sub-title text-center">You seem lost</h3>
 
+                <p class="desc-content text-center">The page you are looking for is not available!</p>
+
+                <a class="link-404" href="#">go back</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End main Section -->
+
+
+{% endif %}
+
+
+<!-- Vendor JS -->
+<script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'js/vendor/popper.min.js' %}"></script>
+<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-migrate-3.3.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/modernizr-3.11.2.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.notify.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.bundle.notify.min.js' %}"></script>
+<!--Plugins JS-->
+<script src="{% static 'js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'js/plugins/countdownTimer.min.js' %}"></script>
+<script src="{% static 'js/plugins/scrollup.js' %}"></script>
+<script src="{% static 'js/plugins/jquery.zoom.min.js' %}"></script>
+<script src="{% static 'js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'js/plugins/infiniteslidev2.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/plugins/jquery.sticky-sidebar.js' %}"></script>
+
+<!-- Main Js -->
+<script src="{% static 'js/vendor/index.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 </body>
-
 </html>

@@ -2,6 +2,8 @@
 
 {% block section %}
 
+
+{% if not lang %}
 <!-- Ec Contact Us page -->
 <section class="ec-page-content section-space-p">
     <div class="container">
@@ -81,5 +83,88 @@
         </div>
     </div>
 </section>
-    
-    {% endblock %}
+
+{% else %}
+
+<!-- Ec Contact Us page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-common-wrapper">
+                <div class="ec-contact-leftside">
+                    <div class="ec-contact-container">
+                        <div class="ec-contact-form">
+                            <form action="#" method="post">
+                                <span class="ec-contact-wrap">
+                                    <label>First name *</label>
+                                    <input type="text" name="firstname" placeholder="Enter your first name"
+                                        required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>Last name *</label>
+                                    <input type="text" name="lastname" placeholder="Enter your last name"
+                                        required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>email *</label>
+                                    <input type="email" name="email" placeholder="Enter your email" required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>Phone number *</label>
+                                    <input type="text" name="phonenumber" placeholder="Enter your phone number"
+                                        required="">
+                                </span>
+                                <span class="ec-contact-wrap">
+                                    <label>Comments/Questions</label>
+                                    <textarea name="address"
+                                        placeholder="Please comment here."></textarea>
+                                </span>
+                                <span class="ec-contact-wrap ec-recaptcha">
+                                    <span class="g-recaptcha"
+                                        data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
+                                        data-callback="verifyRecaptchaCallback"
+                                        data-expired-callback="expiredRecaptchaCallback"></span>
+                                    <input class="form-control d-none" data-recaptcha="true" required=""
+                                        data-error="Please complete the Captcha">
+                                    <span class="help-block with-errors"></span>
+                                </span>
+                                <span class="ec-contact-wrap ec-contact-btn">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-contact-rightside">
+                    <div class="ec_contact_map">
+                        <div class="ec_map_canvas">
+                            <img id="ec_map_canvas" style="border-radius: 20px;" src='https://www.google.com/maps/vt/data=kDWBksctjr0uuRV_YnvBkrTR8o3jg6Yk_uTtd-TauocZl3Xg5-iUC_YJBgn959o4y5ABDoLZRC5JEIEAwDtkBZ7B0694yM814Q2-C6lL2Ip1kUuupCvmkYvappg62NFrwKEhXePz2BJ2leYAi4XFDp4osGAQLKVj5GikQ03vm8hax-zm2Ah2v_XrYWMKcDdqvSR9pG5n808wLnCKcmlnsIwh0Vn9Onp-8XfQ2WAzF92lpafAEMA' />
+                            <a href=""></a>
+                        </div>
+                    </div>
+                    <div class="ec_contact_info">
+                        <h1 class="ec_contact_info_head">Contact us</h1>
+                        <ul class="align-items-center">
+                            <li class="ec-contact-item"><i class="ecicon eci-map-marker"
+                                    aria-hidden="true"></i><span>Address:</span>A completely fictitious address is located here</li>
+                            <li class="ec-contact-item align-items-center"><i class="ecicon eci-phone"
+                                    aria-hidden="true"></i><span>contact us:</span><a href="tel:+440123456789">+44
+                                    0123
+                                    456 789</a></li>
+                            <li class="ec-contact-item align-items-center"><i class="ecicon eci-envelope"
+                                    aria-hidden="true"></i><span>email :</span><a
+                                    href="/cdn-cgi/l/email-protection#b6d3ced7dbc6dad3f6d3d59bd3dbd7dfda98d5d9db"><span
+                                        class="__cf_email__"
+                                        data-cfemail="dcb9a4bdb1acb0b99cb9bff1b9b1bdb5b0f2bfb3b1">[email&#160;protected]</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+{% endblock %}

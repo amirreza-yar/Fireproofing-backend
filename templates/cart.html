@@ -3,6 +3,7 @@
 
 {% block section %}
 
+{% if not lang %}
 <!-- Ec cart page -->
 <section class="ec-page-content section-space-p">
     <div class="container">
@@ -209,5 +210,216 @@
         </div>
     </div>
 </section>
+
+{% else %}
+
+<!-- Ec cart page -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-cart-leftside col-lg-8 col-md-12 ">
+                <!-- cart content Start -->
+                <div class="ec-cart-content">
+                    <div class="ec-cart-inner">
+                        <div class="row">
+                            <form action="#">
+                                <div class="table-content cart-table-content">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th style="text-align: center;">Quantity</th>
+                                                <th>All</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for item in cart_items %}
+                                                <tr>
+                                                    <td data-label="Product" class="ec-cart-pro-name"><a href="  "><img class="ec-cart-pro-img mr-4" src="{% static 'images/product-image/1.jpg' %}" alt="">{{ item.product.name }}</a></td>
+                                                    <td data-label="Price" class="ec-cart-pro-price"><span class="amount">{{ item.product.price }}</span></td>
+
+                                                    <!-- <td data-label="Quantity" class="ec-cart-pro-qty" style="text-align: center;">
+                                                        <div class="cart-qty-plus-minus">
+                                                            <input class="cart-plus-minus" type="text" name="cartqtybutton" value="1">
+                                                        </div>
+                                                    </td> -->
+                                                    <td data-label="Quantity" class="ec-cart-pro-qty" style="text-align: center;">
+                                                    {% if item.product.is_service %}
+                                                    <div class="cart-qty-plus-minus">
+                                                        <input class="cart-plus-minus" type="text" name="cartqtybutton" value="1" disabled>
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="cart-qty-plus-minus">
+                                                        <input class="cart-plus-minus" type="text" name="cartqtybutton" value="{{ item.quantity }}">
+                                                    </div>
+                                                    {% endif %}
+                                                    </td>
+                                                    <td data-label="Total" class="ec-cart-pro-subtotal">{{ item.total_price }} Toman</td>
+                                                    <td data-label="Remove" class="ec-cart-pro-remove">
+                                                        <a href="{% url 'deleteFromCart' pk=item.pk %}"><i class="ecicon eci-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ec-cart-update-bottom">
+                                            <button class="btn btn-primary">پرداخت</button>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--cart content End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="ec-cart-rightside col-lg-4 col-md-12">
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Summary Block -->
+                    {% if cart %}
+                    <!-- <form action="{% url 'makeOrder' %}" method="POST"> -->
+                        <div class="ec-sidebar-block">
+                            <div class="ec-sb-title">
+                                <h3 class="ec-sidebar-title">Summary</h3>
+                            </div>
+                            <div class="ec-sb-block-content">
+                                <h4 class="ec-ship-title">shipping cost</h4>
+                                <div class="ec-cart-form">
+                                    <p>Enter your destination to get a shipping estimate</p>
+                                    <form action="#" method="post" id="make-order-form">
+                                        {% csrf_token %}
+                                        <span class="ec-cart-wrap">
+                                            <label>Address</label>
+                                            <textarea name="address" style="background-color: transparent;" rows="5" ></textarea>
+                                        </span>
+                                        <span class="ec-cart-wrap">
+                                            <label>Postal code</label>
+                                            <input type="text" name="postal_code" placeholder="Postal code ">
+                                        </span>
+                                        </form>
+                                    </div>
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            <div id="field-error-message">\{{ message }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                                </div>
+
+                                <div class="ec-sb-block-content">
+                                    <div class="ec-cart-summary-bottom">
+                                        <div class="ec-cart-summary">
+                                            <div>
+                                                <span class="text-left">small fee</span>
+                                                <span class="text-right">{{ cart.items_price }} تومان</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-left">shipping cost</span>
+                                                <span class="text-right">{{ cart.shipping_price }} تومان</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-left">Discount code</span>
+                                                <span class="text-right"><a class="ec-cart-coupan">Apply discount code</a></span>
+                                            </div>
+                                            <div class="ec-cart-coupan-content">
+                                                <form class="ec-cart-coupan-form" id="discount-form" name="ec-cart-coupan-form" method="POST" action="{% url 'discountCode' %}">
+                                                    {% csrf_token %}
+                                                    <input class="ec-coupan" type="text" required="" placeholder="Enter your discount code" name="code" value="">
+                                                    <button class="ec-coupan-btn button btn-primary" form="discount-form" type="submit" value="">Apply</button>
+                                                </form>
+                                            </div>
+                                            <div class="ec-cart-summary-total">
+                                                <span class="text-left">total cost</span>
+                                                <span class="text-right">{{ cart.finished_price }} Toman</span>
+                                            </div>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ec-cart-update-bottom">
+                                            <button class="btn btn-primary" form="make-order-form" type="submit">Pay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </form> -->
+                    {% else %}
+                        <form action="#" method="">
+                            <div class="ec-sidebar-block">
+                                <div class="ec-sb-title">
+                                    <h3 class="ec-sidebar-title">Summary</h3>
+                                </div>
+                                <div class="ec-sb-block-content">
+                                    <h4 class="ec-ship-title">shipping cost</h4>
+                                <div class="ec-cart-form">
+                                    <p>Enter your destination to get a shipping estimate</p>
+                                        <!-- <form action="#" method="post"> -->
+                                        <span class="ec-cart-wrap">
+                                            <label>Address</label>
+                                            <textarea name="address" style="background-color: transparent;" rows="5" disabled></textarea>
+                                        </span>
+                                        <span class="ec-cart-wrap">
+                                            <label>Postal code</label>
+                                            <input type="text" name="postal_code" placeholder="Postal code" disabled>
+                                        </span>
+                                        <!-- </form> -->
+                                    </div>
+                                </div>
+
+                                <div class="ec-sb-block-content">
+                                    <div class="ec-cart-summary-bottom">
+                                        <div class="ec-cart-summary">
+                                            <div>
+                                                <span class="text-left">small fee</span>
+                                                <span class="text-right">0 تومان</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-left">shipping cost</span>
+                                                <span class="text-right">0 تومان</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-left">Discount code</span>
+                                                <span class="text-right"><a class="ec-cart-coupan">Apply discount code</a></span>
+                                            </div>
+                                            <div class="ec-cart-coupan-content">
+                                                <form class="ec-cart-coupan-form" name="ec-cart-coupan-form" method="post" action="#">
+                                                    <input class="ec-coupan" type="text" required="" placeholder="Enter your discount code" name="ec-coupan" value="123">
+                                                    <button class="ec-coupan-btn button btn-primary" type="submit" name="subscribe" value="">Apply</button>
+                                                </form>
+                                            </div>
+                                                <div class="ec-cart-summary-total">
+                                                    <span class="text-left">Total cost</span>
+                                                    <span class="text-right">0 Toman</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ec-cart-update-bottom">
+                                            <button class="btn btn-primary" type="submit" disabled>Pay</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    {% endif %}
+                        <!-- Sidebar Summary Block -->
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
 
 {% endblock %}
