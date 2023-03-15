@@ -20,7 +20,7 @@ def dashboard(request):
     context['sell_report'] = sell_report
     context['order_report'] = order_report
     context['last_order'] = Order.objects.all()[:4]
-    return render(request, 'index.html', context)
+    return render(request, 'admin/index.html', context)
 
 #* PERSONEL BLOCK
 def personel_list(request):
