@@ -1,5 +1,3 @@
-assets/
-
 .venv/
 
 db.sqlite3
