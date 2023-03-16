@@ -3,6 +3,7 @@
 
 {% block section %}
 
+{% if not lang %}
 <!-- User history section -->
 <section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
     <div class="container">
@@ -93,5 +94,76 @@
     </div>
 </section>
 <!-- End User history section -->
+{% else %}
+
+<!-- User history section -->
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Area Start -->
+            <div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Category Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-vendor-block">
+                            <div class="ec-vendor-block-items">
+                                <ul>
+                                    <li><a href="{% url 'userProfile' %}">User profile</a></li>
+                                    <li><a href="{% url 'userHistory' %}">History</a></li>
+                                    <li><a href="{% url 'cart' %}">Cart</a></li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-shop-rightside col-lg-9 col-md-12">
+                <div class="ec-vendor-dashboard-card">
+                    <div class="ec-vendor-card-header">
+                        <h5>Purchase history</h5>
+                    </div>
+                    <div class="ec-vendor-card-body">
+                        <div class="ec-vendor-card-table">
+                            <table class="table ec-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Picture</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Activity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for invoice in invoices %}
+                                        <tr>
+                                            <th scope="row"><span>225</span></th>
+                                            <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
+                                                    alt="product image"></td>
+                                            <td><span>{{ invoice.customer.name }}</span></td>
+                                            <td><span>{{ invoice.ordered_date }}</span></td>
+                                            <td><span>{{ invoice.finished_price }} Toman</span></td>
+                                            <td><span>{{ invoice.get_status }}</span></td>
+                                            <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
+                                                        href="{% url 'userInvoice' pk=invoice.pk %}">Invoce</a></span></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End User history section -->
+
+{% endif %}
 
 {% endblock %}

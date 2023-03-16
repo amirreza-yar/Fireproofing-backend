@@ -84,8 +84,8 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="section-title">
-                    <h2 class="ec-bg-title">ثبت نام</h2>
-                    <h2 class="ec-title">ثبت نام</h2>
+                    <h2 class="ec-bg-title">Register</h2>
+                    <h2 class="ec-title">Register</h2>
                     <!-- <p class="sub-title mb-3">بهترین مکان برای خرید و فروش محصولات ضد حریق</p> -->
                 </div>
             </div>
@@ -95,32 +95,32 @@
                         <form action="register" method="post">
                             {% csrf_token %}
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.name.id_for_label }}">نام و نام خانوادگی *</label>
-                                <input type="text" name="name" placeholder="نام خود را وارد کنید" required="">
+                                <label for="{{ register_form.name.id_for_label }}">Full name *</label>
+                                <input type="text" name="name" placeholder="Enter your full name" required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.password1.id_for_label }}">رمزعبور *</label>
-                                <input type="password" for="{{ register_form.password1.id_for_label }}" name="{{ register_form.password1.html_name }}" placeholder="رمزعبور" required="">
+                                <label for="{{ register_form.password1.id_for_label }}">Password *</label>
+                                <input type="password" for="{{ register_form.password1.id_for_label }}" name="{{ register_form.password1.html_name }}" placeholder="Enter your Password" required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.email.id_for_label }}">ایمیل ( اختیاری )</label>
-                                <input type="email" for="email" name="email" placeholder="وارد کردن ایمیل">
+                                <label for="{{ register_form.email.id_for_label }}">Email ( Optional )</label>
+                                <input type="email" for="email" name="email" placeholder="Enter your email">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.phone_number.id_for_label }}">شماره موبایل *</label>
-                                <input type="text" name="phone_number" placeholder="شماره تماس خود را وارد کنید" required="">
+                                <label for="{{ register_form.phone_number.id_for_label }}">Phone number *</label>
+                                <input type="text" name="phone_number" placeholder="Enter yout phone number" required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.name.id_for_label }}">نام کاربری *</label>
-                                <input type="text" name="username" placeholder="نام کاربری" required="">
+                                <label for="{{ register_form.name.id_for_label }}">Username *</label>
+                                <input type="text" name="username" placeholder="Enter your username " required="">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.city.id_for_label }}">شهر *</label>
-                                <input type="text" name="city" placeholder="شهر">
+                                <label for="{{ register_form.city.id_for_label }}">City *</label>
+                                <input type="text" name="city" placeholder="Enter your city">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
-                                <label for="{{ register_form.address.id_for_label }}">آدرس *</label>
-                                <input type="text" name="address" placeholder="آدرس خط اول">
+                                <label for="{{ register_form.address.id_for_label }}">Address *</label>
+                                <input type="text" name="address" placeholder="Enter your address">
                             </span>
                             <span class="ec-register-wrap ec-register-half">
                                 <label for="{{ register_form.postal_code.id_for_label }}">Postal code *</label>
@@ -139,7 +139,7 @@
                                 <span class="help-block with-errors"></span>
                             </span> -->
                             <span class="ec-register-wrap ec-register-btn">
-                                <button class="btn btn-primary" type="submit">ثبت نام</button>
+                                <button class="btn btn-primary" type="submit">Register</button>
                             </span>
                         </form>
                     </div>

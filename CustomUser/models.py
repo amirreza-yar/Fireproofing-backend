@@ -47,9 +47,9 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255, blank=False)
     email = models.EmailField(_("email address"), blank=True)
     phone_number = models.IntegerField(blank=False)
-    address = models.CharField(max_length=2000, blank=False)
-    postal_code = models.IntegerField(null=True, blank=False)
-    city = models.CharField(max_length=255, blank=False)
+    address = models.CharField(max_length=2000, blank=True)
+    postal_code = models.IntegerField(null=True, blank=True)
+    city = models.CharField(max_length=255, blank=True)
     
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["phone_number"]

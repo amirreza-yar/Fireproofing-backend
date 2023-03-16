@@ -3,6 +3,8 @@
 
 {% block section %}
 
+{% if not lang %}
+
 <!-- User invoice section -->
 <section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
     <div class="container">
@@ -184,4 +186,195 @@
     </div>
 </section>
 <!-- End User invoice section -->
+
+
+{% else %}
+
+
+<!-- User invoice section -->
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Area Start -->
+            <div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Category Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-vendor-block">
+                            <!-- <div class="ec-vendor-block-bg"></div>
+                            <div class="ec-vendor-block-detail">
+                                <img class="v-img" src="assets/images/user/1.jpg" alt="vendor image">
+                                <h5>مارینا ازاد</h5>
+                            </div> -->
+                            <div class="ec-vendor-block-items">
+                                <ul>
+                                    <li><a href="{% url 'userProfile' %}">User profile</a></li>
+                                    <li><a href="{% url 'userHistory' %}">History</a></li>
+                                    <li><a href="{% url 'cart' %}">Cart</a></li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-shop-rightside col-lg-9 col-md-12">
+                <div class="ec-vendor-dashboard-card">
+                    <div class="ec-vendor-card-header">
+                        <h5>فاکتور</h5>
+                        
+                    </div>
+                    <div class="ec-vendor-card-body padding-b-0">
+                        <div class="page-content">
+                            <div class="page-header text-blue-d2">
+                                <img src="assets/images/logo/logo.png" alt="لوگو سایت">
+                            </div>
+
+                            <div class="container px-0">
+                                <div class="row mt-4">
+                                    <div class="col-lg-12">
+                                        <hr class="row brc-default-l1 mx-n1 mb-4">
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="my-2">
+                                                    <span class="text-sm text-grey-m2 align-middle">To : </span>
+                                                    <span class="text-600 text-110 text-blue align-middle">{{ invoice.customer.name }}</span>
+                                                </div>
+                                                <div class="text-grey-m2">
+                                                    <div class="my-2">
+                                                        {{ invoice.address }}
+                                                    </div>
+                                                    <!-- <div class="my-2">
+                                                    یک آدرس فرضی در اینجا
+                                                    </div> -->
+                                                    <div class="my-2"><b class="text-600">Phone number : </b>{{ invoice.phone_number }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.col -->
+
+                                            <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
+                                                <hr class="d-sm-none">
+                                                <div class="text-grey-m2">
+
+                                                    <div class="my-2"><span class="text-600 text-90">ID : </span>
+                                                        #111-222</div>
+
+                                                    <div class="my-2"><span class="text-600 text-90">Purchase number :
+                                                        </span> #123456</div>
+                                                    <div class="my-2"><span class="text-600 text-90">Release date :
+                                                        </span> {{ invoice.ordered_date }}</div>
+
+                                                    <div class="my-2"><span class="text-600 text-90">Invoce number :
+                                                        </span>{{ invoice.pk }}</div>
+                                                </div>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+
+                                        <div class="mt-4">
+
+                                            <div class="text-95 text-secondary-d3">
+                                                <div class="ec-vendor-card-table">
+                                                    <table class="table ec-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Number</th>
+                                                                <th scope="col">Price</th>
+                                                                <th scope="col">Quantity</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for item in invoice.loaded_json_items %}
+                                                                <tr>
+                                                                    <th><span>{{ item.pk }}</span></th>
+                                                                    <td><span>{{ item.name  }}</span></td>
+                                                                    <td><span>{{ item.quantity }}</span></td>
+                                                                    <td><span>{{ item.price }} Toman</span></td>
+                                                                    <td><span>{{ item.total_price }} Toman</span></td>
+                                                                </tr>
+                                                            {% endfor %}
+
+                                                            
+                                                            <!-- <tr>
+                                                                <th><span>548</span></th>
+                                                                <td><span>پیراهن پارچه پنبه مردانه</span></td>
+                                                                <td><span>3</span></td>
+                                                                <td><span>10 تومان</span></td>
+                                                                <td><span>30 تومان</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><span>684</span></th>
+                                                                <td><span>کفش کودکانه</span></td>
+                                                                <td><span>1</span></td>
+                                                                <td><span>360 تومان</span></td>
+                                                                <td><span>360 تومان</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><span>987</span></th>
+                                                                <td><span>کیف دستی زنانه</span></td>
+                                                                <td><span>5</span></td>
+                                                                <td><span>50 تومان</span></td>
+                                                                <td><span>250 تومان</span></td>
+                                                            </tr> -->
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <td class="border-none" colspan="3">
+                                                                    <span></span></td>
+                                                                <td class="border-color" colspan="1">
+                                                                    <span><strong>Small fees</strong></span></td>
+                                                                <td class="border-color">
+                                                                    <span>{{ invoice.items_price }} Toman</span></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="border-none" colspan="3">
+                                                                    <span></span></td>
+                                                                <td class="border-color" colspan="1">
+                                                                    <span><strong>Shipping price</strong></span></td>
+                                                                <td class="border-color">
+                                                                    <span>{{ invoice.shipping_price }} Toman</span></td>
+                                                            </tr>
+
+                                                            <!-- <tr>
+                                                                <td class="border-none" colspan="3">
+                                                                    <span></span></td>
+                                                                <td class="border-color" colspan="1">
+                                                                    <span><strong>مالیات (10%)</strong></span></td>
+                                                                <td class="border-color">
+                                                                    <span>352 تومان</span></td>
+                                                            </tr> -->
+                                                            <tr>
+                                                                <td class="border-none m-m15" colspan="3"><span class="note-text-color">
+                                                                    Additional notes such as company or payment information ...</span></td>
+                                                                <td class="border-color m-m15" colspan="1"><span><strong>کل</strong></span>
+                                                                </td>
+                                                                <td class="border-color m-m15">
+                                                                    <span>{{ invoice.finished_price }} Toman</span></td>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End User invoice section -->
+
+
+{% endif %}
+
+
 {% endblock %}

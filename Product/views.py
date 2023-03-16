@@ -78,9 +78,9 @@ def makeComment(request, pk):
 @login_required(login_url='login')
 def cart(request):
     
-    cart = CartModel.objects.get(customer=request.user)
-    if cart.discount == None:
-        print("SHIT>>>...")
+    cart = CartModel.objects.get_or_create(customer=request.user)
+    # if cart.discount == None:
+    #     print("SHIT>>>...")
     context = {
         "title": "سبد خرید",
         "is_index_page": False,

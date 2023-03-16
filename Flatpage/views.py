@@ -21,7 +21,7 @@ def rules(request):
 
 def index(request):
     # print(request.user)
-    print(request.session['lang'])
+    # print(request.session['lang'])
     # print(request.session['lang'] == True)
     # print(request.user.id)
     return render(request, "index.html", {"title": "فروشگاه قلان", "is_index_page": True})
