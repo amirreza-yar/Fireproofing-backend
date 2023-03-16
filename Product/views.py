@@ -21,7 +21,11 @@ from .forms import DiscountCodeForm
 from .models import DiscountCode as DiscountCodeModel
 
 def products(request):
+
+    # Manipulte with categories and searched text
+    print(request.GET)
     
+    # Filter the DB objects with given category or searhced text
     products = ProductModel.objects.all().filter(is_service=False)
 
     context = {

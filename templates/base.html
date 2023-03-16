@@ -170,8 +170,8 @@
                             class="">&times;</span>
                         <div>
                             <div class="header-search">
-                                <form class="ec-btn-group-form" action="#">
-                                    <input class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text" style="z-index: 90 !important;">
+                                <form class="ec-btn-group-form" action="{% url 'products' %}" method="get">
+                                    <input class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text" name="search-text" style="z-index: 90 !important;">
                                     <button class="submit" type="submit" style="z-index: 99 !important;"><img src="{% static 'images/icons/search.svg' %}"
                                             class="svg_img header_svg" alt="icon"></button>
                                 </form>
@@ -533,29 +533,29 @@
                                 <tbody>
                                     {% if cart %}
                                     <tr>
-                                        <td class="text-left">Micro expenses</td>
-                                        <td class="text-right">{{ cart.shipping_price }} تومان</td>
+                                        <td class="text-left">Small fees</td>
+                                        <td class="text-right">{{ cart.shipping_price }} Toman</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left">Taxes (20%) :</td>
-                                        <td class="text-right">0 تومان</td>
+                                        <td class="text-right">0 Toman</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left">Finished price</td>
-                                        <td class="text-right primary-color">{{ cart.finished_price }} تومان</td>
+                                        <td class="text-right primary-color">{{ cart.finished_price }} Toman</td>
                                     </tr>
                                 {% else %}
                                     <tr>
                                         <td class="text-left">Micro expenses</td>
-                                        <td class="text-right">{{ cart.shipping_price }} تومان</td>
+                                        <td class="text-right">{{ cart.shipping_price }} Toman</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left">Taxes (20%) :</td>
-                                        <td class="text-right">0 تومان</td>
+                                        <td class="text-right">0 Toman</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left">Finished price</td>
-                                        <td class="text-right primary-color">0 تومان</td>
+                                        <td class="text-right primary-color">0 Toman</td>
                                     </tr>
                                 {% endif %}
                                 </tbody>

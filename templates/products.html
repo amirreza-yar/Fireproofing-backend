@@ -121,51 +121,53 @@
                                 <h3 class="ec-sidebar-title">دسته‌بندی‌ها</h3>
                             </div>
                             <div class="ec-sb-block-content">
-                                <ul>
-                                    <li>
-                                        <div class="ec-sidebar-block-item">
-                                            <input class="check" type="checkbox" checked="" id="c1"> <a href="#">همه</a><span
-                                                class="checked"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ec-sidebar-block-item">
-                                            <input class="check" type="checkbox" id="c2"> <a href="#">دسته بندی 1</a><span
-                                                class="checked"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ec-sidebar-block-item">
-                                            <input class="check" type="checkbox" id="c3"> <a href="#">دسته بندی 2</a><span
-                                                class="checked"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ec-sidebar-block-item">
-                                            <input class="check" type="checkbox" id="c4"> <a href="#">دسته بندی 3</a><span
-                                                class="checked"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ec-sidebar-block-item">
-                                            <input class="check" type="checkbox" id="c5"> <a href="#">دسته بندی 4</a><span
-                                                class="checked"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ec-sidebar-block-item">
-                                            <input class="check" type="checkbox" id="c6"> <a href="#">دسته بندی 5</a><span
-                                                class="checked"></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="ec-sidebar-block-item">
-                                            <input class="check" type="checkbox" id="c7"> <a href="#">دسته بندی 6</a><span
-                                                class="checked"></span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <a style="background-color: white;color: black;padding: 4px 20px;border-radius: 20px;font-weight: bold;text-align: center;display: flex;justify-content: center;align-items: center;">اعمال</a>
+                                <form id="category-form" action="{% url 'products' %}" method="get">
+                                    <ul>
+                                        <!-- <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input form="category-form" class="check" type="checkbox" checked="" name="c1"> <a href="#">همه</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li> -->
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input form="category-form" class="check" type="checkbox" name="c1"> <a href="#">دسته بندی 1</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input form="category-form" class="check" type="checkbox" name="c2"> <a href="#">دسته بندی 2</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input form="category-form" class="check" type="checkbox" name="c3"> <a href="#">دسته بندی 3</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input form="category-form" class="check" type="checkbox" name="c4"> <a href="#">دسته بندی 4</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input form="category-form" class="check" type="checkbox" name="c5"> <a href="#">دسته بندی 5</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input form="category-form" class="check" type="checkbox" name="c6"> <a href="#">دسته بندی 6</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <button form="category-form"  style="background-color: white;color: black;padding: 4px 20px;border-radius: 20px;font-weight: bold;text-align: center;display: flex;justify-content: center;align-items: center;">اعمال</button>
+                                </form>
                             </div>
                         </div>
                     </div>
