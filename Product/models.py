@@ -200,6 +200,13 @@ class DiscountCode(models.Model):
     discount_amount = models.IntegerField(default=0)
 
     @property
+    def is_expired(self):
+        if dt.datetime.now() > self.expire_date:
+            return True
+        else:
+            return False
+
+    @property
     def discount_price(self):
         if self.is_a_percentage:
             # Return True to indicate a percentage discount

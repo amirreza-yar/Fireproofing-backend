@@ -227,9 +227,11 @@ def addServiceToCart(request, pk):
 @require_POST
 def discountCode(request):
     # discount = DiscountCodeForm(request.POST or None)
-    discount_code = request.POST['code']
+    input_code = request.POST['code']
     
-    if DiscountCodeModel.objects.filter(code=discount_code).exists():
+    discount_code = DiscountCodeModel.objects.filter(code=input_code)
+
+    if discountCode.exists() and not discount_code.is_expired:
 
         messages.success(request, "Discount code is valid!")
         return redirect('cart')
