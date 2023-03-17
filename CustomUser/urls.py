@@ -9,4 +9,6 @@ urlpatterns = [
     path('userHistory', views.userHistory, name="userHistory"),
     path('logout', views.logout, name="logout"),
     path('userInvoice/<int:pk>', views.userInvoice, name="userInvoice"),
+    path('resetPassword', views.resetPssword, name="resetPassword"),
+    path('changePassword/<str:hashed_secret>', views.changePassword, name="changePassword")
 ]

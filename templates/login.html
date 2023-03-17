@@ -30,7 +30,7 @@
                                     <input type="password" for="id_password1" name="password1" placeholder="رمز عبور خود را وارد کنید" required="">
                                 </span>
                                 <span class="ec-login-wrap ec-login-fp">
-                                    <label><a href="#">فراموشی رمز عبور ؟</a></label>
+                                    <label><a href="{% url 'resetPassword' %}">فراموشی رمز عبور ؟</a></label>
                                 </span>
                                 {% if messages %}
                                     {% for message in messages %}
@@ -80,7 +80,7 @@
                                 </span>
                                 {% if messages %}
                                     {% for message in messages %}
-                                        <div id="field-error-message">\{{ message }}</div>
+                                        <div id="field-error-message">{{ message }}</div>
                                     {% endfor %}
                                 {% endif %}
                                 <span class="ec-login-wrap ec-login-btn">

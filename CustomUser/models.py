@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
 
+import datetime as dt
+
 class UserProfileManager(BaseUserManager):
     """
         Custom user manager, operates with email only
@@ -102,3 +104,15 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     # def email_user(self, subject, message, from_email=None, **kwargs):
     #     """Send an email to this user."""
     #     send_mail(subject, message, from_email, [self.email], **kwargs)
+
+class ResetPassword(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    secret = models.CharField(max_length=32, unique=True)
+    # created_time = models.TimeField(default=dt.datetime.now())
+    expiration_time = models.TimeField(default=dt.datetime.now() + dt.timedelta(minutes=2))
+
+    def is_expired(self):
+        if dt.datetime.now() > self.expiration_time:
+            return True
+        else:
+            return False
