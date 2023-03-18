@@ -1,12 +1,13 @@
 import json
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render
+from django.views.generic import CreateView,UpdateView
 from django.core.paginator import Paginator
 from django.db.models import Count
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from Blog.models import Blog
 from CustomUser.models import UserProfile
 from Product.models import Category, Order, Product
-from .forms import PersonelForm
+from .forms import BlogForm, CategoryForm, PersonelForm, ProductForm
 def dashboard(request):
     context = {}
     sell_report = {
@@ -28,13 +29,11 @@ def personel_list(request):
         'personels' : UserProfile.objects.filter(is_active=True,is_staff=True).order_by('date_joined'),
     }
     return render(request, 'admin/listkarmand.html', context)
-def personel_add(request):
-    personel_form = PersonelForm(request.POST or None)
-
-    if personel_form.is_valid():
-        personel_form.save()
-        return reverse('adminP:personel_list') 
-    return render(request, 'admin/addkarmand.html', {'personel_form': personel_form})
+class personel_add(CreateView):
+    model = UserProfile
+    template_name = 'admin/addkarmand.html'
+    form_class = PersonelForm
+    success_url = reverse_lazy('adminP:personel_list')
 def update_info_personel(request, personel):
     updated_info = PersonelForm(request.POST, instance=UserProfile.objects.get(id=personel))
     context = {}
@@ -60,7 +59,9 @@ def delete_personel(request, personel):
     return reverse('adminP:personel_list')
 
 #* USERMANAGEMENT BLOCK
-def user_list(request,page=None,per_page=6):
+def user_list(request):
+    page=request.GET.get('page',1)
+    per_page=request.GET.get('per_page',6)
     all_users = UserProfile.objects.filter(is_staff=False).order_by('username')
     paginator = Paginator(all_users, per_page=per_page)
     users = paginator.get_page(page)
@@ -75,87 +76,33 @@ def user_list(request,page=None,per_page=6):
     return render(request, 'admin/userlist.html', context)
 
 #* CATEGORY BLOCK
-def category_dashboard(request):
-    context = {}
-    categories = Category.objects.all()
-    status = 0
-    if request.method == 'GET':
-        submit = request.GET.get('submit',None)
-        if submit:
-            text = request.GET.get('text',None)
-            fulldescription = request.GET.get('fulldescription',None)
-            if text and fulldescription:
-                try:
-                    cat = Category(text,fulldescription)
-                    cat.save()
-                    context = {
-                        'step' : 'create-cat',
-                        'msg' : 'success',
-                        'list-cat' : categories,
-                    }
-                    status = 201
-                except Exception as e:
-                    context = {
-                        'step' : 'create-cat',
-                        'msg' : e,
-                        'list-cat' : categories,
-                    }
-                    status = 500
-            else:
-                context = {
-                            'step' : 'create-cat',
-                            'msg' : 'error-all fields are required',
-                            'listcat' : categories,
-                        }
-                status = 400
-    else:
-        context = {
-                    'step' : 'dashboard',
-                    'listcat' : categories,
-                }
-        status = 400
-    return render(request, 'category.html', context, status)
-
+class category(CreateView):
+    model = Category
+    template_name = 'admin/category.html'
+    form_class = CategoryForm
+    success_url = reverse_lazy('adminP:category')
+    def get_context_data(self, **kwargs):
+        data = kwargs
+        data['listcat'] = Category.objects.all()
+        print(data)
+        return super().get_context_data(**data)
 #* WEBLOG MANAGEMENT BLOCK
 def weblog_list(request):
     #! NO PAGINATION, NO SEARECH, NO FILTERS??
     context = {
         'blogs' : Blog.objects.all().order_by('released_date')
     }
-    return render(request, 'admin/bloglist.html', context, 200)
-def weblog_edit(request,pk):
-    context = {}
-    status = 0
-    if request.method == 'POST':
-        data = json.loads(request.POST)
-        blog = Blog.objects.get(id=pk)
-        blog.cover = data['cover']
-        blog.title = data['title']
-        blog.en_title = data['en_title']
-        blog.body = data['body']
-        blog.en_body = data['en_body']
-        blog.meta_description = data['meta_description']
-        blog.en_meta_description = data['en_meta_description']
-        blog.save()
-        return reverse('adminP:weblog_list')
-    else:
-        context = {
-            'blog': Blog.objects.get(id=pk),
-        }
-        status = 200
-    return render(request, 'admin/editblog.html', context, status=status)
-def weblog_add(request,pk):
-    context = {}
-    status = 0
-    if request.method == 'POST':
-        data = json.loads(request.POST)
-        del data['csrf_token']
-        blog = Blog(**data)
-        blog.save()
-        return reverse('adminP:weblog_list')
-    else:
-        status = 200
-    return render(request, 'admin/addblog.html', context, status=status)
+    return render(request, 'admin/bloglist.html', context)
+class weblog_edit(UpdateView):
+    template_name = 'admin/addblog.html'
+    model = Blog
+    form_class = BlogForm
+    success_url = reverse_lazy('adminP:weblog_list')
+class weblog_add(CreateView):
+    template_name = 'admin/addblog.html'
+    model = Blog
+    form_class = BlogForm
+    success_url = reverse_lazy('adminP:weblog_list')
 def weblog_delete(request,pk):
     try:
         blog = Blog.objects.get(id=pk)
@@ -181,47 +128,17 @@ def product_list(request):
     }
     return render(request, 'admin/productlist.html', context)
 
-def product_add(request):
-    context = {}
-    status = 0
-    if request.method == 'POST':
-        data = json.loads(request.POST)
-        del data['csrf_token']
-        product = Product(**data)
-        product.save()
-        return reverse('adminP:product_list')
-    else:
-        status = 200
-        context = {'category':Category.objects.all()}
-    return render(request, 'addproduct.html', context, status=status)
+class product_add(CreateView):
+    template_name = 'admin/addproduct.html'
+    model = Product
+    success_url = reverse_lazy('adminP:product_list')
+    form_class = ProductForm
 
-def product_edit(request, pk):
-    if request.method == 'POST':
-        data = json.loads(request.POST)
-        product = Product.objects.get(id=pk)
-        product.name = data['name']
-        product.en_name = data['en_name']
-        product.meta_description = data['meta_description']
-        product.en_meta_description = data['en_meta_description']
-        product.full_description = data['full_description']
-        product.en_full_description = data['en_full_description']
-        product.price = data['price']
-        product.categories = data['categories']
-        product.image0 = data['image0']
-        product.image1 = data['image1']
-        product.image2 = data['image2']
-        product.image3 = data['image3']
-        product.image4 = data['image4']
-        product.image5 = data['image5']
-        product.image6 = data['image6']
-        product.save()
-        return reverse('adminP:product_list')
-    else:
-        context = {
-            'product': Product.objects.get(id=pk),
-        }
-        status = 200
-    return render(request, 'editproduct.html', context, status=status)
+class product_edit(UpdateView):
+    model = Product
+    template_name = 'admin/addproduct.html'
+    success_url = reverse_lazy('adminP:product_list')
+    form_class = ProductForm
 #* ORDER BLOCK
 def order_list(request):
     orders = Order.objects.all()
