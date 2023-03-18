@@ -24,12 +24,12 @@
     <div class="wrapper">
         <div class="ec-left-sidebar ec-bg-sidebar">
             <div id="sidebar" class="sidebar ec-sidebar-footer">
-                <div class="ec-brand"><a href="index.html" title="Dashboard">نام فروشگاه <span
+                <div class="ec-brand"><a href="{% url 'adminP:dashboard' %}" title="Dashboard">نام فروشگاه <span
                             class="ec-brand-name text-truncate">
                         </span></a></div>
                 <div class="ec-navigation" data-simplebar>
                     <ul class="nav sidebar-inner" id="sidebar-menu">
-                        <li class="active"><a class="sidenav-item-link" href="index.html"><i
+                        <li class="active"><a class="sidenav-item-link" href="{% url 'adminP:dashboard' %}"><i
                                     class="mdi mdi-view-dashboard-outline"></i> <span class="nav-text">
                                     داشبورد</span></a>
                             <hr>
@@ -39,9 +39,9 @@
                                 <b class="caret"></b></a>
                             <div class="collapse">
                                 <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
-                                    <li><a class="sidenav-item-link" href="listkarmand.html"><span class="nav-text">لیست
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:personel_list' %}"><span class="nav-text">لیست
                                                 پرسنل </span></a></li>
-                                    <li><a class="sidenav-item-link" href="addkarmand.html"><span class="nav-text">اضافه
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:personel_add' %}"><span class="nav-text">اضافه
                                                 کردن پرسنل جدید </span></a></li>
                                 </ul>
                             </div>
@@ -51,7 +51,7 @@
                                     class="caret"></b></a>
                             <div class="collapse">
                                 <ul class="sub-menu" id="users" data-parent="#sidebar-menu">
-                                    <li><a class="sidenav-item-link" href="userlist.html"><span class="nav-text">لیست
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:user_list' %}"><span class="nav-text">لیست
                                                 کاربران</span></a></li>
                                 </ul>
                             </div>
@@ -62,7 +62,7 @@
                                     class="caret"></b></a>
                             <div class="collapse">
                                 <ul class="sub-menu" id="categorys" data-parent="#sidebar-menu">
-                                    <li><a class="sidenav-item-link" href="category.html"><span
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:category' %}"><span
                                                 class="nav-text">دسته‌بندی‌ اصلی</span></a></li>
                                 </ul>
                             </div>
@@ -72,9 +72,9 @@
                                     class="caret"></b></a>
                             <div class="collapse">
                                 <ul class="sub-menu" id="products" data-parent="#sidebar-menu">
-                                    <li><a class="sidenav-item-link" href="bloglist.html"><span class="nav-text">لیست
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:weblog_list' %}"><span class="nav-text">لیست
                                                 بلاگ ها</span></a></li>
-                                    <li><a class="sidenav-item-link" href="addblog.html"><span class="nav-text">اضافه
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:weblog_add' %}"><span class="nav-text">اضافه
                                                 کردن بلاگ</span></a></li>
                                 </ul>
                             </div>
@@ -84,9 +84,9 @@
                                     class="caret"></b></a>
                             <div class="collapse">
                                 <ul class="sub-menu" id="products" data-parent="#sidebar-menu">
-                                    <li><a class="sidenav-item-link" href="addproduct.html"><span
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:product_add' %}"><span
                                                 class="nav-text">افزودن محصول</span></a></li>
-                                    <li><a class="sidenav-item-link" href="productlist.html"><span
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:product_list' %}"><span
                                                 class="nav-text">لیست محصولات</span></a></li>
                                 </ul>
                             </div>
@@ -96,7 +96,7 @@
                                     class="caret"></b></a>
                             <div class="collapse">
                                 <ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
-                                    <li><a class="sidenav-item-link" href="orderlist.html"><span
+                                    <li><a class="sidenav-item-link" href="{% url 'adminP:order_list' %}"><span
                                                 class="nav-text">لیست سفارشات </span></a></li>
 
                                 </ul>
@@ -131,11 +131,11 @@
                         <ul class="nav navbar-nav">
                             <li class="dropdown user-menu">
                                 <button class="dropdown-toggle nav-link ec-drop" data-bs-toggle="dropdown"
-                                    aria-expanded="false"><img src="assets/img/user/user.png" class="user-image"
+                                    aria-expanded="false"><img src="{% static 'assets/img/user/user.png' %}" class="user-image"
                                         alt="User Image"></button>
 
                                 <ul class="dropdown-menu dropdown-menu-right ec-dropdown-menu">
-                                    <li class="dropdown-header"><img src="assets/img/user/user.png" class="img-circle"
+                                    <li class="dropdown-header"><img src="{% static 'assets/img/user/user.png' %}" class="img-circle"
                                             alt="User Image">
                                         <div class="d-inline-block"> ادمین وب سایت <small class="pt-1"><a
                                                     class="__cf_email__"
