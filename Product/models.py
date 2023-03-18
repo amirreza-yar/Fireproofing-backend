@@ -35,7 +35,7 @@ class Product(models.Model):
     is_recommended = models.BooleanField(default=True)
     discount_percentage = models.IntegerField(default=0, validators=[MinValueValidator(0.0), MaxValueValidator(100)])
     is_service = models.BooleanField(default=False)
-    inventory = models.IntegerField()
+    # inventory = models.IntegerField()
     
     categories = models.ManyToManyField("Category", related_name='+', blank=True)
     
@@ -92,7 +92,7 @@ class Category(models.Model):
 
     @property
     def category_display(self):
-        return self.get_name_display()
+        return self.name
 
     def __str__(self):
         return self.category_display
