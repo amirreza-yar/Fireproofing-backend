@@ -983,7 +983,7 @@
                                     <div class="ec-ratting-content">
                                         <h3>Add comment</h3>
                                         <div class="ec-ratting-form">
-                                            <form action="{% url 'makeComment' pk=service.pk %}" method="POST">
+                                            <form action="{% url 'makeComment' pk=product.pk %}" method="POST">
                                                 {% csrf_token %}
                                                 <div class="ec-ratting-star">
                                                     <span>Your rating:</span>
