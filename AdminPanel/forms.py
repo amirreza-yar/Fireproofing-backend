@@ -1,14 +1,33 @@
 from CustomUser.models import UserProfile
+from Product.models import (
+    Category,
+    Product
+)
+from Blog.models import Blog
 from django import forms
-
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('name','en_name','meta_description','en_meta_description','full_description','en_full_description','image0','image1','image2','image3','image4','image5','image6','price','categories')
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(self.fields)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ('cover','title','en_title','body','en_body','meta_description','en_meta_description',)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(self.fields)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ('name', 'description')
 class PersonelForm(forms.ModelForm):
-
-    password1 = forms.CharField(
-        label=("Password"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
-        # help_text=password_validation.password_validators_help_text_html(),
-    )
 
     class Meta:
         model = UserProfile
@@ -23,8 +42,7 @@ class PersonelForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
+        user.set_password("12345678")
         user.is_staff = True
-        if commit:
-            user.save()
+        user.save()
         return user
