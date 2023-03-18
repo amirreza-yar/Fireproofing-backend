@@ -1,5 +1,5 @@
-{% load static %}
 {% extends 'admin/base.html' %}
+{% load static %}
 {% block content %}
     <div class="ec-content-wrapper">
         <div class="content">
@@ -56,8 +56,8 @@
                                                                         class="sr-only">محصول</span></button>
                                                                 <div class="dropdown-menu"><a
                                                                         class="dropdown-item"
-                                                                        href="editproduct.html">ویرایش</a> <a
-                                                                        class="dropdown-item" href="#">حذف</a>
+                                                                        href="{% url 'adminP:product_edit' product.pk %}">ویرایش</a> <a
+                                                                        {% comment %} class="dropdown-item" href="#">حذف</a> {% endcomment %}
                                                                 </div>
                                                             </div>
                                                         </td>

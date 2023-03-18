@@ -17,18 +17,16 @@
                                 <div class="card-body">
                                     <div class="ec-cat-form">
                                         <h4>اضافه کردن دسته جدید</h4>
-                                        <form method="GET">
+                                        <form method="POST">
+                                            {% csrf_token %}
                                             <div class="form-group row"><label for="text"
                                                     class="col-12 col-form-label">نام</label>
-                                                <div class="col-12"><input id="text" name="text"
-                                                        class="form-control here slug-title"></div>
+                                                <div class="col-12">{{form.name}}</div>
                                             </div>
                                             
                                             <div class="form-group row"><label
                                                     class="col-12 col-form-label"> شرح کامل </label>
-                                                <div class="col-12"><textarea id="fulldescription"
-                                                        name="fulldescription" cols="40" rows="4"
-                                                        class="form-control"></textarea></div>
+                                                <div class="col-12">{{form.description}}</div>
                                             </div>
                                             
                                             <div class="row">
@@ -54,7 +52,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {% for listcat in cat %}
+                                                {% for cat in listcat %}
                                                 <tr>
                                                     <td>{{cat.name}}/td>
 

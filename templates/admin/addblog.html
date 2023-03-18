@@ -21,15 +21,14 @@
                                     <h2>افزودن بلاگ</h2>
                                 </div>
                                 <div class="card-body">
-                                    <form class="row g-3" enctype="multipart/form-data">
+                                    <form class="row g-3" enctype="multipart/form-data" method='POST'>
+                                        {% csrf_token %}
                                         <div class="row ec-vendor-uploads">
                                             <div class="col-lg-4">
                                                 <div class="ec-vendor-img-upload">
                                                     <div class="ec-vendor-main-img">
                                                         <div class="avatar-upload">
-                                                            <div class="avatar-edit"><input type="file"
-                                                                    id="imageUpload" class="ec-image-upload"
-                                                                    accept=".png, .jpg, .jpeg"><label
+                                                            <div class="avatar-edit">{{form.cover}}<label
                                                                     for="imageUpload"><img
                                                                         src="{% static 'assets/img/icons/edit.svg' %}"
                                                                         class="svg_img header_svg"
@@ -47,37 +46,27 @@
                                             </div>
                                             <div class="col-lg-8">
                                                 <div class="ec-vendor-upload-detail">
-                                                    <div class="col-md-12"><label for="inputEmail4"
-                                                            class="form-label">نام بلاگ</label><input
-                                                            name="title"
-                                                            class="form-control slug-title"
-                                                            id="inputEmail4"></div>
-
+                                                    <div class="col-md-6"><label for="inputEmail4"
+                                                            class="form-label">نام بلاگ</label>{{form.title}}</div>
+                                                    <div class="col-md-6"><label
+                                                        class="form-label">توضیحات متا</label>{{form.meta_description}}</div>
                                                     <div class="col-md-12"><label
-                                                            class="form-label">جزییات</label><textarea
-                                                            class="form-control" rows="4" name="body"></textarea></div>
+                                                            class="form-label">جزییات</label>{{form.body}}</div>
 
-                                                    <div class="col-md-12"><label
-                                                        class="form-label">توضیحات متا</label><textarea
-                                                        class="form-control" rows="4" name="meta_description"></textarea></div>
+                                                    
                                                     <hr />
                                                     <h5>اطلاعات زیر را برای نسخه انگلیسی وارد کنید</h5>
                                                     <br >
                                                     <br >
                                                     
-                                                    <div class="col-md-12"><label for="inputEmail4"
-                                                        class="form-label">نام بلاگ</label><input
-                                                        name="en_title"
-                                                        class="form-control slug-title"
-                                                        id="inputEmail4"></div>
-
+                                                    <div class="col-md-6"><label for="inputEmail4"
+                                                        class="form-label">نام بلاگ</label>{{form.en_title}}</div>
+                                                    <div class="col-md-6"><label
+                                                        class="form-label">توضیحات متا</label>{{form.en_meta_description}}</div>
                                                     <div class="col-md-12"><label
-                                                            class="form-label">جزییات</label><textarea
-                                                            class="form-control" rows="4" name="en_body"></textarea></div>
+                                                            class="form-label">جزییات</label>{{form.en_body}}</div>
 
-                                                    <div class="col-md-12"><label
-                                                        class="form-label">توضیحات متا</label><textarea
-                                                        class="form-control" rows="4" name="en_meta_description"></textarea></div>
+                                                    
 
 
                                                     <div class="col-md-12"><button type="submit"
