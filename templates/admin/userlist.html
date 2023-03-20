@@ -6,7 +6,7 @@
         <div class="breadcrumb-wrapper breadcrumb-contacts">
             <div>
                 <h1>لیست کاربران</h1>
-                <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                <p class="breadcrumbs"><span><a href="{% url 'adminP:dashboard' %}">خانه</a></span> <span><i
                             class="mdi mdi-chevron-left"></i></span>کاربر</p>
             </div>
 
@@ -49,8 +49,7 @@
                                                     data-bs-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false" data-display="static"><span
                                                         class="sr-only">اطلاعات</span></button>
-                                                <div class="dropdown-menu"><a class="dropdown-item"
-                                                        href="edituser.html">ویرایش</a> <a
+                                                <div class="dropdown-menu"><a
                                                         class="dropdown-item" href="#">حذف</a></div>
                                             </div>
                                         </td>

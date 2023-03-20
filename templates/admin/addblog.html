@@ -9,10 +9,10 @@
                     <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                         <div>
                             <h1>افزودن بلاگ</h1>
-                            <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                            <p class="breadcrumbs"><span><a href="{% url 'adminP:dashboard' %}">خانه</a></span> <span><i
                                         class="mdi mdi-chevron-left"></i></span>اضافه کردن بلاگ</p>
                         </div>
-                        <div><a href="bloglist.html" class="btn btn-primary"> مشاهده همه </a></div>
+                        <div><a href="{% url 'adminP:weblog_list' %}" class="btn btn-primary"> مشاهده همه </a></div>
                     </div>
                     <div class="row">
                         <div class="col-12">

@@ -8,7 +8,7 @@
                     <div class="content">
                         <div class="breadcrumb-wrapper breadcrumb-wrapper-2 d-flex" style="flex-direction: column;">
                             <h1> تاریخچه سفارشات</h1>
-                            <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                            <p class="breadcrumbs"><span><a href="{% url 'adminP:dashboard' %}">خانه</a></span> <span><i
                                         class="mdi mdi-chevron-left"></i></span>تاریخچه</p>
                         </div>
                         <div class="row">
@@ -58,7 +58,7 @@
                                                         </td>
                                                         <td>{{order.ordered_date}}</td>
                                                         <td>
-                                                            <div class="btn-group mb-1"><a href="orderdetail.html" type="button"
+                                                            <div class="btn-group mb-1"><a href="{% url 'adminP:order_detail' order.pk %}" type="button"
                                                                     class="btn btn-outline-success">جزئیات</a>
                                                                     <button type="button"
                                                                     class="btn btn-outline-danger">لغو سفارش</button>

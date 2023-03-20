@@ -9,10 +9,10 @@
                     <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                         <div>
                             <h1>افزودن محصول</h1>
-                            <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                            <p class="breadcrumbs"><span><a href="{% url 'adminP:dashboard' %}">خانه</a></span> <span><i
                                         class="mdi mdi-chevron-left"></i></span>محصولات</p>
                         </div>
-                        <div><a href="productlist.html" class="btn btn-primary"> مشاهده همه </a></div>
+                        <div><a href="{% url 'adminP:product_list' %}" class="btn btn-primary"> مشاهده همه </a></div>
                     </div>
                     <div class="row">
                         <div class="col-12">

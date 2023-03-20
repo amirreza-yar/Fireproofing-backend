@@ -9,10 +9,10 @@
                         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                             <div>
                                 <h1>محصولات</h1>
-                                <p class="breadcrumbs"><span><a href="index.html">خانه</a></span> <span><i
+                                <p class="breadcrumbs"><span><a href="{% url 'adminP:dashboard' %}">خانه</a></span> <span><i
                                             class="mdi mdi-chevron-left"></i></span>محصولات</p>
                             </div>
-                            <div><a href="addproduct.html" class="btn btn-primary">افزودن محصول</a></div>
+                            <div><a href="{% url 'adminP:product_add' %}" class="btn btn-primary">افزودن محصول</a></div>
                         </div>
                         <div class="row">
                             <div class="col-12">
@@ -46,7 +46,7 @@
                                                         <td>{{product.date_added}}</td>
                                                         <td>
                                                             <div class="btn-group mb-1"><a
-                                                                    href="productdetail.html" type="button"
+                                                                    href="#" type="button"
                                                                     class="btn btn-outline-success">محصول</a>
                                                                 <button type="button"
                                                                     class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
