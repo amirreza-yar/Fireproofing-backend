@@ -85,7 +85,7 @@
                                 <h4 class="ec-ship-title">هزینه ارسال</h4>
                                 <div class="ec-cart-form">
                                     <p> مقصد خود را وارد کنید تا برآورد حمل و نقل را دریافت کنید </p>
-                                    <form action="#" method="post" id="make-order-form">
+                                    <form action="makeOrder" method="post" id="make-order-form">
                                         {% csrf_token %}
                                         <span class="ec-cart-wrap">
                                             <label> آدرس  </label>
@@ -294,7 +294,7 @@
                                 <h4 class="ec-ship-title">shipping cost</h4>
                                 <div class="ec-cart-form">
                                     <p>Enter your destination to get a shipping estimate</p>
-                                    <form action="#" method="post" id="make-order-form">
+                                    <form action="makeOrder" method="post" id="make-order-form">
                                         {% csrf_token %}
                                         <span class="ec-cart-wrap">
                                             <label>Address</label>
