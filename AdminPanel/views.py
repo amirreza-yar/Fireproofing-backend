@@ -1,4 +1,4 @@
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseForbidden, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.views.generic import CreateView,UpdateView
 from django.core.paginator import Paginator
@@ -9,6 +9,7 @@ from Blog.models import Blog
 from CustomUser.models import UserProfile
 from Product.models import Category, Order, Product
 from .forms import BlogForm, CategoryForm, PersonelForm, ProductForm, LoginForm
+from .mixins import SuperuserMixin, CategoryMixin, ProductMixin, BlogMixin
 def login_admin(request):
     form = LoginForm()
     message = ''
@@ -47,26 +48,31 @@ def dashboard(request):
 
 #* PERSONEL BLOCK
 def personel_list(request):
-    context = {
-        'personels' : UserProfile.objects.filter(is_active=True,is_staff=True).order_by('date_joined'),
-    }
-    return render(request, 'admin/listkarmand.html', context)
-class personel_add(CreateView):
+    if request.user.is_superuser:
+        context = {
+            'personels' : UserProfile.objects.filter(is_active=True,is_staff=True).order_by('date_joined'),
+        }
+        return render(request, 'admin/listkarmand.html', context)
+    else: 
+        raise Http404('permission denied')
+class personel_add(SuperuserMixin, CreateView):
     model = UserProfile
     template_name = 'admin/addkarmand.html'
     form_class = PersonelForm
     success_url = reverse_lazy('adminP:personel_list')
 
-class Personel_Update(UpdateView):
+class Personel_Update(SuperuserMixin, UpdateView):
     model = UserProfile
     template_name = 'admin/addkarmand.html'
     form_class = PersonelForm
     success_url = reverse_lazy('adminP:personel_list')
 def delete_personel(request, personel):
-    personel_obj:UserProfile = UserProfile.objects.get(id=personel)
-    personel_obj.delete()
-    return HttpResponseRedirect(reverse('adminP:personel_list'))
-
+    if request.user.is_superuser:
+        personel_obj:UserProfile = UserProfile.objects.get(id=personel)
+        personel_obj.delete()
+        return HttpResponseRedirect(reverse('adminP:personel_list'))
+    else: 
+        raise Http404('permission denied')
 #* USERMANAGEMENT BLOCK
 def user_list(request):
     page=request.GET.get('page',1)
@@ -85,7 +91,7 @@ def user_list(request):
     return render(request, 'admin/userlist.html', context)
 
 #* CATEGORY BLOCK
-class Category_view(CreateView):
+class Category_view(CategoryMixin, CreateView):
     model = Category
     template_name = 'admin/category.html'
     form_class = CategoryForm
@@ -96,7 +102,7 @@ class Category_view(CreateView):
         print(data)
         return super().get_context_data(**data)
 
-class CategoryEdit(UpdateView):
+class CategoryEdit(CategoryMixin, UpdateView):
     model = Category
     template_name = 'admin/category.html'
     form_class = CategoryForm
@@ -107,82 +113,103 @@ class CategoryEdit(UpdateView):
         print(data)
         return super().get_context_data(**data)
 
-def category_delete(self, pk):
-    category = Category.objects.get(pk=pk)
-    category.delete()
-    return HttpResponseRedirect(reverse('adminP:category'))
+def category_delete(request, pk):
+    if request.user.category_access:
+        category = Category.objects.get(pk=pk)
+        category.delete()
+        return HttpResponseRedirect(reverse('adminP:category'))
+    else: 
+        raise Http404('permission denied')
 #* WEBLOG MANAGEMENT BLOCK
 def weblog_list(request):
     #! NO PAGINATION, NO SEARECH, NO FILTERS??
-    context = {
-        'blogs' : Blog.objects.all().order_by('released_date')
-    }
-    return render(request, 'admin/bloglist.html', context)
-class weblog_edit(UpdateView):
+    if request.user.blog_access:
+        context = {
+            'blogs' : Blog.objects.all().order_by('released_date')
+        }
+        return render(request, 'admin/bloglist.html', context)
+    else: 
+        raise Http404('permission denied')
+class weblog_edit(BlogMixin, UpdateView):
     template_name = 'admin/addblog.html'
     model = Blog
     form_class = BlogForm
     success_url = reverse_lazy('adminP:weblog_list')
-class weblog_add(CreateView):
+class weblog_add(BlogMixin, CreateView):
     template_name = 'admin/addblog.html'
     model = Blog
     form_class = BlogForm
     success_url = reverse_lazy('adminP:weblog_list')
 def weblog_delete(request,pk):
-    try:
-        blog = Blog.objects.get(id=pk)
-        blog.delete()
-        return reverse('adminP:weblog_list')
-    except Blog.DoesNotExist:
-        return reverse('404')
+    if request.user.blog_access:
+        try:
+            blog = Blog.objects.get(id=pk)
+            blog.delete()
+            return reverse('adminP:weblog_list')
+        except Blog.DoesNotExist:
+            raise Http404('Not Found')
+    else: 
+        raise Http404('permission denied')
 
 #* PRODUCT BLOCK
 def product_list(request):
-    per_page = request.GET.get('per_page',1)
-    page = request.GET.get('page',1)
-    products = Product.objects.all()
-    paginator = Paginator(products, per_page=per_page)
-    product_page = paginator.get_page(page)
-    context = {
-        'products' : product_page, #TODO: processe in template tags
-        'per_page' : per_page,
-        'count_obj' : paginator.count,
-        'count_pages' : paginator.num_pages,
-        'this_page' : page,
-        'elided_pages' : paginator.get_elided_page_range(page,on_each_side=2)
-    }
-    return render(request, 'admin/productlist.html', context)
-
-class product_add(CreateView):
+    if request.user.product_access:
+        per_page = request.GET.get('per_page',1)
+        page = request.GET.get('page',1)
+        products = Product.objects.all()
+        paginator = Paginator(products, per_page=per_page)
+        product_page = paginator.get_page(page)
+        context = {
+            'products' : product_page, #TODO: processe in template tags
+            'per_page' : per_page,
+            'count_obj' : paginator.count,
+            'count_pages' : paginator.num_pages,
+            'this_page' : page,
+            'elided_pages' : paginator.get_elided_page_range(page,on_each_side=2)
+        }
+        return render(request, 'admin/productlist.html', context)
+    else: 
+        raise Http404('permission denied')
+class product_add(ProductMixin, CreateView):
     template_name = 'admin/addproduct.html'
     model = Product
     success_url = reverse_lazy('adminP:product_list')
     form_class = ProductForm
 
-class product_edit(UpdateView):
+class product_edit(ProductMixin, UpdateView):
     model = Product
     template_name = 'admin/addproduct.html'
     success_url = reverse_lazy('adminP:product_list')
     form_class = ProductForm
 #* ORDER BLOCK
 def order_list(request):
-    orders = Order.objects.all()
-    context = {
-        'orders' : orders,
-    }
-    return render(request,'admin/orderlist.html',context)
+    if request.user.order_access:
+        orders = Order.objects.all()
+        context = {
+            'orders' : orders,
+        }
+        return render(request,'admin/orderlist.html',context)
+    else: 
+        raise Http404('permission denied')
+
 def order_detail(request, pk):
-    order = Order.objects.get(id=pk)
-    context = {'order': order, 'items': order.loaded_json_items()}
-    return render(request,'admin/orderdetail.html',context)
+    if request.user.order_access:
+        order = Order.objects.get(id=pk)
+        context = {'order': order, 'items': order.loaded_json_items()}
+        return render(request,'admin/orderdetail.html',context)
+    else: 
+        raise Http404('permission denied')
 def order_cancel(request, pk):
-    order = Order.objects.get(id=pk)
-    order.status = 'CD'
-    order.save()
-    orders = Order.objects.all()
-    context = {
-        'orders' : orders,
-    }
-    return render(request,'admin/orderlist.html',context)
+    if request.user.order_access:
+        order = Order.objects.get(id=pk)
+        order.status = 'CD'
+        order.save()
+        orders = Order.objects.all()
+        context = {
+            'orders' : orders,
+        }
+        return render(request,'admin/orderlist.html',context)
+    else: 
+        raise Http404('permission denied')
 #* AGENTS BLOCK
 #! CAN'T FIND MODEL !! :|

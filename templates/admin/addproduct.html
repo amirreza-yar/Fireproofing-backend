@@ -129,17 +129,32 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-8">
-                                                <div class="ec-vendor-upload-detail">
+                                            <div class="col-lg-8 ">
+                                                <div class="ec-vendor-upload-detail row g-3">
                                                     <div class="col-md-6"><label for="inputEmail4"
-                                                            class="form-label">نام محصول </label>{{form.name}}</div>
+                                                            class="form-label">نام محصول </label>{{form.name}}
+                                                    </div>
                                                     <div class="col-md-6"><label class="form-label">دسته
-                                                            بندی ها را انتخاب کنید</label>{{form.categories}}</div>
+                                                            بندی ها را انتخاب کنید</label>{{form.categories}}
+                                                    </div>
 
 
                                                     <div class="col-md-6"><label class="form-label">قیمت
                                                             <span>( به تومان
-                                                                )</span></label>{{form.price}}</div>
+                                                                )</span></label>{{form.price}}
+                                                    </div>
+                                                    <div class="col-md-6"><label class="form-label">موجود در انبار
+                                                            <span></span></label>{{form.is_instock}}
+                                                    </div>
+                                                    <div class="col-md-6"><label class="form-label">پیشنهادی
+                                                            <span></span></label>{{form.is_recommended}}
+                                                    </div>
+                                                    <div class="col-md-6"><label class="form-label">درصد تخفیف
+                                                            <span></span></label>{{form.discount_percentage}}
+                                                    </div>
+                                                    <div class="col-md-6"><label class="form-label">فروش سرویس
+                                                            <span></span></label>{{form.is_service}}
+                                                    </div>
                                                     <div class="col-md-12"><label
                                                             class="form-label">جزییات</label>{{form.full_description}}</div>
                                                     <div class="col-md-12"><label
