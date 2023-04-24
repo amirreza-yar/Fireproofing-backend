@@ -13,12 +13,28 @@ class LoginForm(forms.Form):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('name','en_name','meta_description','en_meta_description','full_description','en_full_description','image0','image1','image2','image3','image4','image5','image6','price','categories')
+        fields = ('name','en_name','meta_description','en_meta_description','full_description','en_full_description','image0','image1','image2','image3','image4','image5','image6','price','categories','is_instock','is_recommended','discount_percentage','is_service')
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         print(self.fields)
         for field in self.fields:
+            if field in ['is_instock','is_recommended','is_service']:
+                continue
             self.fields[field].widget.attrs['class'] = 'form-control'
+        self.fields['image0'].widget.attrs['id'] = 'imageUpload'
+        self.fields['image1'].widget.attrs['id'] = 'thumbUpload01'
+        self.fields['image2'].widget.attrs['id'] = 'thumbUpload02'
+        self.fields['image3'].widget.attrs['id'] = 'thumbUpload03'
+        self.fields['image4'].widget.attrs['id'] = 'thumbUpload04'
+        self.fields['image5'].widget.attrs['id'] = 'thumbUpload05'
+        self.fields['image6'].widget.attrs['id'] = 'thumbUpload06'
+        self.fields['image0'].widget.attrs['class'] = 'ec-image-upload'
+        self.fields['image1'].widget.attrs['class'] = 'ec-image-upload'
+        self.fields['image2'].widget.attrs['class'] = 'ec-image-upload'
+        self.fields['image3'].widget.attrs['class'] = 'ec-image-upload'
+        self.fields['image4'].widget.attrs['class'] = 'ec-image-upload'
+        self.fields['image5'].widget.attrs['class'] = 'ec-image-upload'
+        self.fields['image6'].widget.attrs['class'] = 'ec-image-upload'
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
@@ -36,7 +52,7 @@ class PersonelForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('username', 'name', 'email', 'phone_number', 'address', 'postal_code', 'city',)
+        fields = ('username', 'name', 'email', 'phone_number', 'address', 'postal_code', 'city','category_access','blog_access','product_access','order_access')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -47,7 +63,8 @@ class PersonelForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password("12345678")
+        password = self.cleaned_data['password']
+        user.set_password(password)
         user.is_staff = True
         user.save()
         return user

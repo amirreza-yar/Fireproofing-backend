@@ -57,6 +57,10 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     education = models.CharField(max_length=200,blank=True, null=True)
     birthday = models.DateField(null=True, blank=True)
     image_profile = models.ImageField(upload_to='profileImage/',blank=True,null=True)
+    category_access = models.BooleanField(default=False)
+    blog_access = models.BooleanField(default=False)
+    product_access = models.BooleanField(default=False)
+    order_access = models.BooleanField(default=False)
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["phone_number"]
