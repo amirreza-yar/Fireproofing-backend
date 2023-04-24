@@ -129,13 +129,24 @@
                                                     class="checked"></span>
                                             </div>
                                         </li> -->
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input form="category-form" class="check" type="checkbox" name="c1"> <a href="#">دسته بندی 1</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
+                                        {% for category in categories %}
+                                            {% if category.name in categories_selected %}
+                                                <li>
+                                                    <div class="ec-sidebar-block-item">
+                                                        <input form="category-form" class="check" type="checkbox" name="{{ category.category_display }}" checked> <a href="#">{{ category.category_display }}</a><span
+                                                            class="checked"></span>
+                                                    </div>
+                                                </li>
+                                            {% else %}
+                                                <li>
+                                                    <div class="ec-sidebar-block-item">
+                                                        <input form="category-form" class="check" type="checkbox" name="{{ category.category_display }}"> <a href="#">{{ category.category_display }}</a><span
+                                                            class="checked"></span>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <!-- <li>
                                             <div class="ec-sidebar-block-item">
                                                 <input form="category-form" class="check" type="checkbox" name="c2"> <a href="#">دسته بندی 2</a><span
                                                     class="checked"></span>
@@ -164,7 +175,7 @@
                                                 <input form="category-form" class="check" type="checkbox" name="c6"> <a href="#">دسته بندی 6</a><span
                                                     class="checked"></span>
                                             </div>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                     <button form="category-form"  style="background-color: white;color: black;padding: 4px 20px;border-radius: 20px;font-weight: bold;text-align: center;display: flex;justify-content: center;align-items: center;">اعمال</button>
                                 </form>

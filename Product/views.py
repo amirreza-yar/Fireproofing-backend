@@ -14,6 +14,7 @@ from .models import ProductComment
 from .models import Cart as CartModel
 from .models import CartItem as CartItemModel
 from .models import Order as OrderModel
+from .models import Category as CategoryModel
 from .forms import MakeComment as MakeCommentForm
 from .forms import AddToCart as AddToCartForm
 from .forms import GetDestinationDetails as GetDestinationDetailsForm
@@ -23,15 +24,53 @@ from .models import DiscountCode as DiscountCodeModel
 def products(request):
 
     # Manipulte with categories and searched text
-    print(request.GET)
+    # if cat:
+
     
     # Filter the DB objects with given category or searhced text
-    products = ProductModel.objects.all().filter(is_service=False)
+    all_products = ProductModel.objects.all().filter(is_service=False)
+    categories = CategoryModel.objects.all()
+
+    # print(dict(request.GET).keys())
+    # print(list(request.GET))
+    # categories_selected = dict()
+    # for category in categories:
+    #     categories_selected[category.name] = 0
+
+    # print(categories_selected)
+    
+    # for i in categories_selected:
+    #     print(i)
+
+    
+    categories_selected = list()    
+    for category_name in list(request.GET):
+        if categories.filter(name=category_name).exists():
+            categories_selected.append(category_name)
+
+    if len(categories_selected) >= 1:
+        products = all_products.filter(categories=categories_selected[0])
+
+        for category_pk in range(1, len(categories_selected)):
+            products = products | products.filter(categories=categories_selected[category_pk])
+    
+        print(products)
+    print(all_products)
+    
+    # categories_queryset = categories.filter(name=categories_selected[0]) | categories.filter(name=categories_selected[1])
+    # print(products.filter(categories__in=categories_queryset[1]))
+    # print(products.filter(name=categories_selected[0]))
+
+    # categories.filter(name=)
+
+    # print(categories_selected)
 
     context = {
         "title": "محصولات",
         "is_index_page": False,
-        "products": products,
+        "products": all_products,
+        "categories": categories,
+        "categories_selected": categories_selected,
     }
 
     return render(request, "products.html", context=context)

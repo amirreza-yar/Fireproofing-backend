@@ -24,7 +24,7 @@ def index(request):
     # print(request.session['lang'])
     # print(request.session['lang'] == True)
     # print(request.user.id)
-    return render(request, "index.html", {"title": "فروشگاه قلان", "is_index_page": True})
+    return render(request, "index.html", {"title": "فروشگاه آتش‌نبرد", "is_index_page": True})
 
 def error404Handler(request, exception):
     # print("I'm running!")

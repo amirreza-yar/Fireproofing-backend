@@ -55,14 +55,18 @@
                                             <img class="img-responsive" src="{{ product.image1.url }}"
                                                 alt="" height="130" width="120">
                                         </div>
+                                        {% if product.image2 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image2.url }}"
                                                 alt="" height="130" width="120">
                                         </div>
+                                        {% endif %}
+                                        {% if product.image3 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image3.url }}"
                                                 alt="" height="130" width="120">
                                         </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -791,13 +795,18 @@
                                             <img class="img-responsive" src="{{ product.image1.url }}"
                                                 alt="" height="130" width="120">
                                         </div>
+                                        {% if product.image2 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image2.url }}"
                                                 alt="" height="130" width="120">
                                         </div>
+                                        {% endif %}
+                                        {% if product.image3 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image3.url }}"
                                                 alt="" height="130" width="120">
+                                        </div>
+                                        {% endif %}
                                         </div>
                                     </div>
                                 </div>

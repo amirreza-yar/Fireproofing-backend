@@ -44,14 +44,15 @@ class Product(models.Model):
         new_price = self.price - self.discount_percentage * self.price / 100
         return int(new_price)
 
-    # @property
+    @property
     def add_to_quantity_purchased(self, value):
         self.quantity_purchased += value
 
     @property
     def rate_filled_star_counter(self):
         return [i for i in range(int(self.rate))]
-    property
+    
+    @property
     def rate_unfilled_star_counter(self):
         return [i for i in range(5 - int(self.rate))]
 
