@@ -8,7 +8,7 @@
                 <div class="content">
                     <div class="breadcrumb-wrapper d-flex align-items-start" style="flex-direction: column;">
                         <h1>دسته‌بندی‌</h1>
-                        <p class="breadcrumbs"><span><a href="{% url 'adminP:dashboaed' %}">خانه</a></span> <span><i
+                        <p class="breadcrumbs"><span><a href="{% url 'adminP:dashboard' %}">خانه</a></span> <span><i
                                     class="mdi mdi-chevron-left"></i></span>دسته‌بندی‌</p>
                     </div>
                     <div class="row">
@@ -54,7 +54,7 @@
                                             <tbody>
                                                 {% for cat in listcat %}
                                                 <tr>
-                                                    <td>{{cat.name}}/td>
+                                                    <td>{{cat.name}}</td>
 
                                                     <td>{{cat.description|truncatewords:7}}</td>
                                                     <td>{% if cat.status %}فعال {% else %}غیر فعال{% endif %}</td>
@@ -68,7 +68,9 @@
                                                                 data-display="static"><span
                                                                     class="sr-only">اطلاعات</span></button>
                                                             <div class="dropdown-menu"><a
-                                                                    class="dropdown-item" href="#">حذف</a>
+                                                                    class="dropdown-item" href="{% url 'adminP:category_delete' cat.pk %}">حذف</a>
+                                                                <a
+                                                                class="dropdown-item" href="{% url 'adminP:category_edit' cat.pk %}">ویرایش</a>
                                                             </div>
                                                         </div>
                                                     </td>

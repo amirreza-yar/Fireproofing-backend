@@ -29,7 +29,7 @@ from AdminPanel import urls as AdminPanelUrls
 urlpatterns = [
     # path('', views.index, name='home'),
     # path('pages/', include('django.contrib.flatpages.urls')),
-    path('admin/', include(AdminPanelUrls)),
+    path('AdminFFireePanel/', include(AdminPanelUrls)),
     path('', include(flatPageUrls)),
     path('', include(UserUrls)),
     path('', include(ProductUrls)),

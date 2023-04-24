@@ -1,14 +1,36 @@
-import json
+from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import CreateView,UpdateView
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.urls import reverse,reverse_lazy
+from django.contrib.auth import login, authenticate
 from Blog.models import Blog
 from CustomUser.models import UserProfile
 from Product.models import Category, Order, Product
-from .forms import BlogForm, CategoryForm, PersonelForm, ProductForm
+from .forms import BlogForm, CategoryForm, PersonelForm, ProductForm, LoginForm
+def login_admin(request):
+    form = LoginForm()
+    message = ''
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+            )
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect(reverse('adminP:dashboard'))
+            else:
+                message = 'رمز عبود یا نام کاربری اشتباه است!'
+    return render(
+        request, 'admin/signin.html', context={'form': form, 'message': message})
 def dashboard(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('adminP:login'))
+    if not request.user.is_staff:
+        return HttpResponseForbidden()
     context = {}
     sell_report = {
         'daily' : Order.objects.all().extra({'ordered_date':"date(ordered_date)"}).values('ordered_date').annotate(ordered_date_count=Count('id')),
@@ -34,29 +56,16 @@ class personel_add(CreateView):
     template_name = 'admin/addkarmand.html'
     form_class = PersonelForm
     success_url = reverse_lazy('adminP:personel_list')
-def update_info_personel(request, personel):
-    updated_info = PersonelForm(request.POST, instance=UserProfile.objects.get(id=personel))
-    context = {}
-    status = 200
-    if request.method == 'POST':
-        if updated_info.is_valid():
-            updated_info.save()
-            context['status'] = 'ok'
-            context['message'] = 'personel profile updated successfully'
-            context['personel'] = updated_info
-            status = 201
-        else:
-            context['status'] = 'error'
-            context['message'] = 'wrong input data'
-            context['personel'] = updated_info
-            status = 418
-    else:
-        context['title'] = 'ویرایش پروفایل'
-    return render(request,'admin/addkarmand.html',context,status=status)
+
+class Personel_Update(UpdateView):
+    model = UserProfile
+    template_name = 'admin/addkarmand.html'
+    form_class = PersonelForm
+    success_url = reverse_lazy('adminP:personel_list')
 def delete_personel(request, personel):
     personel_obj:UserProfile = UserProfile.objects.get(id=personel)
     personel_obj.delete()
-    return reverse('adminP:personel_list')
+    return HttpResponseRedirect(reverse('adminP:personel_list'))
 
 #* USERMANAGEMENT BLOCK
 def user_list(request):
@@ -76,7 +85,7 @@ def user_list(request):
     return render(request, 'admin/userlist.html', context)
 
 #* CATEGORY BLOCK
-class category(CreateView):
+class Category_view(CreateView):
     model = Category
     template_name = 'admin/category.html'
     form_class = CategoryForm
@@ -86,6 +95,22 @@ class category(CreateView):
         data['listcat'] = Category.objects.all()
         print(data)
         return super().get_context_data(**data)
+
+class CategoryEdit(UpdateView):
+    model = Category
+    template_name = 'admin/category.html'
+    form_class = CategoryForm
+    success_url = reverse_lazy('adminP:category')
+    def get_context_data(self, **kwargs):
+        data = kwargs
+        data['listcat'] = Category.objects.all()
+        print(data)
+        return super().get_context_data(**data)
+
+def category_delete(self, pk):
+    category = Category.objects.get(pk=pk)
+    category.delete()
+    return HttpResponseRedirect(reverse('adminP:category'))
 #* WEBLOG MANAGEMENT BLOCK
 def weblog_list(request):
     #! NO PAGINATION, NO SEARECH, NO FILTERS??

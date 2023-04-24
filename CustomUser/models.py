@@ -52,7 +52,12 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     address = models.CharField(max_length=2000, blank=True)
     postal_code = models.IntegerField(null=True, blank=True)
     city = models.CharField(max_length=255, blank=True)
-    
+    age = models.IntegerField(blank=True,null=True)
+    field = models.CharField(max_length=60,blank=True, null=True)
+    education = models.CharField(max_length=200,blank=True, null=True)
+    birthday = models.DateField(null=True, blank=True)
+    image_profile = models.ImageField(upload_to='profileImage/',blank=True,null=True)
+
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["phone_number"]
 
@@ -84,6 +89,9 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     def get_name(self):
         return self.name
+
+    def get_profile(self):
+        return f"media/{self.image_profile}"
 
     @property
     def is_anonymous(self):
