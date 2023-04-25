@@ -43,19 +43,26 @@ def products(request):
     #     print(i)
 
     
+    products = int()
+
     categories_selected = list()    
     for category_name in list(request.GET):
         if categories.filter(name=category_name).exists():
             categories_selected.append(category_name)
 
     if len(categories_selected) >= 1:
-        products = all_products.filter(categories=categories_selected[0])
-
+        products = all_products.filter(categories__name=categories_selected[0])
+        
         for category_pk in range(1, len(categories_selected)):
-            products = products | products.filter(categories=categories_selected[category_pk])
+            products = products | products.filter(categories__name=categories_selected[category_pk])
+    else:
+        products = all_products
+
+    print(products)
+    # print(CategoryModel.objects.filter(name=categories_selected[0])[0])
+
     
-        print(products)
-    print(all_products)
+    # print(all_products)
     
     # categories_queryset = categories.filter(name=categories_selected[0]) | categories.filter(name=categories_selected[1])
     # print(products.filter(categories__in=categories_queryset[1]))
@@ -68,7 +75,7 @@ def products(request):
     context = {
         "title": "محصولات",
         "is_index_page": False,
-        "products": all_products,
+        "products": products,
         "categories": categories,
         "categories_selected": categories_selected,
     }
