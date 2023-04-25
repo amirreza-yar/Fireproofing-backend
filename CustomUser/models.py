@@ -31,6 +31,10 @@ class UserProfileManager(BaseUserManager):
     def create_superuser(self, username, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("blog_access", True)
+        extra_fields.setdefault("product_access", True)
+        extra_fields.setdefault("category_aaccess", True)
+        extra_fields.setdefault("order_access", True)
 
         if extra_fields.get("is_staff") is not True:
             raise ValueError("Superuser must have is_staff=True.")
