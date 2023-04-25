@@ -160,7 +160,8 @@ def product_list(request):
         paginator = Paginator(products, per_page=per_page)
         product_page = paginator.get_page(page)
         context = {
-            'products' : product_page, #TODO: processe in template tags
+            # 'products' : product_page, #TODO: processe in template tags
+            'products' : products, #* Edited by YAR
             'per_page' : per_page,
             'count_obj' : paginator.count,
             'count_pages' : paginator.num_pages,
