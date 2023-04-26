@@ -58,7 +58,7 @@ def products(request):
     else:
         products = all_products
 
-    print(products)
+    # print(products)
     # print(CategoryModel.objects.filter(name=categories_selected[0])[0])
 
     
