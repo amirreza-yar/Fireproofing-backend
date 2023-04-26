@@ -47,7 +47,7 @@ class BlogForm(forms.ModelForm):
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ('name', 'description')
+        fields = ('name', 'description','en_name', 'en_description',)
 class PersonelForm(forms.ModelForm):
 
     class Meta:

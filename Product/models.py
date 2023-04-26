@@ -89,6 +89,8 @@ class ProductComment(models.Model):
 class Category(models.Model):  
     name = models.CharField(max_length=33)
     description = models.TextField()
+    en_name = models.CharField(max_length=33,null=True)
+    en_description = models.TextField(null=True,blank=True)
     status = models.BooleanField(default=True)
 
     @property

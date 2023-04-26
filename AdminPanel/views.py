@@ -99,7 +99,7 @@ class Category_view(CategoryMixin, CreateView):
     def get_context_data(self, **kwargs):
         data = kwargs
         data['listcat'] = Category.objects.all()
-        print(data)
+        # print(data)
         return super().get_context_data(**data)
 
 class CategoryEdit(CategoryMixin, UpdateView):
