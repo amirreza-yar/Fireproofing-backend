@@ -66,7 +66,7 @@ class PersonelForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        password = self.cleaned_data['password']
+        password = self.cleaned_data['password1']
         user.set_password(password)
         user.is_staff = True
         user.save()
