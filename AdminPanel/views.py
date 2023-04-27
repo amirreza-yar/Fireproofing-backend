@@ -182,6 +182,17 @@ class product_edit(ProductMixin, UpdateView):
     template_name = 'admin/addproduct.html'
     success_url = reverse_lazy('adminP:product_list')
     form_class = ProductForm
+
+def product_delete(request,pk):
+    if request.user.product_access:
+        try:
+            product = Product.objects.get(id=pk)
+            product.delete()
+            return reverse('adminP:product_list')
+        except Product.DoesNotExist:
+            raise Http404('Not Found')
+    else: 
+        raise Http404('permission denied')
 #* ORDER BLOCK
 def order_list(request):
     if request.user.order_access:
