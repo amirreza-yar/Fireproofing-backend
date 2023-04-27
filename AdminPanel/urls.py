@@ -5,6 +5,7 @@ app_name = 'adminP'
 urlpatterns = [
     path("", views.dashboard, name="dashboard"),
     path("login/", views.login_admin, name="login"),
+    path("logout/", views.logout_view, name="logout"),
     path("personal/list/", views.personel_list, name="personel_list"),
     path("personel/add/", views.personel_add.as_view(), name="personel_add"),
     path("personel/edit/<int:pk>/", views.Personel_Update.as_view(), name="personel_edit"),

@@ -4,7 +4,7 @@ from django.views.generic import CreateView,UpdateView
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.urls import reverse,reverse_lazy
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate,logout
 from Blog.models import Blog
 from CustomUser.models import UserProfile
 from Product.models import Category, Order, Product
@@ -27,6 +27,9 @@ def login_admin(request):
                 message = 'رمز عبود یا نام کاربری اشتباه است!'
     return render(
         request, 'admin/signin.html', context={'form': form, 'message': message})
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('adminP:login'))
 def dashboard(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('adminP:login'))
@@ -188,7 +191,7 @@ def product_delete(request,pk):
         try:
             product = Product.objects.get(id=pk)
             product.delete()
-            return reverse('adminP:product_list')
+            return HttpResponseRedirect(reverse('adminP:product_list'))
         except Product.DoesNotExist:
             raise Http404('Not Found')
     else: 

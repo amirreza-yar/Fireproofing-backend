@@ -138,11 +138,10 @@
                                     <li class="dropdown-header"><img src="{% static 'assets/img/user/user.png' %}" class="img-circle"
                                             alt="User Image">
                                         <div class="d-inline-block"> ادمین وب سایت <small class="pt-1"><a
-                                                    class="__cf_email__"
-                                                    data-cfemail="4c262324226229342d213c20290c2b212d2520622f2321">john.example@gmail.com</a></small>
+                                                    class="__cf_email__">{{request.user.email}}</a></small>
                                         </div>
                                     </li>
-                                    <li class="dropdown-footer"><a href="index.html"><i class="mdi mdi-logout"></i> خروج
+                                    <li class="dropdown-footer"><a href="{% url 'adminP:logout' %}"><i class="mdi mdi-logout"></i> خروج
                                         </a></li>
                                 </ul>
                             </li>
