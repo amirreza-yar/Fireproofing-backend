@@ -36,7 +36,7 @@
                                                     {% for product in products %}
                                                     <tr>
                                                         <td><img class="tbl-thumb"
-                                                                src="{{product.image0}}"
+                                                                src="media/{{product.image0}}"
                                                                 alt="Product Image"></td>
                                                         <td>{{product.name}}</td>
                                                         <td>{{product.price}} تومان</td>
@@ -57,7 +57,7 @@
                                                                 <div class="dropdown-menu"><a
                                                                         class="dropdown-item"
                                                                         href="{% url 'adminP:product_edit' product.pk %}">ویرایش</a> <a
-                                                                        class="dropdown-item" href="#">حذف</a> 
+                                                                        class="dropdown-item" href="{% url 'adminP:product_delete' product.pk %}">حذف</a> 
                                                                 </div>
                                                             </div>
                                                         </td>
