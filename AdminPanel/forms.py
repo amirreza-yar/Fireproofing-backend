@@ -35,6 +35,9 @@ class ProductForm(forms.ModelForm):
         self.fields['image4'].widget.attrs['class'] = 'ec-image-upload'
         self.fields['image5'].widget.attrs['class'] = 'ec-image-upload'
         self.fields['image6'].widget.attrs['class'] = 'ec-image-upload'
+        self.fields['image0'].widget.attrs['required'] = 'required'
+        self.fields['image1'].widget.attrs['required'] = 'required'
+        
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
