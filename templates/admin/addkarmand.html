@@ -28,6 +28,7 @@
                                                         {% csrf_token %}
                                                         <h3>مدیریت دسترسی</h3>
                                                         <br>
+                                                        <!-- {{form.as_p}} -->
                                                         <div class="col-md-1"><label for="inputEmail4"
                                                                 class="form-label">دسته بندی ها</label>{{form.category_access}}
                                                         </div>
@@ -58,9 +59,11 @@
                                                         <div class="col-md-6"><label class="form-label">شهر
                                                             </label>{{form.city}}</div>
                                                         <div class="col-md-6"><label class="form-label">رمز عبور
-                                                            </label><input type="password" name="password1" id=""></div>
-                                                        <div class="col-md-12"><button type="submit"
+                                                            </label>{{form.password1}}</div>
+                                                        <div class="col-md-12">
+                                                            <button type="submit"
                                                                 class="btn btn-primary">ثبت اطلاعات</button>
+                                                        <!-- <input type="submit" value="ثبت اطلاعات" class="btn btn-primary"> -->
                                                         </div>
                                                     </form>
                                                 </div>

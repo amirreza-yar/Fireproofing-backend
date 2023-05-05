@@ -52,7 +52,12 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ('name', 'description','en_name', 'en_description',)
 class PersonelForm(forms.ModelForm):
-
+    password1 = forms.CharField(
+            label=("Password"),
+            strip=False,
+            widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+            # help_text=password_validation.password_validators_help_text_html(),
+        )
     class Meta:
         model = UserProfile
         fields = ('username', 'name', 'email', 'phone_number', 'address', 'postal_code', 'city','category_access','blog_access','product_access','order_access')
@@ -66,8 +71,8 @@ class PersonelForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        password = self.cleaned_data['password1']
-        user.set_password(password)
+        user.set_password(self.cleaned_data["password1"])
         user.is_staff = True
-        user.save()
+        if commit:
+            user.save()
         return user
