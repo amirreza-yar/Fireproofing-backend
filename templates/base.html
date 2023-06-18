@@ -47,11 +47,114 @@
     <style>
         html * {
             direction: ltr !important;
-            font-family:'Times New Roman', Times, serif !important;
+            /* font-family:'Times New Roman', Times, serif !important; */
+        }
+        
+        input {
+        text-align : left
+        }
+
+        .ec-cms-block p, .ec-cms-block .ec-cms-block-title {
+            text-align: left;
+        }
+
+        .ec-contact-container .ec-contact-form .ec-contact-wrap {
+            text-align:left;
+        }
+
+        .ec-product-inner .ec-pro-content .ec-price {
+            -webkit-box-pack: right;
+            -ms-flex-pack: right;
+            justify-content: left !important;
+        }
+        .ec-fs-pro-inner .ec-fs-pro-title {
+            margin: 0 0 -2px;
+            text-align: left;
+            margin-left: 20px;
+        }
+        
+        .ec-product-inner .ec-pro-content .ec-pro-title {
+            font-size: 20px;
+            margin: 0 0 7px;
+            position: absolute;
+            left: 5px;
+            top: 5px;
+        }
+
+        .ec-pro-pagination {
+            border-color: #494e5d;
+            margin-top: 100px;
+        }
+
+        .ec-product-inner .ec-pro-content .ec-pro-rating {
+            margin-bottom: 10px;
+            left: 0px;
+            position: absolute;
+            top: 40px;
+        }
+
+        .ec-product-inner .ec-pro-content .ec-price:not(:last-child) {
+            margin-bottom: 4px;
+            position: absolute;
+            top: 60px;
+            left: 5px;
+        }
+
+        .ec-product-inner .ec-pro-content .ec-price {
+            margin-bottom: 4px;
+            position: absolute;
+            top: 60px;
+            left: 5px;
+        }
+        
+        .ec-product-inner .ec-pro-content .ec-price span.old-price {
+            margin-right: 10px;
+            font-size: 12px !important;
+            margin-left: 0px;
+        }
+
+        .ec-fs-pro-inner .ec-fs-pro-rating {
+            
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 16px;
+            margin-bottom: 2px;
+            justify-content: space-between;
+        }
+
+        .ec-fs-pro-inner .ec-fs-pro-content .ec-fs-price {
+            justify-content: left;
+            margin-left: 20px;
+        }
+
+        .ec-fs-pro-inner .ec-fs-pro-title {
+            margin-left: 20px;
+        }
+        
+        .ec-fs-pro-inner .ec-fs-pro-content .ec-fs-pro-desc {
+            margin-left: 20px;
+        }
+        .ec-fs-pro-btn {
+            padding-left: 20px;
+        }
+        .list-view-50 .ec-pro-list-desc {
+            display: none;
         }
     </style>
 
     {% endif %}
+
+    {% if not lang %}
+    <style>
+        .list-view-50 .ec-pro-list-desc {
+        display: block !important;
+        margin: 0px !important;
+    }
+    </style>
+
+    {% endif %}
+
     
 </head>
 
@@ -372,8 +475,8 @@
                                     <li><a href="{% url 'blogs' %}">Blog</a></li>
                                     <li><a href="{% url 'namaiandegi' %}">Agencies</a></li>
                                     <li><a href="{% url 'about-us' %}">About us</a></li>
-                                    <li><a href="{% url 'contact-us' %}">Contact us</a></li>
                                     <li><a href="{% url 'hamkari' %}">Partnership</a></li>
+                                    {% comment %}<li><a href="{% url 'contact-us' %}">Contact us</a></li>{% endcomment %}
                                     <li><a href="{% url 'switch-lang' pk=0 %}">فارسی</a></li>
 
                                     <li>
