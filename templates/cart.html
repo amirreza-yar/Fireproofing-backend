@@ -30,7 +30,7 @@
                                             {% for item in cart_items %}
                                                 <tr>
                                                     <td data-label="Product" class="ec-cart-pro-name"><a href="  "><img class="ec-cart-pro-img mr-4" src="{% static 'images/product-image/1.jpg' %}" alt="">{{ item.product.name }}</a></td>
-                                                    <td data-label="Price" class="ec-cart-pro-price"><span class="amount">{{ item.product.price }}</span></td>
+                                                    <td data-label="Price" class="ec-cart-pro-price"><span class="amount">{{ item.product.get_price }}</span></td>
 
                                                     <!-- <td data-label="Quantity" class="ec-cart-pro-qty" style="text-align: center;">
                                                         <div class="cart-qty-plus-minus">
@@ -48,7 +48,7 @@
                                                     </div>
                                                     {% endif %}
                                                     </td>
-                                                    <td data-label="Total" class="ec-cart-pro-subtotal">{{ item.total_price }} تومان</td>
+                                                    <td data-label="Total" class="ec-cart-pro-subtotal">{{ item.total_display_price }} ریال</td>
                                                     <td data-label="Remove" class="ec-cart-pro-remove">
                                                         <a href="{% url 'deleteFromCart' pk=item.pk %}"><i class="ecicon eci-trash-o"></i></a>
                                                     </td>
@@ -109,11 +109,11 @@
                                         <div class="ec-cart-summary">
                                             <div>
                                                 <span class="text-left">ریزهزینه</span>
-                                                <span class="text-right">{{ cart.items_price }} تومان</span>
+                                                <span class="text-right">{{ cart.items_price }} ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">هزینه ارسال</span>
-                                                <span class="text-right">{{ cart.shipping_price }} تومان</span>
+                                                <span class="text-right">{{ cart.shipping_price }} ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">کد تخفیف</span>
@@ -128,7 +128,7 @@
                                             </div>
                                             <div class="ec-cart-summary-total">
                                                 <span class="text-left">هزینه کل</span>
-                                                <span class="text-right">{{ cart.finished_price }} تومان</span>
+                                                <span class="text-right">{{ cart.finished_display_price }} ریال</span>
                                             </div>
                                             <!-- </div> -->
                                         </div>
@@ -171,11 +171,11 @@
                                         <div class="ec-cart-summary">
                                             <div>
                                                 <span class="text-left">ریزهزینه</span>
-                                                <span class="text-right">0 تومان</span>
+                                                <span class="text-right">0 ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">هزینه ارسال</span>
-                                                <span class="text-right">0 تومان</span>
+                                                <span class="text-right">0 ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">کد تخفیف</span>
@@ -189,7 +189,7 @@
                                             </div>
                                                 <div class="ec-cart-summary-total">
                                                     <span class="text-left">هزینه کل</span>
-                                                    <span class="text-right">0 تومان</span>
+                                                    <span class="text-right">0 ریال</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -257,7 +257,7 @@
                                                     </div>
                                                     {% endif %}
                                                     </td>
-                                                    <td data-label="Total" class="ec-cart-pro-subtotal">{{ item.total_price }} Toman</td>
+                                                    <td data-label="Total" class="ec-cart-pro-subtotal">{{ item.total_display_price }} Rial</td>
                                                     <td data-label="Remove" class="ec-cart-pro-remove">
                                                         <a href="{% url 'deleteFromCart' pk=item.pk %}"><i class="ecicon eci-trash-o"></i></a>
                                                     </td>
@@ -318,11 +318,11 @@
                                         <div class="ec-cart-summary">
                                             <div>
                                                 <span class="text-left">small fee</span>
-                                                <span class="text-right">{{ cart.items_price }} تومان</span>
+                                                <span class="text-right">{{ cart.items_price }} ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">shipping cost</span>
-                                                <span class="text-right">{{ cart.shipping_price }} تومان</span>
+                                                <span class="text-right">{{ cart.shipping_price }} ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">Discount code</span>
@@ -337,7 +337,7 @@
                                             </div>
                                             <div class="ec-cart-summary-total">
                                                 <span class="text-left">total cost</span>
-                                                <span class="text-right">{{ cart.finished_price }} Toman</span>
+                                                <span class="text-right">{{ cart.finished_display_price }} Rial</span>
                                             </div>
                                             <!-- </div> -->
                                         </div>
@@ -380,11 +380,11 @@
                                         <div class="ec-cart-summary">
                                             <div>
                                                 <span class="text-left">small fee</span>
-                                                <span class="text-right">0 تومان</span>
+                                                <span class="text-right">0 ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">shipping cost</span>
-                                                <span class="text-right">0 تومان</span>
+                                                <span class="text-right">0 ریال</span>
                                             </div>
                                             <div>
                                                 <span class="text-left">Discount code</span>
@@ -398,7 +398,7 @@
                                             </div>
                                                 <div class="ec-cart-summary-total">
                                                     <span class="text-left">Total cost</span>
-                                                    <span class="text-right">0 Toman</span>
+                                                    <span class="text-right">0 Rial</span>
                                                 </div>
                                             </div>
                                         </div>

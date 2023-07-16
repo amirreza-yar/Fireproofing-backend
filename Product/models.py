@@ -42,10 +42,16 @@ class Product(models.Model):
     @property
     def new_price(self):
         new_price = self.price - self.discount_percentage * self.price / 100
-        return int(new_price)
-
+        line= str(int(new_price))+"0"
+        return int(line)
     @property
-    def add_to_quantity_purchased(self, value):
+    def display_price(self):
+        new_price = self.price - self.discount_percentage * self.price / 100
+        line= str(int(new_price))+"0"
+        
+        print(list(range(len(line),0 ,-3))+[0])
+        return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]])) 
+    def add_to_quantity_purchased(self, value=1):
         self.quantity_purchased += value
 
     @property
@@ -65,7 +71,10 @@ class Product(models.Model):
 
     def remove_form_cart(self):
         return reverse("removeFromCart", kwargs={'pk': self.pk})
-    
+    def get_price(self):
+        line = str(self.price)+"0"
+        return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]]))
+
     def __str__(self):
         return self.name
 
@@ -92,6 +101,7 @@ class Category(models.Model):
     en_name = models.CharField(max_length=33,null=True)
     en_description = models.TextField(null=True,blank=True)
     status = models.BooleanField(default=True)
+    parent = models.ForeignKey('Category', null=True, blank=True, related_name="children", on_delete=models.CASCADE)
 
     @property
     def category_display(self):
@@ -133,6 +143,10 @@ class Cart(models.Model):
     @property
     def finished_price(self):
         return self.items_price + self.shipping_price - self.discount_price
+    @property
+    def finished_display_price(self):
+        line = str(self.items_price + self.shipping_price - self.discount_price)
+        return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]])) 
     
     def __str__(self):
         return f"{self.customer}'s cart"
@@ -146,6 +160,11 @@ class CartItem(models.Model):
     @property
     def total_price(self):
         return self.quantity * self.product.new_price
+    @property
+    def total_display_price(self):
+        line = str(self.quantity * self.product.new_price)
+        return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]])) 
+
 
     def __str__(self):
         return f"Cart item {self.product}"

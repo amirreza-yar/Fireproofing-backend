@@ -23360,7 +23360,9 @@ select::-ms-expand {
 }
 
 .list-view-50 .ec-pro-list-desc {
-    display: block !important;
+    display: block;
+    margin: 5px auto 10px;
+    font-size: 15px;
 }
 
 

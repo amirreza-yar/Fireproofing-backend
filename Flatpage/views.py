@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from CustomUser.models import UserProfile as userProfileModel
+from Product.models import Product,Category
 
 def contactUs(request):
     return render(request, "contact-us.html", {"title": "ارتباط با ما", "is_index_page": False})
@@ -24,7 +25,13 @@ def index(request):
     # print(request.session['lang'])
     # print(request.session['lang'] == True)
     # print(request.user.id)
-    return render(request, "index.html", {"title": "فروشگاه آتش‌نبرد", "is_index_page": True})
+    context = {
+        "title": "فروشگاه آتش‌نبرد",
+        "is_index_page": True,
+        "categories": Category.objects.filter(parent=None),
+        "products": Product.objects.all(),
+        }
+    return render(request, "index.html",context=context )
 
 def error404Handler(request, exception):
     # print("I'm running!")

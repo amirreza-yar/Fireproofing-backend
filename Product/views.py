@@ -192,12 +192,12 @@ def makeOrder(request):
             unseri_item.append({
                 "name": item.product.name,
                 "pk": item.product.pk,
-                "price": item.product.price,
+                "price": item.product.get_price(),
                 "quantity": item.quantity,
                 "total_price": item.total_price,
             })
 
-            item.product.add_to_quantity_purchased(item.quantity)
+            item.product.add_to_quantity_purchased(value=item.quantity)
 
         json_items = json.dumps(unseri_item)
 

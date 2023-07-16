@@ -51,10 +51,12 @@
 
                                     </div>
                                     <div class="single-nav-thumb">
+                                        {% if product.image1 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image1.url }}"
                                                 alt="" height="130" width="120">
                                         </div>
+                                        {% endif %}
                                         {% if product.image2 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image2.url }}"
@@ -98,7 +100,7 @@
                                     <div class="ec-single-price-stoke">
                                         <div class="ec-single-price">
                                             <span class="ec-single-ps-title">کف قیمت</span>
-                                            <span class="new-price">{{ product.new_price }} تومان</span>
+                                            <span class="new-price">{{ product.display_price }} ریال</span>
                                         </div>
                                         <div class="ec-single-stoke">
                                             {% if product.is_instock %}
@@ -326,8 +328,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -370,8 +372,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -414,8 +416,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -458,8 +460,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -502,8 +504,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -565,8 +567,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -609,8 +611,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -653,8 +655,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -697,8 +699,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -741,8 +743,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 تومان</span>
-                                                    <span class="new-price">2200 تومان</span>
+                                                    <span class="old-price">2700 ریال</span>
+                                                    <span class="new-price">2200 ریال</span>
                                                 </span>
 
                                             </div>
@@ -810,7 +812,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+                            </div>
                             <div class="single-pro-desc single-pro-desc-no-sidebar">
                                 <div class="single-pro-content">
                                     <h5 class="ec-single-title">{{ product.name }}</h5>
@@ -839,7 +841,7 @@
                                     <div class="ec-single-price-stoke">
                                         <div class="ec-single-price">
                                             <span class="ec-single-ps-title">price floor</span>
-                                            <span class="new-price">{{ product.new_price }} Toman</span>
+                                            <span class="new-price">{{ product.display_price }} Rial</span>
                                         </div>
                                         <div class="ec-single-stoke">
                                             {% if product.is_instock %}
@@ -847,7 +849,7 @@
                                             {% else %}
                                                 <span class="ec-single-ps-title">unavailable</span>
                                             {% endif %}
-                                            <span class="ec-single-sku">ID#: {{ product.pk }} </span>
+                                            <span class="ec-single-sku">شناسه#: {{ product.pk }} </span>
                                         </div>
                                     </div>
 
@@ -865,7 +867,6 @@
                                     </form>
 
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -1067,8 +1068,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1111,8 +1112,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1155,8 +1156,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1199,8 +1200,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1243,8 +1244,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1306,8 +1307,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1350,8 +1351,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1394,8 +1395,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1438,8 +1439,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>
@@ -1482,8 +1483,8 @@
                                                     <i class="ecicon eci-star"></i>
                                                 </div>
                                                 <span class="ec-price">
-                                                    <span class="old-price">2700 Toman</span>
-                                                    <span class="new-price">2200 Toman</span>
+                                                    <span class="old-price">2700 Rial</span>
+                                                    <span class="new-price">2200 Rial</span>
                                                 </span>
 
                                             </div>

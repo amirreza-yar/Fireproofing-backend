@@ -30,7 +30,7 @@
                                                 <div class="card-wrapper">
                                                     <div class="card-container">
                                                         <div class="card-top"><img class="card-image"
-                                                                src="{{blog.cover}}" alt=""></div>
+                                                                src="/media/{{blog.cover}}" alt=""></div>
                                                         <div class="card-bottom" style="text-align: center;">
                                                             <p>{{blog.title}}</p><br>
                                                             <h3 style="font-size: 11px;">{{blog.released_date}}</h3>
@@ -40,7 +40,7 @@
                                                                         class="mdi mdi-circle-edit-outline"></i></a>
                                                             </div>
                                                             <div class="card-remove"><a href="{% url 'adminP:weblog_delete' blog.pk %}"><i
-                                                                        class="mdi mdi-eye-outline"></i></a>
+                                                                        class="mdi mdi mdi-delete-outline"></i></a>
                                                             </div>
                                                             {% comment %} <div class="card-preview"><i
                                                                     class="mdi mdi mdi-delete-outline"></i>

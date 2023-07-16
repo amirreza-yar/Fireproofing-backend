@@ -42,10 +42,14 @@
                                             <div class="ec-pro-image">
                                                 <a href="{% url 'product' pk=product.pk %}" class="image"
                                                     style="border-radius: 7px;">
+                                                    {% if product.image0 %}
                                                     <img class="main-image"
                                                         src="{{ product.image0.url }}" alt="Product">
+                                                    {% endif %}
+                                                    {% if product.image1 %}
                                                     <img class="hover-image"
                                                         src="{{ product.image1.url }}" alt="Product">
+                                                    {% endif %}
                                                 </a>
                                                 {% if not product.discount_percentage == 0 %}
                                                     <span class="percentage">{{ product.discount_percentage }}%</span>
@@ -70,13 +74,13 @@
                                             <div class="ec-pro-list-desc">{{ product.meta_description }}</div>
                                             {% if product.price == product.new_price %}
                                             <span class="ec-price">
-                                                <!-- <span class="old-price">2700 تومان</span> -->
-                                                <span class="new-price">{{ product.new_price }} تومان</span>
+                                                <!-- <span class="old-price">2700 ریال</span> -->
+                                                <span class="new-price">{{ product.display_price }} ریال</span>
                                             </span>
                                             {% else %}
                                             <span class="ec-price">
-                                                <span class="old-price">{{ product.price }}</span>
-                                                <span class="new-price">{{ product.new_price }} تومان</span>
+                                                <span class="old-price">{{ product.get_price }} ریال</span>
+                                                <span class="new-price">{{ product.display_price }} ریال</span>
                                             </span>
                                             {% endif %}
     
@@ -260,13 +264,13 @@
                                             <div class="ec-pro-list-desc">{{ product.meta_description }}</div>
                                             {% if product.price == product.new_price %}
                                             <span class="ec-price">
-                                                <!-- <span class="old-price">2700 تومان</span> -->
-                                                <span class="new-price">{{ product.new_price }} Toman</span>
+                                                <!-- <span class="old-price">2700 ریال</span> -->
+                                                <span class="new-price">{{ product.display_price }} Rial</span>
                                             </span>
                                             {% else %}
                                             <span class="ec-price">
-                                                <span class="old-price">{{ product.price }}</span>
-                                                <span class="new-price">{{ product.new_price }} Toman</span>
+                                                <span class="old-price">{{ product.get_price }} Rial</span>
+                                                <span class="new-price">{{ product.display_price }} Rial</span>
                                             </span>
                                             {% endif %}
     

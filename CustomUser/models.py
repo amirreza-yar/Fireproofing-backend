@@ -33,7 +33,7 @@ class UserProfileManager(BaseUserManager):
         extra_fields.setdefault("is_superuser", True)
         extra_fields.setdefault("blog_access", True)
         extra_fields.setdefault("product_access", True)
-        extra_fields.setdefault("category_aaccess", True)
+        extra_fields.setdefault("category_access", True)
         extra_fields.setdefault("order_access", True)
 
         if extra_fields.get("is_staff") is not True:

@@ -35,8 +35,6 @@ class ProductForm(forms.ModelForm):
         self.fields['image4'].widget.attrs['class'] = 'ec-image-upload'
         self.fields['image5'].widget.attrs['class'] = 'ec-image-upload'
         self.fields['image6'].widget.attrs['class'] = 'ec-image-upload'
-        self.fields['image0'].widget.attrs['required'] = 'required'
-        self.fields['image1'].widget.attrs['required'] = 'required'
         
 class BlogForm(forms.ModelForm):
     class Meta:
@@ -47,10 +45,12 @@ class BlogForm(forms.ModelForm):
         print(self.fields)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
+        self.fields['cover'].widget.attrs['id'] = 'thumbUpload06'
+        self.fields['cover'].widget.attrs['class'] = 'ec-image-upload'
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ('name', 'description','en_name', 'en_description',)
+        fields = ('name', 'description','en_name', 'en_description','parent')
 class PersonelForm(forms.ModelForm):
     password1 = forms.CharField(
             label=("Password"),

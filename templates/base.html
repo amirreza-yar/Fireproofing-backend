@@ -141,6 +141,15 @@
         .list-view-50 .ec-pro-list-desc {
             display: none;
         }
+        .ec-direct-run {
+        	display:none !important;
+        }
+        .ec-direct-body {
+        	display:none !important;
+        }
+        #starratevalue , #starrate{
+            display: none !important;
+        }
     </style>
 
     {% endif %}
@@ -150,7 +159,17 @@
         .list-view-50 .ec-pro-list-desc {
         display: block !important;
         margin: 0px !important;
-    }
+        }
+    
+        .ec-direct-run {
+        	display:none !important;
+        }
+        .ec-direct-body {
+        	display:none !important;
+        }
+        #starratevalue , #starrate{
+            display: none !important;
+        }
     </style>
 
     {% endif %}
@@ -1021,7 +1040,7 @@
     <script src="{% static 'js/vendor/jquery.bundle.notify.min.js' %}"></script>
     <!--Plugins JS-->
     <script src="{% static 'js/plugins/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'js/plugins/countdownTimer.min.js' %}"></script>
+    <!-- <script src="{% static 'js/plugins/countdownTimer.min.js' %}"></script> -->
     <script src="{% static 'js/plugins/scrollup.js' %}"></script>
     <script src="{% static 'js/plugins/jquery.zoom.min.js' %}"></script>
     <script src="{% static 'js/plugins/slick.min.js' %}"></script>
@@ -1032,9 +1051,179 @@
     <!-- Main Js -->
     <script src="{% static 'js/vendor/index.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-
-
+    
     {% endblock %}
+    
+    <script>
+
+        function hasClass(element, clsName) {
+            return (' ' + element.className + ' ').indexOf(' ' + clsName + ' ') > -1;
+        }
+        var starDiv = document.getElementById('starcomment')
+        var star1 = document.getElementById('star1')
+        var star2 = document.getElementById('star2')
+        var star3 = document.getElementById('star3')
+        var star4 = document.getElementById('star4')
+        var star5 = document.getElementById('star5')
+        var starRate = document.getElementById('starratevalue')
+
+        star1.addEventListener("click", function () {
+            if (hasClass(star1, 'eci-star fill')) {
+                star2.classList.remove('eci-star');
+                star2.classList.remove('fill');
+                star2.classList.add('eci-star-o')
+
+                star3.classList.remove('eci-star');
+                star3.classList.add('eci-star-o')
+                star3.classList.remove('fill');
+
+                star4.classList.remove('eci-star');
+                star4.classList.add('eci-star-o')
+                star4.classList.remove('fill');
+
+                star5.classList.remove('eci-star');
+                star5.classList.remove('fill');
+                star5.classList.add('eci-star-o')
+            }
+            else {
+                star1.classList.add('eci-star');
+                star1.classList.add('fill');
+                star1.classList.remove('eci-star-o')
+
+
+            }
+            starRate.value = 1
+        });
+
+        star2.addEventListener("click", function () {
+            if (hasClass(star2, 'eci-star fill')) {
+
+                star3.classList.remove('eci-star');
+                star3.classList.add('eci-star-o')
+                star3.classList.remove('fill');
+
+                star4.classList.remove('eci-star');
+                star4.classList.add('eci-star-o')
+                star4.classList.remove('fill');
+
+                star5.classList.remove('eci-star');
+                star5.classList.remove('fill');
+                star5.classList.add('eci-star-o')
+            }
+            else {
+                star1.classList.add('eci-star');
+                star1.classList.add('fill');
+                star1.classList.remove('eci-star-o')
+
+                star2.classList.add('eci-star');
+                star2.classList.add('fill');
+                star2.classList.remove('eci-star-o')
+
+
+            }
+            starRate.value = 2
+
+        });
+
+
+        star3.addEventListener("click", function () {
+            if (hasClass(star3, 'eci-star fill')) {
+
+                star4.classList.remove('eci-star');
+                star4.classList.add('eci-star-o')
+                star4.classList.remove('fill');
+
+                star5.classList.remove('eci-star');
+                star5.classList.remove('fill');
+                star5.classList.add('eci-star-o')
+            }
+            else {
+                star1.classList.add('eci-star');
+                star1.classList.add('fill');
+                star1.classList.remove('eci-star-o')
+
+                star2.classList.add('eci-star');
+                star2.classList.add('fill');
+                star2.classList.remove('eci-star-o')
+
+                star3.classList.add('eci-star');
+                star3.classList.remove('eci-star-o')
+                star3.classList.add('fill');
+
+
+            }
+            starRate.value = 3
+
+        });
+
+        star4.addEventListener("click", function () {
+            if (hasClass(star4, 'eci-star fill')) {
+
+                star5.classList.remove('eci-star');
+                star5.classList.remove('fill');
+                star5.classList.add('eci-star-o')
+            }
+            else {
+                star1.classList.add('eci-star');
+                star1.classList.add('fill');
+                star1.classList.remove('eci-star-o')
+
+                star2.classList.add('eci-star');
+                star2.classList.add('fill');
+                star2.classList.remove('eci-star-o')
+
+                star3.classList.add('eci-star');
+                star3.classList.remove('eci-star-o')
+                star3.classList.add('fill');
+
+                star4.classList.add('eci-star');
+                star4.classList.remove('eci-star-o')
+                star4.classList.add('fill');
+
+
+            }
+            starRate.value = 4
+
+
+        });
+
+
+        star5.addEventListener("click", function () {
+            if (hasClass(star5, 'eci-star fill')) {
+
+            }
+            else {
+                star1.classList.add('eci-star');
+                star1.classList.add('fill');
+                star1.classList.remove('eci-star-o')
+
+                star2.classList.add('eci-star');
+                star2.classList.add('fill');
+                star2.classList.remove('eci-star-o')
+
+                star3.classList.add('eci-star');
+                star3.classList.remove('eci-star-o')
+                star3.classList.add('fill');
+
+                star4.classList.add('eci-star');
+                star4.classList.remove('eci-star-o')
+                star4.classList.add('fill');
+
+                star5.classList.add('eci-star');
+                star5.classList.remove('eci-star-o')
+                star5.classList.add('fill');
+
+
+            }
+            starRate.value = 5
+
+
+        });
+
+
+
+    </script>
+
 
 </body>
 

@@ -112,7 +112,7 @@ class CategoryEdit(CategoryMixin, UpdateView):
     success_url = reverse_lazy('adminP:category')
     def get_context_data(self, **kwargs):
         data = kwargs
-        data['listcat'] = Category.objects.all()
+        #data['listcat'] = Category.objects.all()
         print(data)
         return super().get_context_data(**data)
 
@@ -210,7 +210,7 @@ def order_list(request):
 def order_detail(request, pk):
     if request.user.order_access:
         order = Order.objects.get(id=pk)
-        context = {'order': order, 'items': order.loaded_json_items()}
+        context = {'order': order, 'items': order.loaded_json_items}
         return render(request,'admin/orderdetail.html',context)
     else: 
         raise Http404('permission denied')
