@@ -40,7 +40,7 @@
     </div>
 </section>
 <hr style="width: 70%; margin-right: 15%;margin-bottom: 5%;" />
-<div>
+{% comment %}<div>
     <div class="row">
         <div class="container modirDi2">
             <div class="mb-4 modirDiv" >
@@ -69,11 +69,11 @@
             </div>
         </div>
     </div>
-</div>
+</div>{% endcomment %}
 
 
 
-
+{% comment %}
 <!-- Ec testmonial Start -->
 <section class="section ec-test-section section-space-ptb-100 section-space-m">
     <div class="container">
@@ -169,60 +169,61 @@
     </div>
 </section>
 <!-- ec testmonial end -->
+{% endcomment %}
 
-<!-- Services Section Start -->
+
+<!--  services Section Start -->
 <section class="section ec-services-section section-space-p">
     <h2 class="d-none">خدمات</h2>
     <div class="container">
         <div class="row">
-            <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-6 col-lg-3">
+            <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
                 <div class="ec_ser_inner">
                     <div class="ec-service-image">
                         <img src="{% static 'images/icons/service_1.svg' %}" class="svg_img" alt="">
                     </div>
                     <div class="ec-service-desc">
-                        <h2> ارسال رایگان </h2>
-                        <p> ارسال رایگان برای سفارشات بالای 200 هزارتومان</p>
+                        <h2>ارسال فوری</h2>
+                        <!-- <p> ارسال رایگان برای سفارشات بالای 200 هزارتومان</p> -->
                     </div>
                 </div>
             </div>
-            <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-6 col-lg-3">
+            <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
                 <div class="ec_ser_inner">
                     <div class="ec-service-image">
                         <img src="{% static 'images/icons/service_2.svg' %}" class="svg_img" alt="">
                     </div>
                     <div class="ec-service-desc">
-                        <h2>24X7 پشتیبانی </h2>
-                        <p>با ما 24 ساعته در هفت روز هفته در تماس باشید </p>
+                        <h2>پشتیبانی</h2>
+                        <!-- <p>دسترسی به پشتیبان در سریع ترین زمان ممکن</p> -->
                     </div>
                 </div>
             </div>
-            <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-6 col-lg-3">
+            <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
                 <div class="ec_ser_inner">
                     <div class="ec-service-image">
                         <img src="{% static 'images/icons/service_3.svg' %}" class="svg_img" alt="">
                     </div>
                     <div class="ec-service-desc">
-                        <h2> روزه 30 بازگشت </h2>
-                        <p> برگشت آسان 30 روزه برای تعویض </p>
+                        <h2>گارانتی سالانه محصولات</h2>
+                        <!-- <p>امکان مرجوع کرددن کالا در بازه زمانی حداکثر ۱۰ روزه </p> -->
                     </div>
                 </div>
             </div>
-            <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-6 col-lg-3">
+            <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-6 col-lg-3" data-animation="zoomIn">
                 <div class="ec_ser_inner">
                     <div class="ec-service-image">
                         <img src="{% static 'images/icons/service_4.svg' %}" class="svg_img" alt="">
                     </div>
                     <div class="ec-service-desc">
                         <h2>پرداخت امن</h2>
-                        <p>با ما 24 ساعته در هفت روز هفته در تماس باشید </p>
+                        <!-- <p>با ما در تماس باشید </p> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Services Section End -->
 
 <!-- Cart Floating Button -->
 <div class="ec-cart-float">
@@ -256,15 +257,19 @@
                     <div class="col-md-6 ec-cms-block ec-abcms-block text-center">
                         <div class="ec-cms-block-inner">
                             <h3 class="ec-cms-block-title">Store history</h3>
-                            <p>Lorem Ipsum's mock text by producing incomprehensible simplicity from the printing industry, and using designers
-                                It is graphics, printers and texts, but also newspapers and magazines in columns and rows as necessary, and
-                                For the current conditions of the required technology, and diverse applications with the aim of improving practical tools
-                                There are many books in sixty-three percent of the past, present and future, a lot of knowledge of the society and
-                                It requires specialists, to know more about software for causal computer designers
-                                Especially creative designers, and creating a leading culture in the Persian language, in this case we can hope
-                                had to end all the difficulty in providing solutions, and difficult typing conditions and time
-                                The requirement includes the typification of the main achievements, and answers to the continuous questions of the people of the existing world
-                                The design is basically used.</p>
+                            <p>Atash nabard corporation started working in 1982 with the opening of the first office in Narmak area of Tehran,sales,marketing, and charging of capsules were the first steps taken there.
+                                The activities continued in the same way until 1995,and a store was opened in Tehranpars district of Tehran,after the merger of office and the store in 1997.
+                                The corporation was moved to Shariati Street,and assigned a work shop for charging powder capsules and co2.
+                                In 2013,Mr.Ali Asghar Khast and Dariush Haji Reza,constructed a factory located in Kamard industrial town.
+                                This factory is a place to design and production of firefighting equipment, supply and launch FM200 systems.
+                                During these years ,long-term collaborations were formed due to knowledge and experience  and many efforts and completing additional courses abroad.
+                                Such as:supply and maintenance of firefighting equipment of Bushehr nuclear power plant,especially FM200 capsules with 10 years warranty. 
+                                Defense industries organisation since 1982.
+                                Iranpeyma machine companies since 1986.
+                                Construction Jihad of Tehran and other cities since 1995.
+                                Municipalities institutions. Offices,chain store as Shahrvand.
+                                There are many projects in the field of different activities in the private and government sectors. Which cannot be mentioned in this brief.
+                                Over the years,Atashnabard ś extensive activities in the field of export  and import business in Asia  and Europe has a history of long-term cooperation with the Russian company “Atom stroy export “. And works as a representative of the English company”British global petroleum “ in Iran.</p>
                         </div>
                     </div>
                 </div>
@@ -273,6 +278,7 @@
     </div>
 </section>
 <hr style="width: 70%; margin-right: 15%;margin-bottom: 5%;" />
+{% comment %}
 <div>
     <div class="row">
         <div class="container modirDi2">
@@ -402,6 +408,8 @@
     </div>
 </section>
 <!-- ec testmonial end -->
+{% endcomment %}
+
 
 <!--  services Section Start -->
 <section class="section ec-services-section section-space-p">

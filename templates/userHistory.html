@@ -37,7 +37,6 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">شناسه</th>
-                                        <th scope="col">تصویر</th>
                                         <th scope="col">نام</th>
                                         <th scope="col">تاریخ</th>
                                         <th scope="col">قیمت</th>
@@ -49,9 +48,7 @@
 
                                     {% for invoice in invoices %}
                                         <tr>
-                                            <th scope="row"><span>225</span></th>
-                                            <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
-                                                    alt="product image"></td>
+                                            <th scope="row"><span>{{ invoice.id }}</span></th>
                                             <td><span>{{ invoice.customer.name }}</span></td>
                                             <td><span>{{ invoice.ordered_date }}</span></td>
                                             <td><span>{{ invoice.finished_price }} تومان</span></td>
@@ -60,30 +57,6 @@
                                                         href="{% url 'userInvoice' pk=invoice.pk %}">فاکتور</a></span></td>
                                         </tr>
                                     {% endfor %}
-
-
-                                    <!-- <tr>
-                                        <th scope="row"><span>225</span></th>
-                                        <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
-                                                alt="product image"></td>
-                                        <td><span>خرید دوم</span></td>
-                                        <td><span>16 دی 1400</span></td>
-                                        <td><span>64000 تومان</span></td>
-                                        <td><span>تحویل داده شده</span></td>
-                                        <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                    href="userInvoice.html">فاکتور</a></span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><span>548</span></th>
-                                        <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
-                                                alt="product image"></td>
-                                        <td><span>خرید اول</span></td>
-                                        <td><span>13 دی 1398</span></td>
-                                        <td><span>68210 تومان</span></td>
-                                        <td><span>تحویل داده شده</span></td>
-                                        <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                    href="userInvoice.html">فاکتور</a></span></td>
-                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -129,7 +102,6 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">Picture</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Price</th>
@@ -141,9 +113,7 @@
 
                                     {% for invoice in invoices %}
                                         <tr>
-                                            <th scope="row"><span>225</span></th>
-                                            <td><img class="prod-img" src="assets/images/product-image/1.jpg" style="border-radius: 5px;"
-                                                    alt="product image"></td>
+                                            <th scope="row"><span>{{ invoice.id }}</span></th>
                                             <td><span>{{ invoice.customer.name }}</span></td>
                                             <td><span>{{ invoice.ordered_date }}</span></td>
                                             <td><span>{{ invoice.finished_price }} Toman</span></td>

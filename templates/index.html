@@ -145,50 +145,6 @@
                                 </div>
                             </div>
 
-                            {% comment %}<a href="{% url 'product' product.pk %}">
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                    data-animation="fadeIn">
-                                    <div class="ec-product-inner" style="cursor: pointer;">
-
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <span href="#" class="image">
-                                                    {% if product.image0 %}
-                                                    <img class="main-image" src="/media/{{product.image0}}"
-                                                        alt="Product">
-                                                    {% endif %}
-                                                    {% if product.image1 %}
-                                                    <img class="hover-image" src="/media/{{product.image1}}"
-                                                        alt="Product">
-                                                    {% endif %}
-
-                                                </span>
-
-                                                <div class="ec-pro-actions">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">{{product.name}}
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                {% for _ in product.rate_filled_star_counter %}
-                                                <i class="ecicon eci-star fill"></i>
-                                                {% endfor %}
-
-                                                {% for _ in product.rate_unfilled_star_counter %}
-                                                <i class="ecicon eci-star"></i>
-                                                {% endfor %}
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">{{product.get_price}} ریال</span>
-                                                <span class="new-price">{{product.display_price}} ریال</span>
-                                            </span>
-
-                                        </div>
-                                    </div>
-                            </a>{% endcomment %}
                             {% endfor %}
 
                         </div>
@@ -234,8 +190,8 @@
                                             </div>
                                         </div>
                                         <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="{% url 'product' product.pk %}">{{ product.name }}
-                                                </a></h5>
+                                            <h5 class="ec-pro-title">{{ product.name }}
+                                            </h5>
                                             <div class="ec-pro-rating">
                                                 {% for _ in product.rate_filled_star_counter %}
                                                 <i class="ecicon eci-star fill"></i>
@@ -257,51 +213,6 @@
                                     </a>
                                 </div>
                             </div>
-                            {% comment %}<a href="{% url 'product' product.pk %}">
-                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                    data-animation="fadeIn">
-                                    <div class="ec-product-inner" style="cursor: pointer;">
-
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <span href="#" class="image">
-                                                    {% if product.image0 %}
-                                                    <img class="main-image" src="/media/{{product.image0}}"
-                                                        alt="Product">
-                                                    {% endif %}
-                                                    {% if product.image1 %}
-                                                    <img class="hover-image" src="/media/{{product.image1}}"
-                                                        alt="Product">
-                                                    {% endif %}
-
-                                                </span>
-
-                                                <div class="ec-pro-actions">
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title">{{product.name}}
-                                            </h5>
-                                            <div class="ec-pro-rating">
-                                                {% for _ in product.rate_filled_star_counter %}
-                                                <i class="ecicon eci-star fill"></i>
-                                                {% endfor %}
-
-                                                {% for _ in product.rate_unfilled_star_counter %}
-                                                <i class="ecicon eci-star"></i>
-                                                {% endfor %}
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">{{product.get_price}} ریال</span>
-                                                <span class="new-price">{{product.display_price}} ریال</span>
-                                            </span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>{% endcomment %}
                             {% endfor %}
 
                         </div>
@@ -622,8 +533,8 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="section-title">
-                    <h2 class="ec-bg-title">products categorization</h2>
-                    <h2 class="ec-title">products categorization</h2>
+                    <h2 class="ec-bg-title">دسته بندی محصولات</h2>
+                    <h2 class="ec-title">دسته بندی محصولات</h2>
                     <!-- <p style="text-align:justify !important;" class="sub-title"> مرور مجموعه ای از محصولات برتر </p> -->
                 </div>
             </div>
@@ -633,12 +544,16 @@
                 <ul class="ec-pro-tab-nav nav justify-content-center">
                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-pro-for-all">All</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-kaf">Contains foam</a>
+                    {% for category in categories %}
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+                            href="#tab-pro-{{category.pk}}">{{category.en_name}}</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-water">Water based</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-pudr">Contains dry
-                            powder</a></li>
+                    {% endfor %}
+                    {% comment %} <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+                            href="#tab-pro-water">مبتنی بر
+                            آب</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-pudr">حاوی پودر
+                            خشک</a></li> {% endcomment %}
                 </ul>
             </div>
             <!-- Tab End -->
@@ -650,271 +565,139 @@
                     <div class="tab-pane fade show active" id="tab-pro-for-all">
                         <div class="row">
                             <!-- Product Content -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                            {% for product in products %}
+
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content my-8 pb-5"
                                 data-animation="fadeIn">
-                                <div class="ec-product-inner" style="cursor: pointer;"
-                                    onclick="window.location.href = '/productDetail.html'">
+                                <div class="ec-product-inner" style="cursor: pointer;">
+                                    <a href="{% url 'product' product.pk %}">
 
-                                    <div class="ec-pro-image-outer">
-                                        <div class="ec-pro-image">
-                                            <a href="  " class="image">
-                                                <img class="main-image"
-                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product">
-                                                <img class="hover-image"
-                                                    src="{% static 'images/product-image/1_2.jpg' %}" alt="Product">
-                                            </a>
-                                            <span class="percentage">20%</span>
+                                        <div class="ec-pro-image-outer">
+                                            <div class="ec-pro-image">
+                                                <div class="image">
+                                                    {% if product.image0 %}
+                                                    <img class="main-image" src="/media/{{product.image0}}"
+                                                        alt="Product">
+                                                    {% endif %}
+                                                    {% if product.image1 %}
+                                                    <img class="hover-image" src="/media/{{product.image1}}"
+                                                        alt="Product">
+                                                    {% endif %}
+                                                </div>
+                                                <span class="percentage">
+                                                    {% if not product.discount_percentage == 0 %}
+                                                    <span class="percentage">{{ product.discount_percentage }}%</span>
+                                                    {% endif %}
+                                                </span>
 
-                                            <div class="ec-pro-actions">
+                                                <div class="ec-pro-actions">
 
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="  ">عنوان
-                                            </a></h5>
-                                        <div class="ec-pro-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star"></i>
-                                        </div>
-                                        <span class="ec-price">
-                                            <span class="old-price">2700 Toman</span>
-                                            <span class="new-price">2200 Toman</span>
-                                        </span>
+                                        <div class="ec-pro-content">
+                                            <h5 class="ec-pro-title">{{ product.en_name }}</h5>
+                                            <div class="ec-pro-rating">
+                                                {% for _ in product.rate_filled_star_counter %}
+                                                <i class="ecicon eci-star fill"></i>
+                                                {% endfor %}
 
-                                    </div>
+                                                {% for _ in product.rate_unfilled_star_counter %}
+                                                <i class="ecicon eci-star"></i>
+                                                {% endfor %}
+                                            </div>
+                                            <span class="ec-price">
+                                                {% if not product.discount_percentage == 0 %}
+                                                    <span class="old-price">{{ product.get_price }} Rial</span>
+                                                {% else %}
+                                                    <span class="new-price">{{ product.display_price }} Rial</span>
+                                                {% endif %}
+                                            </span>
+
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                data-animation="fadeIn">
-                                <div class="ec-product-inner" style="cursor: pointer;"
-                                    onclick="window.location.href = '/productDetail.html'">
-
-                                    <div class="ec-pro-image-outer">
-                                        <div class="ec-pro-image">
-                                            <a href="  " class="image">
-                                                <img class="main-image"
-                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product">
-                                                <img class="hover-image"
-                                                    src="{% static 'images/product-image/1_2.jpg' %}" alt="Product">
-                                            </a>
-
-                                            <div class="ec-pro-actions">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="  ">عنوان</a>
-                                        </h5>
-                                        <div class="ec-pro-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star"></i>
-                                        </div>
-                                        <span class="ec-price">
-                                            <span class="old-price">1200 Toman</span>
-                                            <span class="new-price">1000 Toman</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
 
                         </div>
                     </div>
                     <!-- ec 1st Product tab end -->
                     <!-- ec 2nd Product tab start -->
-                    <div class="tab-pane fade" id="tab-pro-kaf">
+
+
+                    {% for category in categories %}
+                    <div class="tab-pane fade" id="tab-pro-{{category.pk}}">
+                        {% comment %} {% with category.id as pk %} {% endcomment %}
+                        {% fillter_products_by_category category.id as products_fillterd %}
                         <div class="row">
+                            {% for product in products_fillterd %}
                             <!-- Product Content -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                <div class="ec-product-inner" style="cursor: pointer;"
-                                    onclick="window.location.href = '/productDetail.html'">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content my-8 pb-4"
+                                data-animation="fadeIn">
+                                <div class="ec-product-inner" style="cursor: pointer;">
+                                    <a href="{% url 'product' product.pk %}">
 
-                                    <div class="ec-pro-image-outer">
-                                        <div class="ec-pro-image">
-                                            <a href="  " class="image">
-                                                <img class="main-image"
-                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product">
-                                                <img class="hover-image"
-                                                    src="{% static 'images/product-image/1_2.jpg' %}" alt="Product">
-                                            </a>
-                                            <span class="percentage">20%</span>
+                                        <div class="ec-pro-image-outer">
+                                            <div class="ec-pro-image">
+                                                <div class="image">
+                                                    {% if product.image0 %}
+                                                    <img class="main-image" src="/media/{{product.image0}}"
+                                                        alt="Product">
+                                                    {% endif %}
+                                                    {% if product.image1 %}
+                                                    <img class="hover-image" src="/media/{{product.image1}}"
+                                                        alt="Product">
+                                                    {% endif %}
+                                                </div>
+                                                <span class="percentage">
+                                                    {% if not product.discount_percentage == 0 %}
+                                                    <span class="percentage">{{ product.discount_percentage }}%</span>
+                                                    {% endif %}
+                                                </span>
 
-                                            <div class="ec-pro-actions">
+                                                <div class="ec-pro-actions">
 
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="  ">عنوان </a></h5>
-                                        <div class="ec-pro-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star"></i>
-                                        </div>
-                                        <span class="ec-price">
-                                            <span class="old-price">3000 Toman</span>
-                                            <span class="new-price">2500 Toman</span>
-                                        </span>
+                                        <div class="ec-pro-content">
+                                            <h5 class="ec-pro-title">{{ product.en_name }}</h5>
+                                            <div class="ec-pro-rating">
+                                                {% for _ in product.rate_filled_star_counter %}
+                                                <i class="ecicon eci-star fill"></i>
+                                                {% endfor %}
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                <div class="ec-product-inner" style="cursor: pointer;"
-                                    onclick="window.location.href = '/productDetail.html'">
-
-                                    <div class="ec-pro-image-outer">
-                                        <div class="ec-pro-image">
-                                            <a href="  " class="image">
-                                                <img class="main-image"
-                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product">
-                                                <img class="hover-image"
-                                                    src="{% static 'images/product-image/1_2.jpg' %}" alt="Product">
-                                            </a>
-                                            <span class="percentage">20%</span>
-                                            <span class="flags">
-                                                <span class="sale">best seller</span>
+                                                {% for _ in product.rate_unfilled_star_counter %}
+                                                <i class="ecicon eci-star"></i>
+                                                {% endfor %}
+                                            </div>
+                                            <span class="ec-price">
+                                                {% if not product.discount_percentage == 0 %}
+                                                    <span class="old-price">{{ product.get_price }} Rial</span>
+                                                {% else %}
+                                                    <span class="new-price">{{ product.display_price }} Rial</span>
+                                                {% endif %}
                                             </span>
 
-                                            <div class="ec-pro-actions">
-
-
-
-                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
-                                        <div class="ec-pro-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star"></i>
-                                        </div>
-                                        <span class="ec-price">
-                                            <span class="old-price">1200 Toman</span>
-                                            <span class="new-price">1000 Toman</span>
-                                        </span>
-
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
 
+                            {% endfor %}
+
                         </div>
+                        {% comment %} {% endwith %} {% endcomment %}
                     </div>
+                    {% endfor %}
                     <!-- ec 2nd Product tab end -->
                     <!-- ec 3rd Product tab start -->
-                    <div class="tab-pane fade" id="tab-pro-water">
-                        <div class="row">
-                            <!-- Product Content -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                <div class="ec-product-inner" style="cursor: pointer;"
-                                    onclick="window.location.href = '/productDetail.html'">
-
-                                    <div class="ec-pro-image-outer">
-                                        <div class="ec-pro-image">
-                                            <a href="  " class="image">
-                                                <img class="main-image"
-                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product">
-                                                <img class="hover-image"
-                                                    src="{% static 'images/product-image/1_2.jpg' %}" alt="Product">
-                                            </a>
-                                            <span class="percentage">20%</span>
-                                            <span class="flags">
-                                                <span class="sale">best seller</span>
-                                            </span>
-
-                                            <div class="ec-pro-actions">
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="  ">عنوان</a>
-                                        </h5>
-                                        <div class="ec-pro-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star"></i>
-                                        </div>
-                                        <span class="ec-price">
-                                            <span class="old-price">3000 Toman</span>
-                                            <span class="new-price">2500 Toman</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                     <!-- ec 3rd Product tab end -->
                     <!-- ec 4th Product tab start -->
-                    <div class="tab-pane fade" id="tab-pro-pudr">
-                        <div class="row">
-                            <!-- Product Content -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content">
-                                <div class="ec-product-inner">
-                                    <div class="ec-pro-image-outer">
-                                        <div class="ec-pro-image">
-                                            <a href="  " class="image">
-                                                <img class="main-image"
-                                                    src="{% static 'images/product-image/1_1.jpg' %}" alt="Product">
-                                                <img class="hover-image"
-                                                    src="{% static 'images/product-image/1_2.jpg' %}" alt="Product">
-                                            </a>
-                                            <span class="percentage">20%</span>
-                                            <span class="flags">
-                                                <span class="sale">best seller</span>
-                                            </span>
-
-                                            <div class="ec-pro-actions">
-
-                                                <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                        src="{% static 'images/icons/cart.svg' %}"
-                                                        class="svg_img pro_svg" alt="">Add to cart</button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="  ">عنوان</a></h5>
-                                        <div class="ec-pro-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star"></i>
-                                        </div>
-                                        <span class="ec-price">
-                                            <span class="old-price">4000 Toman</span>
-                                            <span class="new-price">3000 Toman</span>
-                                        </span>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                     <!-- ec 4th Product tab end -->
                 </div>
             </div>

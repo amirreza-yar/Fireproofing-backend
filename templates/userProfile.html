@@ -44,9 +44,9 @@
                                             <a href="{% url 'editProfile' %}" class="btn btn-lg btn-primary">ویرایش</a>
                                         </div>
                                         <div class="ec-vendor-block-detail">
-                                            <img class="v-img" src="{% static 'images/user/1.jpg' %}" alt="vendor image">
+                                            {% comment %}<img class="v-img" src="{% static 'images/user/1.jpg' %}" alt="vendor image">{% endcomment %}
                                             <h5 class="name">{{ user.name }}</h5>
-                                            <p>( فروشنده )</p>
+                                            <!-- <p>( فروشنده )</p> -->
                                         </div>
                                         <p>سلام <span>{{ user.name }}!</span></p>
                                         <p>از حساب کاربری شما امکان به راحتی سفارشات را مشاهده و ردیابی کنید. امکان
@@ -144,9 +144,9 @@
                                             <a href="{% url 'editProfile' %}" class="btn btn-lg btn-primary">Edit</a>
                                         </div>
                                         <div class="ec-vendor-block-detail">
-                                            <img class="v-img" src="{% static 'images/user/1.jpg' %}" alt="vendor image">
+                                            {% comment %}<img class="v-img" src="{% static 'images/user/1.jpg' %}" alt="vendor image">{% endcomment %}
                                             <h5 class="name">{{ user.name }}</h5>
-                                            <p>( فروشنده )</p>
+                                            <!-- <p>( فروشنده )</p> -->
                                         </div>
                                         <p>Hi <span>{{ user.name }}!</span></p>
                                         <p>You can easily view and track orders from your account. Possible

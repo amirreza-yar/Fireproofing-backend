@@ -35,14 +35,14 @@
             <div class="ec-shop-rightside col-lg-9 col-md-12">
                 <div class="ec-vendor-dashboard-card">
                     <div class="ec-vendor-card-header">
-                        <h5>فاکتور</h5>
+                        <h5>فاکتور سفارش شماره {{ invoice.id }}</h5>
                         
                     </div>
                     <div class="ec-vendor-card-body padding-b-0">
                         <div class="page-content">
-                            <div class="page-header text-blue-d2">
+                            <!-- <div class="page-header text-blue-d2">
                                 <img src="assets/images/logo/logo.png" alt="لوگو سایت">
-                            </div>
+                            </div> -->
 
                             <div class="container px-0">
                                 <div class="row mt-4">
@@ -73,10 +73,10 @@
                                                 <div class="text-grey-m2">
 
                                                     <div class="my-2"><span class="text-600 text-90">شناسه : </span>
-                                                        #111-222</div>
+                                                        #{{ invoice.id }}</div>
 
                                                     <div class="my-2"><span class="text-600 text-90">کد سفارش :
-                                                        </span> #123456</div>
+                                                        </span>{{ invoice.id }}</div>
                                                     <div class="my-2"><span class="text-600 text-90">تاریخ انتشار :
                                                         </span> {{ invoice.ordered_date }}</div>
 
@@ -151,7 +151,7 @@
                                                                 <td class="border-color" colspan="1">
                                                                     <span><strong>هزینه ارسال</strong></span></td>
                                                                 <td class="border-color">
-                                                                    <span>{{ invoice.shipping_price }} تومان</span></td>
+                                                                    <span>پرداخت هزینه در مقصد</span></td>
                                                             </tr>
 
                                                             <!-- <tr>
@@ -226,9 +226,9 @@
                     </div>
                     <div class="ec-vendor-card-body padding-b-0">
                         <div class="page-content">
-                            <div class="page-header text-blue-d2">
+                            <!-- <div class="page-header text-blue-d2">
                                 <img src="assets/images/logo/logo.png" alt="لوگو سایت">
-                            </div>
+                            </div> -->
 
                             <div class="container px-0">
                                 <div class="row mt-4">
@@ -259,10 +259,10 @@
                                                 <div class="text-grey-m2">
 
                                                     <div class="my-2"><span class="text-600 text-90">ID : </span>
-                                                        #111-222</div>
+                                                        #{{ invoice.id }}</div>
 
                                                     <div class="my-2"><span class="text-600 text-90">Purchase number :
-                                                        </span> #123456</div>
+                                                        </span> #{{ invoice.id }}</div>
                                                     <div class="my-2"><span class="text-600 text-90">Release date :
                                                         </span> {{ invoice.ordered_date }}</div>
 
@@ -337,7 +337,7 @@
                                                                 <td class="border-color" colspan="1">
                                                                     <span><strong>Shipping price</strong></span></td>
                                                                 <td class="border-color">
-                                                                    <span>{{ invoice.shipping_price }} Toman</span></td>
+                                                                    <span>Pay in destination</span></td>
                                                             </tr>
 
                                                             <!-- <tr>

@@ -337,7 +337,7 @@
                         <li><a href="{% url 'blogs' %}">وبلاگ</a></li>
                         {% comment %<li><a href="{% url 'namaiandegi' %}">نمایندگی ها </a></li>{% endcomment %}
                         <li><a href="{% url 'about-us' %}">درباره ما </a></li>
-                        <li><a href="{% url 'contact-us' %}">تماس با ما </a></li>
+                        {% comment %}<li><a href="{% url 'contact-us' %}">تماس با ما </a></li>{% endcomment %}
                         <li><a href="{% url 'hamkari' %}">همکاری با ما </a></li>
                         <li><a href="{% url 'switch-lang' pk=1 %}">English</a></li>
                     </ul>
@@ -363,12 +363,11 @@
                 <ul class="eccart-pro-items">
                     {% for item in cart_items %}
                     <li>
-                        <a href="  " class="sidekka_pro_img"><img src="{% static 'images/product-image/6_1.jpg' %}"
+                        <a href="  " class="sidekka_pro_img"><img src="{{ item.product.image0.url }}"
                                 alt="product"></a>
                         <div class="ec-pro-content">
                             <a href="  " class="cart_pro_title">{{ item.product.name }}</a>
-                            <span class="cart-price"><span>{{ item.product.new_price }} تومان</span> x {{ item.quantity
-                                }}</span>
+                            <span class="cart-price"><span>{{ item.product.new_price }} ریال</span> x {{ item.quantity }}</span>
 
                         </div>
                     </li>
@@ -382,28 +381,28 @@
                             {% if cart %}
                             <tr>
                                 <td class="text-left">ریز هزینه:</td>
-                                <td class="text-right">{{ cart.shipping_price }} تومان</td>
+                                <td class="text-right">{{ cart.shipping_price }} ریال</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td class="text-left">مالیات (20%) :</td>
-                                <td class="text-right">0 تومان</td>
-                            </tr>
+                                <td class="text-right">0 ریال</td>
+                            </tr> -->
                             <tr>
                                 <td class="text-left">جمع کل:</td>
-                                <td class="text-right primary-color">{{ cart.finished_price }} تومان</td>
+                                <td class="text-right primary-color">{{ cart.finished_price }} ریال</td>
                             </tr>
                             {% else %}
                             <tr>
                                 <td class="text-left">ریز هزینه:</td>
-                                <td class="text-right">{{ cart.shipping_price }} تومان</td>
+                                <td class="text-right">{{ cart.shipping_price }} ریال</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td class="text-left">مالیات (20%) :</td>
-                                <td class="text-right">0 تومان</td>
-                            </tr>
+                                <td class="text-right">0 ریال</td>
+                            </tr> -->
                             <tr>
                                 <td class="text-left">جمع کل:</td>
-                                <td class="text-right primary-color">0 تومان</td>
+                                <td class="text-right primary-color">0 ریال</td>
                             </tr>
                             {% endif %}
                         </tbody>
@@ -514,9 +513,9 @@
                                 <li><a href="{% url 'khadamat' %}">Serivces</a></li>
                                 <li><a href="{% url 'projects' %}">Projects</a></li>
                                 <li><a href="{% url 'blogs' %}">Blog</a></li>
-                                <li><a href="{% url 'namaiandegi' %}">Agencies</a></li>
+                                {% comment %}<li><a href="{% url 'namaiandegi' %}">Agencies</a></li>{% endcomment %}
                                 <li><a href="{% url 'about-us' %}">About us</a></li>
-                                <li><a href="{% url 'contact-us' %}">Contact us</a></li>
+                                {% comment %}<li><a href="{% url 'contact-us' %}">Contact us</a></li>{% endcomment %}
                                 <li><a href="{% url 'hamkari' %}">Partnership</a></li>
                                 <li><a href="{% url 'switch-lang' pk=0 %}">فارسی</a></li>
 
@@ -597,9 +596,9 @@
                         <li><a href="{% url 'khadamat' %}">Serivces</a></li>
                         <li><a href="{% url 'projects' %}">Projects</a></li>
                         <li><a href="{% url 'blogs' %}">Blog</a></li>
-                        <li><a href="{% url 'namaiandegi' %}">Agencies</a></li>
+                        {% comment %}<li><a href="{% url 'namaiandegi' %}">Agencies</a></li>{% endcomment %}
                         <li><a href="{% url 'about-us' %}">About us</a></li>
-                        <li><a href="{% url 'contact-us' %}">Contact us</a></li>
+                        {% comment %}<li><a href="{% url 'contact-us' %}">Contact us</a></li>{% endcomment %}
                         <li><a href="{% url 'hamkari' %}">Partnership</a></li>
                         <li><a href="{% url 'switch-lang' pk=0 %}"
                                 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">فارسی</a>
@@ -665,12 +664,11 @@
                 <ul class="eccart-pro-items">
                     {% for item in cart_items %}
                     <li>
-                        <a href="  " class="sidekka_pro_img"><img src="{% static 'images/product-image/6_1.jpg' %}"
+                        <a href="  " class="sidekka_pro_img"><img src="{{ item.product.image0.url }}"
                                 alt="product"></a>
                         <div class="ec-pro-content">
                             <a href="  " class="cart_pro_title">{{ item.product.name }}</a>
-                            <span class="cart-price"><span>{{ item.product.new_price }} تومان</span> x {{ item.quantity
-                                }}</span>
+                            <span class="cart-price"><span>{{ item.product.new_price }} Rial</span> x {{ item.quantity }}</span>
 
                         </div>
                     </li>
@@ -683,29 +681,13 @@
                         <tbody>
                             {% if cart %}
                             <tr>
-                                <td class="text-left">Small fees</td>
-                                <td class="text-right">{{ cart.shipping_price }} Toman</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">Taxes (20%) :</td>
-                                <td class="text-right">0 Toman</td>
-                            </tr>
-                            <tr>
                                 <td class="text-left">Finished price</td>
-                                <td class="text-right primary-color">{{ cart.finished_price }} Toman</td>
+                                <td class="text-right primary-color">{{ cart.finished_price }} Rial</td>
                             </tr>
                             {% else %}
                             <tr>
-                                <td class="text-left">Micro expenses</td>
-                                <td class="text-right">{{ cart.shipping_price }} Toman</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">Taxes (20%) :</td>
-                                <td class="text-right">0 Toman</td>
-                            </tr>
-                            <tr>
                                 <td class="text-left">Finished price</td>
-                                <td class="text-right primary-color">0 Toman</td>
+                                <td class="text-right primary-color">0 Rial</td>
                             </tr>
                             {% endif %}
                         </tbody>
@@ -781,7 +763,7 @@
                                 <h4 class="ec-footer-heading">ارتباط با ما</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
-                                        <li class="ec-footer-link">یک آدرس فرضی در این مکان قرار گرفته است. غرب تهران
+                                        <li class="ec-footer-link">خ انقلاب ابتدای شریعتی نبش بیرجند پلاک ۲۵ فروشگاه اتش نبرد
                                         </li>
                                         <li class="ec-footer-link"><span>تلفن ثابت۱:</span><a dir="ltr">77632734</a>
                                         </li>
@@ -941,15 +923,13 @@
                                 <h4 class="ec-footer-heading">Contact us</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
-                                        <li class="ec-footer-link">{A hypothetical address placed here
+                                        <li class="ec-footer-link">Address here!
                                         </li>
-                                        <li class="ec-footer-link"><span>Contact us:</span><a dir="ltr">09126451234</a>
+                                        <li class="ec-footer-link"><span>Tel 1:</span><a dir="ltr">77632734</a>
                                         </li>
-                                        <li class="ec-footer-link"><span>Fax:</span><a dir="ltr">09126451234</a></li>
-                                        <li class="ec-footer-link"><span>Email:</span><a
-                                                href="/cdn-cgi/l/email-protection#eb8e938a869b878eab8e88c68e868a8287c5888486"><span
-                                                    class="__cf_email__"
-                                                    data-cfemail="5f743a273e322f333a1f3a3c723a323e3633713c3032">[email&#160;protected]</span></a>
+                                        <li class="ec-footer-link"><span>Fax:</span><a dir="ltr">77510716</a></li>
+                                        <li class="ec-footer-link"><span>ایمیل:</span><a 
+                                            href="/cdn-cgi/l/email-protection#eb8e938a869b878eab8e88c68e868a8287c5888486">khast@atashnabard.com</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -961,8 +941,8 @@
                                 <h4 class="ec-footer-heading">Phone numbers</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
-                                        <li class="ec-footer-link"><span>Contact us:</span><a>09126451234</a></li>
-                                        <li class="ec-footer-link"><span>Fax:</span><a>09126451234</a></li>
+                                        <li class="ec-footer-link"><span>Whatsapp online support:</span><a>09056165798</a></li>
+                                        <li class="ec-footer-link"><span>Fax:</span><a>77514908</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -991,7 +971,11 @@
                                 <h4 class="ec-footer-heading">Permissions</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
-                                        <li class="ec-footer-link"><a href="user-profile' %}"> Enamad </a></li>
+                                        <a referrerpolicy="origin" target="_blank"
+                                                href="https://trustseal.enamad.ir/?id=357422&amp;Code=uSFkC4blOywmKftSbZHm"><img height="150" width="150"
+                                                    referrerpolicy="origin"
+                                                    src="https://Trustseal.eNamad.ir/logo.aspx?id=357422&amp;Code=uSFkC4blOywmKftSbZHm"
+                                                    alt="Enamad" style="cursor:pointer" id="uSFkC4blOywmKftSbZHm"></a>
                                     </ul>
                                 </div>
                             </div>
@@ -1001,6 +985,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row align-items-center">

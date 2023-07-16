@@ -89,7 +89,7 @@
     {% endif %}
 
 
-    <!-- Vendor JS -->
+    {% comment %}<!-- Vendor JS -->
     <script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'js/vendor/popper.min.js' %}"></script>
@@ -111,7 +111,7 @@
     <script src="{% static 'js/vendor/google-translate.js' %}"></script>
     <!-- Main Js -->
     <script src="{% static 'js/vendor/index.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>{% endcomment %}
 
 </body>
 

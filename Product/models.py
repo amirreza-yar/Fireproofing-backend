@@ -109,6 +109,10 @@ class Category(models.Model):
     @property
     def category_display(self):
         return self.name
+    
+    @property
+    def en_category_display(self):
+        return self.en_name
 
     def __str__(self):
         return self.category_display
@@ -120,7 +124,8 @@ class Cart(models.Model):
     # ordered = models.BooleanField(default=False)
     # ordered_date = models.DateTimeField(null=True)
 
-    shipping_price = models.IntegerField(default=200, validators=[MinValueValidator(0)])
+    # shipping_price = models.IntegerField(default=200, validators=[MinValueValidator(0)])
+    shipping_price = 0
 
     @property
     def item_quantity(self):
