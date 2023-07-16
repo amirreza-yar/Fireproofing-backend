@@ -42,15 +42,17 @@ class Product(models.Model):
     @property
     def new_price(self):
         new_price = self.price - self.discount_percentage * self.price / 100
-        line= str(int(new_price))+"0"
+        line= str(int(new_price)) + "0"
         return int(line)
+
     @property
     def display_price(self):
         new_price = self.price - self.discount_percentage * self.price / 100
-        line= str(int(new_price))+"0"
+        line = str(int(new_price)) + "0"
         
         print(list(range(len(line),0 ,-3))+[0])
-        return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]])) 
+        return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]]))
+
     def add_to_quantity_purchased(self, value=1):
         self.quantity_purchased += value
 
@@ -71,6 +73,7 @@ class Product(models.Model):
 
     def remove_form_cart(self):
         return reverse("removeFromCart", kwargs={'pk': self.pk})
+
     def get_price(self):
         line = str(self.price)+"0"
         return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]]))
