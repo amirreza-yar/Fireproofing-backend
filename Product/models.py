@@ -187,6 +187,7 @@ class Order(models.Model):
     is_payed = models.BooleanField(default=False)
     class StatusChoises(models.TextChoices):
         PENDING = 'PN', _('در انتظار تایید')
+        FAILED = 'UN', _('اشکال در پرداخت')
         PREPARING = 'PR', _('در حال آماده سازی')
         SENDING = 'SN', _('در حال ارسال')
         RECIEVED = 'RC', _('تحویل داده شده')
@@ -197,6 +198,10 @@ class Order(models.Model):
         choices=StatusChoises.choices,
         default=StatusChoises.PENDING
     )
+    
+    @property
+    def display_addr(self):
+        return self.address.decode()
 
     @property
     def get_status(self):

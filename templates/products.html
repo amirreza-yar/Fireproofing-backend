@@ -81,9 +81,8 @@
                                             <span class="ec-price">
                                                 {% if not product.discount_percentage == 0 %}
                                                     <span class="old-price">{{ product.get_price }} ریال</span>
-                                                {% else %}
-                                                    <span class="new-price">{{ product.display_price }} ریال</span>
                                                 {% endif %}
+                                                    <span class="new-price">{{ product.display_price }} ریال</span>
                                             </span>
                                             {% endif %}
     
@@ -278,9 +277,8 @@
                                             <span class="ec-price">
                                                 {% if not product.discount_percentage == 0 %}
                                                     <span class="old-price">{{ product.get_price }} Rial</span>
-                                                {% else %}
-                                                    <span class="new-price">{{ product.display_price }} Rial</span>
                                                 {% endif %}
+                                                    <span class="new-price">{{ product.display_price }} Rial</span>
                                             </span>
                                             {% endif %}
     

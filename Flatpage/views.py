@@ -30,6 +30,7 @@ def index(request):
         "is_index_page": True,
         "categories": Category.objects.filter(parent=None),
         "products": Product.objects.all(),
+        "recent_products": Product.objects.order_by('-id')[0:5],
         }
     return render(request, "index.html",context=context )
 

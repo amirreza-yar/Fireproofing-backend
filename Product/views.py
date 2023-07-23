@@ -8,7 +8,7 @@ from django.contrib import messages
 import json
 
 from Product.models import CartItem
-
+from .payment import ZarinRest
 from .models import Product as ProductModel
 from .models import ProductComment
 from .models import Cart as CartModel
@@ -182,8 +182,7 @@ def makeOrder(request):
     if destination_details_form.is_valid():
         
         postal_code = destination_details_form['postal_code'].value()
-        address = destination_details_form['address'].value()
-        print(postal_code, address)
+        address = destination_details_form['address'].value().encode("UTF-8")
         cart_items = cart.items.all()
         unseri_item = []
 
@@ -215,8 +214,10 @@ def makeOrder(request):
         )
 
         cart.delete()
+        zapi = ZarinRest("53946567-b7ac-47a9-8eec-adff5d3f2525",request.user.id)
+        transaction = zapi.payment_request(int(str(cart.finished_price_+"0")),"atashnabard payment process")
         
-        return redirect("pardakhtMovafaq")
+        return redirect(f"https://zarinpal.com/pg/StartPay/{transaction['data']['authority']}")
         
     else:
         # send some error messages
@@ -224,6 +225,24 @@ def makeOrder(request):
 
         # Some paying backend
         return redirect("pardakhtNaMovafaq")
+def verify_payment_proc(request,order_id):
+    Status = request.GET.get('Status')
+    Authority = request.GET.get('Authority')
+    order = OrderModel.objects.get(id=order_id)
+    amount = order.finished_price
+    user = order.customer
+    if Status == "OK":
+        zapi = ZarinRest("53946567-b7ac-47a9-8eec-adff5d3f2525",order_id)
+        transaction = zapi.verify_payment(amount,Authority)
+        if transaction['data']['message'] == 'Paid':
+            order.status = 'PN'
+        elif transaction['data']['message'] == 'Verified':
+            order.status = 'PN'
+        else:
+            order.status = 'UN'
+            print(transaction['data'],f"==> {order_id}")
+        order.save()
+        return redirect('cart')
 
 def pardakhtMovafaq(request):
     return render(request, "pardakhtmovafaq.html")

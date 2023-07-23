@@ -5,12 +5,14 @@ from Product.models import (
 )
 from Blog.models import Blog
 from django import forms
-
+from ckeditor.widgets import CKEditorWidget
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=63)
     password = forms.CharField(max_length=63, widget=forms.PasswordInput)
 
 class ProductForm(forms.ModelForm):
+    full_description = forms.CharField(widget=CKEditorWidget())
+    en_full_description = forms.CharField(widget=CKEditorWidget())
     class Meta:
         model = Product
         fields = ('name','en_name','meta_description','en_meta_description','full_description','en_full_description','image0','image1','image2','image3','image4','image5','image6','price','categories','is_instock','is_recommended','discount_percentage','is_service')
