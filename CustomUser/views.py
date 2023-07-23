@@ -157,7 +157,7 @@ def userInvoice(request, pk):
 
     context = {
         "invoice": invoice,
-        "title": f"فکتور شماره {invoice.pk}",
+        "title": f"فاکتور شماره {invoice.pk}",
     }
     return render(request, "userInvoice.html", context=context)
 

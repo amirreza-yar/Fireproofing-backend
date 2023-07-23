@@ -24,6 +24,11 @@ from .models import DiscountCode as DiscountCodeModel
 
 def products(request):
 
+    try:
+        request.session['lang']
+    except:
+        request.session["lang"] = 0
+
     # Filter the DB objects with given category or searhced text
     all_products = ProductModel.objects.all().filter(is_service=False)
     categories = CategoryModel.objects.all()
@@ -214,10 +219,10 @@ def makeOrder(request):
             # discount_amount=0,
         )
 
-        cart.delete()
         zapi = ZarinRest("53946567-b7ac-47a9-8eec-adff5d3f2525",request.user.id)
-        transaction = zapi.payment_request(int(str(cart.finished_price_+"0")),"atashnabard payment process")
+        transaction = zapi.payment_request(int(str(cart.finished_price+"0")),"atashnabard payment process")
         
+        cart.delete()
         return redirect(f"https://zarinpal.com/pg/StartPay/{transaction['data']['authority']}")
         
     else:
