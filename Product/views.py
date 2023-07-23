@@ -24,27 +24,26 @@ from .models import DiscountCode as DiscountCodeModel
 
 def products(request):
 
-    # Manipulte with categories and searched text
-    # if cat:
-
-    
     # Filter the DB objects with given category or searhced text
     all_products = ProductModel.objects.all().filter(is_service=False)
     categories = CategoryModel.objects.all()
-
-    # print(dict(request.GET).keys())
-    # print(list(request.GET))
-    # categories_selected = dict()
-    # for category in categories:
-    #     categories_selected[category.name] = 0
-
-    # print(categories_selected)
-    
-    # for i in categories_selected:
-    #     print(i)
-
     products = int()
     categories_selected = list()
+
+    try:
+        searched_text = request.GET['search-text']
+        if request.session["lang"]:
+            searched_products = ProductModel.objects.filter(
+                Q(en_name__icontains=searched_text) | Q(en_full_description__icontains=searched_text) | Q(en_meta_description__icontains=searched_text)
+            )
+        else:
+            searched_products = ProductModel.objects.filter(
+                Q(name__icontains=searched_text) | Q(full_description__icontains=searched_text) | Q(meta_description__icontains=searched_text)
+            )
+    except:
+        searched_text = None
+        products = None
+
 
     if request.session["lang"]:
         for category_name in list(request.GET):
@@ -76,23 +75,14 @@ def products(request):
         else:
             products = all_products
 
-    # print(products)
-    # print(CategoryModel.objects.filter(name=categories_selected[0])[0])
-
-    
-    # print(all_products)
-    
-    # categories_queryset = categories.filter(name=categories_selected[0]) | categories.filter(name=categories_selected[1])
-    # print(products.filter(categories__in=categories_queryset[1]))
-    # print(products.filter(name=categories_selected[0]))
-
-    # categories.filter(name=)
-
-    # print(categories_selected)
+    if searched_text:
+        products = searched_products
 
     context = {
         "title": "محصولات",
         "is_index_page": False,
+        "searched_text": searched_text,
+        # "searched_products": searched_products,
         "products": products,
         "categories": categories,
         "categories_selected": categories_selected,
@@ -125,12 +115,8 @@ def productDetail(request, pk):
 @login_required(login_url='login')
 @require_POST
 def makeComment(request, pk):
-    # print("I'm running!")
-    # print(request.POST)
     comment_form = MakeCommentForm(request.POST)
-    # print(comment_form)
     if comment_form.is_valid():
-        # print(comment_form['comment'].value())
         ProductComment.objects.create(
             user=request.user,
             product=ProductModel.objects.get(pk=pk),
@@ -147,8 +133,6 @@ def makeComment(request, pk):
 def cart(request):
     
     cart = CartModel.objects.get_or_create(customer=request.user)
-    # if cart.discount == None:
-    #     print("SHIT>>>...")
     context = {
         "title": "سبد خرید",
         "is_index_page": False,
@@ -195,7 +179,6 @@ def makeOrder(request):
 
     cart = CartModel.objects.get(customer=request.user)
     user = request.user
-    # print(request.cart)
     destination_details_form = GetDestinationDetailsForm(request.POST)
     if destination_details_form.is_valid():
         

@@ -50,7 +50,6 @@ class Product(models.Model):
         new_price = self.price - self.discount_percentage * self.price / 100
         line = str(int(new_price)) + "0"
         
-        print(list(range(len(line),0 ,-3))+[0])
         return '،'.join(reversed([line[i-3 if i > 3 else 0:i] for i in list(range(len(line),0 ,-3))+[0]]))
 
     def add_to_quantity_purchased(self, value=1):

@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 ec-sort-select">
-
+                        
                     </div>
                 </div>
                 <!-- Shop Top End -->
@@ -31,7 +31,9 @@
                 <div class="shop-pro-content">
                     <div class="shop-pro-inner">
                         <div class="row">
-                            
+                            {% if searched_text %}
+                                <h1 class="mb-4" style="font-size:medium !important; color:azure;">عبارت جستجو شده: {{ searched_text }}</h1>
+                            {% endif %}
                         {% for product in products %}
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content d3 ad">
                                 <a href="{% url 'product' pk=product.pk %}">
@@ -192,7 +194,9 @@
                 <div class="shop-pro-content">
                     <div class="shop-pro-inner">
                         <div class="row">
-                            
+                            {% if searched_text %}
+                                <h1 class="mb-4" style="font-size:medium !important; color:azure;">Searched term: {{ searched_text }}</h1>
+                            {% endif %}
                         {% for product in products %}
                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content d3 ad mb-8 pb-8">
                                 <a href="{% url 'product' pk=product.pk %}">

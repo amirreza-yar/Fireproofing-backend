@@ -216,8 +216,8 @@
                     <!-- Ec Header Search Start -->
                     <div class="col">
                         <div class="header-search">
-                            <form class="ec-btn-group-form" action="#">
-                                <input class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text">
+                            <form class="ec-btn-group-form" action="{% url 'products' %}" method="get">
+                                <input name="search-text" class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text">
                                 <button class="submit" type="submit"><img src="{% static 'images/icons/search.svg' %}"
                                         class="svg_img header_svg" alt="icon"></button>
                             </form>
@@ -308,7 +308,7 @@
                     <div>
                         <div class="header-search">
                             <form class="ec-btn-group-form" action="{% url 'products' %}" method="get">
-                                <input class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text"
+                                <input name="search-text" class="form-control" placeholder="نام محصول خود را وارد کنید ..." type="text"
                                     name="search-text" style="z-index: 90 !important;">
                                 <button class="submit" type="submit" style="z-index: 99 !important;"><img
                                         src="{% static 'images/icons/search.svg' %}" class="svg_img header_svg"
@@ -477,8 +477,8 @@
                     <!-- Ec Header Search Start -->
                     <div class="col">
                         <div class="header-search">
-                            <form class="ec-btn-group-form" action="#">
-                                <input class="form-control" placeholder="Enter your product name" type="text">
+                            <form class="ec-btn-group-form" action="{% url 'products' %}" method="get">
+                                <input name="search-text" class="form-control" placeholder="Enter your product name" type="text">
                                 <button class="submit" type="submit"><img src="{% static 'images/icons/search.svg' %}"
                                         class="svg_img header_svg" alt="icon"></button>
                             </form>
@@ -567,8 +567,8 @@
                         class="">&times;</span>
                     <div>
                         <div class="header-search">
-                            <form class="ec-btn-group-form" action="#">
-                                <input class="form-control" placeholder="Enter your product name" type="text"
+                            <form class="ec-btn-group-form" action="{% url 'products' %}" method="get">
+                                <input name="search-text" class="form-control" placeholder="Enter your product name" type="text"
                                     style="z-index: 90 !important;">
                                 <button class="submit" type="submit" style="z-index: 99 !important;"><img
                                         src="{% static 'images/icons/search.svg' %}" class="svg_img header_svg"
