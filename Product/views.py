@@ -177,8 +177,8 @@ def deleteFromCart(request, pk):
 @require_POST
 def makeOrder(request):
 
-    cart = CartModel.objects.get(customer=request.user)
     user = request.user
+    cart = CartModel.objects.get(customer=user)
     destination_details_form = GetDestinationDetailsForm(request.POST)
     if destination_details_form.is_valid():
         

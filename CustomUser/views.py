@@ -138,7 +138,7 @@ def editProfile(request):
 @login_required(login_url='login')
 def userHistory(request):
 
-    invoices = OrderModel.objects.all()
+    invoices = OrderModel.objects.filter(customer=request.user)
     # print(invoices[0].get_status_display())
     context = {
         "title": "تاریخچه کاربر",
