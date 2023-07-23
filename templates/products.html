@@ -129,12 +129,6 @@
                             <div class="ec-sb-block-content">
                                 <form id="category-form" action="{% url 'products' %}" method="get">
                                     <ul>
-                                        <!-- <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input form="category-form" class="check" type="checkbox" checked="" name="c1"> <a href="#">همه</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li> -->
                                         {% for category in categories %}
                                             {% if category.name in categories_selected %}
                                                 <li>
@@ -152,36 +146,7 @@
                                                 </li>
                                             {% endif %}
                                         {% endfor %}
-                                        <!-- <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input form="category-form" class="check" type="checkbox" name="c2"> <a href="#">دسته بندی 2</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input form="category-form" class="check" type="checkbox" name="c3"> <a href="#">دسته بندی 3</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input form="category-form" class="check" type="checkbox" name="c4"> <a href="#">دسته بندی 4</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input form="category-form" class="check" type="checkbox" name="c5"> <a href="#">دسته بندی 5</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                <input form="category-form" class="check" type="checkbox" name="c6"> <a href="#">دسته بندی 6</a><span
-                                                    class="checked"></span>
-                                            </div>
-                                        </li> -->
+                                        
                                     </ul>
                                     <button form="category-form"  style="background-color: white;color: black;padding: 4px 20px;border-radius: 20px;font-weight: bold;text-align: center;display: flex;justify-content: center;align-items: center;">اعمال</button>
                                 </form>
@@ -332,7 +297,7 @@
                                             </div>
                                         </li> -->
                                         {% for category in categories %}
-                                            {% if category.name in categories_selected %}
+                                            {% if category.en_name in categories_selected %}
                                                 <li>
                                                     <div class="ec-sidebar-block-item">
                                                         <input form="category-form" class="check" type="checkbox" name="{{ category.en_category_display }}" checked> <a href="#">{{ category.en_category_display }}</a><span

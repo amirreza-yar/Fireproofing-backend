@@ -4,6 +4,7 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.db.models import Q
 
 import json
 
@@ -42,21 +43,38 @@ def products(request):
     # for i in categories_selected:
     #     print(i)
 
-    
     products = int()
+    categories_selected = list()
 
-    categories_selected = list()    
-    for category_name in list(request.GET):
-        if categories.filter(name=category_name).exists():
-            categories_selected.append(category_name)
+    if request.session["lang"]:
+        for category_name in list(request.GET):
+            if categories.filter(en_name=category_name).exists():
+                categories_selected.append(category_name)
 
-    if len(categories_selected) >= 1:
-        products = all_products.filter(categories__name=categories_selected[0])
-        
-        for category_pk in range(1, len(categories_selected)):
-            products = products | products.filter(categories__name=categories_selected[category_pk])
+        if len(categories_selected) >= 1:
+            filters = Q(categories__en_name=categories_selected[0])
+
+            for category_pk in range(1, len(categories_selected)):
+                filters |= Q(categories__en_name=categories_selected[category_pk])
+
+            products = all_products.filter(filters)
+        else:
+            products = all_products
+
     else:
-        products = all_products
+        for category_name in list(request.GET):
+            if categories.filter(name=category_name).exists():
+                categories_selected.append(category_name)
+
+        if len(categories_selected) >= 1:
+            filters = Q(categories__name=categories_selected[0])
+    
+            for category_pk in range(1, len(categories_selected)):
+                filters |= Q(categories__name=categories_selected[category_pk])
+
+            products = all_products.filter(filters)
+        else:
+            products = all_products
 
     # print(products)
     # print(CategoryModel.objects.filter(name=categories_selected[0])[0])
@@ -302,5 +320,5 @@ def discountCode(request):
         return redirect('cart')
     
     else:
-        messages.success(request, "Discount code isn't valid!")
+        messages.error(request, "Discount code isn't valid!")
         return redirect('cart')
