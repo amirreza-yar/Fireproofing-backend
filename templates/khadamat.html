@@ -8,19 +8,20 @@
 <!-- User history section -->
 <section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
     <div class="container">
-        <div class="row">
-            <!-- Sidebar Area Start -->
-
-
-
+		<div class="row">
+			<!-- Sidebar Area Start -->
+			
+			
+			
             <div class="dropdown">
-                <button class="dropbtn">خدمات و تعرفه ها</button>
+				<button class="dropbtn">خدمات و تعرفه ها</button>
                 <div class="dropdown-content">
-                    <a onclick="document.getElementById('taarefe').style.display = 'none',document.getElementById('khadamat').style.display = 'block'">خدمات</a>
+					<a onclick="document.getElementById('taarefe').style.display = 'none',document.getElementById('khadamat').style.display = 'block'">خدمات</a>
                     <a onclick="document.getElementById('taarefe').style.display = 'block',document.getElementById('khadamat').style.display = 'none'">تعرفه ها</a>
                 </div>
             </div>
-
+			
+			{% comment %}
             <div class="mt-5 col-lg-12 col-md-12" id="khadamat">
                 <div class="ec-vendor-dashboard-card">
                     <div class="ec-vendor-card-header">
@@ -648,6 +649,7 @@
                         </div>
                     </div>
                 </div>
+				{% endcomment %}
             </div>
         </div>
     </div>

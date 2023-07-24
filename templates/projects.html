@@ -4,6 +4,7 @@
 {% block section %}
 
 {% if not lang %}
+{% comment %}
     <!-- Ec Blog page -->
     <section class="ec-page-content section-space-p">
         <div class="container">
@@ -56,7 +57,705 @@
             </div>
         </div>
     </section>
+{% endcomment %}
 
+<section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Area Start -->
+
+
+
+            <!-- <div class="dropdown">
+                <button class="dropbtn">خدمات و تعرفه ها</button>
+                <div class="dropdown-content">
+                    <a onclick="document.getElementById('taarefe').style.display = 'none',document.getElementById('khadamat').style.display = 'block'">خدمات</a>
+                    <a onclick="document.getElementById('taarefe').style.display = 'block',document.getElementById('khadamat').style.display = 'none'">تعرفه ها</a>
+                </div>
+            </div> -->
+            
+            <div class="mt-5 col-lg-12 col-md-12" id="taarefe">
+                <div class="ec-vendor-dashboard-card">
+                    <div class="ec-vendor-card-header" style="display: flex !important; flex-direction:column; align-items: start !important;">
+                        <h5 class="pb-2">لیست پروژه‌ها</h5>
+                        <p>شرکت خدمات ایمنی آتش نبرد با ۳۴سال سابقه به عنوان مالک برندهای داخلی پیشگام و پیشتاز به شماره‌های ثبت ۰۱۴۲۱ الف/۸۹ و ۰۱۴۲۲ الف/۸۹ با کادری متخصص و مجرب بخشی از افتخارات خود را به عنوان رزومه شرکت به شرح زیر اعلام می‌نماید.</p>
+                    </div>
+                    <!-- <div class="ec-vendor-card-header">
+                        <h5>لیست پروژه‌ها</h5>
+                    </div> -->
+                    <div class="ec-vendor-card-body">
+                        <div class="ec-vendor-card-table">
+                            <table class="table ec-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ردیف</th>
+                                        <th scope="col">سازمان/شرکت</th>
+                                        <th scope="col">محل اجرا</th>
+                                        <th scope="col">نوع کارهای انجام شده</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><span>۱</span></th>
+                                        <td><span>شرکت خودرو سازی سایپا  کیلومتر 15 جاده کرج</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق انبارهای هفده گانه مواد شیمیایی و پستهای دوازده گانه برق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲</span></th>
+                                        <td><span>مهمانسرای شرکت چینی سازی نوری تازه</span></td>
+                                        <td><span>حسن آباد قم</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳</span></th>
+                                        <td><span>صبا كاغذ اتوبان کرج ٫ قزوین شهرك صنعتی قطب بهارستان </span></td>
+                                        <td><span>کرج</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴</span></th>
+                                        <td><span>کارخانه کفش باليك بومای) (سابق) میدان شیر پاستوریزه اول شاد آباد </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>حریق و تجهیزات آتش نشانی </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵</span></th>
+                                        <td><span>سازمان چاپ آلاله خیابان انقلاب بین پیچ شمیران و پل چوبی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و تجهیزات آتش نشانی </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶</span></th>
+                                        <td><span>پترو پارس دفتر مرکزی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷</span></th>
+                                        <td><span>نمایشگاه سایپا </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸</span></th>
+                                        <td><span>استوديو صبا (صدا و سیما) </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۹</span></th>
+                                        <td><span>تراکتور سازی تبریز </span></td>
+                                        <td><span>تبریز</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۰</span></th>
+                                        <td><span>آزمایشگاه پالایشگاه تبریز </span></td>
+                                        <td><span>تبریز</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۱</span></th>
+                                        <td><span>مخابرات طالقانی تبریز </span></td>
+                                        <td><span>تبریز</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۲</span></th>
+                                        <td><span>هتل شهر شب سه راه تهرانپارس </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۳</span></th>
+                                        <td><span>برج مينا خیابان خاوران جنب پمپ بنزین کوچه مینا</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۴</span></th>
+                                        <td><span>بیماری های خاص (یوسف آباد) </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۵</span></th>
+                                        <td><span>ساختمانهای فرهنگی ورزشی منطقه ۷ شهرداری تواناییهای زیست محیطی و فردی و مجموعه ورزشی ساعی و شهرداری جوان مجموعه ورزشی ساعی و شهرداری جوان </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۶</span></th>
+                                        <td><span>سالن کشتی ۴۰۰ نفری شهید توفیق شیرودی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۷</span></th>
+                                        <td><span>ساختمان اداری و توسعه سیمان آبيك قزوین </span></td>
+                                        <td><span>قزوین</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۸</span></th>
+                                        <td><span>مجتمع مسكوني تعاونی نیروی هوایی ۲ بلوک ۱۴ طبقه </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۱۹</span></th>
+                                        <td><span>کارخانه کیان کردسا </span></td>
+                                        <td><span>ملایر</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۰</span></th>
+                                        <td><span>هو افضاجاده آبعلی منطقه نظامی خجیر</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۱</span></th>
+                                        <td><span>مجتمع اداری و تجاری پاساژ نارون </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۲</span></th>
+                                        <td><span>شرکت تعاونی مسکن ۱۵ ناجا مجتمع ۲۸ بلوك مسكونی پارس </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۳</span></th>
+                                        <td><span>ساختمان اداری انبار شرکت نفت فلات قاره </span></td>
+                                        <td><span>جزیره خارک</span></td>
+                                        <td><span>راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۴</span></th>
+                                        <td><span>صنایع شهید کریمی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۵</span></th>
+                                        <td><span>پروژه انبار قواصی </span></td>
+                                        <td><span>لاوان</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۶</span></th>
+                                        <td><span>سوله ۵۰۰۰ شرکت سازه گستر سایپا </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی بیم دتکتور </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۷</span></th>
+                                        <td><span>سوله ۷۰۰۰ شرکت سازه گستر سایپا </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی بیم دتکتور </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۸</span></th>
+                                        <td><span>مركز تبلیغات حوزه علمیه قم </span></td>
+                                        <td><span>قم</span></td>
+                                        <td><span>راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۲۹</span></th>
+                                        <td><span>مجتمع تجاری کارون </span></td>
+                                        <td><span>اهواز</span></td>
+                                        <td><span>راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۰</span></th>
+                                        <td><span>سیمان کارون </span></td>
+                                        <td><span>خوزستان</span></td>
+                                        <td><span>راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۱</span></th>
+                                        <td><span>شرکت پترو پارس ساختمان جدید </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۲</span></th>
+                                        <td><span>ساختمان مهر شرکت بلاش </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۳</span></th>
+                                        <td><span>دانشگاه امام صادق </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۴</span></th>
+                                        <td><span>برج گلشهر </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۵</span></th>
+                                        <td><span>موزه دکتر علی شریعتی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق و نگهداری </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۶</span></th>
+                                        <td><span>ساختمان مرکزی بیمه آسیا </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۷</span></th>
+                                        <td><span>کتابخانه تخصصی پژوهشکده علوم دفاعی دانشگاه امام حسین</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۸</span></th>
+                                        <td><span>پروژه ۴۰۰ واحدی پاس </span></td>
+                                        <td><span>قم</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۳۹</span></th>
+                                        <td><span>ساختمان فرمانداری جدید بروجردی </span></td>
+                                        <td><span>بروجرد</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۰</span></th>
+                                        <td><span>دانشگاه پیام نور تهران مرکز </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۱</span></th>
+                                        <td><span>شهرک شهید محلاتی مینی سیتی برج آبی ۸۰ واحد </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۲</span></th>
+                                        <td><span>شهرک شهید محلاتی فراز ۱۰۰ واحدی فرهنگیان </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۳</span></th>
+                                        <td><span>پروژه ۷۰ واحدی وزارت کار </span></td>
+                                        <td><span>قم</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۴</span></th>
+                                        <td><span>شرکت تاکنو گاز فاز ۱ </span></td>
+                                        <td><span>کرج</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۵</span></th>
+                                        <td><span>اتاق سرور کامپیوتر شرکت توزیع برق منطقه تهران </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۶</span></th>
+                                        <td><span>سوله قوه قضاییه </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۷</span></th>
+                                        <td><span>فومن شیمی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۸</span></th>
+                                        <td><span>شرکت تاکنو گاز فاز ۲ </span></td>
+                                        <td><span>کرج</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۴۹</span></th>
+                                        <td><span>پروژه خاتم الانبیا سپاه </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۰</span></th>
+                                        <td><span>پروژه مخابرات سپاه </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۱</span></th>
+                                        <td><span>پژوهشکده رویان </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق آدرس پذیر </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۲</span></th>
+                                        <td><span>خوابگاه دانشگاه امام صادق بانوان </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۳</span></th>
+                                        <td><span>سازمان نظام پرستاری </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء آبی </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۴</span></th>
+                                        <td><span>دانشکده مامایی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۵</span></th>
+                                        <td><span>انبارهای سازمان انتقال خون </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۶</span></th>
+                                        <td><span>اداره بازرگانی مرکز انبارهای تدارکات </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۷</span></th>
+                                        <td><span>صندوق ذخیره بسیجیان </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۸</span></th>
+                                        <td><span>آتش نشانی پتروشیمی </span></td>
+                                        <td><span>ماهشهر</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق آدرس پذیر </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۵۹</span></th>
+                                        <td><span>فن آوری اطلاعات مخابرات </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۰</span></th>
+                                        <td><span>قسمت سرور ثبت احوال </span></td>
+                                        <td><span>مشهد</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۱</span></th>
+                                        <td><span>شهرداری منطقه ۳ </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۲</span></th>
+                                        <td><span>خزانه بانك صنعت و معدن </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۳</span></th>
+                                        <td><span>مجتمع ورزی فرهنگی بانک صنعت و معدن </span></td>
+                                        <td><span>کرج</span></td>
+                                        <td><span>تعویض و بازسازی سیستم اعلام و اطفاء هالوژن </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۴</span></th>
+                                        <td><span>مطالبات بانک سپه </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۵</span></th>
+                                        <td><span>کشتی مارال </span></td>
+                                        <td><span>آبادان</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اطفاء اتوماتیک</span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۶</span></th>
+                                        <td><span>شهرداری بومهن </span></td>
+                                        <td><span>بومهن</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۷</span></th>
+                                        <td><span>انبار شرکت ایرانسل </span></td>
+                                        <td><span>بندرعباس</span></td>
+                                        <td><span>نصب دتكتور </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۸</span></th>
+                                        <td><span>شرکت توسعه ملی </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق آدرس پذیر</span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۶۹</span></th>
+                                        <td><span>اداره برق شمال غرب </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۰</span></th>
+                                        <td><span>داره برق جنت آباد </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۱</span></th>
+                                        <td><span>سینمای ایرانیان</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۲</span></th>
+                                        <td><span>سازمان اداره کل زندان ها</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span> راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۳</span></th>
+                                        <td><span>انرژی اتمی</span></td>
+                                        <td><span>بوشهر</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق ادرس پذیر </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۴</span></th>
+                                        <td><span>شرکت اکتشافات نفت</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۵</span></th>
+                                        <td><span>سازمان بورس و اراق بهادار</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span> نصب و راه اندازی سیستم اعلام حریق ادرس پذیر</span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۶</span></th>
+                                        <td><span>شرکت برق شهرک غرب</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۷</span></th>
+                                        <td><span>بیمارستان امیر اعلم</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۸</span></th>
+                                        <td><span>کیش ایر</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۷۹</span></th>
+                                        <td><span>انبار شرکت نوکیا</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم بیم دتکتور </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۰</span></th>
+                                        <td><span>سوییچینگ 6 منطقه مخابراتی استان تهران</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق ادرس پذیر </span></td>
+                                        <td><span> </span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۱</span></th>
+                                        <td><span>کارخانه ایران گچ</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۲</span></th>
+                                        <td><span>صندوق مهر رضا</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفا حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۳</span></th>
+                                        <td><span>اداره برق توزیع منطقه تهران </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق FM200 </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۴</span></th>
+                                        <td><span>شرکت یونی لیور </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق FM200 </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۵</span></th>
+                                        <td><span>شرکت سانوفی اونتیس </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق FM200 </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۶</span></th>
+                                        <td><span>شرکت BAT</span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>نصب و راه اندازی سیستم بیم دتکتور </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۷</span></th>
+                                        <td><span>سازمان آب و فاضلاب </span></td>
+                                        <td><span>کرج</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق FM200 </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۸</span></th>
+                                        <td><span>دانشگاه فنی مهندسی کاشان </span></td>
+                                        <td><span>کاشان</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۸۹</span></th>
+                                        <td><span>شیشه آرین تاکنو (گاز) </span></td>
+                                        <td><span>کرج</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۹۰</span></th>
+                                        <td><span>به کام پلاست تاکنو (گاز) </span></td>
+                                        <td><span>کرج</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام حریق </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۹۱</span></th>
+                                        <td><span>کارخانه فومن شیمی </span></td>
+                                        <td><span>رشت</span></td>
+                                        <td><span>نصب و راه اندازی سیستم اعلام و اطفاء حریق</span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۹۲</span></th>
+                                        <td><span>انرژی اتمی </span></td>
+                                        <td><span>بوشهر</span></td>
+                                        <td><span>شارژ و اجرای سیستم های گاز FM200 </span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><span>۹۳</span></th>
+                                        <td><span>نیروی هوایی ارتش </span></td>
+                                        <td><span>تهران</span></td>
+                                        <td><span>شارژ و اجرای سیستم های گاز FM200 </span></td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End User history section -->
 
 {% else %}
 

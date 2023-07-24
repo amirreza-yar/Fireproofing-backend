@@ -97,17 +97,14 @@
                                     <div class="ec-single-desc">{{ product.meta_description }}</div>
 
 
+                                    {% if product.is_instock %}
                                     <div class="ec-single-price-stoke">
                                         <div class="ec-single-price">
-                                            <span class="ec-single-ps-title">کف قیمت</span>
+                                            <span class="ec-single-ps-title">قیمت</span>
                                             <span class="new-price">{{ product.display_price }} ریال</span>
                                         </div>
                                         <div class="ec-single-stoke">
-                                            {% if product.is_instock %}
-                                                <span class="ec-single-ps-title">در انبار</span>
-                                            {% else %}
-                                                <span class="ec-single-ps-title">ناموجود</span>
-                                            {% endif %}
+                                            <span class="ec-single-ps-title">موجود</span>
                                             <span class="ec-single-sku">شناسه#: {{ product.pk }} </span>
                                         </div>
                                     </div>
@@ -124,6 +121,30 @@
                                                 
                                         </div>
                                     </form>
+                                    {% else %}
+                                    <div class="ec-single-price-stoke">
+                                        <div class="ec-single-price">
+                                            {% comment %}<span class="ec-single-ps-title">قیمت</span>
+                                            <span class="new-price">{{ product.display_price }} ریال</span>{% endcomment %}
+                                        </div>
+                                        <div class="ec-single-stoke">
+                                            <span class="ec-single-ps-title">unavailable</span>
+                                            <span class="ec-single-sku">PK#: {{ product.pk }} </span>
+                                        </div>
+                                    </div>
+
+                                    <form action="" method="POST">
+                                        <div class="ec-single-qty">
+                                            <div>
+                                                <input type="number" name="quantity" min="1" value="{{ product_quantity }}" style="width: 70px;border: 1px solid rgba(204, 204, 204, 0.445); border-radius: 20px;" disabled/>
+                                            </div>
+                                            <div class="ec-single-cart ">
+                                                <button class="btn btn-primary" type="submit" style="margin-top: 1vh;" disabled>افزودن به سبد خرید</button>
+                                            </div>
+                                                
+                                        </div>
+                                    </form>
+                                    {% endif %}
 
                                 </div>
                             </div>
@@ -292,478 +313,67 @@
                         <div class="container">
                             <div class="row">
                                 <div class="ec-blog-slider owl-carousel" data-animation="fadeIn">
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
+                                    {% for product in recommended_products %}
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
+                                            data-animation="fadeIn" style="width: 100% !important;">
+                                            <div class="ec-product-inner">
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="{% url 'product' pk=product.pk %}" class="image">
+                                                            {% if product.image0 %}
+                                                                <img class="main-image"
+                                                                    src="{{ product.image0.url }}" alt="Product">
+                                                            {% endif %}
+                                                            {% if product.image1 %}
+                                                                <img class="hover-image"
+                                                                    src="{{ product.image1.url }}" alt="Product">
+                                                            {% endif %}
+                                                        </a>
+                                                        {% if not product.discount_percentage == 0 %}
+                                                            <span class="percentage">{{ product.discount_percentage }}%</span>
+                                                        {% endif %}
 
-                                                    <div class="ec-pro-actions">
+                                                        {% comment %}<div class="ec-pro-actions">
 
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
+                                                            <button title="افزودن به سبد خرید" class=" add-to-cart"><img
+                                                                    src="{% static 'images/icons/cart.svg' %}"
+                                                                    class="svg_img pro_svg" alt=""> افزودن به کارت
+                                                            </button>
 
+                                                        </div>{% endcomment %}
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a href="{% url 'product' pk=product.pk %}">{{ product.name }}
+                                                        </a></h5>
+                                                        <div class="ec-pro-rating">
+                                                            {% for _ in product.rate_filled_star_counter %}
+                                                                <i class="ecicon eci-star fill"></i>
+                                                            {% endfor %}
+            
+                                                            {% for _ in product.rate_unfilled_star_counter %}
+                                                                <i class="ecicon eci-star"></i>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <span class="ec-price">
+                                                            {% if not product.discount_percentage == 0 %}
+                                                                <span class="old-price">{{ product.get_price }} ریال</span>
+                                                            {% endif %}
+                                                                <span class="new-price">{{ product.display_price }} ریال</span>
+                                                        </span>
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
+                                    {% endfor %}
 
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
-
-
-
-                <div>
-                    <h1 style="text-align: center;color: white;margin-top: 4vh;font-size: 17px !important;">محصولات
-                        خریداری شده</h1>
-                    <section class="section ec-blog-section section-space-p">
-                        <div class="container">
-                            <div class="row">
-                                <div class="ec-blog-slider owl-carousel" data-animation="fadeIn">
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt=""> افزودن به کارت
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">عنوان
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 ریال</span>
-                                                    <span class="new-price">2200 ریال</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-
-
-                <!-- product details description area end -->
+            <!-- product details description area end -->
             </div>
 
         </div>
@@ -793,10 +403,12 @@
 
                                     </div>
                                     <div class="single-nav-thumb">
+                                        {% if product.image1 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image1.url }}"
                                                 alt="" height="130" width="120">
                                         </div>
+                                        {% endif %}
                                         {% if product.image2 %}
                                         <div class="single-slide">
                                             <img class="img-responsive" src="{{ product.image2.url }}"
@@ -809,13 +421,12 @@
                                                 alt="" height="130" width="120">
                                         </div>
                                         {% endif %}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="single-pro-desc single-pro-desc-no-sidebar">
                                 <div class="single-pro-content">
-                                    <h5 class="ec-single-title">{{ product.name }}</h5>
+                                    <h5 class="ec-single-title">{{ product.en_name }}</h5>
                                     <div class="ec-single-rating-wrap">
                                         <div class="ec-single-rating">
                                             {% for _ in product.rate_filled_star_counter %}
@@ -835,21 +446,18 @@
                                         </div>
                                         <span class="ec-read-review">{{ product.rate }} / 5</span>
                                     </div>
-                                    <div class="ec-single-desc">{{ product.meta_description }}</div>
+                                    <div class="ec-single-desc">{{ product.en_meta_description }}</div>
 
 
+                                    {% if product.is_instock %}
                                     <div class="ec-single-price-stoke">
                                         <div class="ec-single-price">
                                             <span class="ec-single-ps-title">price floor</span>
                                             <span class="new-price">{{ product.display_price }} Rial</span>
                                         </div>
                                         <div class="ec-single-stoke">
-                                            {% if product.is_instock %}
-                                                <span class="ec-single-ps-title">in stock</span>
-                                            {% else %}
-                                                <span class="ec-single-ps-title">unavailable</span>
-                                            {% endif %}
-                                            <span class="ec-single-sku">شناسه#: {{ product.pk }} </span>
+                                            <span class="ec-single-ps-title">in stock</span>
+                                            <span class="ec-single-sku">PK#: {{ product.pk }} </span>
                                         </div>
                                     </div>
 
@@ -865,6 +473,30 @@
                                                 
                                         </div>
                                     </form>
+                                    {% else %}
+                                    <div class="ec-single-price-stoke">
+                                        <div class="ec-single-price">
+                                            <span class="ec-single-ps-title">price floor</span>
+                                            <span class="new-price">{{ product.display_price }} Rial</span>
+                                        </div>
+                                        <div class="ec-single-stoke">
+                                            <span class="ec-single-ps-title">unavailable</span>
+                                            <span class="ec-single-sku">PK#: {{ product.pk }} </span>
+                                        </div>
+                                    </div>
+
+                                    <form action="" method="POST">
+                                        <div class="ec-single-qty">
+                                            <div>
+                                                <input type="number" name="quantity" min="1" value="{{ product_quantity }}" style="width: 70px;border: 1px solid rgba(204, 204, 204, 0.445); border-radius: 20px;" disabled/>
+                                            </div>
+                                            <div class="ec-single-cart ">
+                                                <button class="btn btn-primary" type="submit" style="margin-top: 1vh;" disabled>Add to cart</button>
+                                            </div>
+                                                
+                                        </div>
+                                    </form>
+                                    {% endif %}
 
                                 </div>
                             </div>
@@ -891,7 +523,7 @@
                         <div class="tab-content  ec-single-pro-tab-content">
                             <div id="ec-spt-nav-details" class="tab-pane fade show active">
                                 <div class="ec-single-pro-tab-desc">
-                                    <p>{{ product.full_description|safe }}</p>
+                                    <p>{{ product.en_full_description|safe }}</p>
                                     <!-- <ul>
                                         <li> هر نوع محصول که می خواهید - ساده، قابل تنظیم </li>
                                         <li> محصولات الکترونیکی و دیجیتال قابل دانلود</li>
@@ -1026,490 +658,154 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h1 style="text-align: center;color: white;margin-top: 4vh;font-size: 17px !important;">Recommended products</h1>
-                    <section class="section ec-blog-section section-space-p">
-                        <div class="container">
-                            <div class="row">
-                                <div class="ec-blog-slider owl-carousel" data-animation="fadeIn">
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-
-
-                <div>
-                    <h1 style="text-align: center;color: white;margin-top: 4vh;font-size: 17px !important;">محصولات
-                        خریداری شده</h1>
-                    <section class="section ec-blog-section section-space-p">
-                        <div class="container">
-                            <div class="row">
-                                <div class="ec-blog-slider owl-carousel" data-animation="fadeIn">
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content"
-                                        data-animation="fadeIn" style="width: 100% !important;">
-                                        <div class="ec-product-inner">
-                                            <div class="ec-pro-image-outer">
-                                                <div class="ec-pro-image">
-                                                    <a href="  " class="image">
-                                                        <img class="main-image"
-                                                            src="{% static 'images/product-image/1_1.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                        <img class="hover-image"
-                                                            src="{% static 'images/product-image/1_2.jpg' %}" alt="Product"
-                                                            style="border-radius: 15px;">
-                                                    </a>
-                                                    <span class="percentage">20%</span>
-
-                                                    <div class="ec-pro-actions">
-
-                                                        <button title="افزودن به سبد خرید" class=" add-to-cart"><img
-                                                                src="{% static 'images/icons/cart.svg' %}"
-                                                                class="svg_img pro_svg" alt="">Add to cart
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ec-pro-content">
-                                                <h5 class="ec-pro-title"><a href="  ">Title
-                                                    </a></h5>
-                                                <div class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star"></i>
-                                                </div>
-                                                <span class="ec-price">
-                                                    <span class="old-price">2700 Rial</span>
-                                                    <span class="new-price">2200 Rial</span>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-
-
-                <!-- product details description area end -->
             </div>
 
         </div>
     </div>
 </section>
 <!-- End Single product -->
+<!--  Feature & Special Section Start -->
+<section class="section ec-fre-spe-section section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="ec-fre-section col-lg-6 col-md-6 col-sm-6 margin-b-30" data-animation="slideInRight">
+                <div class="col-md-12 text-left">
+                    <div class="section-title">
+                        <h2 class="ec-bg-title">Discounted Products</h2>
+                        <h2 class="ec-title">Discounted Products</h2>
+                    </div>
+                </div>
+
+                <div class="ec-fre-products">
+
+                    {% for product in products %}
+                        {% if not product.discount_percentage == 0 %}
+                            <div class="ec-fs-product">
+                                <div class="ec-fs-pro-inner">
+                                    <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                        <div class="ec-fs-pro-image">
+                                            <a href="{% url 'product' product.pk %}" class="image">
+                                                {% if product.image0 %}
+                                                    <img class="main-image" src="/media/{{product.image0}}"
+                                                        alt="Product">
+                                                {% endif %}
+                                                {% if product.image1 %}
+                                                    <img class="hover-image" src="/media/{{product.image1}}"
+                                                        alt="Product">
+                                                {% endif %}
+                                                </a>
+                                                {% comment %}<span class="percentage">
+                                                    {% if not product.discount_percentage == 0 %}
+                                                    <span class="percentage">{{ product.discount_percentage }}%</span>
+                                                    {% endif %}
+                                                </span>{% endcomment %}
+                                        </div>
+                                    </div>
+                                    <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                        <h5 class="ec-fs-pro-title"><a href="{% url 'product' product.pk %}">{{ product.en_name }}
+                                            </a>
+                                        </h5>
+                                        <div class="ec-pro-rating">
+                                            {% for _ in product.rate_filled_star_counter %}
+                                            <i class="ecicon eci-star fill"></i>
+                                            {% endfor %}
+
+                                            {% for _ in product.rate_unfilled_star_counter %}
+                                            <i class="ecicon eci-star"></i>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="ec-fs-price">
+                                            {% if not product.discount_percentage == 0 %}
+                                                <span class="old-price">{{ product.get_price }} Rial</span>
+                                            {% endif %}
+                                                <span class="new-price">{{ product.display_price }} Rial</span>
+                                        </div>
+
+                                        <div class="ec-fs-pro-desc">{{ product.en_meta_description }}</div>
+                                        <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                            <a href="{% url 'product' product.pk %}" class="btn btn-lg btn-primary">Buy</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    
+
+                </div>
+            </div>
+            <!--  Special Section Start -->
+            <div class="ec-spe-section col-lg-6 col-md-6 col-sm-6" data-animation="slideInLeft">
+                <div class="col-md-12 text-left">
+                    <div class="section-title">
+                        <h2 class="ec-bg-title">Recommended products</h2>
+                        <h2 class="ec-title">Recommended products</h2>
+                    </div>
+                </div>
+
+                <div class="ec-spe-products">
+                    {% for product in recommended_products %}
+                        <div class="ec-fs-product">
+                            <div class="ec-fs-pro-inner">
+                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                    <div class="ec-fs-pro-image">
+                                        <a href="{% url 'product' product.pk %}" class="image">
+                                            {% if product.image0 %}
+                                                <img class="main-image" src="/media/{{product.image0}}"
+                                                    alt="Product">
+                                            {% endif %}
+                                            {% if product.image1 %}
+                                                <img class="hover-image" src="/media/{{product.image1}}"
+                                                    alt="Product">
+                                            {% endif %}
+                                            </a>
+                                            {% comment %}<span class="percentage">
+                                                {% if not product.discount_percentage == 0 %}
+                                                <span class="percentage">{{ product.discount_percentage }}%</span>
+                                                {% endif %}
+                                            </span>{% endcomment %}
+                                    </div>
+                                </div>
+                                <div class="ec-fs-pro-content col-lg-6 col-md-6 col-sm-6">
+                                    <h5 class="ec-fs-pro-title"><a href="{% url 'product' product.pk %}">{{ product.en_name }}
+                                        </a>
+                                    </h5>
+                                    <div class="ec-pro-rating">
+                                        {% for _ in product.rate_filled_star_counter %}
+                                        <i class="ecicon eci-star fill"></i>
+                                        {% endfor %}
+
+                                        {% for _ in product.rate_unfilled_star_counter %}
+                                        <i class="ecicon eci-star"></i>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="ec-fs-price">
+                                        {% if not product.discount_percentage == 0 %}
+                                            <span class="old-price">{{ product.get_price }} Rial</span>
+                                        {% endif %}
+                                            <span class="new-price">{{ product.display_price }} Rial</span>
+                                    </div>
+
+                                    <div class="ec-fs-pro-desc">{{ product.en_meta_description }}</div>
+                                    <div class="ec-fs-pro-btn" style="margin-top: 50px !important;">
+                                        <a href="{% url 'product' product.pk %}" class="btn btn-lg btn-primary">Buy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!--  Special Section End -->
+
+            <!--  Feature Section Start -->
+
+
+            <!--  Feature Section End -->
+        </div>
+    </div>
+</section>
+<!-- Feature & Special Section End -->
 
 {% endif %}
 

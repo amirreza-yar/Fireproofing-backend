@@ -100,6 +100,9 @@ def productDetail(request, pk):
     product = get_object_or_404(ProductModel, pk=pk, is_service=False)
     product_comments = ProductComment.objects.all().filter(product=product)
 
+    products = ProductModel.objects.all()
+    recommended_products = ProductModel.objects.filter(is_recommended=True)
+
     try:
         product_cart_item = CartItem.objects.get(product=product)
         product_quantity = product_cart_item.quantity
@@ -110,10 +113,12 @@ def productDetail(request, pk):
     context = {
         "title": "محصولات",
         "is_index_page": False,
+        "products": products,
         "product": product,
         "product_comments": product_comments,
         "add_to_cart_form": AddToCartForm(None),
         "product_quantity": product_quantity,
+        "recommended_products": recommended_products,
     }
     return render(request, "productDetail.html", context=context)
 
