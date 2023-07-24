@@ -1,4 +1,4 @@
-from django.http import HttpResponseForbidden, HttpResponseRedirect, Http404
+from django.http import HttpResponseForbidden, HttpResponseRedirect, Http404, JsonResponse
 from django.shortcuts import render
 from django.views.generic import CreateView,UpdateView
 from django.core.paginator import Paginator
@@ -224,6 +224,17 @@ def order_cancel(request, pk):
             'orders' : orders,
         }
         return render(request,'admin/orderlist.html',context)
+    else: 
+        raise Http404('permission denied')
+def order_set_status(request, pk,status):
+    if request.user.order_access:
+        order = Order.objects.get(id=pk)
+        order.status = status
+        order.save()
+        context = {
+            'message' : 'success',
+        }
+        return JsonResponse(context)
     else: 
         raise Http404('permission denied')
 #* AGENTS BLOCK

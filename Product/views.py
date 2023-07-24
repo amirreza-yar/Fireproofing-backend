@@ -220,7 +220,7 @@ def makeOrder(request):
         )
 
         zapi = ZarinRest("53946567-b7ac-47a9-8eec-adff5d3f2525",request.user.id)
-        transaction = zapi.payment_request(int(str(cart.finished_price+"0")),"atashnabard payment process")
+        transaction = zapi.payment_request(cart.finished_price,"atashnabard payment process")
         
         cart.delete()
         return redirect(f"https://zarinpal.com/pg/StartPay/{transaction['data']['authority']}")

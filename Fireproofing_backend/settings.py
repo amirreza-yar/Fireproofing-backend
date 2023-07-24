@@ -68,7 +68,7 @@ AUTH_USER_MODEL = 'CustomUser.UserProfile'
 # ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_USERNAME_REQUIRED = False
 # ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
-# ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SESSION_REMEMBER = True
 # ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # ACCOUNT_UNIQUE_EMAIL = True
 
@@ -141,9 +141,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'fa'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
@@ -173,7 +173,8 @@ MEDIA_URL = "media/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #SESSION_COOKIE_AGE = 5 * 60
-CSRF_COOKIE_SECURE = False
+#CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
+#SESSION_COOKIE_SAMESITE = 'None'

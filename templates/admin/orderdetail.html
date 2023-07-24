@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-6">
+                                        <div class="col-xl-2 col-lg-6">
                                             <address class="info-grid">
                                                 <div class="info-title"><strong> مشتری: </strong></div><br>
                                                 <div class="info-content">{{order.customer.name}}<br>{{order.customer.address}}
@@ -27,25 +27,47 @@
                                                     {{order.customer.phone_number}}</div>
                                             </address>
                                         </div>
-                                        <div class="col-xl-3 col-lg-6">
+                                        <div class="col-xl-2 col-lg-6">
                                             <address class="info-grid">
-                                                <div class="info-title"><strong>فرستاده شده به:</strong>{{order.address}}</div><br>
-                                                <div class="info-content"><br><abbr title="Phone">شماره تماس:</abbr> {{order.phone_number}}</div>
-                                            </address>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-6">
-                                            <address class="info-grid">
-                                                <div class="info-title"><strong>روش پرداخت:</strong></div><br>
-                                                <div class="info-content"><br><a
-                                                        class="__cf_email__"
-                                                        data-cfemail="31591f545d50585f5471565c50585d1f525e5c"></a><br>
+                                                <div class="info-title"><strong>فرستاده شده به:</strong></div><br>
+                                                <div class="info-content">
+                                                    {{order.address}}
+                                                    <br>
+                                                    <br>
+                                                    <abbr title="Phone">شماره تماس:</abbr> {{order.phone_number}}
                                                 </div>
                                             </address>
                                         </div>
-                                        <div class="col-xl-3 col-lg-6">
+                                        <div class="col-xl-2 col-lg-6">
+                                            <address class="info-grid">
+                                                <div class="info-title"><strong>روش پرداخت:</strong></div><br>
+                                                <div class="info-content"><br>آنلاین<br>
+                                                </div>
+                                            </address>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-6">
                                             <address class="info-grid">
                                                 <div class="info-title"><strong> تاریخ سفارش: </strong></div><br>
-                                                <div class="info-content">{{order.ordred_date}}</div>
+                                                <div class="info-content">{{order.ordered_date}}</div>
+                                            </address>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-6">
+                                            <address class="info-grid">
+                                                <div class="info-title"><strong> وضعیت سفارش: </strong></div><br>
+                                                <div class="info-content">
+                                                    <div>{{order.get_status}}</div>
+                                                    <br>
+                                                    <br>
+                                                    <select name="cars" onchange='setStatus(this)'>
+                                                        <option style="display:none">انتخاب کنید</option>
+                                                        <option value="PN">در انتضار تایید</option>
+                                                        <option value="UN">اشکال در پرداخت</option>
+                                                        <option value="PR">درحال اماده سازی</option>
+                                                        <option value="SN">درحال ارسال</option>
+                                                        <option value="RC">تحویل داده شد</option>
+                                                        <option value="CD">کنسل شده</option>
+                                                    </select>
+                                                </div>
                                             </address>
                                         </div>
                                     </div>
@@ -57,7 +79,6 @@
                                                     <thead>
                                                         <tr class="line">
                                                             <td><strong>#</strong></td>
-                                                            <td class="text-center"><strong>تصویر</strong></td>
                                                             <td class="text-center"><strong>محصولات</strong></td>
                                                             <td class="text-right"><strong>تعداد</strong></td>
                                                             <td class="text-center"><strong>قیمت/واحد</strong></td>
@@ -96,4 +117,16 @@
         </div>
     </div>
 </div>
+<script>
+function setStatus(selectObject) {
+  var value = selectObject.value;  
+  fetch('https://atashnabard.com/AdminFFireePanel/order/set-status/{{order.pk}}/'+value , {
+       headers: {
+          'Accept': 'application/json'
+       }
+    })
+   .then(response => response.text())
+   .then(text => console.log(text))
+}
+</script>
 {% endblock %}
